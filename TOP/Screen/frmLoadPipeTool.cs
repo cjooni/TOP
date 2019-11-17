@@ -21,22 +21,31 @@ namespace TOP.Screen
         //Pipe Tool 데이터를 Load 한다.
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            
-            XtraOpenFileDialog Opendlg = new XtraOpenFileDialog();
-
-            Opendlg.Filter = "EXCEL 파일 (*.xlsx)|*.xlsx|모든파일(*.*)|*.*";
-
-
-            if (Opendlg.ShowDialog() == DialogResult.OK)
+            try
             {
-                string filename = Opendlg.FileName;
+                XtraOpenFileDialog Opendlg = new XtraOpenFileDialog();
 
-                using (FileStream stream = new FileStream(filename, FileMode.Open))
+                Opendlg.Filter = "EXCEL 파일 (*.xlsx)|*.xlsx|모든파일(*.*)|*.*";
+
+
+                if (Opendlg.ShowDialog() == DialogResult.OK)
                 {
-                    ///EXCEL DATA를 Load 한다.
-                    spread1.LoadDocument(stream, DocumentFormat.Xlsx);
+                    string filename = Opendlg.FileName;
+
+                    using (FileStream stream = new FileStream(filename, FileMode.Open))
+                    {
+                        ///EXCEL DATA를 Load 한다.
+                        spread1.LoadDocument(stream, DocumentFormat.Xlsx);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
     }
 }
