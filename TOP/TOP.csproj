@@ -322,6 +322,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="sample\Aline-1%28최종%29.xlsx" />
+    <None Include="sample\OJ1.FLO" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
