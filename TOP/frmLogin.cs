@@ -18,12 +18,18 @@ namespace TOP
     public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
         private String userId;
+
+        private DataTable dt_user_info;
+        private CUserInfo m_UserInfo;
         public frmLogin()
         {
             InitializeComponent();
+
+            m_UserInfo = new CUserInfo();
         }
 
         public string UserId { get => userId; set => userId = value; }
+        public CUserInfo UserInfo { get => m_UserInfo; set => m_UserInfo = value; }
 
         private void SimpleButton1_Click(object sender, EventArgs e)
         {
@@ -42,12 +48,9 @@ namespace TOP
 
                 sqlDataSource1.Fill();
 
-                DataTable dt = CUtil.GetTable(sqlDataSource1.Result["Qry_UserID"]);
+                dt_user_info = CUtil.GetTable(sqlDataSource1.Result["Qry_UserID"]);
 
-                
-               
-
-                if (dt.Rows[0]["CNT"].ToString() != "1")
+                if (dt_user_info.Rows.Count <= 0)
                 {
                     InfoMsg.Caption = "등록된 사용자가 아닙니다.";
                     return;
@@ -59,7 +62,9 @@ namespace TOP
                 InfoMsg.Caption = ex.Message;
             }
 
-            UserId = edtID.Text;
+            UserInfo.UserID = dt_user_info.Rows[0]["USER_ID"].ToString();
+            UserInfo.UserNM = dt_user_info.Rows[0]["USER_NM"].ToString();
+
             DialogResult = DialogResult.OK;
 
         }

@@ -231,6 +231,8 @@
     </Compile>
     <Compile Include="lib\CColumnProp.cs" />
     <Compile Include="lib\CPageMngr.cs" />
+    <Compile Include="lib\CPrjInfo.cs" />
+    <Compile Include="lib\CUserInfo.cs" />
     <Compile Include="lib\CUtil.cs" />
     <Compile Include="Parent\PForm.cs">
       <SubType>Form</SubType>

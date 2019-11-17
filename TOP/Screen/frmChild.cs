@@ -16,6 +16,7 @@ using DevExpress.XtraTab.ViewInfo;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.DataAccess.Sql;
 
 namespace TOP.Screen
 {
@@ -27,6 +28,8 @@ namespace TOP.Screen
     public partial class frmChild : DevExpress.XtraEditors.XtraForm
     {
         private CPageMngr pageMngr;
+        private CPrjInfo prjInfo;
+        private CUserInfo userInfo;
 
         /// <summary>
         /// 보내는 Event를 선언
@@ -34,12 +37,15 @@ namespace TOP.Screen
         public ChkColumnEventHandler ChkColumnEvent;
       
         public CPageMngr PageMngr { get => pageMngr; set => pageMngr = value; }
+        public CPrjInfo PrjInfo { get => prjInfo; set => prjInfo = value; }
+        public CUserInfo UserInfo { get => userInfo; set => userInfo = value; }
 
         public frmChild()
         {
             InitializeComponent();
             PageMngr = new CPageMngr();
-             
+            PrjInfo = new CPrjInfo();
+            UserInfo = new CUserInfo();
         }
 
 
@@ -55,7 +61,7 @@ namespace TOP.Screen
             string nameSpace = "TOP.Screen"; //네임스페이스 명
 
             
-            string frmName = string.Format("{0}.{1}", nameSpace, strScrnNm);
+            string frmName = string.Format("{0}.{1}", nameSpace, strScrnNm.Trim());
             PForm frm;
 
             try
@@ -113,6 +119,16 @@ namespace TOP.Screen
 
 
             return 0;
+        }
+
+        /// <summary>
+        /// project가 선택되었다는 내용을 전달받는 이벤트 처리 함수
+        /// </summary>
+        /// <param name="PrjInfo"></param>
+        private void SelectProject(CPrjInfo PrjInfo)
+        {
+
+
         }
 
         //그리드가 다 그려졌다는 내용을 전달받는 이벤트 처리 함수
@@ -204,10 +220,46 @@ namespace TOP.Screen
             
         }
 
+        /// <summary>
+        /// MDI CHILD가  Load될때의 Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmChild_Load(object sender, EventArgs e)
         {
             xtraTabControl1.TabPages.Remove(xtraTabPage1);
             xtraTabControl1.TabPages.Remove(xtraTabPage2);
+
+            edtProjectCd.Text = PrjInfo.ProjectCd;
+            edtProjectNm.Text = PrjInfo.ProjectNm;
+
+            edtUserNm.Text = UserInfo.UserNM;
+
+
+            //SqlQuery query = sqlDSPrjScrn.Queries["QRY_PRJ_SCRN"];
+            try
+            {
+                foreach (QueryParameter item in sqlDSPrjScrn.Queries["QRY_PRJ_SCRN"].Parameters)
+                {
+                    if (item.Name == "P_PROJECT_CD")
+                    {
+                        item.Value = PrjInfo.ProjectCd;
+                    }
+                }
+
+                sqlDSPrjScrn.Fill("QRY_PRJ_SCRN");
+
+                DataTable dt = CUtil.GetTable(sqlDSPrjScrn.Result["QRY_PRJ_SCRN"]);
+
+                gridScrn.DataSource = dt;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
         }
 
 
@@ -324,5 +376,30 @@ namespace TOP.Screen
         {
            
 ;        }
+
+        /// <summary>
+        /// 공정을 더블클릭하면 해당 화면이 추가된다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void viewScrn_DoubleClick(object sender, EventArgs e)
+        {            
+            DataRow Dr;
+            Dr = viewScrn.GetFocusedDataRow();
+
+            try
+            {                
+                LoadScreen(Dr["SCRN_SRC"].ToString());
+            }
+            catch (Exception ex)
+            {                
+                string msg = string.Format("{0} Load중 오류, {1}", Dr["SCRN_TEXT"].ToString(), ex.Message);
+
+                MessageBox.Show(msg);
+            }
+            
+
+
+        }
     }
 }

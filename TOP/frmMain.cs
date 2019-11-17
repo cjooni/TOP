@@ -11,18 +11,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TOP.Dialog;
 using TOP.lib;
+using TOP.Parent;
 using TOP.Screen;
 
 namespace TOP
-{
+{    
+
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+
+        
+
         private String m_UserId;
-        private DataTable m_User_info;
+
+        private CUserInfo userInfo;
+
+        public CUserInfo UserInfo { get => userInfo; set => userInfo = value; }
 
         public frmMain()
         {
             InitializeComponent();
+
+            CUserInfo userInfo = new CUserInfo();
         }
 
 
@@ -52,10 +62,7 @@ namespace TOP
             {
                 this.Close();
             }
-
-            m_UserId = login.UserId;
-
-
+            UserInfo = login.UserInfo;
         }
 
         private void SetUserInfo()
@@ -173,6 +180,49 @@ namespace TOP
 
 
             frm.Show();
+        }
+
+        /// <summary>
+        /// 프로젝트를 선택한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmProjectInfo frm = new frmProjectInfo();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            ///프로젝트 조회창에서 프로젝트를 선택하면 
+            ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadMdiChildByProjectCd(frm.PrjInfo);
+            }
+        }
+
+
+        private void LoadMdiChildByProjectCd(CPrjInfo PrjInfo)
+        {
+            string nameSpace = "TOP.Screen"; //네임스페이스 명
+            Assembly cuasm = Assembly.GetExecutingAssembly();
+            //string Format 의 따옴표와 마침표 주의!!
+            frmChild frm = (frmChild)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frmChild"));
+            frm.MdiParent = this;
+            frm.PrjInfo = PrjInfo;
+            frm.UserInfo = UserInfo;
+            frm.WindowState = FormWindowState.Maximized;
+
+            frm.Show();
+        }
+
+
+        /// <summary>
+        /// Project 선택창에서 선택 내용을 전달 받는다.
+        /// </summary>
+        /// <param name="PrjInfo"></param>
+        private void SelectedPrjoect(CPrjInfo PrjInfo)
+        {
+            MessageBox.Show(PrjInfo.ProjectNm);
         }
     }
 }
