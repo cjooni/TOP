@@ -1,4 +1,5 @@
 ﻿using DevExpress.Spreadsheet;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,11 +9,15 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.DataAccess.Excel;
+using TOP.lib;
+
 
 namespace TOP.Screen
 {
     public partial class frmLoadPipeTool : TOP.Parent.PForm
     {
+        string FileName;
         public frmLoadPipeTool()
         {
             InitializeComponent();
@@ -36,6 +41,7 @@ namespace TOP.Screen
                     {
                         ///EXCEL DATA를 Load 한다.
                         spread1.LoadDocument(stream, DocumentFormat.Xlsx);
+                        FileName = filename;
                     }
                 }
             }
@@ -46,6 +52,201 @@ namespace TOP.Screen
 
             }
 
+        }
+
+
+        private DataTable GetDataTable(Worksheet item, string range)
+        {
+            ExcelDataSource Eds = new ExcelDataSource();
+            Eds.Name = item.Name;
+            Eds.FileName = @FileName;
+            ExcelWorksheetSettings worksheetsetting = new ExcelWorksheetSettings(Eds.Name, range);
+            Eds.SourceOptions = new ExcelSourceOptions(worksheetsetting);
+
+            Eds.SourceOptions.SkipEmptyRows = false;
+            Eds.SourceOptions.UseFirstRowAsHeader = true;
+            Eds.Fill();
+
+            DataTable dt = ExcelDataSourceExtension.ToDataTable(Eds);
+            dt.TableName = item.Name;
+
+            return dt;
+        }
+
+
+
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            IWorkbook workbook = spread1.Document;
+
+
+            CPipeDataMngr PipeMngr = new CPipeDataMngr();
+            
+            ///PipeTool을 처리하기 위한 필드값을 찾는다.
+            ///
+            int n = workbook.Worksheets.Count;
+            foreach (Worksheet item in workbook.Worksheets)
+            {
+                //sheet에 (H) 가 있으면 skip
+                if (item.Name.Contains("H") == true)
+                {
+                    continue;
+                }
+                CPipeData Data = new CPipeData();
+                Data.SheetName = item.Name;
+                Data.Data1Position = "B3:AN3";
+                Data.Data1RowIndex = 2;
+              
+
+                //Data2의 시작 위치를 찾아볼까
+                SearchOptions options = new SearchOptions();
+                options.SearchBy = SearchBy.Columns;
+                options.SearchIn = SearchIn.Values;
+                options.MatchEntireCellContents = true;
+
+                //item.Search("측점", options);
+                //worksheet의 유효 데이터 Row를 구한다.
+                int nRow = item.GetUsedRange().RowCount;
+
+
+                string strPos2;
+                string strPos1;
+
+                IEnumerable<Cell> searchResult = item.Search("측점", options);
+                foreach (Cell cell in searchResult)
+                {
+                    if (cell.ColumnIndex != 1)
+                    {
+                        continue;
+                    }
+
+                    strPos1 = string.Format("{0}{1}:{2}{3}", "B", 3, "AN", cell.RowIndex - 1);
+                    strPos2 = string.Format("{0}{1}:{2}{3}", "B", cell.RowIndex + 1, "H", nRow -1);
+                    Data.Data2Position = strPos2;
+                    Data.Data2RowIndex = cell.RowIndex;
+
+                    Data.Data1 = GetDataTable(item, strPos1);
+                    Data.Data2 = GetDataTable(item, strPos2);
+                    Data.ManholeDt = GetManholeData1(Data.Data1);
+                }
+
+                MakeFLO(Data);
+                PipeMngr.Add(Data);
+
+            }
+
+            
+            ////FLO 데이터를 만들어 보자 
+            //foreach (CPipeData item in PipeMngr.Data)
+            //{
+            //    DataTable dt = GetManholeData1(item.Data1);
+            //}
+
+        }
+
+        private DataTable GetManholeData1(DataTable data)
+        {
+            
+            DataTable dt = data.Clone();
+            dt.Columns.Add("F관경");
+            dt.Columns.Add("T관경");
+
+            DataColumn[] primarykey = new DataColumn[2];
+            primarykey[0] = dt.Columns["누가거리"];
+            primarykey[1] = dt.Columns["맨홀"];
+         
+            dt.PrimaryKey = primarykey;
+
+            foreach (DataRow item in data.Rows)
+            {
+                if (item["맨홀"].ToString().Trim() == "")
+                {
+                    continue;
+                }
+
+                try
+                {
+                    DataRow dr = dt.NewRow();
+                    dr.ItemArray = item.ItemArray;
+
+                    //전단면과 후단면의 관경을 다를수도 있고 같을수도 있다
+                    //일단 처음 넣을때는 관경을 동일하게 처리하고 
+                    //중복이 발생했을 경우 후단면의 관경을 갱신 처리한다.
+                    dr["F관경"] = item["관경"];
+                    dr["T관경"] = item["관경"];
+                    dt.Rows.Add(dr);
+                }
+                catch(ConstraintException ex)
+                {
+                    string filter;
+                    filter = string.Format("누가거리='{0}' AND 맨홀='{1}'", item["누가거리"], item["맨홀"]);
+                    DataRow[] drs = dt.Select(filter);
+                    foreach (DataRow itemRow in drs)
+                    {
+                        itemRow["T관경"] = item["관경"]; //중복이 발생하면 후단면 관경을 T관경에 넣는다.
+                    }
+                    continue;
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                    return null;
+                }
+                
+              
+                
+            }
+
+            return dt;
+        }
+
+        private void MakeFLO(CPipeData PipeData)
+        {
+            DataTable Dt = new DataTable();
+            Dt.Columns.Add("FROM_LINE");
+            Dt.Columns.Add("TO_LINE");
+            Dt.Columns.Add("누가거리_차이"); 
+            Dt.Columns.Add("DATA1"); //0.0000
+            Dt.Columns.Add("DATA2"); //0.0000
+            Dt.Columns.Add("F관저고"); //from의 관저고
+            Dt.Columns.Add("T관저고"); //To의 관저고
+            Dt.Columns.Add("DATA3"); //0.010
+            Dt.Columns.Add("지반고"); //from의 지반고
+            Dt.Columns.Add("DATA4"); //0.010
+            Dt.Columns.Add("관경"); //전, 후 단면이 있을경우 달라짐
+                        DataTable data = PipeData.ManholeDt;
+            for (int i = 0; i < data.Rows.Count; i++)
+            {
+               if (data.Rows.Count -1  == i)
+                {
+                    //제일 끝 라인은 처리안함
+                    continue;
+                }
+
+                DataRow dr = Dt.NewRow();
+                dr["FROM_LINE"] = data.Rows[i]["맨홀"];
+                dr["TO_LINE"] = data.Rows[i + 1]["맨홀"];
+                dr["누가거리_차이"] = Convert.ToDouble(data.Rows[i + 1]["누가거리"]) - Convert.ToDouble( data.Rows[i]["누가거리"]);
+                dr["DATA1"] = "0.0000";
+                dr["DATA2"] = "0.65";
+                dr["F관저고"] = data.Rows[i]["관저고"];
+                dr["T관저고"] = data.Rows[i+1]["관저고"];
+                dr["지반고"] = data.Rows[i]["지반고"];
+                if (data.Rows[i]["관경"] == data.Rows[i+1]["관경"])
+                {
+                    dr["관경"] = data.Rows[i]["관경"];
+                }
+                else 
+                {
+                    dr["관경"] = data.Rows[i]["T관경"];
+                }
+
+                Dt.Rows.Add(dr);
+            }
+
+            PipeData.FLODt = Dt;
         }
     }
 }

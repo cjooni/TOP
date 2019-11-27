@@ -145,7 +145,6 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -155,9 +154,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.xtraTabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1030, 597);
-            this.splitContainer1.SplitterDistance = 294;
-            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.Size = new System.Drawing.Size(1471, 876);
+            this.splitContainer1.SplitterDistance = 419;
             this.splitContainer1.TabIndex = 0;
             // 
             // navigationPane1
@@ -167,16 +165,15 @@
             this.navigationPane1.Controls.Add(this.navigationPage3);
             this.navigationPane1.Dock = System.Windows.Forms.DockStyle.Left;
             this.navigationPane1.Location = new System.Drawing.Point(0, 0);
-            this.navigationPane1.Margin = new System.Windows.Forms.Padding(2);
             this.navigationPane1.Name = "navigationPane1";
             this.navigationPane1.PageProperties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.Image;
             this.navigationPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.navigationPage1,
             this.navigationPage2,
             this.navigationPage3});
-            this.navigationPane1.RegularSize = new System.Drawing.Size(288, 597);
+            this.navigationPane1.RegularSize = new System.Drawing.Size(411, 876);
             this.navigationPane1.SelectedPage = this.navigationPage2;
-            this.navigationPane1.Size = new System.Drawing.Size(288, 597);
+            this.navigationPane1.Size = new System.Drawing.Size(411, 876);
             this.navigationPane1.TabIndex = 4;
             this.navigationPane1.Text = "navigationPane1";
             this.navigationPane1.StateChanged += new DevExpress.XtraBars.Navigation.StateChangedEventHandler(this.NavigationPane1_StateChanged);
@@ -187,9 +184,8 @@
             this.navigationPage1.Caption = "프로젝트 정보";
             this.navigationPage1.Controls.Add(this.layoutControl2);
             this.navigationPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage1.ImageOptions.Image")));
-            this.navigationPage1.Margin = new System.Windows.Forms.Padding(2);
             this.navigationPage1.Name = "navigationPage1";
-            this.navigationPage1.Size = new System.Drawing.Size(201, 524);
+            this.navigationPage1.Size = new System.Drawing.Size(298, 767);
             // 
             // layoutControl2
             // 
@@ -198,34 +194,36 @@
             this.layoutControl2.Controls.Add(this.edtUserNm);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl2.Margin = new System.Windows.Forms.Padding(2);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(201, 524);
+            this.layoutControl2.Size = new System.Drawing.Size(298, 767);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // edtProjectCd
             // 
-            this.edtProjectCd.Location = new System.Drawing.Point(91, 12);
+            this.edtProjectCd.Location = new System.Drawing.Point(99, 12);
+            this.edtProjectCd.Margin = new System.Windows.Forms.Padding(4);
             this.edtProjectCd.Name = "edtProjectCd";
-            this.edtProjectCd.Size = new System.Drawing.Size(98, 22);
+            this.edtProjectCd.Size = new System.Drawing.Size(187, 30);
             this.edtProjectCd.StyleController = this.layoutControl2;
             this.edtProjectCd.TabIndex = 4;
             // 
             // edtProjectNm
             // 
-            this.edtProjectNm.Location = new System.Drawing.Point(91, 38);
+            this.edtProjectNm.Location = new System.Drawing.Point(99, 46);
+            this.edtProjectNm.Margin = new System.Windows.Forms.Padding(4);
             this.edtProjectNm.Name = "edtProjectNm";
-            this.edtProjectNm.Size = new System.Drawing.Size(98, 22);
+            this.edtProjectNm.Size = new System.Drawing.Size(187, 30);
             this.edtProjectNm.StyleController = this.layoutControl2;
             this.edtProjectNm.TabIndex = 5;
             // 
             // edtUserNm
             // 
-            this.edtUserNm.Location = new System.Drawing.Point(91, 64);
+            this.edtUserNm.Location = new System.Drawing.Point(99, 80);
+            this.edtUserNm.Margin = new System.Windows.Forms.Padding(4);
             this.edtUserNm.Name = "edtUserNm";
-            this.edtUserNm.Size = new System.Drawing.Size(98, 22);
+            this.edtUserNm.Size = new System.Drawing.Size(187, 30);
             this.edtUserNm.StyleController = this.layoutControl2;
             this.edtUserNm.TabIndex = 6;
             // 
@@ -238,7 +236,7 @@
             this.layoutControlItem4,
             this.layoutControlItem5});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(201, 524);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(298, 767);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem3
@@ -246,46 +244,44 @@
             this.layoutControlItem3.Control = this.edtProjectCd;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(181, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(278, 34);
             this.layoutControlItem3.Text = "프로젝트 코드";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(76, 15);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(84, 22);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.edtProjectNm;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 34);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(181, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(278, 34);
             this.layoutControlItem4.Text = "프로젝트 명";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(76, 15);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(84, 22);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.edtUserNm;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 68);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(181, 452);
+            this.layoutControlItem5.Size = new System.Drawing.Size(278, 679);
             this.layoutControlItem5.Text = "사용자 명";
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(76, 15);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(84, 22);
             // 
             // navigationPage2
             // 
             this.navigationPage2.Caption = "진행공정";
             this.navigationPage2.Controls.Add(this.layoutControl1);
             this.navigationPage2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage2.ImageOptions.Image")));
-            this.navigationPage2.Margin = new System.Windows.Forms.Padding(2);
             this.navigationPage2.Name = "navigationPage2";
-            this.navigationPage2.Size = new System.Drawing.Size(201, 524);
+            this.navigationPage2.Size = new System.Drawing.Size(298, 767);
             // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gridScrn);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(2);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(201, 524);
+            this.layoutControl1.Size = new System.Drawing.Size(298, 767);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -293,10 +289,12 @@
             // 
             this.gridScrn.DataMember = null;
             this.gridScrn.DataSource = this.sqlDSPrjScrn;
+            this.gridScrn.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6);
             this.gridScrn.Location = new System.Drawing.Point(12, 12);
             this.gridScrn.MainView = this.viewScrn;
+            this.gridScrn.Margin = new System.Windows.Forms.Padding(4);
             this.gridScrn.Name = "gridScrn";
-            this.gridScrn.Size = new System.Drawing.Size(177, 500);
+            this.gridScrn.Size = new System.Drawing.Size(274, 743);
             this.gridScrn.TabIndex = 5;
             this.gridScrn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewScrn});
@@ -324,6 +322,8 @@
             this.colSCRN_DESC,
             this.colWORK_EMPL1,
             this.colWORK_DTM1});
+            this.viewScrn.DetailHeight = 513;
+            this.viewScrn.FixedLineWidth = 3;
             this.viewScrn.GridControl = this.gridScrn;
             this.viewScrn.Name = "viewScrn";
             this.viewScrn.OptionsBehavior.Editable = false;
@@ -332,17 +332,23 @@
             // colPROJECT_CD
             // 
             this.colPROJECT_CD.FieldName = "PROJECT_CD";
+            this.colPROJECT_CD.MinWidth = 29;
             this.colPROJECT_CD.Name = "colPROJECT_CD";
+            this.colPROJECT_CD.Width = 107;
             // 
             // colPROJECT_NM
             // 
             this.colPROJECT_NM.FieldName = "PROJECT_NM";
+            this.colPROJECT_NM.MinWidth = 29;
             this.colPROJECT_NM.Name = "colPROJECT_NM";
+            this.colPROJECT_NM.Width = 107;
             // 
             // colSCRN_SRC
             // 
             this.colSCRN_SRC.FieldName = "SCRN_SRC";
+            this.colSCRN_SRC.MinWidth = 29;
             this.colSCRN_SRC.Name = "colSCRN_SRC";
+            this.colSCRN_SRC.Width = 107;
             // 
             // colSCRN_TEXT
             // 
@@ -350,24 +356,32 @@
             this.colSCRN_TEXT.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSCRN_TEXT.Caption = "공정";
             this.colSCRN_TEXT.FieldName = "SCRN_TEXT";
+            this.colSCRN_TEXT.MinWidth = 29;
             this.colSCRN_TEXT.Name = "colSCRN_TEXT";
             this.colSCRN_TEXT.Visible = true;
             this.colSCRN_TEXT.VisibleIndex = 0;
+            this.colSCRN_TEXT.Width = 107;
             // 
             // colSCRN_DESC
             // 
             this.colSCRN_DESC.FieldName = "SCRN_DESC";
+            this.colSCRN_DESC.MinWidth = 29;
             this.colSCRN_DESC.Name = "colSCRN_DESC";
+            this.colSCRN_DESC.Width = 107;
             // 
             // colWORK_EMPL1
             // 
             this.colWORK_EMPL1.FieldName = "WORK_EMPL";
+            this.colWORK_EMPL1.MinWidth = 29;
             this.colWORK_EMPL1.Name = "colWORK_EMPL1";
+            this.colWORK_EMPL1.Width = 107;
             // 
             // colWORK_DTM1
             // 
             this.colWORK_DTM1.FieldName = "WORK_DTM";
+            this.colWORK_DTM1.MinWidth = 29;
             this.colWORK_DTM1.Name = "colWORK_DTM1";
+            this.colWORK_DTM1.Width = 107;
             // 
             // Root
             // 
@@ -376,7 +390,7 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem6});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(201, 524);
+            this.Root.Size = new System.Drawing.Size(298, 767);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem6
@@ -384,7 +398,7 @@
             this.layoutControlItem6.Control = this.gridScrn;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(181, 504);
+            this.layoutControlItem6.Size = new System.Drawing.Size(278, 747);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -393,29 +407,31 @@
             this.navigationPage3.Caption = "navigationPage3";
             this.navigationPage3.Controls.Add(this.layoutControl3);
             this.navigationPage3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("navigationPage3.ImageOptions.Image")));
-            this.navigationPage3.Margin = new System.Windows.Forms.Padding(2);
             this.navigationPage3.Name = "navigationPage3";
-            this.navigationPage3.Size = new System.Drawing.Size(201, 524);
+            this.navigationPage3.Size = new System.Drawing.Size(287, 769);
             // 
             // layoutControl3
             // 
             this.layoutControl3.Controls.Add(this.gridChkList);
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl3.Margin = new System.Windows.Forms.Padding(4);
             this.layoutControl3.Name = "layoutControl3";
             this.layoutControl3.Root = this.layoutControlGroup2;
-            this.layoutControl3.Size = new System.Drawing.Size(201, 524);
+            this.layoutControl3.Size = new System.Drawing.Size(287, 769);
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
             // gridChkList
             // 
+            this.gridChkList.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(6);
             this.gridChkList.Location = new System.Drawing.Point(12, 12);
             this.gridChkList.MainView = this.gridView2;
+            this.gridChkList.Margin = new System.Windows.Forms.Padding(4);
             this.gridChkList.Name = "gridChkList";
             this.gridChkList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.gridChkList.Size = new System.Drawing.Size(177, 500);
+            this.gridChkList.Size = new System.Drawing.Size(263, 745);
             this.gridChkList.TabIndex = 1;
             this.gridChkList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -428,7 +444,8 @@
             this.colCheck,
             this.colName,
             this.colFildNm});
-            this.gridView2.DetailHeight = 375;
+            this.gridView2.DetailHeight = 550;
+            this.gridView2.FixedLineWidth = 3;
             this.gridView2.GridControl = this.gridChkList;
             this.gridView2.Name = "gridView2";
             this.gridView2.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView2_CellValueChanged);
@@ -439,9 +456,11 @@
             this.colCheck.Caption = "선택";
             this.colCheck.ColumnEdit = this.repositoryItemCheckEdit2;
             this.colCheck.FieldName = "CHECK";
+            this.colCheck.MinWidth = 29;
             this.colCheck.Name = "colCheck";
             this.colCheck.Visible = true;
             this.colCheck.VisibleIndex = 0;
+            this.colCheck.Width = 107;
             // 
             // repositoryItemCheckEdit2
             // 
@@ -456,15 +475,19 @@
             // 
             this.colName.Caption = "컬럼명";
             this.colName.FieldName = "CAPTION";
+            this.colName.MinWidth = 29;
             this.colName.Name = "colName";
             this.colName.Visible = true;
             this.colName.VisibleIndex = 1;
+            this.colName.Width = 107;
             // 
             // colFildNm
             // 
             this.colFildNm.Caption = "필드명";
             this.colFildNm.FieldName = "FIELD";
+            this.colFildNm.MinWidth = 29;
             this.colFildNm.Name = "colFildNm";
+            this.colFildNm.Width = 107;
             // 
             // layoutControlGroup2
             // 
@@ -473,7 +496,7 @@
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem2});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(201, 524);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(287, 769);
             this.layoutControlGroup2.TextVisible = false;
             // 
             // layoutControlItem2
@@ -481,7 +504,7 @@
             this.layoutControlItem2.Control = this.gridChkList;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(181, 504);
+            this.layoutControlItem2.Size = new System.Drawing.Size(267, 749);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -490,10 +513,9 @@
             this.xtraTabControl1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
-            this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(733, 597);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1048, 876);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -507,17 +529,19 @@
             this.xtraTabPage1.Controls.Add(this.simpleButton2);
             this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(731, 570);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1046, 837);
             this.xtraTabPage1.Text = "xtraTabPage1";
             // 
             // gridControl1
             // 
             this.gridControl1.DataMember = "USR01M00";
             this.gridControl1.DataSource = this.sqlDataSource1;
-            this.gridControl1.Location = new System.Drawing.Point(59, 188);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
+            this.gridControl1.Location = new System.Drawing.Point(84, 276);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(548, 214);
+            this.gridControl1.Size = new System.Drawing.Size(783, 314);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -582,78 +606,98 @@
             this.colPSWD,
             this.colWORK_EMPL,
             this.colWORK_DTM});
-            this.gridView1.DetailHeight = 375;
+            this.gridView1.DetailHeight = 550;
+            this.gridView1.FixedLineWidth = 3;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
             // colUSER_ID
             // 
             this.colUSER_ID.FieldName = "USER_ID";
+            this.colUSER_ID.MinWidth = 29;
             this.colUSER_ID.Name = "colUSER_ID";
             this.colUSER_ID.Visible = true;
             this.colUSER_ID.VisibleIndex = 0;
+            this.colUSER_ID.Width = 107;
             // 
             // colUSER_NM
             // 
             this.colUSER_NM.FieldName = "USER_NM";
+            this.colUSER_NM.MinWidth = 29;
             this.colUSER_NM.Name = "colUSER_NM";
             this.colUSER_NM.Visible = true;
             this.colUSER_NM.VisibleIndex = 1;
+            this.colUSER_NM.Width = 107;
             // 
             // colMNGR_GRADE
             // 
             this.colMNGR_GRADE.FieldName = "MNGR_GRADE";
+            this.colMNGR_GRADE.MinWidth = 29;
             this.colMNGR_GRADE.Name = "colMNGR_GRADE";
             this.colMNGR_GRADE.Visible = true;
             this.colMNGR_GRADE.VisibleIndex = 2;
+            this.colMNGR_GRADE.Width = 107;
             // 
             // colHP_NO
             // 
             this.colHP_NO.FieldName = "HP_NO";
+            this.colHP_NO.MinWidth = 29;
             this.colHP_NO.Name = "colHP_NO";
             this.colHP_NO.Visible = true;
             this.colHP_NO.VisibleIndex = 3;
+            this.colHP_NO.Width = 107;
             // 
             // colTEL_NO
             // 
             this.colTEL_NO.FieldName = "TEL_NO";
+            this.colTEL_NO.MinWidth = 29;
             this.colTEL_NO.Name = "colTEL_NO";
             this.colTEL_NO.Visible = true;
             this.colTEL_NO.VisibleIndex = 4;
+            this.colTEL_NO.Width = 107;
             // 
             // colOFFICE_NO
             // 
             this.colOFFICE_NO.FieldName = "OFFICE_NO";
+            this.colOFFICE_NO.MinWidth = 29;
             this.colOFFICE_NO.Name = "colOFFICE_NO";
             this.colOFFICE_NO.Visible = true;
             this.colOFFICE_NO.VisibleIndex = 5;
+            this.colOFFICE_NO.Width = 107;
             // 
             // colPSWD
             // 
             this.colPSWD.FieldName = "PSWD";
+            this.colPSWD.MinWidth = 29;
             this.colPSWD.Name = "colPSWD";
             this.colPSWD.Visible = true;
             this.colPSWD.VisibleIndex = 6;
+            this.colPSWD.Width = 107;
             // 
             // colWORK_EMPL
             // 
             this.colWORK_EMPL.FieldName = "WORK_EMPL";
+            this.colWORK_EMPL.MinWidth = 29;
             this.colWORK_EMPL.Name = "colWORK_EMPL";
             this.colWORK_EMPL.Visible = true;
             this.colWORK_EMPL.VisibleIndex = 7;
+            this.colWORK_EMPL.Width = 107;
             // 
             // colWORK_DTM
             // 
             this.colWORK_DTM.FieldName = "WORK_DTM";
+            this.colWORK_DTM.MinWidth = 29;
             this.colWORK_DTM.Name = "colWORK_DTM";
             this.colWORK_DTM.Visible = true;
             this.colWORK_DTM.VisibleIndex = 8;
+            this.colWORK_DTM.Width = 107;
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(13, 13);
+            this.simpleButton2.Location = new System.Drawing.Point(19, 19);
+            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(200, 63);
+            this.simpleButton2.Size = new System.Drawing.Size(286, 92);
             this.simpleButton2.TabIndex = 0;
             this.simpleButton2.Text = "simpleButton2";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -662,16 +706,15 @@
             // 
             this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(731, 570);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1046, 837);
             this.xtraTabPage2.Text = "xtraTabPage2";
             // 
             // frmChild
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 597);
+            this.ClientSize = new System.Drawing.Size(1471, 876);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmChild";
             this.Text = "frmChild";
             this.Load += new System.EventHandler(this.frmChild_Load);

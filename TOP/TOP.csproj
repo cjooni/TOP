@@ -241,7 +241,9 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="lib\CColumnProp.cs" />
+    <Compile Include="lib\CMaxerSector.cs" />
     <Compile Include="lib\CPageMngr.cs" />
+    <Compile Include="lib\CPipeData.cs" />
     <Compile Include="lib\CPrjInfo.cs" />
     <Compile Include="lib\CUserInfo.cs" />
     <Compile Include="lib\CUtil.cs" />
