@@ -107,20 +107,18 @@
             this.layoutControl1.Controls.Add(this.chkEndYn);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(2);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(911, 561);
+            this.layoutControl1.Size = new System.Drawing.Size(1301, 939);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(798, 38);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.simpleButton1.Location = new System.Drawing.Point(1140, 60);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(91, 36);
+            this.simpleButton1.Size = new System.Drawing.Size(130, 36);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 7;
             this.simpleButton1.Text = "조회";
@@ -129,54 +127,50 @@
             // dateEndDt
             // 
             this.dateEndDt.EditValue = null;
-            this.dateEndDt.Location = new System.Drawing.Point(103, 64);
-            this.dateEndDt.Margin = new System.Windows.Forms.Padding(2);
+            this.dateEndDt.Location = new System.Drawing.Point(153, 100);
             this.dateEndDt.Name = "dateEndDt";
             this.dateEndDt.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateEndDt.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEndDt.Size = new System.Drawing.Size(176, 22);
+            this.dateEndDt.Size = new System.Drawing.Size(245, 34);
             this.dateEndDt.StyleController = this.layoutControl1;
             this.dateEndDt.TabIndex = 6;
             // 
             // dateStartDt
             // 
             this.dateStartDt.EditValue = null;
-            this.dateStartDt.Location = new System.Drawing.Point(103, 38);
-            this.dateStartDt.Margin = new System.Windows.Forms.Padding(2);
+            this.dateStartDt.Location = new System.Drawing.Point(153, 60);
             this.dateStartDt.Name = "dateStartDt";
             this.dateStartDt.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateStartDt.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateStartDt.Size = new System.Drawing.Size(176, 22);
+            this.dateStartDt.Size = new System.Drawing.Size(245, 34);
             this.dateStartDt.StyleController = this.layoutControl1;
             this.dateStartDt.TabIndex = 1;
             // 
             // edtProjectNm
             // 
-            this.edtProjectNm.Location = new System.Drawing.Point(103, 12);
-            this.edtProjectNm.Margin = new System.Windows.Forms.Padding(2);
+            this.edtProjectNm.Location = new System.Drawing.Point(153, 20);
             this.edtProjectNm.Name = "edtProjectNm";
-            this.edtProjectNm.Size = new System.Drawing.Size(176, 22);
+            this.edtProjectNm.Size = new System.Drawing.Size(245, 34);
             this.edtProjectNm.StyleController = this.layoutControl1;
             this.edtProjectNm.TabIndex = 5;
             // 
             // gridProjectInfo
             // 
-            this.gridProjectInfo.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
-            this.gridProjectInfo.Location = new System.Drawing.Point(12, 90);
+            this.gridProjectInfo.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1, 3, 1, 3);
+            this.gridProjectInfo.Location = new System.Drawing.Point(17, 140);
             this.gridProjectInfo.MainView = this.gridView1;
-            this.gridProjectInfo.Margin = new System.Windows.Forms.Padding(2);
             this.gridProjectInfo.Name = "gridProjectInfo";
             this.gridProjectInfo.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
-            this.gridProjectInfo.Size = new System.Drawing.Size(887, 459);
+            this.gridProjectInfo.Size = new System.Drawing.Size(1267, 779);
             this.gridProjectInfo.TabIndex = 4;
             this.gridProjectInfo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
-            this.gridProjectInfo.Click += new System.EventHandler(this.gridProjectInfo_Click);
+            this.gridProjectInfo.Click += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // gridView1
             // 
@@ -191,8 +185,7 @@
             this.colCLIENT_ID,
             this.colWORK_DT,
             this.colWORK_TM});
-            this.gridView1.DetailHeight = 239;
-            this.gridView1.FixedLineWidth = 1;
+            this.gridView1.DetailHeight = 398;
             this.gridView1.GridControl = this.gridProjectInfo;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -206,11 +199,11 @@
             this.colPROJECT_CD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colPROJECT_CD.Caption = "프로젝트코드";
             this.colPROJECT_CD.FieldName = "PROJECT_CD";
-            this.colPROJECT_CD.MinWidth = 21;
+            this.colPROJECT_CD.MinWidth = 30;
             this.colPROJECT_CD.Name = "colPROJECT_CD";
             this.colPROJECT_CD.Visible = true;
             this.colPROJECT_CD.VisibleIndex = 0;
-            this.colPROJECT_CD.Width = 78;
+            this.colPROJECT_CD.Width = 111;
             // 
             // colPROJECT_NM
             // 
@@ -218,11 +211,11 @@
             this.colPROJECT_NM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colPROJECT_NM.Caption = "프로젝트명";
             this.colPROJECT_NM.FieldName = "PROJECT_NM";
-            this.colPROJECT_NM.MinWidth = 21;
+            this.colPROJECT_NM.MinWidth = 30;
             this.colPROJECT_NM.Name = "colPROJECT_NM";
             this.colPROJECT_NM.Visible = true;
             this.colPROJECT_NM.VisibleIndex = 1;
-            this.colPROJECT_NM.Width = 78;
+            this.colPROJECT_NM.Width = 111;
             // 
             // gridColumn2
             // 
@@ -230,9 +223,11 @@
             this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn2.Caption = "진행여부";
             this.gridColumn2.FieldName = "END_YN_DESC";
+            this.gridColumn2.MinWidth = 29;
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.Width = 107;
             // 
             // gridColumn1
             // 
@@ -240,7 +235,9 @@
             this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn1.Caption = "진행여부 값";
             this.gridColumn1.FieldName = "END_YN";
+            this.gridColumn1.MinWidth = 29;
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Width = 107;
             // 
             // colSTART_DT
             // 
@@ -248,11 +245,11 @@
             this.colSTART_DT.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSTART_DT.Caption = "프로젝트 시작일";
             this.colSTART_DT.FieldName = "START_DT";
-            this.colSTART_DT.MinWidth = 21;
+            this.colSTART_DT.MinWidth = 30;
             this.colSTART_DT.Name = "colSTART_DT";
             this.colSTART_DT.Visible = true;
             this.colSTART_DT.VisibleIndex = 3;
-            this.colSTART_DT.Width = 78;
+            this.colSTART_DT.Width = 111;
             // 
             // colEND_DT
             // 
@@ -260,55 +257,55 @@
             this.colEND_DT.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colEND_DT.Caption = "프로젝트 종료일";
             this.colEND_DT.FieldName = "END_DT";
-            this.colEND_DT.MinWidth = 21;
+            this.colEND_DT.MinWidth = 30;
             this.colEND_DT.Name = "colEND_DT";
             this.colEND_DT.Visible = true;
             this.colEND_DT.VisibleIndex = 4;
-            this.colEND_DT.Width = 78;
+            this.colEND_DT.Width = 111;
             // 
             // colCLIENT_CD
             // 
             this.colCLIENT_CD.AppearanceHeader.Options.UseTextOptions = true;
             this.colCLIENT_CD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colCLIENT_CD.FieldName = "CLIENT_CD";
-            this.colCLIENT_CD.MinWidth = 21;
+            this.colCLIENT_CD.MinWidth = 30;
             this.colCLIENT_CD.Name = "colCLIENT_CD";
             this.colCLIENT_CD.Visible = true;
             this.colCLIENT_CD.VisibleIndex = 5;
-            this.colCLIENT_CD.Width = 78;
+            this.colCLIENT_CD.Width = 111;
             // 
             // colCLIENT_ID
             // 
             this.colCLIENT_ID.AppearanceHeader.Options.UseTextOptions = true;
             this.colCLIENT_ID.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colCLIENT_ID.FieldName = "CLIENT_ID";
-            this.colCLIENT_ID.MinWidth = 21;
+            this.colCLIENT_ID.MinWidth = 30;
             this.colCLIENT_ID.Name = "colCLIENT_ID";
             this.colCLIENT_ID.Visible = true;
             this.colCLIENT_ID.VisibleIndex = 6;
-            this.colCLIENT_ID.Width = 78;
+            this.colCLIENT_ID.Width = 111;
             // 
             // colWORK_DT
             // 
             this.colWORK_DT.AppearanceHeader.Options.UseTextOptions = true;
             this.colWORK_DT.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colWORK_DT.FieldName = "WORK_DT";
-            this.colWORK_DT.MinWidth = 21;
+            this.colWORK_DT.MinWidth = 30;
             this.colWORK_DT.Name = "colWORK_DT";
             this.colWORK_DT.Visible = true;
             this.colWORK_DT.VisibleIndex = 7;
-            this.colWORK_DT.Width = 78;
+            this.colWORK_DT.Width = 111;
             // 
             // colWORK_TM
             // 
             this.colWORK_TM.AppearanceHeader.Options.UseTextOptions = true;
             this.colWORK_TM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colWORK_TM.FieldName = "WORK_TM";
-            this.colWORK_TM.MinWidth = 21;
+            this.colWORK_TM.MinWidth = 30;
             this.colWORK_TM.Name = "colWORK_TM";
             this.colWORK_TM.Visible = true;
             this.colWORK_TM.VisibleIndex = 8;
-            this.colWORK_TM.Width = 78;
+            this.colWORK_TM.Width = 111;
             // 
             // repositoryItemDateEdit1
             // 
@@ -332,10 +329,11 @@
             // 
             // chkEndYn
             // 
-            this.chkEndYn.Location = new System.Drawing.Point(283, 12);
+            this.chkEndYn.Location = new System.Drawing.Point(404, 20);
+            this.chkEndYn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkEndYn.Name = "chkEndYn";
             this.chkEndYn.Properties.Caption = "완료 내역 포함";
-            this.chkEndYn.Size = new System.Drawing.Size(103, 20);
+            this.chkEndYn.Size = new System.Drawing.Size(152, 31);
             this.chkEndYn.StyleController = this.layoutControl1;
             this.chkEndYn.TabIndex = 8;
             // 
@@ -355,15 +353,15 @@
             this.layoutControlItem5,
             this.layoutControlItem6});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(911, 561);
+            this.Root.Size = new System.Drawing.Size(1301, 939);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridProjectInfo;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 78);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(891, 463);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1273, 785);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -372,75 +370,75 @@
             this.layoutControlItem2.Control = this.edtProjectNm;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(271, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(387, 40);
             this.layoutControlItem2.Text = "프로젝트명";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(88, 15);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(132, 25);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(378, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(545, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(503, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(714, 40);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(881, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(1259, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(10, 78);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(14, 120);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(447, 26);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(639, 40);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(339, 52);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(484, 80);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.dateStartDt;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 40);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(271, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(387, 40);
             this.layoutControlItem3.Text = "프로젝트 시작일";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(88, 15);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(132, 25);
             // 
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(271, 26);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(387, 40);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(176, 52);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(252, 80);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.dateEndDt;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 52);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 80);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(271, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(387, 40);
             this.layoutControlItem4.Text = "프로젝트 종료일";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(88, 15);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(132, 25);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.simpleButton1;
-            this.layoutControlItem5.Location = new System.Drawing.Point(786, 26);
+            this.layoutControlItem5.Location = new System.Drawing.Point(1123, 40);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(95, 52);
+            this.layoutControlItem5.Size = new System.Drawing.Size(136, 80);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.chkEndYn;
-            this.layoutControlItem6.Location = new System.Drawing.Point(271, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(387, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(107, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(158, 40);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -498,10 +496,10 @@
             // 
             // frmProjectInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(911, 585);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.ClientSize = new System.Drawing.Size(1301, 975);
             this.Controls.Add(this.layoutControl1);
-            this.Margin = new System.Windows.Forms.Padding(1);
+            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "frmProjectInfo";
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

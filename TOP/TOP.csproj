@@ -204,6 +204,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialog\frmClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmClient.Designer.cs">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\frmProjectInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     <Compile Include="Screen\WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dialog\frmClient.resx">
+      <DependentUpon>frmClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog\frmProjectInfo.resx">
       <DependentUpon>frmProjectInfo.cs</DependentUpon>
     </EmbeddedResource>

@@ -212,7 +212,7 @@ namespace TOP
             frm.PrjInfo = PrjInfo;
             frm.UserInfo = UserInfo;
             frm.WindowState = FormWindowState.Maximized;
-
+            frm.Text = PrjInfo.ProjectNm;
             frm.Show();
         }
 
@@ -224,6 +224,19 @@ namespace TOP
         private void SelectedPrjoect(CPrjInfo PrjInfo)
         {
             MessageBox.Show(PrjInfo.ProjectNm);
+        }
+
+        /// <summary>
+        /// 업체관리 화면을 띄워봐봐
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmClient frm = new frmClient();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            frm.Show();
         }
     }
 }

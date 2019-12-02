@@ -87,6 +87,7 @@ namespace TOP.Dialog
             PrjInfo.ProjectCd = dr["PROJECT_CD"].ToString();
             PrjInfo.ProjectNm = dr["PROJECT_NM"].ToString();
 
+            this.PrjInfo = PrjInfo;
             DialogResult = DialogResult.OK;
 
         }
@@ -135,11 +136,6 @@ namespace TOP.Dialog
                 
             }
 
-
-        }
-
-        private void gridProjectInfo_Click(object sender, EventArgs e)
-        {
 
         }
     }

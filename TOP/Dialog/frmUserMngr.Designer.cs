@@ -101,20 +101,20 @@
             this.layoutControl1.Controls.Add(this.v);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(911, 523);
+            this.layoutControl1.Size = new System.Drawing.Size(1301, 939);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(694, 22);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.simpleButton1.Location = new System.Drawing.Point(991, 62);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(100, 36);
+            this.simpleButton1.Size = new System.Drawing.Size(143, 36);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 9;
             this.simpleButton1.Text = "신규";
@@ -122,14 +122,14 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1);
-            this.gridControl1.Location = new System.Drawing.Point(12, 62);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
+            this.gridControl1.Location = new System.Drawing.Point(17, 106);
             this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Margin = new System.Windows.Forms.Padding(2);
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(887, 449);
+            this.gridControl1.Size = new System.Drawing.Size(1267, 811);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -146,8 +146,7 @@
             this.colPSWD,
             this.colWORK_EMPL,
             this.colWORK_DTM});
-            this.gridView1.DetailHeight = 223;
-            this.gridView1.FixedLineWidth = 1;
+            this.gridView1.DetailHeight = 398;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
@@ -161,11 +160,11 @@
             this.aa.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.aa.Caption = "사용자 ID";
             this.aa.FieldName = "USER_ID";
-            this.aa.MinWidth = 21;
+            this.aa.MinWidth = 30;
             this.aa.Name = "aa";
             this.aa.Visible = true;
             this.aa.VisibleIndex = 0;
-            this.aa.Width = 78;
+            this.aa.Width = 111;
             // 
             // colUSER_NM
             // 
@@ -173,22 +172,22 @@
             this.colUSER_NM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colUSER_NM.Caption = "사용자명";
             this.colUSER_NM.FieldName = "USER_NM";
-            this.colUSER_NM.MinWidth = 21;
+            this.colUSER_NM.MinWidth = 30;
             this.colUSER_NM.Name = "colUSER_NM";
             this.colUSER_NM.Visible = true;
             this.colUSER_NM.VisibleIndex = 1;
-            this.colUSER_NM.Width = 78;
+            this.colUSER_NM.Width = 111;
             // 
             // colMNGR_GRADE
             // 
             this.colMNGR_GRADE.AppearanceHeader.Options.UseTextOptions = true;
             this.colMNGR_GRADE.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colMNGR_GRADE.FieldName = "MNGR_GRADE";
-            this.colMNGR_GRADE.MinWidth = 21;
+            this.colMNGR_GRADE.MinWidth = 30;
             this.colMNGR_GRADE.Name = "colMNGR_GRADE";
             this.colMNGR_GRADE.Visible = true;
             this.colMNGR_GRADE.VisibleIndex = 2;
-            this.colMNGR_GRADE.Width = 78;
+            this.colMNGR_GRADE.Width = 111;
             // 
             // colHP_NO
             // 
@@ -196,11 +195,11 @@
             this.colHP_NO.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colHP_NO.Caption = "휴대전화";
             this.colHP_NO.FieldName = "HP_NO";
-            this.colHP_NO.MinWidth = 21;
+            this.colHP_NO.MinWidth = 30;
             this.colHP_NO.Name = "colHP_NO";
             this.colHP_NO.Visible = true;
             this.colHP_NO.VisibleIndex = 3;
-            this.colHP_NO.Width = 78;
+            this.colHP_NO.Width = 111;
             // 
             // colTEL_NO
             // 
@@ -209,11 +208,11 @@
             this.colTEL_NO.Caption = "일반전화";
             this.colTEL_NO.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
             this.colTEL_NO.FieldName = "TEL_NO";
-            this.colTEL_NO.MinWidth = 21;
+            this.colTEL_NO.MinWidth = 30;
             this.colTEL_NO.Name = "colTEL_NO";
             this.colTEL_NO.Visible = true;
             this.colTEL_NO.VisibleIndex = 4;
-            this.colTEL_NO.Width = 78;
+            this.colTEL_NO.Width = 111;
             // 
             // colOFFICE_NO
             // 
@@ -221,11 +220,11 @@
             this.colOFFICE_NO.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colOFFICE_NO.Caption = "사무실";
             this.colOFFICE_NO.FieldName = "OFFICE_NO";
-            this.colOFFICE_NO.MinWidth = 21;
+            this.colOFFICE_NO.MinWidth = 30;
             this.colOFFICE_NO.Name = "colOFFICE_NO";
             this.colOFFICE_NO.Visible = true;
             this.colOFFICE_NO.VisibleIndex = 5;
-            this.colOFFICE_NO.Width = 78;
+            this.colOFFICE_NO.Width = 111;
             // 
             // colPSWD
             // 
@@ -233,11 +232,11 @@
             this.colPSWD.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colPSWD.Caption = "비밀번호";
             this.colPSWD.FieldName = "PSWD";
-            this.colPSWD.MinWidth = 21;
+            this.colPSWD.MinWidth = 30;
             this.colPSWD.Name = "colPSWD";
             this.colPSWD.Visible = true;
             this.colPSWD.VisibleIndex = 6;
-            this.colPSWD.Width = 78;
+            this.colPSWD.Width = 111;
             // 
             // colWORK_EMPL
             // 
@@ -245,12 +244,12 @@
             this.colWORK_EMPL.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colWORK_EMPL.Caption = "등록자";
             this.colWORK_EMPL.FieldName = "WORK_EMPL";
-            this.colWORK_EMPL.MinWidth = 21;
+            this.colWORK_EMPL.MinWidth = 30;
             this.colWORK_EMPL.Name = "colWORK_EMPL";
             this.colWORK_EMPL.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.colWORK_EMPL.Visible = true;
             this.colWORK_EMPL.VisibleIndex = 7;
-            this.colWORK_EMPL.Width = 78;
+            this.colWORK_EMPL.Width = 111;
             // 
             // colWORK_DTM
             // 
@@ -258,12 +257,12 @@
             this.colWORK_DTM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colWORK_DTM.Caption = "등록시간";
             this.colWORK_DTM.FieldName = "WORK_DTM";
-            this.colWORK_DTM.MinWidth = 21;
+            this.colWORK_DTM.MinWidth = 30;
             this.colWORK_DTM.Name = "colWORK_DTM";
             this.colWORK_DTM.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.colWORK_DTM.Visible = true;
             this.colWORK_DTM.VisibleIndex = 8;
-            this.colWORK_DTM.Width = 78;
+            this.colWORK_DTM.Width = 111;
             // 
             // repositoryItemTextEdit1
             // 
@@ -272,29 +271,29 @@
             // 
             // edtUserID
             // 
-            this.edtUserID.Location = new System.Drawing.Point(61, 12);
-            this.edtUserID.Margin = new System.Windows.Forms.Padding(2);
+            this.edtUserID.Location = new System.Drawing.Point(99, 22);
+            this.edtUserID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edtUserID.Name = "edtUserID";
-            this.edtUserID.Size = new System.Drawing.Size(178, 20);
+            this.edtUserID.Size = new System.Drawing.Size(242, 34);
             this.edtUserID.StyleController = this.layoutControl1;
             this.edtUserID.TabIndex = 5;
             // 
             // edtUserNM
             // 
-            this.edtUserNM.Location = new System.Drawing.Point(61, 36);
-            this.edtUserNM.Margin = new System.Windows.Forms.Padding(2);
+            this.edtUserNM.Location = new System.Drawing.Point(99, 64);
+            this.edtUserNM.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.edtUserNM.Name = "edtUserNM";
-            this.edtUserNM.Size = new System.Drawing.Size(178, 20);
+            this.edtUserNM.Size = new System.Drawing.Size(242, 34);
             this.edtUserNM.StyleController = this.layoutControl1;
             this.edtUserNM.TabIndex = 6;
             // 
             // v
             // 
             this.v.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("v.ImageOptions.Image")));
-            this.v.Location = new System.Drawing.Point(798, 22);
-            this.v.Margin = new System.Windows.Forms.Padding(2);
+            this.v.Location = new System.Drawing.Point(1140, 62);
+            this.v.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.v.Name = "v";
-            this.v.Size = new System.Drawing.Size(101, 36);
+            this.v.Size = new System.Drawing.Size(144, 36);
             this.v.StyleController = this.layoutControl1;
             this.v.TabIndex = 7;
             this.v.Text = "조회";
@@ -313,15 +312,15 @@
             this.layoutControlItem6,
             this.emptySpaceItem2});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(911, 523);
+            this.Root.Size = new System.Drawing.Size(1301, 939);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 50);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 84);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(891, 453);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1273, 819);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -330,52 +329,52 @@
             this.layoutControlItem2.Control = this.edtUserID;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(231, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(330, 42);
             this.layoutControlItem2.Text = "사용자 ID";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Left;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(46, 14);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(78, 25);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.edtUserNM;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 24);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 42);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(231, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(330, 42);
             this.layoutControlItem3.Text = "사용자 명";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(46, 14);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(78, 25);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(682, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(974, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(209, 10);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(299, 40);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.v;
-            this.layoutControlItem4.Location = new System.Drawing.Point(786, 10);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1123, 40);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(105, 40);
+            this.layoutControlItem4.Size = new System.Drawing.Size(150, 44);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.simpleButton1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(682, 10);
+            this.layoutControlItem6.Location = new System.Drawing.Point(974, 40);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(104, 40);
+            this.layoutControlItem6.Size = new System.Drawing.Size(149, 44);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(231, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(330, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(451, 50);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(644, 84);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // sqlDataSource1
@@ -448,10 +447,10 @@
             // 
             // frmUserMngr
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.ClientSize = new System.Drawing.Size(911, 546);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.ClientSize = new System.Drawing.Size(1301, 975);
             this.Controls.Add(this.layoutControl1);
-            this.Margin = new System.Windows.Forms.Padding(1);
+            this.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.Name = "frmUserMngr";
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
