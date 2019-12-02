@@ -401,5 +401,30 @@ namespace TOP.Screen
 
 
         }
+
+        private void navigationPane1_ControlShown(object sender, DevExpress.XtraBars.Navigation.DeferredControlLoadEventArgs e)
+        {
+           
+        }
+
+        private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void splitContainer1_Panel1_ClientSizeChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void splitContainer1_Panel1_ParentChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void splitContainer1_SizeChanged(object sender, EventArgs e)
+        {
+            splitContainer1.SplitterDistance = navigationPane1.Width + 1;
+        }
     }
 }

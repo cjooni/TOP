@@ -177,7 +177,8 @@ namespace TOP
             Form frm = (Form)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frmChild"));
 
             frm.MdiParent = this;
-
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Text = "파이프 툴 변환";
 
             frm.Show();
         }

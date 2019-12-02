@@ -160,25 +160,6 @@
         RG7EqIu3/gevoPh2dh/nPQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="sqlDSPrjScrn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>155, 17</value>
-  </metadata>
-  <data name="customSqlQuery1.Sql" xml:space="preserve">
-    <value>SELECT A.PROJECT_CD
-      ,B.PROJECT_NM
-      ,A.SCRN_SRC
-      ,C.SCRN_TEXT
-      ,C.SCRN_DESC
-      ,C.WORK_EMPL
-      ,C.WORK_DTM
-  FROM PRJ01T00 A, PRJ01M00 B, SCR01M00 C 
- WHERE A.PROJECT_CD LIKE '%' || :P_PROJECT_CD || '%'
-   AND A.PROJECT_CD = B.PROJECT_CD
-   AND A.SCRN_SRC = C.SCRN_SRC</value>
-  </data>
-  <data name="sqlDSPrjScrn.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0ic3FsRFNQcmpTY3JuIj48VmlldyBOYW1lPSJRUllfUFJKX1NDUk4iPjxGaWVsZCBOYW1lPSJQUk9KRUNUX0NEIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlBST0pFQ1RfTk0iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU0NSTl9TUkMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU0NSTl9URVhUIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlNDUk5fREVTQyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJXT1JLX0VNUEwiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iV09SS19EVE0iIFR5cGU9IkRhdGVUaW1lIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
-  </data>
   <data name="navigationPage2.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
@@ -240,6 +221,25 @@
         2KpudRjb5dQhpD9k3SrPrw5aF3VqzzUOHcDagVztX2S13QLH/jJyHUL+Ucr/2fjXChNym15fRm/8R71p
         nDUJX/Z/Qy4yGbfnZYggp7jG+uSQhwAq42/z4eQeNi61hQAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <metadata name="sqlDSPrjScrn.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>155, 17</value>
+  </metadata>
+  <data name="customSqlQuery5.Sql" xml:space="preserve">
+    <value>SELECT A.PROJECT_CD
+      ,B.PROJECT_NM
+      ,A.SCRN_SRC
+      ,C.SCRN_TEXT
+      ,C.SCRN_DESC
+      ,C.WORK_EMPL
+      ,C.WORK_DTM
+  FROM PRJ01T00 A, PRJ01M00 B, SCR01M00 C 
+ WHERE A.PROJECT_CD LIKE '%' || :P_PROJECT_CD || '%'
+   AND A.PROJECT_CD = B.PROJECT_CD
+   AND A.SCRN_SRC = C.SCRN_SRC</value>
+  </data>
+  <data name="sqlDSPrjScrn.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRFNQcmpTY3JuIj48VmlldyBOYW1lPSJRUllfUFJKX1NDUk4iPjxGaWVsZCBOYW1lPSJQUk9KRUNUX0NEIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlBST0pFQ1RfTk0iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU0NSTl9TUkMiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iU0NSTl9URVhUIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlNDUk5fREVTQyIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJXT1JLX0VNUEwiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iV09SS19EVE0iIFR5cGU9IkRhdGVUaW1lIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
   </data>
   <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>

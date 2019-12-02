@@ -1,5 +1,6 @@
 ﻿using DevExpress.DataAccess.Excel;
 using DevExpress.DataAccess.Sql.DataApi;
+using DevExpress.XtraWaitForm;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -75,6 +76,26 @@ namespace TOP.lib
             }
 
             return columns;
+        }
+
+        public static ProgressPanel GetProgress(string caption, string desc)
+        {
+            ProgressPanel progressPanel1 = new ProgressPanel();
+            progressPanel1.Caption = "Loading";
+            progressPanel1.Description = "Please wait...";
+            progressPanel1.WaitAnimationType = DevExpress.Utils.Animation.WaitingAnimatorType.Ring;
+            
+            progressPanel1.Top = 100;
+            progressPanel1.Left = 100;
+
+            return progressPanel1;
+
+            //아래 항목은 호출하는 쪽에서 해줘야 함 
+            //progressPanel1.Parent = this;
+            //this.Controls.Add(progressPanel1);
+
+            //progressPanel1.Show();
+            //progressPanel1.BringToFront();
         }
     }
 }

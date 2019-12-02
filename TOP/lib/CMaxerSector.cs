@@ -66,7 +66,7 @@ namespace TOP.lib
                 default:
                     break;
             }
-            return string.Format("G={0},{1},{2},{3};", 거리, 지반고, 포장, 가시설);
+            return string.Format("G={0},{1},{2},{3} ", 거리, 지반고, 포장, 가시설);
         }
 
 
