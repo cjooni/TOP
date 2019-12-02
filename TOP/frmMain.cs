@@ -238,5 +238,13 @@ namespace TOP
 
             frm.Show();
         }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmClient2 frm = new frmClient2();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            frm.Show();
+        }
     }
 }
