@@ -30,29 +30,32 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClient2));
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter4 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter5 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter6 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery3 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter7 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter8 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter9 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter10 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter11 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter12 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery4 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter13 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter14 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter15 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter16 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter17 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter18 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter19 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery5 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter20 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery6 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter21 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter22 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter23 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter24 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter25 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery7 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter26 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter27 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter28 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter29 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter30 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter31 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery8 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter32 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter33 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter34 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter35 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter36 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter37 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter38 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
@@ -78,6 +81,8 @@
             this.colHP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOFFICE = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPOSITION = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.edtClientID = new DevExpress.XtraEditors.TextEdit();
             this.edtHP = new DevExpress.XtraEditors.TextEdit();
             this.edtEMail = new DevExpress.XtraEditors.TextEdit();
@@ -99,7 +104,6 @@
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -119,6 +123,7 @@
             this.layoutControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtClientID.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtHP.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtEMail.Properties)).BeginInit();
@@ -311,6 +316,8 @@
             this.gridControl2.Location = new System.Drawing.Point(12, 188);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
+            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemLookUpEdit1});
             this.gridControl2.Size = new System.Drawing.Size(1023, 715);
             this.gridControl2.TabIndex = 6;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -339,6 +346,7 @@
             this.colCLIENT_CD1.FieldName = "CLIENT_CD";
             this.colCLIENT_CD1.MinWidth = 30;
             this.colCLIENT_CD1.Name = "colCLIENT_CD1";
+            this.colCLIENT_CD1.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.colCLIENT_CD1.Visible = true;
             this.colCLIENT_CD1.VisibleIndex = 0;
             this.colCLIENT_CD1.Width = 112;
@@ -351,6 +359,7 @@
             this.colCLIENT_ID.FieldName = "CLIENT_ID";
             this.colCLIENT_ID.MinWidth = 30;
             this.colCLIENT_ID.Name = "colCLIENT_ID";
+            this.colCLIENT_ID.OptionsEditForm.Visible = DevExpress.Utils.DefaultBoolean.False;
             this.colCLIENT_ID.Visible = true;
             this.colCLIENT_ID.VisibleIndex = 1;
             this.colCLIENT_ID.Width = 112;
@@ -408,12 +417,113 @@
             this.colPOSITION.AppearanceHeader.Options.UseTextOptions = true;
             this.colPOSITION.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colPOSITION.Caption = "직책";
+            this.colPOSITION.ColumnEdit = this.repositoryItemLookUpEdit1;
             this.colPOSITION.FieldName = "POSITION";
             this.colPOSITION.MinWidth = 30;
             this.colPOSITION.Name = "colPOSITION";
             this.colPOSITION.Visible = true;
             this.colPOSITION.VisibleIndex = 6;
             this.colPOSITION.Width = 112;
+            // 
+            // repositoryItemLookUpEdit1
+            // 
+            this.repositoryItemLookUpEdit1.AutoHeight = false;
+            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit1.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CD", "코드"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CD_VAL", "값")});
+            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            // 
+            // sqlDataSource1
+            // 
+            this.sqlDataSource1.ConnectionName = "Connection";
+            this.sqlDataSource1.Name = "sqlDataSource1";
+            customSqlQuery1.Name = "QRY_CLIENT";
+            queryParameter1.Name = "P_CLIENT_NM";
+            queryParameter1.Type = typeof(string);
+            customSqlQuery1.Parameters.Add(queryParameter1);
+            customSqlQuery1.Sql = "SELECT CLIENT_CD\r\n     , CLIENT_NM\r\n  FROM CLIENT01M00\r\n WHERE CLIENT_NM LIKE \'%\'" +
+    "|| TRIM(:P_CLIENT_NM) || \'%\'";
+            customSqlQuery2.Name = "QRY_CLIENT2";
+            queryParameter2.Name = "P_CLIENT_CD";
+            queryParameter2.Type = typeof(string);
+            queryParameter3.Name = "P_HP";
+            queryParameter3.Type = typeof(string);
+            queryParameter4.Name = "P_OFFICE";
+            queryParameter4.Type = typeof(string);
+            queryParameter5.Name = "P_CLIENT_ID_NM";
+            queryParameter5.Type = typeof(string);
+            queryParameter6.Name = "P_EMAIL";
+            queryParameter6.Type = typeof(string);
+            customSqlQuery2.Parameters.Add(queryParameter2);
+            customSqlQuery2.Parameters.Add(queryParameter3);
+            customSqlQuery2.Parameters.Add(queryParameter4);
+            customSqlQuery2.Parameters.Add(queryParameter5);
+            customSqlQuery2.Parameters.Add(queryParameter6);
+            customSqlQuery2.Sql = resources.GetString("customSqlQuery2.Sql");
+            customSqlQuery3.Name = "INSERT_CLIENT2";
+            queryParameter7.Name = "P_CLIENT_CD";
+            queryParameter7.Type = typeof(string);
+            queryParameter7.ValueInfo = "1234";
+            queryParameter8.Name = "P_EMAIL";
+            queryParameter8.Type = typeof(string);
+            queryParameter9.Name = "P_HP";
+            queryParameter9.Type = typeof(string);
+            queryParameter10.Name = "P_OFFICE";
+            queryParameter10.Type = typeof(string);
+            queryParameter11.Name = "P_POSITION";
+            queryParameter11.Type = typeof(string);
+            queryParameter12.Name = "P_CLIENT_ID_NM";
+            queryParameter12.Type = typeof(string);
+            customSqlQuery3.Parameters.Add(queryParameter7);
+            customSqlQuery3.Parameters.Add(queryParameter8);
+            customSqlQuery3.Parameters.Add(queryParameter9);
+            customSqlQuery3.Parameters.Add(queryParameter10);
+            customSqlQuery3.Parameters.Add(queryParameter11);
+            customSqlQuery3.Parameters.Add(queryParameter12);
+            customSqlQuery3.Sql = resources.GetString("customSqlQuery3.Sql");
+            customSqlQuery4.Name = "UPDATE_CLIENT2";
+            queryParameter13.Name = "P_EMAIL";
+            queryParameter13.Type = typeof(string);
+            queryParameter14.Name = "P_HP";
+            queryParameter14.Type = typeof(string);
+            queryParameter15.Name = "P_OFFICE";
+            queryParameter15.Type = typeof(string);
+            queryParameter16.Name = "P_POSITION";
+            queryParameter16.Type = typeof(string);
+            queryParameter17.Name = "P_CLIENT_ID_NM";
+            queryParameter17.Type = typeof(string);
+            queryParameter18.Name = "P_CLIENT_CD";
+            queryParameter18.Type = typeof(string);
+            queryParameter19.Name = "P_CLIENT_ID";
+            queryParameter19.Type = typeof(string);
+            customSqlQuery4.Parameters.Add(queryParameter13);
+            customSqlQuery4.Parameters.Add(queryParameter14);
+            customSqlQuery4.Parameters.Add(queryParameter15);
+            customSqlQuery4.Parameters.Add(queryParameter16);
+            customSqlQuery4.Parameters.Add(queryParameter17);
+            customSqlQuery4.Parameters.Add(queryParameter18);
+            customSqlQuery4.Parameters.Add(queryParameter19);
+            customSqlQuery4.Sql = resources.GetString("customSqlQuery4.Sql");
+            customSqlQuery5.Name = "GET_SEQ";
+            queryParameter20.Name = "P_TYPE";
+            queryParameter20.Type = typeof(string);
+            queryParameter20.ValueInfo = "1";
+            customSqlQuery5.Parameters.Add(queryParameter20);
+            customSqlQuery5.Sql = "SELECT TRIM(LPAD(TO_NUMBER(VAL) + 1, LEN, \'0\'))\r\n  FROM COD00M00\r\n WHERE F_TYPE =" +
+    " RPAD(:P_TYPE, 3, \' \')";
+            customSqlQuery6.Name = "QRY_DUTY";
+            customSqlQuery6.Sql = "SELECT CD\r\n       ,CD_VAL\r\n   FROM COD01M00\r\n  WHERE MNGR_CD = \'DUTY_CD\'\r\n  ORDER" +
+    " BY CD";
+            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            customSqlQuery1,
+            customSqlQuery2,
+            customSqlQuery3,
+            customSqlQuery4,
+            customSqlQuery5,
+            customSqlQuery6});
+            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // edtClientID
             // 
@@ -612,84 +722,6 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // sqlDataSource1
-            // 
-            this.sqlDataSource1.ConnectionName = "Connection";
-            this.sqlDataSource1.Name = "sqlDataSource1";
-            customSqlQuery5.Name = "QRY_CLIENT";
-            queryParameter20.Name = "P_CLIENT_NM";
-            queryParameter20.Type = typeof(string);
-            customSqlQuery5.Parameters.Add(queryParameter20);
-            customSqlQuery5.Sql = "SELECT CLIENT_CD\r\n     , CLIENT_NM\r\n  FROM CLIENT01M00\r\n WHERE CLIENT_NM LIKE \'%\'" +
-    "|| TRIM(:P_CLIENT_NM) || \'%\'";
-            customSqlQuery6.Name = "QRY_CLIENT2";
-            queryParameter21.Name = "P_CLIENT_CD";
-            queryParameter21.Type = typeof(string);
-            queryParameter22.Name = "P_HP";
-            queryParameter22.Type = typeof(string);
-            queryParameter23.Name = "P_OFFICE";
-            queryParameter23.Type = typeof(string);
-            queryParameter24.Name = "P_CLIENT_ID_NM";
-            queryParameter24.Type = typeof(string);
-            queryParameter25.Name = "P_EMAIL";
-            queryParameter25.Type = typeof(string);
-            customSqlQuery6.Parameters.Add(queryParameter21);
-            customSqlQuery6.Parameters.Add(queryParameter22);
-            customSqlQuery6.Parameters.Add(queryParameter23);
-            customSqlQuery6.Parameters.Add(queryParameter24);
-            customSqlQuery6.Parameters.Add(queryParameter25);
-            customSqlQuery6.Sql = resources.GetString("customSqlQuery6.Sql");
-            customSqlQuery7.Name = "INSERT_CLIENT2";
-            queryParameter26.Name = "P_CLIENT_CD";
-            queryParameter26.Type = typeof(string);
-            queryParameter26.ValueInfo = "1234";
-            queryParameter27.Name = "P_EMAIL";
-            queryParameter27.Type = typeof(string);
-            queryParameter28.Name = "P_HP";
-            queryParameter28.Type = typeof(string);
-            queryParameter29.Name = "P_OFFICE";
-            queryParameter29.Type = typeof(string);
-            queryParameter30.Name = "P_POSITION";
-            queryParameter30.Type = typeof(string);
-            queryParameter31.Name = "P_CLIENT_ID_NM";
-            queryParameter31.Type = typeof(string);
-            customSqlQuery7.Parameters.Add(queryParameter26);
-            customSqlQuery7.Parameters.Add(queryParameter27);
-            customSqlQuery7.Parameters.Add(queryParameter28);
-            customSqlQuery7.Parameters.Add(queryParameter29);
-            customSqlQuery7.Parameters.Add(queryParameter30);
-            customSqlQuery7.Parameters.Add(queryParameter31);
-            customSqlQuery7.Sql = resources.GetString("customSqlQuery7.Sql");
-            customSqlQuery8.Name = "UPDATE_CLIENT2";
-            queryParameter32.Name = "P_EMAIL";
-            queryParameter32.Type = typeof(string);
-            queryParameter33.Name = "P_HP";
-            queryParameter33.Type = typeof(string);
-            queryParameter34.Name = "P_OFFICE";
-            queryParameter34.Type = typeof(string);
-            queryParameter35.Name = "P_POSITION";
-            queryParameter35.Type = typeof(string);
-            queryParameter36.Name = "P_CLIENT_ID_NM";
-            queryParameter36.Type = typeof(string);
-            queryParameter37.Name = "P_CLIENT_CD";
-            queryParameter37.Type = typeof(string);
-            queryParameter38.Name = "P_CLIENT_ID";
-            queryParameter38.Type = typeof(string);
-            customSqlQuery8.Parameters.Add(queryParameter32);
-            customSqlQuery8.Parameters.Add(queryParameter33);
-            customSqlQuery8.Parameters.Add(queryParameter34);
-            customSqlQuery8.Parameters.Add(queryParameter35);
-            customSqlQuery8.Parameters.Add(queryParameter36);
-            customSqlQuery8.Parameters.Add(queryParameter37);
-            customSqlQuery8.Parameters.Add(queryParameter38);
-            customSqlQuery8.Sql = resources.GetString("customSqlQuery8.Sql");
-            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery5,
-            customSqlQuery6,
-            customSqlQuery7,
-            customSqlQuery8});
-            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
-            // 
             // frmClient2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -716,6 +748,7 @@
             this.layoutControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtClientID.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtHP.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtEMail.Properties)).EndInit();
@@ -789,5 +822,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colHP;
         private DevExpress.XtraGrid.Columns.GridColumn colOFFICE;
         private DevExpress.XtraGrid.Columns.GridColumn colPOSITION;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
     }
 }

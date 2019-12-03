@@ -20,14 +20,37 @@ namespace TOP.Dialog
             InitializeComponent();
         }
 
+        private void QryDutyCd()
+        {
+            try
+            {
+                sqlDataSource1.Fill("QRY_DUTY");
+
+                DataTable dt = CUtil.GetTable(sqlDataSource1.Result["QRY_DUTY"]);
+
+                repositoryItemLookUpEdit1.DataSource = dt;
+                repositoryItemLookUpEdit1.DisplayMember = "CD_VAL";
+                repositoryItemLookUpEdit1.ValueMember = "CD";
+                repositoryItemLookUpEdit1.KeyMember = "CD";
+               // gridControl2.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+
+                MsgCaption.Caption = ex.Message;
+            }
+        }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            QryDutyCd();
             QryClient();
         }
 
 
         private void QryClient()
         {
+            MsgCaption.Caption = "";
 
             try
             {
@@ -67,12 +90,15 @@ namespace TOP.Dialog
         /// <param name="e"></param>
         private void simpleButton3_Click(object sender, EventArgs e)
         {
+
             QryClient2();
 
         }
 
         private void QryClient2()
         {
+            MsgCaption.Caption = "";
+
             DataRow dr = gridView1.GetFocusedDataRow();
             
             if (dr == null)
@@ -109,6 +135,7 @@ namespace TOP.Dialog
         /// <param name="e"></param>
         private void simpleButton2_Click(object sender, EventArgs e)
         {
+            MsgCaption.Caption = "";
             b_Insert = true;
 
             gridView2.AddNewRow();
@@ -145,7 +172,7 @@ namespace TOP.Dialog
 
         private void editFormUpdateButton_Click(object sender, EventArgs e)
         {
-            DataRow dr1 = gridView2.GetFocusedDataRow();
+            DataRow dr1 = gridView1.GetFocusedDataRow();
             DataRow dr2 = gridView2.GetFocusedDataRow();
 
             if (dr1 == null)
@@ -169,7 +196,7 @@ namespace TOP.Dialog
                     sqlDataSource1.Queries["INSERT_CLIENT2"].Parameters.Find(x => x.Name == "P_POSITION").Value = dr2["POSITION"].ToString();
 
                     SqlDataSource.DisableCustomQueryValidation = true;
-
+                    
                     sqlDataSource1.Fill("INSERT_CLIENT2");
                 }
                 else
@@ -194,7 +221,7 @@ namespace TOP.Dialog
             catch (Exception ex)
             {
 
-                MsgCaption.Caption = ex.Message;
+                MsgCaption.Caption = ex.InnerException.InnerException.InnerException.Message;
             }
             finally
             {

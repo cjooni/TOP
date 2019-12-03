@@ -265,7 +265,7 @@
   <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="customSqlQuery6.Sql" xml:space="preserve">
+  <data name="customSqlQuery2.Sql" xml:space="preserve">
     <value>SELECT CLIENT_CD
       ,CLIENT_ID
       ,CLIENT_ID_NM
@@ -280,10 +280,10 @@
    AND CLIENT_ID_NM LIKE '%' || TRIM(:P_CLIENT_ID_NM) || '%'
    AND EMAIL LIKE '%' || TRIM(:P_EMAIL) || '%'</value>
   </data>
-  <data name="customSqlQuery7.Sql" xml:space="preserve">
+  <data name="customSqlQuery3.Sql" xml:space="preserve">
     <value>INSERT INTO CLIENT01T00(CLIENT_CD, CLIENT_ID, EMAIL, HP, OFFICE, POSITION, CLIENT_ID_NM)
 SELECT  :P_CLIENT_CD
-      , LPAD(COUNT(*)+1, 8, '0')
+      , GET_SEQ('2')
       , :P_EMAIL
       , :P_HP
       , :P_OFFICE
@@ -291,7 +291,7 @@ SELECT  :P_CLIENT_CD
       , :P_CLIENT_ID_NM
   FROM DUAL</value>
   </data>
-  <data name="customSqlQuery8.Sql" xml:space="preserve">
+  <data name="customSqlQuery4.Sql" xml:space="preserve">
     <value>UPDATE CLIENT01T00
    SET EMAIL = :P_EMAIL
       ,HP    = :P_HP
@@ -302,6 +302,6 @@ SELECT  :P_CLIENT_CD
    AND CLIENT_ID = :P_CLIENT_ID</value>
   </data>
   <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlFSWV9DTElFTlQiPjxGaWVsZCBOYW1lPSJDTElFTlRfQ0QiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IkNMSUVOVF9OTSIgVHlwZT0iVW5rbm93biIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iUVJZX0NMSUVOVDIiPjxGaWVsZCBOYW1lPSJDTElFTlRfQ0QiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IkNMSUVOVF9JRCIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iQ0xJRU5UX0lEX05NIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJFTUFJTCIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iSFAiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9Ik9GRklDRSIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iUE9TSVRJT04iIFR5cGU9IlVua25vd24iIC8+PC9WaWV3PjxWaWV3IE5hbWU9IklOU0VSVF9DTElFTlQyIiAvPjxWaWV3IE5hbWU9IlVQREFURV9DTElFTlQyIiAvPjwvRGF0YVNldD4=</value>
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlFSWV9DTElFTlQiPjxGaWVsZCBOYW1lPSJDTElFTlRfQ0QiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IkNMSUVOVF9OTSIgVHlwZT0iVW5rbm93biIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iUVJZX0NMSUVOVDIiPjxGaWVsZCBOYW1lPSJDTElFTlRfQ0QiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IkNMSUVOVF9JRCIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iQ0xJRU5UX0lEX05NIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJFTUFJTCIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iSFAiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9Ik9GRklDRSIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iUE9TSVRJT04iIFR5cGU9IlVua25vd24iIC8+PC9WaWV3PjxWaWV3IE5hbWU9IklOU0VSVF9DTElFTlQyIiAvPjxWaWV3IE5hbWU9IlVQREFURV9DTElFTlQyIiAvPjxWaWV3IE5hbWU9IkdFVF9TRVEiPjxGaWVsZCBOYW1lPSJUUklNKExQQUQoVE9fTlVNQkVSKFZBTCkrMSxMRU4sJzAnKSkiIFR5cGU9IlVua25vd24iIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlFSWV9EVVRZIj48RmllbGQgTmFtZT0iQ0QiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ0RfVkFMIiBUeXBlPSJTdHJpbmciIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
   </data>
 </root>
