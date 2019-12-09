@@ -386,5 +386,113 @@ namespace TOP.Screen
             }
             return gData;
         }
+
+
+        /// <summary>
+        /// 파일로 저장한다
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog sDlg = new SaveFileDialog())
+                {
+                    sDlg.Filter = "FLO file|*.FLO";
+                    sDlg.Title = "Save an FLO File";
+
+                    if (sDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        SaveFile(sDlg.FileName);
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+               
+            // gridControl1.ExportToText()
+        }
+
+        private void SaveFile(string FileName)
+        {
+
+            try
+            {
+                DataTable dt = (DataTable)gridControl1.DataSource;
+
+                if (dt == null)
+                {
+                    MessageBox.Show("저장할 데이터가 없습니다.");
+                    return;
+                }
+
+                string strLine;
+
+                List<string> strData = new List<string>();
+
+                foreach (DataRow item in dt.Rows)
+                {
+                    strLine = "";
+                    string strTmp = "";
+                    strLine += item["FROM_LINE"].ToString().Trim();
+                    strLine += " ";
+                    strLine += item["TO_LINE"].ToString().Trim();
+                    strLine += " ";
+                    strLine += strTmp.ToString().PadRight(9, ' ');
+                    strLine += " ";
+                    strLine += string.Format("{0:F1}", Convert.ToDouble(item["누가거리_차이"].ToString().Trim())).PadLeft(4, ' ');
+                    strLine += " ";
+                    strLine += item["DATA1"].ToString().Trim().PadLeft(8);
+                    strLine += " ";
+                    strLine += item["DATA2"].ToString().Trim().PadLeft(4);
+                    strLine += " ";
+                    strLine += string.Format("{0:F2}", Convert.ToDouble(item["F관저고"].ToString().Trim())).PadLeft(7, ' ');
+                    strLine += " ";
+                    strLine += string.Format("{0:F2}", Convert.ToDouble(item["T관저고"].ToString().Trim())).PadLeft(6, ' ');
+                    strLine += " ";
+
+                    strTmp = " ";
+                    strLine += strTmp.ToString().PadRight(6, ' ');
+                    strLine += " ";
+                    strLine += string.Format("{0:F2}", Convert.ToDouble(item["지반고"].ToString().Trim())).PadLeft(6, ' ');
+                    strLine += " ";
+                    strTmp = " ";
+                    strLine += strTmp.PadRight(18, ' ');
+                    strLine += "0";
+                    strLine += '\t';
+                    strLine += item["관경"].ToString().PadLeft(4, ' ');
+                    strLine += " ";
+                    strLine += item["지장물"].ToString();
+
+                    strData.Add(strLine);
+
+
+                }
+
+                // Stream st = new Stream();
+
+                using (StreamWriter sw = new StreamWriter(FileName))
+                {
+                    foreach (string item in strData)
+                    {
+                        sw.WriteLine(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+            
+          
+        }
     }
 }

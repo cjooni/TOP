@@ -145,7 +145,7 @@
             // 
             // barButtonItem4
             // 
-            this.barButtonItem4.Caption = "barButtonItem4";
+            this.barButtonItem4.Caption = "파이프툴 변환";
             this.barButtonItem4.Id = 6;
             this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
             this.barButtonItem4.Name = "barButtonItem4";

@@ -203,6 +203,18 @@
      , WORK_TM    = TO_CHAR(SYSDATE, 'HH24:MI:SS')
  WHERE PROJECT_CD = :P_PROJECT_CD</value>
   </data>
+  <data name="customSqlQuery3.Sql" xml:space="preserve">
+    <value>INSERT INTO PRJ01M00 (PROJECT_CD, PROJECT_NM, START_DT, END_DT, CLIENT_ID, WORK_DT, WORK_TM, END_YN)
+SELECT GET_SEQ('3')
+    ,  :P_PROJECT_NM
+    ,  :P_START_DT
+    ,  :P_END_DT
+    ,  :P_CLIENT_ID
+    ,  TO_CHAR(SYSDATE, 'YYYYMMD')
+    ,  TO_CHAR(SYSDATE, 'HH24:MI:SS')
+    ,  'N'
+  FROM DUAL</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>94</value>
   </metadata>

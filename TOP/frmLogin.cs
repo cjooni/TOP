@@ -33,6 +33,11 @@ namespace TOP
 
         private void SimpleButton1_Click(object sender, EventArgs e)
         {
+
+            //Oracle DB가 끊겨서 더이상 로그인을 사용할 수 없음
+            DialogResult = DialogResult.OK;
+            return;
+
             SqlQuery query = sqlDataSource1.Queries["Qry_UserID"];
             try
             {
@@ -59,7 +64,9 @@ namespace TOP
             catch (Exception ex)
             {
 
-                InfoMsg.Caption = ex.Message;
+                //InfoMsg.Caption = ex.Message;
+                InfoMsg.Caption = ex.InnerException.InnerException.Message;
+                return;
             }
 
             UserInfo.UserID = dt_user_info.Rows[0]["USER_ID"].ToString();

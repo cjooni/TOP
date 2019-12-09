@@ -236,6 +236,11 @@ namespace TOP.Screen
             edtUserNm.Text = UserInfo.UserNM;
 
 
+            if (PrjInfo.ProjectCd == null)
+            {
+                tempScrnInfo();
+                return;
+            }
             //SqlQuery query = sqlDSPrjScrn.Queries["QRY_PRJ_SCRN"];
             try
             {
@@ -260,6 +265,29 @@ namespace TOP.Screen
             }
 
 
+        }
+
+
+        private void tempScrnInfo()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("PROJECT_CD", typeof(string));
+            dt.Columns.Add("PROJECT_NM", typeof(string));
+            dt.Columns.Add("SCRN_SRC", typeof(string));
+            dt.Columns.Add("SCRN_TEXT", typeof(string));
+            dt.Columns.Add("SCRN_DESC", typeof(string));
+            dt.Columns.Add("WORK_EMPL", typeof(string));
+            dt.Columns.Add("WORK_DTM", typeof(string));
+
+            DataRow dr = dt.NewRow();
+            dr["PROJECT_CD"] = "TEST";
+            dr["PROJECT_NM"] = "TEST";
+            dr["SCRN_SRC"] = "frmLoadPipeTool";
+            dr["SCRN_TEXT"] = "파이프툴 변환";
+
+            dt.Rows.Add(dr);
+
+            gridScrn.DataSource = dt;
         }
 
 
