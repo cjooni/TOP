@@ -245,4 +245,30 @@
   <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
     <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlFSWV9QUk9KRUNUIj48RmllbGQgTmFtZT0iUFJPSkVDVF9DRCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJQUk9KRUNUX05NIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlNUQVJUX0RUIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkVORF9EVCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJDTElFTlRfQ0QiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ0xJRU5UX05NIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkNMSUVOVF9JRCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJDTElFTlRfSURfTk0iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iV09SS19EVCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJXT1JLX1RNIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkVORF9ZTiIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJFTkRfWU5fREVTQyIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
   </data>
+  <metadata name="sqlDataSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>217, 20</value>
+  </metadata>
+  <data name="customSqlQuery2.Sql" xml:space="preserve">
+    <value>UPDATE PRJ01M00
+   SET PROJECT_NM = :P_PROJECT_NM
+     , START_DT   = :P_START_DT
+     , END_DT     = :P_END_DT
+     , CLIENT_CD  = :P_CLIENT_CD
+     , CLIENT_ID  = :P_CLIENT_ID
+     , WORK_DT    = TO_CHAR(SYSDATE, 'YYYYMMDD')
+     , WORK_TM    = TO_CHAR(SYSDATE, 'HH24:MI:SS')
+ WHERE PROJECT_CD = :P_PROJECT_CD</value>
+  </data>
+  <data name="customSqlQuery3.Sql" xml:space="preserve">
+    <value>INSERT INTO PRJ01M00 (PROJECT_CD, PROJECT_NM, START_DT, END_DT, CLIENT_ID, WORK_DT, WORK_TM, END_YN)
+SELECT GET_SEQ('3')
+    ,  :P_PROJECT_NM
+    ,  :P_START_DT
+    ,  :P_END_DT
+    ,  :P_CLIENT_ID
+    ,  TO_CHAR(SYSDATE, 'YYYYMMD')
+    ,  TO_CHAR(SYSDATE, 'HH24:MI:SS')
+    ,  'N'
+  FROM DUAL</value>
+  </data>
 </root>

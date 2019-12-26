@@ -34,10 +34,7 @@ namespace TOP
         private void SimpleButton1_Click(object sender, EventArgs e)
         {
 
-            //Oracle DB가 끊겨서 더이상 로그인을 사용할 수 없음
-            DialogResult = DialogResult.OK;
-            return;
-
+         
             SqlQuery query = sqlDataSource1.Queries["Qry_UserID"];
             try
             {
@@ -65,7 +62,7 @@ namespace TOP
             {
 
                 //InfoMsg.Caption = ex.Message;
-                InfoMsg.Caption = ex.InnerException.InnerException.Message;
+                InfoMsg.Caption = ex.InnerException.InnerException.InnerException.Message;
                 return;
             }
 
@@ -74,6 +71,11 @@ namespace TOP
 
             DialogResult = DialogResult.OK;
 
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

@@ -91,20 +91,20 @@
             this.layoutControl1.Controls.Add(this.xtraTabControl1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1301, 939);
+            this.layoutControl1.Size = new System.Drawing.Size(1171, 749);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Location = new System.Drawing.Point(12, 60);
-            this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.xtraTabControl1.Location = new System.Drawing.Point(11, 48);
+            this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1277, 867);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1149, 691);
             this.xtraTabControl1.TabIndex = 5;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -113,9 +113,9 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.layoutControl2);
-            this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1275, 825);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1147, 657);
             this.xtraTabPage1.Text = "EXCEL DATA";
             // 
             // layoutControl2
@@ -125,29 +125,29 @@
             this.layoutControl2.Controls.Add(this.simpleButton2);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.layoutControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(1275, 825);
+            this.layoutControl2.Size = new System.Drawing.Size(1147, 657);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // spread1
             // 
-            this.spread1.Location = new System.Drawing.Point(12, 58);
-            this.spread1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spread1.Location = new System.Drawing.Point(11, 47);
+            this.spread1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.spread1.Name = "spread1";
-            this.spread1.Size = new System.Drawing.Size(1251, 755);
+            this.spread1.Size = new System.Drawing.Size(1125, 600);
             this.spread1.TabIndex = 6;
             this.spread1.Text = "spreadsheetControl1";
             // 
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(12, 12);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.simpleButton1.Location = new System.Drawing.Point(11, 10);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(262, 42);
+            this.simpleButton1.Size = new System.Drawing.Size(235, 33);
             this.simpleButton1.StyleController = this.layoutControl2;
             this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Text = "PIPE TOOL 불러오기";
@@ -156,9 +156,10 @@
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(278, 12);
+            this.simpleButton2.Location = new System.Drawing.Point(250, 10);
+            this.simpleButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(262, 42);
+            this.simpleButton2.Size = new System.Drawing.Size(235, 33);
             this.simpleButton2.StyleController = this.layoutControl2;
             this.simpleButton2.TabIndex = 7;
             this.simpleButton2.Text = "막서 입력값으로 변환";
@@ -174,16 +175,16 @@
             this.layoutControlItem4,
             this.emptySpaceItem2});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1275, 825);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1147, 657);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.simpleButton1;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem2.MinSize = new System.Drawing.Size(195, 45);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(175, 36);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(266, 46);
+            this.layoutControlItem2.Size = new System.Drawing.Size(239, 37);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
@@ -191,19 +192,19 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.spread1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 46);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 37);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1255, 759);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1129, 604);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton2;
-            this.layoutControlItem4.Location = new System.Drawing.Point(266, 0);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(177, 45);
+            this.layoutControlItem4.Location = new System.Drawing.Point(239, 0);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(159, 36);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(266, 46);
+            this.layoutControlItem4.Size = new System.Drawing.Size(239, 37);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
@@ -211,16 +212,17 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(532, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(478, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(723, 46);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(651, 37);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.layoutControl4);
+            this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1275, 825);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1147, 657);
             this.xtraTabPage2.Text = "MAXER 데이터";
             // 
             // layoutControl4
@@ -229,34 +231,38 @@
             this.layoutControl4.Controls.Add(this.simpleButton3);
             this.layoutControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl4.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.layoutControl4.Name = "layoutControl4";
             this.layoutControl4.Root = this.layoutControlGroup3;
-            this.layoutControl4.Size = new System.Drawing.Size(1275, 825);
+            this.layoutControl4.Size = new System.Drawing.Size(1147, 657);
             this.layoutControl4.TabIndex = 0;
             this.layoutControl4.Text = "layoutControl4";
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(12, 52);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gridControl1.Location = new System.Drawing.Point(11, 50);
             this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1251, 761);
+            this.gridControl1.Size = new System.Drawing.Size(1125, 597);
             this.gridControl1.TabIndex = 7;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
-            this.gridView1.DetailHeight = 398;
+            this.gridView1.DetailHeight = 318;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
             // simpleButton3
             // 
             this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(12, 12);
+            this.simpleButton3.Location = new System.Drawing.Point(11, 10);
+            this.simpleButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(231, 36);
+            this.simpleButton3.Size = new System.Drawing.Size(207, 36);
             this.simpleButton3.StyleController = this.layoutControl4;
             this.simpleButton3.TabIndex = 4;
             this.simpleButton3.Text = "파일로 저장";
@@ -271,7 +277,7 @@
             this.layoutControlItem6,
             this.emptySpaceItem3});
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(1275, 825);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(1147, 657);
             this.layoutControlGroup3.TextVisible = false;
             // 
             // layoutControlItem5
@@ -279,7 +285,7 @@
             this.layoutControlItem5.Control = this.simpleButton3;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(235, 40);
+            this.layoutControlItem5.Size = new System.Drawing.Size(211, 40);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -288,16 +294,16 @@
             this.layoutControlItem6.Control = this.gridControl1;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 40);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(1255, 765);
+            this.layoutControlItem6.Size = new System.Drawing.Size(1129, 601);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(235, 0);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(211, 0);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(1020, 40);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(918, 40);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // Root
@@ -308,15 +314,15 @@
             this.layoutControlItem1,
             this.emptySpaceItem1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1301, 939);
+            this.Root.Size = new System.Drawing.Size(1171, 749);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.xtraTabControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 38);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1281, 871);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1153, 695);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -325,7 +331,7 @@
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(0, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1281, 48);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1153, 38);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // xtraOpenFileDialog1
@@ -356,10 +362,10 @@
             // 
             // frmLoadPipeTool
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.ClientSize = new System.Drawing.Size(1301, 975);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(1171, 780);
             this.Controls.Add(this.layoutControl1);
-            this.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
+            this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Name = "frmLoadPipeTool";
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

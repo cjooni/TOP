@@ -129,7 +129,7 @@ namespace TOP.Dialog
             catch (Exception ex)
             {
 
-                MsgCaption.Caption = ex.Message;
+                MsgCaption.Caption = ex.InnerException.InnerException.InnerException.Message;
             }
             finally
             {

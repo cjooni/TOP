@@ -55,6 +55,7 @@
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -128,17 +129,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(604, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(777, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 359);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 480);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(604, 24);
+            this.barDockControlBottom.Size = new System.Drawing.Size(777, 31);
             // 
             // barDockControlLeft
             // 
@@ -146,17 +145,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 359);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 480);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(604, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(777, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 359);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 480);
             // 
             // barInfo
             // 
@@ -165,11 +162,10 @@
             // 
             // pictureEdit1
             // 
-            this.pictureEdit1.Location = new System.Drawing.Point(8, 8);
-            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureEdit1.Location = new System.Drawing.Point(12, 12);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Size = new System.Drawing.Size(588, 257);
+            this.pictureEdit1.Size = new System.Drawing.Size(753, 356);
             this.pictureEdit1.StyleController = this.layoutControl1;
             this.pictureEdit1.TabIndex = 4;
             // 
@@ -182,31 +178,29 @@
             this.layoutControl1.Controls.Add(this.pictureEdit1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(604, 359);
+            this.layoutControl1.Size = new System.Drawing.Size(777, 480);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(485, 315);
-            this.simpleButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.simpleButton2.Location = new System.Drawing.Point(624, 432);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(111, 36);
+            this.simpleButton2.Size = new System.Drawing.Size(141, 36);
             this.simpleButton2.StyleController = this.layoutControl1;
             this.simpleButton2.TabIndex = 8;
             this.simpleButton2.Text = "취소";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(371, 315);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.simpleButton1.Location = new System.Drawing.Point(478, 432);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(112, 36);
+            this.simpleButton1.Size = new System.Drawing.Size(142, 36);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 7;
             this.simpleButton1.Text = "로그인";
@@ -214,19 +208,17 @@
             // 
             // edtPswd
             // 
-            this.edtPswd.Location = new System.Drawing.Point(440, 291);
-            this.edtPswd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edtPswd.Location = new System.Drawing.Point(565, 402);
             this.edtPswd.Name = "edtPswd";
-            this.edtPswd.Size = new System.Drawing.Size(156, 22);
+            this.edtPswd.Size = new System.Drawing.Size(200, 26);
             this.edtPswd.StyleController = this.layoutControl1;
             this.edtPswd.TabIndex = 6;
             // 
             // edtID
             // 
-            this.edtID.Location = new System.Drawing.Point(440, 267);
-            this.edtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edtID.Location = new System.Drawing.Point(565, 372);
             this.edtID.Name = "edtID";
-            this.edtID.Size = new System.Drawing.Size(156, 22);
+            this.edtID.Size = new System.Drawing.Size(200, 26);
             this.edtID.StyleController = this.layoutControl1;
             this.edtID.TabIndex = 5;
             // 
@@ -243,7 +235,7 @@
             this.layoutControlItem2,
             this.layoutControlItem3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(604, 359);
+            this.Root.Size = new System.Drawing.Size(777, 480);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -251,73 +243,76 @@
             this.layoutControlItem1.Control = this.pictureEdit1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(590, 259);
+            this.layoutControlItem1.Size = new System.Drawing.Size(757, 360);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(363, 307);
+            this.layoutControlItem4.Location = new System.Drawing.Point(466, 420);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(114, 38);
+            this.layoutControlItem4.Size = new System.Drawing.Size(146, 40);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.simpleButton2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(477, 307);
+            this.layoutControlItem5.Location = new System.Drawing.Point(612, 420);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(113, 38);
+            this.layoutControlItem5.Size = new System.Drawing.Size(145, 40);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 307);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 420);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(363, 38);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(466, 40);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 259);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 360);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(382, 48);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(490, 60);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.edtID;
-            this.layoutControlItem2.Location = new System.Drawing.Point(382, 259);
+            this.layoutControlItem2.Location = new System.Drawing.Point(490, 360);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(208, 24);
+            this.layoutControlItem2.Size = new System.Drawing.Size(267, 30);
             this.layoutControlItem2.Text = "아이디";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(48, 15);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 20);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.edtPswd;
-            this.layoutControlItem3.Location = new System.Drawing.Point(382, 283);
+            this.layoutControlItem3.Location = new System.Drawing.Point(490, 390);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(208, 24);
+            this.layoutControlItem3.Size = new System.Drawing.Size(267, 30);
             this.layoutControlItem3.Text = "비밀번호";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(48, 15);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 20);
+            // 
+            // sqlDataSource2
+            // 
+            this.sqlDataSource2.Name = "sqlDataSource2";
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 383);
+            this.ClientSize = new System.Drawing.Size(777, 511);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
@@ -366,5 +361,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraBars.BarStaticItem barInfo;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
     }
 }
