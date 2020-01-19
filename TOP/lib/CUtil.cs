@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -96,6 +97,11 @@ namespace TOP.lib
 
             //progressPanel1.Show();
             //progressPanel1.BringToFront();
+        }
+
+        public static string GetConnectionString()
+        {
+            return ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
         }
     }
 }

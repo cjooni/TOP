@@ -189,7 +189,7 @@ namespace TOP.Screen
 
                 DataTable MaxerDt = PipeMngr.GetMaxerInputData();
 
-                gridView1.PopulateColumns(MaxerDt);
+                adGridView1.PopulateColumns(MaxerDt);
                 gridControl1.DataSource = MaxerDt;
 
             }

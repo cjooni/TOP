@@ -57,12 +57,12 @@ namespace TOP
         private void FrmMain_Load(object sender, EventArgs e)
         {
             //메인이 뜨면 로그인을 진행해야 한다.
-            frmLogin login = new frmLogin();
-            if ( login.ShowDialog() != DialogResult.OK)
-            {
-                this.Close();
-            }
-            UserInfo = login.UserInfo;
+            //frmLogin login = new frmLogin();
+            //if ( login.ShowDialog() != DialogResult.OK)
+            //{
+            //    this.Close();
+            //}
+            //UserInfo = login.UserInfo;
         }
 
         private void SetUserInfo()
@@ -151,6 +151,7 @@ namespace TOP
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             frmProjectInfo frm = new frmProjectInfo();
+            frm.SetDlgType(1, null);
             frm.StartPosition = FormStartPosition.CenterScreen;
 
             frm.Show();

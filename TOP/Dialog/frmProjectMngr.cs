@@ -30,8 +30,13 @@ namespace TOP.Dialog
             repositoryItemDateEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             repositoryItemDateEdit1.EditFormat.FormatString = "yyyy-MM-dd";
             repositoryItemDateEdit1.EditMask = "d";
+
+            
+
             dateStart.DateTime = DateTime.Now;
             dateEnd.DateTime = DateTime.Now;
+            chkDate.Checked = true;
+
         }
 
 
@@ -54,11 +59,25 @@ namespace TOP.Dialog
             {
 
                 string date = ((DateTime)dateStart.EditValue).ToString("yyyyMMdd");
-                sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_START_DT").Value = ((DateTime)dateStart.EditValue).ToString("yyyyMMdd");
-                sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_END_DT").Value = ((DateTime)dateEnd.EditValue).ToString("yyyyMMdd"); 
-                sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_PROJECT_NM").Value = edtProjectNm.Text;
 
+                if (chkDate.Checked == true)
+                {
+                    //날짜를 무시한 전체 조회는 요기를 
+                    sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_START_DT").Value = "00000000";
+                    sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_END_DT").Value = "99999999";
+                    sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_PROJECT_NM").Value = edtProjectNm.Text;
+                    sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_USER_NM").Value = edtUserNm.Text;
 
+                }
+                else
+                {
+                    ///전체 조회가 아니면 요기를 
+                    sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_START_DT").Value = ((DateTime)dateStart.EditValue).ToString("yyyyMMdd");
+                    sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_END_DT").Value = ((DateTime)dateEnd.EditValue).ToString("yyyyMMdd");
+                    sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_PROJECT_NM").Value = edtProjectNm.Text;
+                    sqlDataSource1.Queries["QRY_PROJECT"].Parameters.Find(x => x.Name == "P_USER_NM").Value = edtUserNm.Text;
+
+                }
 
                 sqlDataSource1.Fill("QRY_PROJECT");
 
@@ -76,86 +95,63 @@ namespace TOP.Dialog
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            b_Insert = true;
-
-            gridView1.AddNewRow();
-            gridView1.ShowEditForm();
+  
         }
 
         private void gridView1_ShowingPopupEditForm(object sender, DevExpress.XtraGrid.Views.Grid.ShowingPopupEditFormEventArgs e)
         {
-            foreach (Control control in e.EditForm.Controls)
-            {
-                if (!(control is EditFormContainer))
-                {
-                    continue;
-                }
-                foreach (Control nestedControl in control.Controls)
-                {
-                    if (!(nestedControl is PanelControl))
-                    {
-                        continue;
-                    }
-                    foreach (Control button in nestedControl.Controls)
-                    {
-                        if (!(button is SimpleButton))
-                        {
-                            continue;
-                        }
-                        var simpleButton = button as SimpleButton;
-                        simpleButton.Click -= editFormUpdateButton_Click;
-                        simpleButton.Click += editFormUpdateButton_Click;
-                    }
-                }
-            }
+  
         }
 
 
-        private void editFormUpdateButton_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// PROECT 정보를 등록한다
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+          
+            
+        }
+
+        private void checkEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+            DataRow Dr = gridView1.GetFocusedDataRow();
+
+            QryProjectInfo(Dr);
+        }
+
+        /// <summary>
+        /// 프로젝트 정보를 더블클릭 해불면 정정할수 있는 화면으로 변경
+        /// </summary>
+        /// <param name="Dr"></param>
+        private void QryProjectInfo(DataRow Dr)
+        {
+          
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
         {
             DataRow dr = gridView1.GetFocusedDataRow();
 
-            try
+            frmProjectInfo frm = new frmProjectInfo();
+            frm.SetDlgType(2, dr);
+            if (frm.ShowDialog() == DialogResult.OK)
             {
-
-                if (b_Insert)
-                {
-                    //insert 버튼으로 열었으면 신규 추가를 시도하고
-
-                    sqlDataSource1.Queries["INSERT_CLIENT"].Parameters.Find(x => x.Name == "P_CLIENT_NM").Value = dr["CLIENT_NM"].ToString();
-                    sqlDataSource1.Queries["INSERT_CLIENT"].Parameters.Find(x => x.Name == "P_OFFICE").Value = dr["OFFICE"].ToString();
-                    sqlDataSource1.Queries["INSERT_CLIENT"].Parameters.Find(x => x.Name == "P_ADDRESS").Value = dr["ADDRESS"].ToString();
-
-                    SqlDataSource.DisableCustomQueryValidation = true;
-
-                    sqlDataSource1.Fill("INSERT_CLIENT");
-                }
-                else
-                {
-                    //아닌 경우는 Update로 간주한다.
-
-                    sqlDataSource1.Queries["UPDATE_CLIENT"].Parameters.Find(x => x.Name == "P_CLIENT_NM").Value = dr["CLIENT_NM"].ToString();
-                    sqlDataSource1.Queries["UPDATE_CLIENT"].Parameters.Find(x => x.Name == "P_OFFICE").Value = dr["OFFICE"].ToString();
-                    sqlDataSource1.Queries["UPDATE_CLIENT"].Parameters.Find(x => x.Name == "P_ADDRESS").Value = dr["ADDRESS"].ToString();
-                    sqlDataSource1.Queries["UPDATE_CLIENT"].Parameters.Find(x => x.Name == "P_CLIENT_CD").Value = dr["CLIENT_CD"].ToString();
-
-
-                    SqlDataSource.DisableCustomQueryValidation = true;
-
-                    sqlDataSource1.Fill("UPDATE_CLIENT");
-                }
-
+                
             }
-            catch (Exception ex)
-            {
-
-                MsgCaption.Caption = ex.Message;
-            }
-            finally
-            {
-                b_Insert = false;
-            }
-
         }
     }
 }

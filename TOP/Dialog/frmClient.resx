@@ -227,6 +227,15 @@
  WHERE CLIENT_NM LIKE TRIM(:P_CLIENT_NM) || '%'
    AND ADDRESS LIKE TRIM(:P_ADDRESS) || '%'</value>
   </data>
+  <data name="customSqlQuery2.Sql" xml:space="preserve">
+    <value>INSERT INTO CLIENT01M00 (CLIENT_CD, CLIENT_NM, OFFICE, ADDRESS, WORK_DTM)
+  VALUES ( GET_SEQ('1')
+          ,:P_CLIENT_NM
+          ,:P_OFFICE
+          ,:P_ADDRESS
+          , SYSDATE
+         )</value>
+  </data>
   <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
     <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlFSWV9DTElFTlQiPjxGaWVsZCBOYW1lPSJDTElFTlRfQ0QiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IkNMSUVOVF9OTSIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iT0ZGSUNFIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJBRERSRVNTIiBUeXBlPSJVbmtub3duIiAvPjwvVmlldz48VmlldyBOYW1lPSJJTlNFUlRfQ0xJRU5UIiAvPjxWaWV3IE5hbWU9IlVQREFURV9DTElFTlQiIC8+PC9EYXRhU2V0Pg==</value>
   </data>
