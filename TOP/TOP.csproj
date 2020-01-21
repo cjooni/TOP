@@ -26,7 +26,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Tops</ProductName>
     <PublisherName>Tops</PublisherName>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>8</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -239,6 +239,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataFormat\CfmtPipeTool.cs" />
+    <Compile Include="DataFormat\typePLD_Line.cs" />
     <Compile Include="DataFormat\typePLD.cs" />
     <Compile Include="DataFormat\typePLH.cs" />
     <Compile Include="Dialog\frmClient.cs">
@@ -290,6 +291,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="lib\CColumnProp.cs" />
+    <Compile Include="lib\CGetTableType.cs" />
     <Compile Include="lib\CMakeDataTable.cs" />
     <Compile Include="lib\CMaxerSector.cs" />
     <Compile Include="lib\CPageMngr.cs" />
@@ -297,6 +299,7 @@
     <Compile Include="lib\CPipetoolSector.cs" />
     <Compile Include="lib\CPLHMngr.cs" />
     <Compile Include="lib\CPrjInfo.cs" />
+    <Compile Include="lib\CReadPLD.cs" />
     <Compile Include="lib\CTrans.cs" />
     <Compile Include="lib\CUserInfo.cs" />
     <Compile Include="lib\CUtil.cs" />

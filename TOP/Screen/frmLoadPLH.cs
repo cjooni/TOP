@@ -49,6 +49,25 @@ namespace TOP.Screen
                     {
                         FileName = Path.GetFileName(strFileName);
                         Extension = Path.GetExtension(strFileName);
+
+                        if (Extension.ToUpper() == ".PLD")
+                        {
+                            DataTable ddt = CReadPLD.ReadPLD_Line(strFileName);
+
+                            if (ddt != null)
+                            {
+                                
+
+                                CPLHData PLHData = new CPLHData();
+                                PLHData.FileName = Path.GetFileNameWithoutExtension(strFileName);
+                                PLHData.PLDLineData = ddt;
+                                PLHMngr.AddPLDData(PLHData);
+
+                            }
+
+                        }
+                            
+
                         using (StreamReader SR = new StreamReader(strFileName, Encoding.Default, true))
                         {
 
@@ -92,9 +111,7 @@ namespace TOP.Screen
                                     {
                                         continue;
                                     }
-
-
-                                    //RLine = RLine.Replace('+', ' ');
+                               
                                     _st_typePLD st_typePLD = Trans_PLD.ByteToStruct(RLine);
                                     MakeTablePLD.AddData(st_typePLD);
                                 }
@@ -117,6 +134,11 @@ namespace TOP.Screen
                     }
 
                 }
+                else
+                {
+                    //취소하면 이후 처리는 SKIP
+                    return;
+                }
 
                 CPLHDataProc DataProc = new CPLHDataProc(PLHMngr);
                 DataProc.MakePipeToolData();
@@ -124,13 +146,56 @@ namespace TOP.Screen
                 gridControl2.DataSource = PLHMngr.GetData();
 
                 ExportToSpreadSheet(DataProc);
-
-
-
-
+                ExportToSpread2(DataProc);
 
             }
         }
+
+
+        /// <summary>
+        /// 맨홀높이 Sheet를 만든다.
+        /// </summary>
+        /// <param name="Data"></param>
+        private void ExportToSpread2(CPLHDataProc Data)
+        {
+            IWorkbook workbook = Spread2.Document;
+            Worksheet sheet = workbook.Worksheets[0];
+            sheet.Name = "맨홀높이";
+
+
+            DataTable dt = CGetTableType.GetMhHeight();
+
+            foreach (CPLHData Item in Data.PLHMngr.PLHDataList)
+            {
+                foreach (DataRow Item2 in Item.PLDLineData.Rows)
+                {
+                    DataRow dr = dt.NewRow();
+                    dr["LINENAME"] = "M1-"+ Item2["LINENAME"];
+                    dr["MhHeight"] = Item2["gap"];
+
+                    dt.Rows.Add(dr);
+                }
+                
+            }
+
+            workbook.BeginUpdate();
+
+            int nRowIndex= 0;
+            foreach (DataRow item in dt.Rows)
+            {
+                sheet.Cells[nRowIndex, 0].SetValue( item["LINENAME"]);
+                sheet.Cells[nRowIndex, 1].SetValue(item["MhHeight"]);
+
+                nRowIndex++;
+            }
+
+            workbook.EndUpdate();
+
+
+        }
+
+        
+
 
         /// <summary>
         /// 구조화된 내용을 Spread Sheet에 출력한다.
@@ -279,6 +344,8 @@ namespace TOP.Screen
             XtraSaveFileDialog Savedlg;
             using (Savedlg = new XtraSaveFileDialog())
             {
+                Savedlg.Filter = "EXCEL 파일(*.xlsx)|*.xlsx|All files (*.*)|*.*";
+
                 if (Savedlg.ShowDialog() == DialogResult.OK)
                 {
 

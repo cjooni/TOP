@@ -15,11 +15,13 @@ namespace TOP.lib
         private string fileName;
         private DataTable plhdata;
         private DataTable plddata;
+        private DataTable pldlinedata;
 
         public string FileName { get => fileName; set => fileName = value; }
 
         public DataTable PLHData { get => plhdata; set => plhdata = value; }
         public DataTable PLDData { get => plddata; set => plddata = value; }
+        public DataTable PLDLineData { get => pldlinedata; set => pldlinedata = value; }
     }
 
 
@@ -51,6 +53,18 @@ namespace TOP.lib
             if (PLHDataList.Exists(x => x.FileName == Data.FileName))
             {
                 PLHDataList.Find(x => x.FileName == Data.FileName).PLDData = Data.PLDData;
+            }
+            else
+            {
+                PLHDataList.Add(Data);
+            }
+        }
+
+        public void AddPLDLineData(CPLHData Data)
+        {
+            if (PLHDataList.Exists(x => x.FileName == Data.FileName))
+            {
+                PLHDataList.Find(x => x.FileName == Data.FileName).PLDLineData = Data.PLDLineData;
             }
             else
             {
@@ -160,7 +174,7 @@ namespace TOP.lib
     /// </summary>
     public class CPLHDataProc
     {
-        private CPLHMngr PLHMngr;
+        public CPLHMngr PLHMngr;
         public CPipeToolMngr PipeToolMngr;
         
         /// <summary>
@@ -246,10 +260,10 @@ namespace TOP.lib
                 string dist;
 
                 int qty = 0;
-                double remain = 0;
+                decimal remain = 0;
                 double dtmp;
                 dtmp = Math.Truncate(Convert.ToDouble(item["dist"]) / 20);
-                remain = Convert.ToDouble(item["dist"]) % 20;
+                remain = Convert.ToDecimal(item["dist"]) % 20;
 
                 if (dtmp >=1 )
                 {
@@ -284,6 +298,7 @@ namespace TOP.lib
         public DataTable ParsePLH(string fileName)
         {
             DataTable plhData = PLHMngr.PLHDataList.Find(x => x.FileName == fileName).PLHData;
+            DataTable pldLineData = PLHMngr.PLHDataList.Find(x => x.FileName == fileName).PLDLineData;
 
             String strLineName = "";
             DataTable pipeData = GetPipeDataTable();
@@ -296,17 +311,30 @@ namespace TOP.lib
             {
                 DataRow PipeDr = pipeData.NewRow();
 
-                if (strLineName != item["LINENAME"].ToString().Trim())
+                ///Pipe 툴에서 M1- 가 붙어 있어야 맨홀로 인식한다고 함 
+               // item["LINENAME"] = "M1-" + item["LINENAME"].ToString();
+
+                //if (strLineName != item["LINENAME"].ToString().Trim())
+                //{
+                //    strLineName = item["LINENAME"].ToString().Trim();
+                //    PipeDr["manhole"] = "P";
+                //}
+
+                foreach (DataRow item2 in pldLineData.Rows)
                 {
-                    strLineName = item["LINENAME"].ToString().Trim();
-                    PipeDr["manhole"] = "P";
+                    if (Convert.ToDouble(item["dist2"]) == Convert.ToDouble(item2["dist"]) )
+                    {
+                        PipeDr["맨홀"] = "M1-" + item2["LINENAME"];
+                        PipeDr["manhole"] = "P";
+                    }
                 }
+
 
                 PipeDr["누가거리"] = Convert.ToDouble(item["dist2"]);
                 PipeDr["지반고"] = Convert.ToDouble(item["gh"]);
                 PipeDr["관저고"] = Convert.ToDouble(item["INV"]);
                 PipeDr["관경"] = Convert.ToDouble(item["DIA"]) * 1000; //item["DIA"];
-                PipeDr["맨홀"] = item["LINENAME"];
+                //PipeDr["맨홀"] = item["LINENAME"];
                 PipeDr["구간"] = CPipetoolSector.GetSector(item);
                 PipeDr["구배"] = Convert.ToDouble(item["SLOPE"]);
                                
