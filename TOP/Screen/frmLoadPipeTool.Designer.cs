@@ -246,7 +246,7 @@
             this.xtraTabPage2.Controls.Add(this.layoutControl4);
             this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1145, 656);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1145, 653);
             this.xtraTabPage2.Text = "MAXER 데이터";
             // 
             // layoutControl4
@@ -258,7 +258,7 @@
             this.layoutControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.layoutControl4.Name = "layoutControl4";
             this.layoutControl4.Root = this.layoutControlGroup3;
-            this.layoutControl4.Size = new System.Drawing.Size(1145, 656);
+            this.layoutControl4.Size = new System.Drawing.Size(1145, 653);
             this.layoutControl4.TabIndex = 0;
             this.layoutControl4.Text = "layoutControl4";
             // 
@@ -269,7 +269,7 @@
             this.gridControl1.MainView = this.adGridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1121, 592);
+            this.gridControl1.Size = new System.Drawing.Size(1121, 589);
             this.gridControl1.TabIndex = 7;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.adGridView1});
@@ -309,7 +309,7 @@
             this.layoutControlItem6,
             this.emptySpaceItem3});
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(1145, 656);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(1145, 653);
             this.layoutControlGroup3.TextVisible = false;
             // 
             // layoutControlItem5
@@ -326,7 +326,7 @@
             this.layoutControlItem6.Control = this.gridControl1;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 40);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(1125, 596);
+            this.layoutControlItem6.Size = new System.Drawing.Size(1125, 593);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 

@@ -110,7 +110,7 @@
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(893, 30);
+            this.simpleButton1.Location = new System.Drawing.Point(892, 32);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(131, 36);
             this.simpleButton1.StyleController = this.layoutControl1;
@@ -121,12 +121,12 @@
             // gridControl1
             // 
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
-            this.gridControl1.Location = new System.Drawing.Point(11, 70);
+            this.gridControl1.Location = new System.Drawing.Point(12, 72);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1149, 669);
+            this.gridControl1.Size = new System.Drawing.Size(1147, 665);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -268,24 +268,24 @@
             // 
             // edtUserID
             // 
-            this.edtUserID.Location = new System.Drawing.Point(79, 10);
+            this.edtUserID.Location = new System.Drawing.Point(80, 12);
             this.edtUserID.Name = "edtUserID";
-            this.edtUserID.Size = new System.Drawing.Size(227, 26);
+            this.edtUserID.Size = new System.Drawing.Size(226, 26);
             this.edtUserID.StyleController = this.layoutControl1;
             this.edtUserID.TabIndex = 5;
             // 
             // edtUserNM
             // 
-            this.edtUserNM.Location = new System.Drawing.Point(79, 40);
+            this.edtUserNM.Location = new System.Drawing.Point(80, 42);
             this.edtUserNM.Name = "edtUserNM";
-            this.edtUserNM.Size = new System.Drawing.Size(227, 26);
+            this.edtUserNM.Size = new System.Drawing.Size(226, 26);
             this.edtUserNM.StyleController = this.layoutControl1;
             this.edtUserNM.TabIndex = 6;
             // 
             // v
             // 
             this.v.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("v.ImageOptions.Image")));
-            this.v.Location = new System.Drawing.Point(1028, 30);
+            this.v.Location = new System.Drawing.Point(1027, 32);
             this.v.Name = "v";
             this.v.Size = new System.Drawing.Size(132, 36);
             this.v.StyleController = this.layoutControl1;
@@ -314,7 +314,7 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 60);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1153, 673);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1151, 669);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -323,7 +323,7 @@
             this.layoutControlItem2.Control = this.edtUserID;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(299, 30);
+            this.layoutControlItem2.Size = new System.Drawing.Size(298, 30);
             this.layoutControlItem2.Text = "사용자 ID";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(65, 20);
@@ -333,14 +333,14 @@
             this.layoutControlItem3.Control = this.edtUserNM;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 30);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(299, 30);
+            this.layoutControlItem3.Size = new System.Drawing.Size(298, 30);
             this.layoutControlItem3.Text = "사용자 명";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(65, 20);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(882, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(880, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(271, 20);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -348,7 +348,7 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.v;
-            this.layoutControlItem4.Location = new System.Drawing.Point(1017, 20);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1015, 20);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(136, 40);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -357,7 +357,7 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.simpleButton1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(882, 20);
+            this.layoutControlItem6.Location = new System.Drawing.Point(880, 20);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(135, 40);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
@@ -366,9 +366,9 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(299, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(298, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(583, 60);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(582, 60);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // sqlDataSource1

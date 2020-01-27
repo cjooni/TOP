@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProjectInfo));
             DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
@@ -50,8 +51,10 @@
             DevExpress.DataAccess.Sql.QueryParameter queryParameter15 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter16 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter17 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.lookUpEndYn = new DevExpress.XtraEditors.LookUpEdit();
+            this.queryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.btnModify = new DevExpress.XtraEditors.SimpleButton();
             this.edtProjectNm = new DevExpress.XtraEditors.TextEdit();
             this.dateStart = new DevExpress.XtraEditors.DateEdit();
@@ -78,6 +81,7 @@
             this.emptySpaceItem12 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem14 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -92,12 +96,10 @@
             this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem19 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
-            this.lookUpEndYn = new DevExpress.XtraEditors.LookUpEdit();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
-            this.queryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
             this.layoutControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEndYn.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.queryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtProjectNm.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateStart.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateStart.Properties)).BeginInit();
@@ -124,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
@@ -137,9 +140,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEndYn.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.queryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl3
@@ -166,9 +166,44 @@
             this.layoutControl3.TabIndex = 5;
             this.layoutControl3.Text = "layoutControl3";
             // 
+            // lookUpEndYn
+            // 
+            this.lookUpEndYn.Location = new System.Drawing.Point(122, 170);
+            this.lookUpEndYn.Name = "lookUpEndYn";
+            this.lookUpEndYn.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEndYn.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("END_YN", "END_YN", 78, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("END_YN_DESC", "END_YN_DESC", 108, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.lookUpEndYn.Properties.DataSource = this.queryBindingSource;
+            this.lookUpEndYn.Properties.DisplayMember = "END_YN_DESC";
+            this.lookUpEndYn.Properties.KeyMember = "END_YN";
+            this.lookUpEndYn.Properties.ValueMember = "END_YN";
+            this.lookUpEndYn.Size = new System.Drawing.Size(290, 26);
+            this.lookUpEndYn.StyleController = this.layoutControl3;
+            this.lookUpEndYn.TabIndex = 6;
+            // 
+            // queryBindingSource
+            // 
+            this.queryBindingSource.DataMember = "Query";
+            this.queryBindingSource.DataSource = this.sqlDataSource2;
+            // 
+            // sqlDataSource2
+            // 
+            this.sqlDataSource2.ConnectionName = "Connection";
+            this.sqlDataSource2.Name = "sqlDataSource2";
+            customSqlQuery1.Name = "Query";
+            customSqlQuery1.Sql = "SELECT \'Y\' END_YN \r\n     , \'종료\' END_YN_DESC\r\n  FROM DUAL\r\nUNION ALL\r\nSELECT \'N\' E" +
+    "ND_YN \r\n     , \'진행\' END_YN_DESC\r\n  FROM DUAL";
+            this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            customSqlQuery1});
+            this.sqlDataSource2.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTIiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZ" +
+    "T0iRU5EX1lOIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkVORF9ZTl9ERVNDIiBUeXBlPSJTd" +
+    "HJpbmciIC8+PC9WaWV3PjwvRGF0YVNldD4=";
+            // 
             // btnModify
             // 
-            this.btnModify.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.btnModify.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnModify.ImageOptions.Image")));
             this.btnModify.Location = new System.Drawing.Point(598, 440);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(86, 36);
@@ -281,7 +316,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.btnAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.ImageOptions.Image")));
             this.btnAdd.Location = new System.Drawing.Point(688, 440);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(96, 36);
@@ -428,6 +463,15 @@
             this.layoutControlItem20.Size = new System.Drawing.Size(392, 30);
             this.layoutControlItem20.Text = "프로젝트 코드";
             this.layoutControlItem20.TextSize = new System.Drawing.Size(95, 20);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.lookUpEndYn;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 120);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(392, 30);
+            this.layoutControlItem1.Text = "종료여부";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(95, 20);
             // 
             // layoutControlGroup6
             // 
@@ -630,50 +674,6 @@
             customSqlQuery4});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
-            // lookUpEndYn
-            // 
-            this.lookUpEndYn.Location = new System.Drawing.Point(122, 170);
-            this.lookUpEndYn.Name = "lookUpEndYn";
-            this.lookUpEndYn.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEndYn.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("END_YN", "END_YN", 78, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("END_YN_DESC", "END_YN_DESC", 108, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.lookUpEndYn.Properties.DataSource = this.queryBindingSource;
-            this.lookUpEndYn.Properties.DisplayMember = "END_YN_DESC";
-            this.lookUpEndYn.Properties.KeyMember = "END_YN";
-            this.lookUpEndYn.Properties.ValueMember = "END_YN";
-            this.lookUpEndYn.Size = new System.Drawing.Size(290, 26);
-            this.lookUpEndYn.StyleController = this.layoutControl3;
-            this.lookUpEndYn.TabIndex = 6;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.lookUpEndYn;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(392, 30);
-            this.layoutControlItem1.Text = "종료여부";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(95, 20);
-            // 
-            // sqlDataSource2
-            // 
-            this.sqlDataSource2.ConnectionName = "Connection";
-            this.sqlDataSource2.Name = "sqlDataSource2";
-            customSqlQuery1.Name = "Query";
-            customSqlQuery1.Sql = "SELECT \'Y\' END_YN \r\n     , \'종료\' END_YN_DESC\r\n  FROM DUAL\r\nUNION ALL\r\nSELECT \'N\' E" +
-    "ND_YN \r\n     , \'진행\' END_YN_DESC\r\n  FROM DUAL";
-            this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery1});
-            this.sqlDataSource2.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTIiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZ" +
-    "T0iRU5EX1lOIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkVORF9ZTl9ERVNDIiBUeXBlPSJTd" +
-    "HJpbmciIC8+PC9WaWV3PjwvRGF0YVNldD4=";
-            // 
-            // queryBindingSource
-            // 
-            this.queryBindingSource.DataMember = "Query";
-            this.queryBindingSource.DataSource = this.sqlDataSource2;
-            // 
             // frmProjectInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -687,6 +687,8 @@
             this.Controls.SetChildIndex(this.layoutControl3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
             this.layoutControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEndYn.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.queryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtProjectNm.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateStart.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateStart.Properties)).EndInit();
@@ -713,6 +715,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
@@ -726,9 +729,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEndYn.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.queryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

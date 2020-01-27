@@ -29,40 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopAddProject));
             DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopAddProject));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.edtClientNm = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.edtClientIdNm = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.btnQry = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.colCLIENT_CD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCLIENT_NM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCLIENT_ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCLIENT_ID_NM = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.edtClientNm = new DevExpress.XtraEditors.TextEdit();
+            this.edtClientIdNm = new DevExpress.XtraEditors.TextEdit();
+            this.btnQry = new DevExpress.XtraEditors.SimpleButton();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edtClientNm.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edtClientIdNm.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtClientNm.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtClientIdNm.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,101 +79,6 @@
             this.layoutControl1.Size = new System.Drawing.Size(576, 498);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem3,
-            this.layoutControlItem1,
-            this.layoutControlItem2,
-            this.layoutControlItem4,
-            this.emptySpaceItem2,
-            this.emptySpaceItem1});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(576, 498);
-            this.Root.TextVisible = false;
-            // 
-            // edtClientNm
-            // 
-            this.edtClientNm.Location = new System.Drawing.Point(69, 12);
-            this.edtClientNm.Name = "edtClientNm";
-            this.edtClientNm.Size = new System.Drawing.Size(216, 26);
-            this.edtClientNm.StyleController = this.layoutControl1;
-            this.edtClientNm.TabIndex = 4;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.edtClientNm;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(277, 30);
-            this.layoutControlItem1.Text = "발주처";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(45, 20);
-            // 
-            // edtClientIdNm
-            // 
-            this.edtClientIdNm.Location = new System.Drawing.Point(69, 42);
-            this.edtClientIdNm.Name = "edtClientIdNm";
-            this.edtClientIdNm.Size = new System.Drawing.Size(216, 26);
-            this.edtClientIdNm.StyleController = this.layoutControl1;
-            this.edtClientIdNm.TabIndex = 5;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.edtClientIdNm;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 30);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(277, 40);
-            this.layoutControlItem2.Text = "담당자";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(45, 20);
-            // 
-            // sqlDataSource1
-            // 
-            this.sqlDataSource1.ConnectionName = "Connection";
-            this.sqlDataSource1.Name = "sqlDataSource1";
-            customSqlQuery1.Name = "Query";
-            queryParameter1.Name = "P_CLIENT_NM";
-            queryParameter1.Type = typeof(string);
-            queryParameter1.ValueInfo = "0";
-            queryParameter2.Name = "P_CLIENT_ID_NM";
-            queryParameter2.Type = typeof(string);
-            queryParameter2.ValueInfo = "0";
-            customSqlQuery1.Parameters.Add(queryParameter1);
-            customSqlQuery1.Parameters.Add(queryParameter2);
-            customSqlQuery1.Sql = resources.GetString("customSqlQuery1.Sql");
-            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery1});
-            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(277, 0);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(279, 30);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // btnQry
-            // 
-            this.btnQry.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnQry.Location = new System.Drawing.Point(459, 42);
-            this.btnQry.Name = "btnQry";
-            this.btnQry.Size = new System.Drawing.Size(105, 36);
-            this.btnQry.StyleController = this.layoutControl1;
-            this.btnQry.TabIndex = 6;
-            this.btnQry.Text = "조회";
-            this.btnQry.Click += new System.EventHandler(this.btnQry_Click);
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.btnQry;
-            this.layoutControlItem4.Location = new System.Drawing.Point(447, 30);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(109, 40);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
             // 
             // gridControl1
             // 
@@ -196,23 +101,6 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.gridControl1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 70);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(556, 408);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(277, 30);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(170, 40);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // colCLIENT_CD
             // 
@@ -256,6 +144,118 @@
             this.colCLIENT_ID_NM.VisibleIndex = 1;
             this.colCLIENT_ID_NM.Width = 94;
             // 
+            // edtClientNm
+            // 
+            this.edtClientNm.Location = new System.Drawing.Point(60, 12);
+            this.edtClientNm.Name = "edtClientNm";
+            this.edtClientNm.Size = new System.Drawing.Size(225, 26);
+            this.edtClientNm.StyleController = this.layoutControl1;
+            this.edtClientNm.TabIndex = 4;
+            // 
+            // edtClientIdNm
+            // 
+            this.edtClientIdNm.Location = new System.Drawing.Point(60, 42);
+            this.edtClientIdNm.Name = "edtClientIdNm";
+            this.edtClientIdNm.Size = new System.Drawing.Size(225, 26);
+            this.edtClientIdNm.StyleController = this.layoutControl1;
+            this.edtClientIdNm.TabIndex = 5;
+            // 
+            // btnQry
+            // 
+            this.btnQry.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQry.ImageOptions.Image")));
+            this.btnQry.Location = new System.Drawing.Point(459, 42);
+            this.btnQry.Name = "btnQry";
+            this.btnQry.Size = new System.Drawing.Size(105, 36);
+            this.btnQry.StyleController = this.layoutControl1;
+            this.btnQry.TabIndex = 6;
+            this.btnQry.Text = "조회";
+            this.btnQry.Click += new System.EventHandler(this.btnQry_Click);
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem3,
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.layoutControlItem4,
+            this.emptySpaceItem2,
+            this.emptySpaceItem1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(576, 498);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.gridControl1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 70);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(556, 408);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.edtClientNm;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(277, 30);
+            this.layoutControlItem1.Text = "발주처";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(45, 20);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.edtClientIdNm;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 30);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(277, 40);
+            this.layoutControlItem2.Text = "담당자";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(45, 20);
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.btnQry;
+            this.layoutControlItem4.Location = new System.Drawing.Point(447, 30);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(109, 40);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(277, 0);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(279, 30);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(277, 30);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(170, 40);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // sqlDataSource1
+            // 
+            this.sqlDataSource1.ConnectionName = "Connection";
+            this.sqlDataSource1.Name = "sqlDataSource1";
+            customSqlQuery1.Name = "Query";
+            queryParameter1.Name = "P_CLIENT_NM";
+            queryParameter1.Type = typeof(string);
+            queryParameter1.ValueInfo = "0";
+            queryParameter2.Name = "P_CLIENT_ID_NM";
+            queryParameter2.Type = typeof(string);
+            queryParameter2.ValueInfo = "0";
+            customSqlQuery1.Parameters.Add(queryParameter1);
+            customSqlQuery1.Parameters.Add(queryParameter2);
+            customSqlQuery1.Sql = resources.GetString("customSqlQuery1.Sql");
+            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            customSqlQuery1});
+            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
+            // 
             // PopAddProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -267,16 +267,16 @@
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edtClientNm.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edtClientIdNm.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtClientNm.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtClientIdNm.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -89,6 +89,20 @@
             this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.spreadsheetFormulaBar1 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.spreadsheetFormulaBar2 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.spreadsheetFormulaBar3 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.spreadsheetFormulaBar4 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.spreadsheetFormulaBar5 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.spreadsheetFormulaBar6 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.spreadsheetFormulaBar7 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -133,10 +147,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.spreadsheetFormulaBar6);
+            this.layoutControl1.Controls.Add(this.spreadsheetFormulaBar5);
+            this.layoutControl1.Controls.Add(this.spreadsheetFormulaBar4);
+            this.layoutControl1.Controls.Add(this.spreadsheetFormulaBar3);
+            this.layoutControl1.Controls.Add(this.spreadsheetFormulaBar2);
+            this.layoutControl1.Controls.Add(this.spreadsheetFormulaBar1);
             this.layoutControl1.Controls.Add(this.layoutControl3);
             this.layoutControl1.Controls.Add(this.layoutControl2);
             this.layoutControl1.Controls.Add(this.spread5);
@@ -164,33 +191,33 @@
             // 
             // spread3
             // 
-            this.spread3.Location = new System.Drawing.Point(24, 96);
+            this.spread3.Location = new System.Drawing.Point(24, 137);
             this.spread3.Name = "spread3";
-            this.spread3.Size = new System.Drawing.Size(1098, 453);
+            this.spread3.Size = new System.Drawing.Size(1098, 412);
             this.spread3.TabIndex = 11;
             this.spread3.Text = "spreadsheetControl1";
             // 
             // spread2
             // 
-            this.spread2.Location = new System.Drawing.Point(24, 96);
+            this.spread2.Location = new System.Drawing.Point(24, 137);
             this.spread2.Name = "spread2";
-            this.spread2.Size = new System.Drawing.Size(1098, 453);
+            this.spread2.Size = new System.Drawing.Size(1098, 412);
             this.spread2.TabIndex = 9;
             this.spread2.Text = "spreadsheetControl3";
             // 
             // spread4
             // 
-            this.spread4.Location = new System.Drawing.Point(24, 96);
+            this.spread4.Location = new System.Drawing.Point(24, 137);
             this.spread4.Name = "spread4";
-            this.spread4.Size = new System.Drawing.Size(1098, 453);
+            this.spread4.Size = new System.Drawing.Size(1098, 412);
             this.spread4.TabIndex = 8;
             this.spread4.Text = "spreadsheetControl2";
             // 
             // spread1
             // 
-            this.spread1.Location = new System.Drawing.Point(24, 96);
+            this.spread1.Location = new System.Drawing.Point(24, 137);
             this.spread1.Name = "spread1";
-            this.spread1.Size = new System.Drawing.Size(1098, 453);
+            this.spread1.Size = new System.Drawing.Size(1098, 412);
             this.spread1.TabIndex = 5;
             this.spread1.Text = "spreadsheetControl1";
             // 
@@ -263,7 +290,7 @@
             // 
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
-            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup4;
+            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup7;
             this.tabbedControlGroup1.Size = new System.Drawing.Size(1126, 553);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1,
@@ -279,7 +306,8 @@
             this.sprread3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem4,
             this.layoutControlItem5,
-            this.emptySpaceItem3});
+            this.emptySpaceItem3,
+            this.layoutControlItem25});
             this.sprread3.Location = new System.Drawing.Point(0, 0);
             this.sprread3.Name = "sprread3";
             this.sprread3.Size = new System.Drawing.Size(1102, 497);
@@ -297,9 +325,9 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.spread4;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1102, 457);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1102, 416);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -316,7 +344,8 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.layoutControlItem22});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1102, 497);
@@ -334,9 +363,9 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.spread1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1102, 457);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1102, 416);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -353,7 +382,8 @@
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3,
             this.layoutControlItem6,
-            this.emptySpaceItem2});
+            this.emptySpaceItem2,
+            this.layoutControlItem23});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(1102, 497);
@@ -371,9 +401,9 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.spread2;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(1102, 457);
+            this.layoutControlItem6.Size = new System.Drawing.Size(1102, 416);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -394,7 +424,8 @@
             this.layoutControlItem9,
             this.layoutControlItem11,
             this.layoutControlItem13,
-            this.layoutControlItem20});
+            this.layoutControlItem20,
+            this.layoutControlItem24});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Size = new System.Drawing.Size(1102, 497);
@@ -412,9 +443,9 @@
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.spread3;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(1102, 457);
+            this.layoutControlItem8.Size = new System.Drawing.Size(1102, 416);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
@@ -444,7 +475,8 @@
             this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem10,
             this.layoutControlItem12,
-            this.emptySpaceItem5});
+            this.emptySpaceItem5,
+            this.layoutControlItem21});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
             this.layoutControlGroup4.Size = new System.Drawing.Size(1102, 497);
@@ -452,18 +484,18 @@
             // 
             // spread5
             // 
-            this.spread5.Location = new System.Drawing.Point(24, 96);
+            this.spread5.Location = new System.Drawing.Point(24, 137);
             this.spread5.Name = "spread5";
-            this.spread5.Size = new System.Drawing.Size(1098, 453);
+            this.spread5.Size = new System.Drawing.Size(1098, 412);
             this.spread5.TabIndex = 13;
             this.spread5.Text = "spreadsheetControl1";
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.spread5;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(1102, 457);
+            this.layoutControlItem10.Size = new System.Drawing.Size(1102, 416);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
@@ -540,7 +572,8 @@
             this.layoutControlGroup5.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem14,
             this.layoutControlItem15,
-            this.emptySpaceItem6});
+            this.emptySpaceItem6,
+            this.layoutControlItem26});
             this.layoutControlGroup5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
             this.layoutControlGroup5.Size = new System.Drawing.Size(1102, 497);
@@ -549,10 +582,10 @@
             // layoutControl2
             // 
             this.layoutControl2.Controls.Add(this.spread6);
-            this.layoutControl2.Location = new System.Drawing.Point(24, 96);
+            this.layoutControl2.Location = new System.Drawing.Point(24, 137);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup6;
-            this.layoutControl2.Size = new System.Drawing.Size(1098, 453);
+            this.layoutControl2.Size = new System.Drawing.Size(1098, 412);
             this.layoutControl2.TabIndex = 5;
             this.layoutControl2.Text = "layoutControl2";
             // 
@@ -563,15 +596,15 @@
             this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem16});
             this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(1098, 453);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(1098, 412);
             this.layoutControlGroup6.TextVisible = false;
             // 
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.layoutControl2;
-            this.layoutControlItem14.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem14.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(1102, 457);
+            this.layoutControlItem14.Size = new System.Drawing.Size(1102, 416);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
             // 
@@ -607,7 +640,7 @@
             // 
             this.spread6.Location = new System.Drawing.Point(12, 12);
             this.spread6.Name = "spread6";
-            this.spread6.Size = new System.Drawing.Size(1074, 429);
+            this.spread6.Size = new System.Drawing.Size(1074, 388);
             this.spread6.TabIndex = 4;
             this.spread6.Text = "spreadsheetControl1";
             // 
@@ -616,7 +649,7 @@
             this.layoutControlItem16.Control = this.spread6;
             this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(1078, 433);
+            this.layoutControlItem16.Size = new System.Drawing.Size(1078, 392);
             this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem16.TextVisible = false;
             // 
@@ -631,6 +664,7 @@
             // 
             // layoutControl3
             // 
+            this.layoutControl3.Controls.Add(this.spreadsheetFormulaBar7);
             this.layoutControl3.Controls.Add(this.spread7);
             this.layoutControl3.Controls.Add(this.simpleButton10);
             this.layoutControl3.Location = new System.Drawing.Point(24, 56);
@@ -647,7 +681,8 @@
             this.layoutControlGroup8.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem18,
             this.layoutControlItem19,
-            this.emptySpaceItem7});
+            this.emptySpaceItem7,
+            this.layoutControlItem27});
             this.layoutControlGroup8.Name = "layoutControlGroup8";
             this.layoutControlGroup8.Size = new System.Drawing.Size(1098, 493);
             this.layoutControlGroup8.TextVisible = false;
@@ -683,18 +718,18 @@
             // 
             // spread7
             // 
-            this.spread7.Location = new System.Drawing.Point(12, 52);
+            this.spread7.Location = new System.Drawing.Point(12, 93);
             this.spread7.Name = "spread7";
-            this.spread7.Size = new System.Drawing.Size(1074, 429);
+            this.spread7.Size = new System.Drawing.Size(1074, 388);
             this.spread7.TabIndex = 5;
             this.spread7.Text = "spreadsheetControl1";
             // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.spread7;
-            this.layoutControlItem19.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem19.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(1078, 433);
+            this.layoutControlItem19.Size = new System.Drawing.Size(1078, 392);
             this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem19.TextVisible = false;
             // 
@@ -725,6 +760,139 @@
             this.layoutControlItem20.Size = new System.Drawing.Size(171, 40);
             this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem20.TextVisible = false;
+            // 
+            // spreadsheetFormulaBar1
+            // 
+            this.spreadsheetFormulaBar1.Location = new System.Drawing.Point(24, 96);
+            this.spreadsheetFormulaBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar1.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar1.Name = "spreadsheetFormulaBar1";
+            this.spreadsheetFormulaBar1.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar1.SpreadsheetControl = this.spread5;
+            this.spreadsheetFormulaBar1.TabIndex = 20;
+            // 
+            // layoutControlItem21
+            // 
+            this.layoutControlItem21.Control = this.spreadsheetFormulaBar1;
+            this.layoutControlItem21.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem21.Name = "layoutControlItem21";
+            this.layoutControlItem21.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem21.TextVisible = false;
+            // 
+            // spreadsheetFormulaBar2
+            // 
+            this.spreadsheetFormulaBar2.Location = new System.Drawing.Point(24, 96);
+            this.spreadsheetFormulaBar2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar2.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar2.Name = "spreadsheetFormulaBar2";
+            this.spreadsheetFormulaBar2.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar2.SpreadsheetControl = this.spread1;
+            this.spreadsheetFormulaBar2.TabIndex = 21;
+            // 
+            // layoutControlItem22
+            // 
+            this.layoutControlItem22.Control = this.spreadsheetFormulaBar2;
+            this.layoutControlItem22.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem22.Name = "layoutControlItem22";
+            this.layoutControlItem22.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem22.TextVisible = false;
+            // 
+            // spreadsheetFormulaBar3
+            // 
+            this.spreadsheetFormulaBar3.Location = new System.Drawing.Point(24, 96);
+            this.spreadsheetFormulaBar3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar3.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar3.Name = "spreadsheetFormulaBar3";
+            this.spreadsheetFormulaBar3.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar3.SpreadsheetControl = this.spread2;
+            this.spreadsheetFormulaBar3.TabIndex = 22;
+            // 
+            // layoutControlItem23
+            // 
+            this.layoutControlItem23.Control = this.spreadsheetFormulaBar3;
+            this.layoutControlItem23.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem23.Name = "layoutControlItem23";
+            this.layoutControlItem23.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem23.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem23.TextVisible = false;
+            // 
+            // spreadsheetFormulaBar4
+            // 
+            this.spreadsheetFormulaBar4.Location = new System.Drawing.Point(24, 96);
+            this.spreadsheetFormulaBar4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar4.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar4.Name = "spreadsheetFormulaBar4";
+            this.spreadsheetFormulaBar4.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar4.SpreadsheetControl = this.spread3;
+            this.spreadsheetFormulaBar4.TabIndex = 23;
+            // 
+            // layoutControlItem24
+            // 
+            this.layoutControlItem24.Control = this.spreadsheetFormulaBar4;
+            this.layoutControlItem24.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem24.Name = "layoutControlItem24";
+            this.layoutControlItem24.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem24.TextVisible = false;
+            // 
+            // spreadsheetFormulaBar5
+            // 
+            this.spreadsheetFormulaBar5.Location = new System.Drawing.Point(24, 96);
+            this.spreadsheetFormulaBar5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar5.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar5.Name = "spreadsheetFormulaBar5";
+            this.spreadsheetFormulaBar5.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar5.SpreadsheetControl = this.spread4;
+            this.spreadsheetFormulaBar5.TabIndex = 24;
+            // 
+            // layoutControlItem25
+            // 
+            this.layoutControlItem25.Control = this.spreadsheetFormulaBar5;
+            this.layoutControlItem25.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem25.Name = "layoutControlItem25";
+            this.layoutControlItem25.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem25.TextVisible = false;
+            // 
+            // spreadsheetFormulaBar6
+            // 
+            this.spreadsheetFormulaBar6.Location = new System.Drawing.Point(24, 96);
+            this.spreadsheetFormulaBar6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar6.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar6.Name = "spreadsheetFormulaBar6";
+            this.spreadsheetFormulaBar6.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar6.SpreadsheetControl = this.spread6;
+            this.spreadsheetFormulaBar6.TabIndex = 25;
+            // 
+            // layoutControlItem26
+            // 
+            this.layoutControlItem26.Control = this.spreadsheetFormulaBar6;
+            this.layoutControlItem26.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem26.Name = "layoutControlItem26";
+            this.layoutControlItem26.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem26.TextVisible = false;
+            // 
+            // spreadsheetFormulaBar7
+            // 
+            this.spreadsheetFormulaBar7.Location = new System.Drawing.Point(12, 52);
+            this.spreadsheetFormulaBar7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar7.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar7.Name = "spreadsheetFormulaBar7";
+            this.spreadsheetFormulaBar7.Size = new System.Drawing.Size(1074, 37);
+            this.spreadsheetFormulaBar7.SpreadsheetControl = this.spread7;
+            this.spreadsheetFormulaBar7.TabIndex = 6;
+            // 
+            // layoutControlItem27
+            // 
+            this.layoutControlItem27.Control = this.spreadsheetFormulaBar7;
+            this.layoutControlItem27.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem27.Name = "layoutControlItem27";
+            this.layoutControlItem27.Size = new System.Drawing.Size(1078, 41);
+            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem27.TextVisible = false;
             // 
             // frmMass
             // 
@@ -779,6 +947,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -846,5 +1021,19 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
+        private DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar spreadsheetFormulaBar1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
+        private DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar spreadsheetFormulaBar6;
+        private DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar spreadsheetFormulaBar5;
+        private DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar spreadsheetFormulaBar4;
+        private DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar spreadsheetFormulaBar3;
+        private DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar spreadsheetFormulaBar2;
+        private DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar spreadsheetFormulaBar7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem22;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem23;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem24;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem25;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem26;
     }
 }

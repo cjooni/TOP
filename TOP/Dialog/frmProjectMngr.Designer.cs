@@ -685,7 +685,7 @@
             this.layoutControlItem15});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(1324, 80);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(1308, 62);
             this.layoutControlGroup4.Text = "프로젝트 정보";
             // 
             // emptySpaceItem7

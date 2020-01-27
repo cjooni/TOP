@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PopupUserId));
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.edtUserNm = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.colUSER_ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUSER_NM = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.edtUserNm = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edtUserNm.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtUserNm.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,36 +69,6 @@
             this.layoutControl1.Size = new System.Drawing.Size(551, 534);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
-            // 
-            // Root
-            // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem3,
-            this.emptySpaceItem2,
-            this.layoutControlItem1,
-            this.layoutControlItem4});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(551, 534);
-            this.Root.TextVisible = false;
-            // 
-            // edtUserNm
-            // 
-            this.edtUserNm.Location = new System.Drawing.Point(84, 12);
-            this.edtUserNm.Name = "edtUserNm";
-            this.edtUserNm.Size = new System.Drawing.Size(251, 26);
-            this.edtUserNm.StyleController = this.layoutControl1;
-            this.edtUserNm.TabIndex = 4;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.edtUserNm;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(327, 40);
-            this.layoutControlItem1.Text = "사용자명";
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 20);
             // 
             // gridControl1
             // 
@@ -119,32 +89,6 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.gridControl1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 40);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(531, 474);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // sqlDataSource1
-            // 
-            this.sqlDataSource1.ConnectionName = "Connection";
-            this.sqlDataSource1.Name = "sqlDataSource1";
-            customSqlQuery2.Name = "QUERY";
-            queryParameter2.Name = "P_USER_NM";
-            queryParameter2.Type = typeof(string);
-            queryParameter2.ValueInfo = "0";
-            customSqlQuery2.Parameters.Add(queryParameter2);
-            customSqlQuery2.Sql = "SELECT USER_ID\r\n      ,USER_NM\r\n  FROM USR01M00\r\n WHERE USER_NM LIKE \'%\' || :P_US" +
-    "ER_NM || \'%\'";
-            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery2});
-            this.sqlDataSource1.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlFVRVJZIj48RmllbGQgTmFtZ" +
-    "T0iVVNFUl9JRCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJVU0VSX05NIiBUeXBlPSJTdHJpb" +
-    "mciIC8+PC9WaWV3PjwvRGF0YVNldD4=";
             // 
             // colUSER_ID
             // 
@@ -170,13 +114,13 @@
             this.colUSER_NM.VisibleIndex = 1;
             this.colUSER_NM.Width = 94;
             // 
-            // emptySpaceItem2
+            // edtUserNm
             // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(327, 0);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(71, 40);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.edtUserNm.Location = new System.Drawing.Point(75, 12);
+            this.edtUserNm.Name = "edtUserNm";
+            this.edtUserNm.Size = new System.Drawing.Size(260, 26);
+            this.edtUserNm.StyleController = this.layoutControl1;
+            this.edtUserNm.TabIndex = 4;
             // 
             // simpleButton1
             // 
@@ -189,6 +133,45 @@
             this.simpleButton1.Text = "조회";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem3,
+            this.emptySpaceItem2,
+            this.layoutControlItem1,
+            this.layoutControlItem4});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(551, 534);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.gridControl1;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(531, 474);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(327, 0);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(71, 40);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.edtUserNm;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(327, 40);
+            this.layoutControlItem1.Text = "사용자명";
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(60, 20);
+            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton1;
@@ -197,6 +180,23 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(133, 40);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
+            // 
+            // sqlDataSource1
+            // 
+            this.sqlDataSource1.ConnectionName = "Connection";
+            this.sqlDataSource1.Name = "sqlDataSource1";
+            customSqlQuery1.Name = "QUERY";
+            queryParameter1.Name = "P_USER_NM";
+            queryParameter1.Type = typeof(string);
+            queryParameter1.ValueInfo = "0";
+            customSqlQuery1.Parameters.Add(queryParameter1);
+            customSqlQuery1.Sql = "SELECT USER_ID\r\n      ,USER_NM\r\n  FROM USR01M00\r\n WHERE USER_NM LIKE \'%\' || :P_US" +
+    "ER_NM || \'%\'";
+            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            customSqlQuery1});
+            this.sqlDataSource1.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlFVRVJZIj48RmllbGQgTmFtZ" +
+    "T0iVVNFUl9JRCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJVU0VSX05NIiBUeXBlPSJTdHJpb" +
+    "mciIC8+PC9WaWV3PjwvRGF0YVNldD4=";
             // 
             // PopupUserId
             // 
@@ -209,13 +209,13 @@
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.edtUserNm.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.edtUserNm.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
