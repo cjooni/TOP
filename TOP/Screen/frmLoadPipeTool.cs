@@ -96,6 +96,7 @@ namespace TOP.Screen
 
 
 
+
         /// <summary>
         /// 막서 데이터로 변환한다.
         /// </summary>
@@ -105,6 +106,7 @@ namespace TOP.Screen
         {
             splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
             splashScreenManager1.ShowWaitForm();
+            String sheetName = "";
             try
             {
 
@@ -119,6 +121,7 @@ namespace TOP.Screen
                 int n = workbook.Worksheets.Count;
                 foreach (Worksheet item in workbook.Worksheets)
                 {
+                    sheetName = item.Name;
                     //sheet에 (H) 가 있으면 skip
                     if (item.Name.Contains("H") == true)
                     {
@@ -157,9 +160,17 @@ namespace TOP.Screen
                         {
                             continue;
                         }
-
+                      
                         strPos1 = string.Format("{0}{1}:{2}{3}", "B", 3, "AN", cell.RowIndex - 1);
-                        strPos2 = string.Format("{0}{1}:{2}{3}", "B", cell.RowIndex + 1, "H", nRow -1);
+
+                        if (nRow == cell.RowIndex + 1)
+                        {
+                            strPos2 = string.Format("{0}{1}:{2}{3}", "B", cell.RowIndex + 1, "H", nRow);
+                        }
+                        else
+                        {
+                            strPos2 = string.Format("{0}{1}:{2}{3}", "B", cell.RowIndex + 1, "H", nRow - 1);
+                        }
                         // = string.Format("{0}{1}:{2}{3}", "AQ", 3, "AR", nRow - 1);
                         Data.Data2Position = strPos2;
                         Data.Data2RowIndex = cell.RowIndex;
@@ -170,16 +181,16 @@ namespace TOP.Screen
                         Data.ManholeDt = GetManholeData1(Data.Data1);
                     }
 
-                    //포장측점이 있는지 찾는다.
-                    IEnumerable<Cell> searchResult2 = item.Search("포장측점", options);
-                    foreach (Cell cell in searchResult2)
-                    {
+                    ////포장측점이 있는지 찾는다.
+                    //IEnumerable<Cell> searchResult2 = item.Search("포장측점", options);
+                    //foreach (Cell cell in searchResult2)
+                    //{
                 
              
-                        strPos3 = string.Format("{0}{1}:{2}{3}", "AQ", 3, "AR", nRow - 1);                
-                        Data.Data3 = GetDataTable(item, strPos3);
+                    //    strPos3 = string.Format("{0}{1}:{2}{3}", "AQ", 3, "AR", nRow - 1);                
+                    //    Data.Data3 = GetDataTable(item, strPos3);
                 
-                    }
+                    //}
 
                     MakeFLO(Data);
                     PipeMngr.Add(Data);
@@ -196,6 +207,7 @@ namespace TOP.Screen
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                MessageBox.Show(sheetName);
                 
             }
             finally

@@ -26,7 +26,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>Tops</ProductName>
     <PublisherName>Tops</PublisherName>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -293,6 +293,7 @@
     <Compile Include="lib\CColumnProp.cs" />
     <Compile Include="lib\CGetTableType.cs" />
     <Compile Include="lib\CMakeDataTable.cs" />
+    <Compile Include="lib\CMassData.cs" />
     <Compile Include="lib\CMaxerSector.cs" />
     <Compile Include="lib\CPageMngr.cs" />
     <Compile Include="lib\CPipeData.cs" />
@@ -340,6 +341,12 @@
     </Compile>
     <Compile Include="Screen\frmLoadPLH.Designer.cs">
       <DependentUpon>frmLoadPLH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmMass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmMass.Designer.cs">
+      <DependentUpon>frmMass.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\frmTest1.cs">
       <SubType>Form</SubType>
@@ -405,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\frmLoadPLH.resx">
       <DependentUpon>frmLoadPLH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmMass.resx">
+      <DependentUpon>frmMass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\frmTest1.resx">
       <DependentUpon>frmTest1.cs</DependentUpon>

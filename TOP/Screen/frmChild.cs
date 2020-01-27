@@ -294,6 +294,16 @@ namespace TOP.Screen
             dr["SCRN_TEXT"] = "PLH 불러오기";
 
             dt.Rows.Add(dr);
+
+
+
+            dr = dt.NewRow();
+            dr["PROJECT_CD"] = "TEST";
+            dr["PROJECT_NM"] = "TEST";
+            dr["SCRN_SRC"] = "frmMass";
+            dr["SCRN_TEXT"] = "토적표만들기";
+
+            dt.Rows.Add(dr);
             gridScrn.DataSource = dt;
         }
 
