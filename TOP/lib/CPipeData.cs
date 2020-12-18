@@ -9,6 +9,7 @@ namespace TOP.lib
 {
     public class CPipeData
     {
+
         private DataTable data1;//누가거리	지반고	관저고	관경	맨홀	TEXT1	TEXT2	구간	구배	INV	SIZE	라인명	지하수위	맨홀INVERT
         private DataTable data2;//측점	INV	SIZE	TEXT	BoxT1	BoxT2	BoxT3
         private DataTable data3; //포장 측점, 포장구간
@@ -46,6 +47,9 @@ namespace TOP.lib
         public int Data3RowIndex { get => data3RowIndex; set => data3RowIndex = value; }
     }
 
+    /// <summary>
+    /// PipeTool 출력 데이터를 관리하는 매니져 
+    /// </summary>
     public class CPipeDataMngr
     {
         private List<CPipeData> data;

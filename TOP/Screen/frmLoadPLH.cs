@@ -27,15 +27,9 @@ namespace TOP.Screen
             String FileName;
             String Extension;
             String RLine;
-           
-            
-
 
             CPLHMngr PLHMngr = new CPLHMngr();
             
-
-
-
             XtraOpenFileDialog Opendlg;
             using (Opendlg = new XtraOpenFileDialog())
             {
@@ -56,18 +50,12 @@ namespace TOP.Screen
 
                             if (ddt != null)
                             {
-                                
-
                                 CPLHData PLHData = new CPLHData();
                                 PLHData.FileName = Path.GetFileNameWithoutExtension(strFileName);
                                 PLHData.PLDLineData = ddt;
                                 PLHMngr.AddPLDData(PLHData);
-
                             }
-
                         }
-                            
-
                         using (StreamReader SR = new StreamReader(strFileName, Encoding.Default, true))
                         {
 

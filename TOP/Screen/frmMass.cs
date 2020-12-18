@@ -21,12 +21,19 @@ namespace TOP.Screen
             InitializeComponent();
         }
 
+        /// <summary>
+        /// DATA1 버튼
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             string filename = "";
 
             splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
-            
+
+
+            string sheetname = "";
 
             try
             {
@@ -40,7 +47,7 @@ namespace TOP.Screen
                 foreach (Worksheet item in workbook.Worksheets)
                 {
                     int nRow = item.GetUsedRange().RowCount;
-
+                    sheetname = item.Name;
 
                     IEnumerable<Cell> searchResult = ExcelDataSourceExtension.FindCell(item, "측점");
 
@@ -98,7 +105,7 @@ namespace TOP.Screen
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(sheetname + "::" + ex.Message);
             }
             finally
             {
@@ -125,7 +132,8 @@ namespace TOP.Screen
             {
                 orig.Rows[i]["맨홀규격"] = ext.Rows[i]["맨홀규격"];
                 orig.Rows[i]["굴착공법"] = ext.Rows[i]["굴착공법"];
-                orig.Rows[i]["Column3"] = ext.Rows[i]["Column3"];
+                //orig.Rows[i]["Column3"] = ext.Rows[i]["Column3"];
+                orig.Rows[i]["굴착장비"] = ext.Rows[i]["굴착장비"];
                 orig.Rows[i]["포장종류"] = ext.Rows[i]["포장종류"];
             }
 
@@ -134,6 +142,7 @@ namespace TOP.Screen
 
 
 
+        //DATA2 ADD
         private void simpleButton2_Click(object sender, EventArgs e)
         {
 
@@ -337,6 +346,16 @@ namespace TOP.Screen
 
                 foreach (DataRow pipeRow in item.Data1.Rows)
                 {
+                    if (item.SheetName == "A")
+                    {
+                        string sss = "aaaa";
+                    }
+
+                    if (item.SheetName == "A1")
+                    {
+                        string sss = "aaaa";
+                    }
+
                     CMassData massData = MassMngr.Data.Find(x => x.SheetName == item.SheetName);
 
                     if (massData == null)
@@ -347,6 +366,7 @@ namespace TOP.Screen
                     //string strSearch = string.Format("{0}='{1}'", "지반고", pipeRow["지반고"]);
                     //DataRow[] searchRow = massData.Data.Select(strSearch);
 
+                    
                     nPipeCnt += -1;
                     // massData.Rows[nPipeCnt];
                     //LINENAME NO	지반고	관저고	계획고	육상(토사)	육상(풍화암)	육상(연암)	수중(토사)	수중(풍화암)	수중(연암)	관상부	
@@ -395,7 +415,8 @@ namespace TOP.Screen
                     dr["관경"] = pipeRow["관경"];
                     dr["맨홀규격"] = pipeRow["맨홀규격"];
                     dr["굴착공법"] = pipeRow["굴착공법"];
-                    dr["Column3"] = pipeRow["Column3"];
+                    //dr["Column3"] = pipeRow["Column3"];
+                    dr["굴착장비"] = pipeRow["굴착장비"];
                     dr["포장종류"] = pipeRow["포장종류"];
 
 
@@ -445,6 +466,10 @@ namespace TOP.Screen
         }
 
 
+        /// <summary>
+        /// 토적표를 출력한다.
+        /// </summary>
+        /// <param name="dt"></param>
         private void PrintMass(DataTable dt)
         {
             
@@ -463,6 +488,24 @@ namespace TOP.Screen
             int nCol = 0;
 
             string nLine = "";
+
+
+            //Header 출력
+            sheet.Rows[0]["C"].SetValue("LINENAME");
+            sheet.Rows[0]["D"].SetValue("No.");
+            sheet.Rows[0]["I"].SetValue("누가거리");
+            sheet.Rows[0]["J"].SetValue("거리");
+            sheet.Rows[0]["K"].SetValue("육상(토사)");
+            sheet.Rows[0]["M"].SetValue("수중(토사)");
+            sheet.Rows[0]["W"].SetValue("관주위");
+            sheet.Rows[0]["Y"].SetValue("관상부");
+            sheet.Rows[0]["AA"].SetValue("모래부설");
+
+            sheet.Rows[0]["AJ"].SetValue("ASP절단");
+            sheet.Rows[0]["AK"].SetValue("ASP");
+            sheet.Rows[0]["AM"].SetValue("보조기층");
+            sheet.Rows[0]["AR"].SetValue("CONC");
+            sheet.Rows[0]["AT"].SetValue("보조기층");
 
             foreach (DataRow Row in dt.Rows)
             {
@@ -504,6 +547,7 @@ namespace TOP.Screen
                    
                     sheet.Rows[nIndex]["J"].Formula = String.Format("= I{0} - I{1}", nIndex+1 , nIndex);
                 }
+               
 
                 sheet.Rows[nIndex]["K"].SetValue(Convert.ToDecimal(Row["육상(토사)"]));
                 sheet.Rows[nIndex]["L"].Formula = String.Format("= ROUND((K{0}+K{1})/2*$J{2}, 2)", nIndex , nIndex+1, nIndex+1);  //ROUND((K4+K5)/2*$J5,2)
@@ -516,6 +560,9 @@ namespace TOP.Screen
                 sheet.Rows[nIndex]["Z"].Formula = String.Format("= ROUND((Y{0}+Y{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);  //ROUND((K4+K5)/2*$J5,2)
                 sheet.Rows[nIndex]["AA"].SetValue(Convert.ToDecimal(Row["모래부설"]));
                 sheet.Rows[nIndex]["AB"].Formula = String.Format("= ROUND((AA{0}+AA{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);  //ROUND((K4+K5)/2*$J5,2)
+
+
+               
 
                 //ASP절단    
                 sheet.Rows[nIndex]["AJ"].Formula = String.Format("= IF(AK{0} = 0, 0, $J{1} *2)", nIndex + 1, nIndex + 1); // = IF(AD5 = 0, 0,$J5 * 2)
@@ -547,6 +594,10 @@ namespace TOP.Screen
                     }
                 }
 
+                sheet.Rows[0]["BH"].SetValue("보도블럭");
+                sheet.Rows[0]["BL"].SetValue("보조기층");
+                sheet.Rows[0]["BN"].SetValue("덧씌우기");
+                sheet.Rows[0]["BS"].SetValue("굴착장비");
 
 
                 //보도블럭
@@ -572,7 +623,8 @@ namespace TOP.Screen
                     sheet.Rows[nIndex]["BO"].Formula = String.Format("= ROUND((BN{0}+BN{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
                 }
                 //장비
-                sheet.Rows[nIndex]["BS"].SetValue(Row["Column3"].ToString());
+                //sheet.Rows[nIndex]["BS"].SetValue(Row["Column3"].ToString());
+                sheet.Rows[nIndex]["BS"].SetValue(Row["굴착장비"].ToString());
 
                 //sheet.Cells[nIndex, nCol++].SetValue(Row["지반고"].ToString());
                 //sheet.Cells[nIndex, nCol++].SetValue(Row["관저고"].ToString());
@@ -905,7 +957,8 @@ namespace TOP.Screen
                 sheet.Rows[nIndex]["H"].Formula = String.Format("=F{0}+0.4", nIndex + 1); //H
                 sheet.Rows[nIndex]["I"].SetValue ( Row["맨홀규격"].ToString());
                 sheet.Rows[nIndex]["J"].SetValue ( Row["굴착공법"].ToString());
-                sheet.Rows[nIndex]["K"].SetValue ( Row["Column3"].ToString());  //굴착장비
+                //sheet.Rows[nIndex]["K"].SetValue ( Row["Column3"].ToString());  //굴착장비
+                sheet.Rows[nIndex]["K"].SetValue( Row["굴착장비"].ToString());  //굴착장비
                 sheet.Rows[nIndex]["L"].SetValue ( Row["포장종류"].ToString());
 
 

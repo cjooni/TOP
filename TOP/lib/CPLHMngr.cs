@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -34,6 +35,11 @@ namespace TOP.lib
             PLHDataList = new List<CPLHData>();
         }
 
+        /// <summary>
+        /// PLH 정보를 List에 추가한다. 
+        /// 파일명이 KEY
+        /// </summary>
+        /// <param name="Data"></param>
         public void AddPLHData(CPLHData Data)
         {
           
@@ -47,6 +53,11 @@ namespace TOP.lib
             }
         }
 
+        /// <summary>
+        /// PLD 정보를 List에 추가한다.
+        /// 파일명이 KEY
+        /// </summary>
+        /// <param name="Data"></param>
         public void AddPLDData(CPLHData Data)
         {
 
@@ -59,6 +70,7 @@ namespace TOP.lib
                 PLHDataList.Add(Data);
             }
         }
+
 
         public void AddPLDLineData(CPLHData Data)
         {
@@ -198,6 +210,18 @@ namespace TOP.lib
             {
                 CPipeToolData PIpeData = new CPipeToolData();
                 PIpeData.FileName = item.FileName;
+
+                //PLH, PLD 데이터는 동시에 존재해야 한다. 
+                //없다면 오류 
+                DataTable plhData = PLHMngr.PLHDataList.Find(x => x.FileName == item.FileName).PLHData;
+                if (plhData == null)
+                {
+                    XtraMessageBox.Show(item.FileName + "이 없습니다.");
+                    return;
+                }
+
+                DataTable pldLineData = PLHMngr.PLHDataList.Find(x => x.FileName == item.FileName).PLDLineData;
+
                 PIpeData.Data1 = ParsePLH(item.FileName);
                 PIpeData.Data2 = ParsePLD(item.FileName);
 
@@ -247,6 +271,8 @@ namespace TOP.lib
         /// <returns></returns>
         public DataTable ParsePLD(string fileName)
         {
+            
+
             DataTable pldData = PLHMngr.PLHDataList.Find(x => x.FileName == fileName).PLDData;
 
             String strLineName = "";

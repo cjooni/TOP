@@ -30,130 +30,130 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMass));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.spread3 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
-            this.spread2 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.spreadsheetFormulaBar6 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.spread6 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.spreadsheetFormulaBar5 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
             this.spread4 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.spreadsheetFormulaBar4 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.spread3 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.spreadsheetFormulaBar3 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.spread2 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.spreadsheetFormulaBar2 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
             this.spread1 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.spreadsheetFormulaBar1 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.spread5 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.spreadsheetFormulaBar7 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.spread7 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
-            this.sprread3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::TOP.Screen.WaitForm1), true, true);
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.sprread3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.spread5 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup5 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.spread6 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
-            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
-            this.layoutControlGroup8 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spread7 = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
-            this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spreadsheetFormulaBar1 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
-            this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spreadsheetFormulaBar2 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
-            this.layoutControlItem22 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spreadsheetFormulaBar3 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
-            this.layoutControlItem23 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spreadsheetFormulaBar4 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
-            this.layoutControlItem24 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spreadsheetFormulaBar5 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
-            this.layoutControlItem25 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spreadsheetFormulaBar6 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
             this.layoutControlItem26 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.spreadsheetFormulaBar7 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
-            this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroup7 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::TOP.Screen.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
+            this.layoutControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
+            this.layoutControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sprread3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sprread3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
-            this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
-            this.layoutControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -185,46 +185,241 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1146, 573);
+            this.layoutControl1.Size = new System.Drawing.Size(1146, 574);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // spread3
+            // spreadsheetFormulaBar6
             // 
-            this.spread3.Location = new System.Drawing.Point(24, 137);
-            this.spread3.Name = "spread3";
-            this.spread3.Size = new System.Drawing.Size(1098, 412);
-            this.spread3.TabIndex = 11;
-            this.spread3.Text = "spreadsheetControl1";
+            this.spreadsheetFormulaBar6.Location = new System.Drawing.Point(24, 94);
+            this.spreadsheetFormulaBar6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar6.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar6.Name = "spreadsheetFormulaBar6";
+            this.spreadsheetFormulaBar6.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar6.SpreadsheetControl = this.spread6;
+            this.spreadsheetFormulaBar6.TabIndex = 25;
             // 
-            // spread2
+            // spread6
             // 
-            this.spread2.Location = new System.Drawing.Point(24, 137);
-            this.spread2.Name = "spread2";
-            this.spread2.Size = new System.Drawing.Size(1098, 412);
-            this.spread2.TabIndex = 9;
-            this.spread2.Text = "spreadsheetControl3";
+            this.spread6.Location = new System.Drawing.Point(12, 12);
+            this.spread6.Name = "spread6";
+            this.spread6.Size = new System.Drawing.Size(1074, 391);
+            this.spread6.TabIndex = 4;
+            this.spread6.Text = "spreadsheetControl1";
+            // 
+            // spreadsheetFormulaBar5
+            // 
+            this.spreadsheetFormulaBar5.Location = new System.Drawing.Point(24, 94);
+            this.spreadsheetFormulaBar5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar5.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar5.Name = "spreadsheetFormulaBar5";
+            this.spreadsheetFormulaBar5.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar5.SpreadsheetControl = this.spread4;
+            this.spreadsheetFormulaBar5.TabIndex = 24;
             // 
             // spread4
             // 
-            this.spread4.Location = new System.Drawing.Point(24, 137);
+            this.spread4.Location = new System.Drawing.Point(24, 135);
             this.spread4.Name = "spread4";
-            this.spread4.Size = new System.Drawing.Size(1098, 412);
+            this.spread4.Size = new System.Drawing.Size(1098, 415);
             this.spread4.TabIndex = 8;
             this.spread4.Text = "spreadsheetControl2";
             // 
+            // spreadsheetFormulaBar4
+            // 
+            this.spreadsheetFormulaBar4.Location = new System.Drawing.Point(24, 94);
+            this.spreadsheetFormulaBar4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar4.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar4.Name = "spreadsheetFormulaBar4";
+            this.spreadsheetFormulaBar4.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar4.SpreadsheetControl = this.spread3;
+            this.spreadsheetFormulaBar4.TabIndex = 23;
+            // 
+            // spread3
+            // 
+            this.spread3.Location = new System.Drawing.Point(24, 135);
+            this.spread3.Name = "spread3";
+            this.spread3.Size = new System.Drawing.Size(1098, 415);
+            this.spread3.TabIndex = 11;
+            this.spread3.Text = "spreadsheetControl1";
+            // 
+            // spreadsheetFormulaBar3
+            // 
+            this.spreadsheetFormulaBar3.Location = new System.Drawing.Point(24, 94);
+            this.spreadsheetFormulaBar3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar3.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar3.Name = "spreadsheetFormulaBar3";
+            this.spreadsheetFormulaBar3.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar3.SpreadsheetControl = this.spread2;
+            this.spreadsheetFormulaBar3.TabIndex = 22;
+            // 
+            // spread2
+            // 
+            this.spread2.Location = new System.Drawing.Point(24, 135);
+            this.spread2.Name = "spread2";
+            this.spread2.Size = new System.Drawing.Size(1098, 415);
+            this.spread2.TabIndex = 9;
+            this.spread2.Text = "spreadsheetControl3";
+            // 
+            // spreadsheetFormulaBar2
+            // 
+            this.spreadsheetFormulaBar2.Location = new System.Drawing.Point(24, 94);
+            this.spreadsheetFormulaBar2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar2.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar2.Name = "spreadsheetFormulaBar2";
+            this.spreadsheetFormulaBar2.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar2.SpreadsheetControl = this.spread1;
+            this.spreadsheetFormulaBar2.TabIndex = 21;
+            // 
             // spread1
             // 
-            this.spread1.Location = new System.Drawing.Point(24, 137);
+            this.spread1.Location = new System.Drawing.Point(24, 135);
             this.spread1.Name = "spread1";
-            this.spread1.Size = new System.Drawing.Size(1098, 412);
+            this.spread1.Size = new System.Drawing.Size(1098, 415);
             this.spread1.TabIndex = 5;
             this.spread1.Text = "spreadsheetControl1";
+            // 
+            // spreadsheetFormulaBar1
+            // 
+            this.spreadsheetFormulaBar1.Location = new System.Drawing.Point(24, 94);
+            this.spreadsheetFormulaBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar1.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar1.Name = "spreadsheetFormulaBar1";
+            this.spreadsheetFormulaBar1.Size = new System.Drawing.Size(1098, 37);
+            this.spreadsheetFormulaBar1.SpreadsheetControl = this.spread5;
+            this.spreadsheetFormulaBar1.TabIndex = 20;
+            // 
+            // spread5
+            // 
+            this.spread5.Location = new System.Drawing.Point(24, 135);
+            this.spread5.Name = "spread5";
+            this.spread5.Size = new System.Drawing.Size(1098, 415);
+            this.spread5.TabIndex = 13;
+            this.spread5.Text = "spreadsheetControl1";
+            // 
+            // layoutControl3
+            // 
+            this.layoutControl3.Controls.Add(this.spreadsheetFormulaBar7);
+            this.layoutControl3.Controls.Add(this.spread7);
+            this.layoutControl3.Controls.Add(this.simpleButton10);
+            this.layoutControl3.Location = new System.Drawing.Point(24, 54);
+            this.layoutControl3.Name = "layoutControl3";
+            this.layoutControl3.Root = this.layoutControlGroup8;
+            this.layoutControl3.Size = new System.Drawing.Size(1098, 496);
+            this.layoutControl3.TabIndex = 5;
+            this.layoutControl3.Text = "layoutControl3";
+            // 
+            // spreadsheetFormulaBar7
+            // 
+            this.spreadsheetFormulaBar7.Expanded = true;
+            this.spreadsheetFormulaBar7.Location = new System.Drawing.Point(12, 52);
+            this.spreadsheetFormulaBar7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spreadsheetFormulaBar7.MinimumSize = new System.Drawing.Size(0, 37);
+            this.spreadsheetFormulaBar7.Name = "spreadsheetFormulaBar7";
+            this.spreadsheetFormulaBar7.Size = new System.Drawing.Size(1074, 38);
+            this.spreadsheetFormulaBar7.SpreadsheetControl = this.spread7;
+            this.spreadsheetFormulaBar7.TabIndex = 6;
+            // 
+            // spread7
+            // 
+            this.spread7.Location = new System.Drawing.Point(12, 94);
+            this.spread7.Name = "spread7";
+            this.spread7.Size = new System.Drawing.Size(1074, 390);
+            this.spread7.TabIndex = 5;
+            this.spread7.Text = "spreadsheetControl1";
+            // 
+            // simpleButton10
+            // 
+            this.simpleButton10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton10.ImageOptions.Image")));
+            this.simpleButton10.Location = new System.Drawing.Point(927, 12);
+            this.simpleButton10.Name = "simpleButton10";
+            this.simpleButton10.Size = new System.Drawing.Size(159, 36);
+            this.simpleButton10.StyleController = this.layoutControl3;
+            this.simpleButton10.TabIndex = 4;
+            this.simpleButton10.Text = "EXCEL 저장";
+            this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
+            // 
+            // layoutControlGroup8
+            // 
+            this.layoutControlGroup8.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup8.GroupBordersVisible = false;
+            this.layoutControlGroup8.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem18,
+            this.layoutControlItem19,
+            this.emptySpaceItem7,
+            this.layoutControlItem27});
+            this.layoutControlGroup8.Name = "layoutControlGroup8";
+            this.layoutControlGroup8.Size = new System.Drawing.Size(1098, 496);
+            this.layoutControlGroup8.TextVisible = false;
+            // 
+            // layoutControlItem18
+            // 
+            this.layoutControlItem18.Control = this.simpleButton10;
+            this.layoutControlItem18.Location = new System.Drawing.Point(915, 0);
+            this.layoutControlItem18.Name = "layoutControlItem18";
+            this.layoutControlItem18.Size = new System.Drawing.Size(163, 40);
+            this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem18.TextVisible = false;
+            // 
+            // layoutControlItem19
+            // 
+            this.layoutControlItem19.Control = this.spread7;
+            this.layoutControlItem19.Location = new System.Drawing.Point(0, 82);
+            this.layoutControlItem19.Name = "layoutControlItem19";
+            this.layoutControlItem19.Size = new System.Drawing.Size(1078, 394);
+            this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem19.TextVisible = false;
+            // 
+            // emptySpaceItem7
+            // 
+            this.emptySpaceItem7.AllowHotTrack = false;
+            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 0);
+            this.emptySpaceItem7.Name = "emptySpaceItem7";
+            this.emptySpaceItem7.Size = new System.Drawing.Size(915, 40);
+            this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem27
+            // 
+            this.layoutControlItem27.Control = this.spreadsheetFormulaBar7;
+            this.layoutControlItem27.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem27.Name = "layoutControlItem27";
+            this.layoutControlItem27.Size = new System.Drawing.Size(1078, 42);
+            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem27.TextVisible = false;
+            // 
+            // layoutControl2
+            // 
+            this.layoutControl2.Controls.Add(this.spread6);
+            this.layoutControl2.Location = new System.Drawing.Point(24, 135);
+            this.layoutControl2.Name = "layoutControl2";
+            this.layoutControl2.Root = this.layoutControlGroup6;
+            this.layoutControl2.Size = new System.Drawing.Size(1098, 415);
+            this.layoutControl2.TabIndex = 5;
+            this.layoutControl2.Text = "layoutControl2";
+            // 
+            // layoutControlGroup6
+            // 
+            this.layoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup6.GroupBordersVisible = false;
+            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem16});
+            this.layoutControlGroup6.Name = "layoutControlGroup6";
+            this.layoutControlGroup6.Size = new System.Drawing.Size(1098, 415);
+            this.layoutControlGroup6.TextVisible = false;
+            // 
+            // layoutControlItem16
+            // 
+            this.layoutControlItem16.Control = this.spread6;
+            this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem16.Name = "layoutControlItem16";
+            this.layoutControlItem16.Size = new System.Drawing.Size(1078, 395);
+            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem16.TextVisible = false;
             // 
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(896, 56);
+            this.simpleButton1.Location = new System.Drawing.Point(896, 54);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(226, 36);
             this.simpleButton1.StyleController = this.layoutControl1;
@@ -235,7 +430,7 @@
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(895, 56);
+            this.simpleButton2.Location = new System.Drawing.Point(895, 54);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(227, 36);
             this.simpleButton2.StyleController = this.layoutControl1;
@@ -246,7 +441,7 @@
             // simpleButton3
             // 
             this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(837, 56);
+            this.simpleButton3.Location = new System.Drawing.Point(837, 54);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(285, 36);
             this.simpleButton3.StyleController = this.layoutControl1;
@@ -257,7 +452,7 @@
             // simpleButton4
             // 
             this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
-            this.simpleButton4.Location = new System.Drawing.Point(356, 56);
+            this.simpleButton4.Location = new System.Drawing.Point(356, 54);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(182, 36);
             this.simpleButton4.StyleController = this.layoutControl1;
@@ -268,13 +463,68 @@
             // simpleButton5
             // 
             this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(542, 56);
+            this.simpleButton5.Location = new System.Drawing.Point(542, 54);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(122, 36);
             this.simpleButton5.StyleController = this.layoutControl1;
             this.simpleButton5.TabIndex = 12;
             this.simpleButton5.Text = "토적표 생성";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // simpleButton6
+            // 
+            this.simpleButton6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
+            this.simpleButton6.Location = new System.Drawing.Point(890, 54);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(232, 36);
+            this.simpleButton6.StyleController = this.layoutControl1;
+            this.simpleButton6.TabIndex = 15;
+            this.simpleButton6.Text = "EXCEL 저장";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.ImageOptions.Image")));
+            this.simpleButton7.Location = new System.Drawing.Point(668, 54);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(177, 36);
+            this.simpleButton7.StyleController = this.layoutControl1;
+            this.simpleButton7.TabIndex = 16;
+            this.simpleButton7.Text = "간이흙막이연장조서";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.ImageOptions.Image")));
+            this.simpleButton8.Location = new System.Drawing.Point(849, 54);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(102, 36);
+            this.simpleButton8.StyleController = this.layoutControl1;
+            this.simpleButton8.TabIndex = 17;
+            this.simpleButton8.Text = "맨홀조서";
+            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
+            // 
+            // simpleButton9
+            // 
+            this.simpleButton9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.ImageOptions.Image")));
+            this.simpleButton9.Location = new System.Drawing.Point(947, 54);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(175, 36);
+            this.simpleButton9.StyleController = this.layoutControl1;
+            this.simpleButton9.TabIndex = 18;
+            this.simpleButton9.Text = "EXCEL저장";
+            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
+            // 
+            // simpleButton11
+            // 
+            this.simpleButton11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton11.ImageOptions.Image")));
+            this.simpleButton11.Location = new System.Drawing.Point(955, 54);
+            this.simpleButton11.Name = "simpleButton11";
+            this.simpleButton11.Size = new System.Drawing.Size(167, 36);
+            this.simpleButton11.StyleController = this.layoutControl1;
+            this.simpleButton11.TabIndex = 19;
+            this.simpleButton11.Text = "구조물공 맨홀조서";
+            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
             // 
             // Root
             // 
@@ -283,15 +533,15 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.tabbedControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1146, 573);
+            this.Root.Size = new System.Drawing.Size(1146, 574);
             this.Root.TextVisible = false;
             // 
             // tabbedControlGroup1
             // 
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
-            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup7;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(1126, 553);
+            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup3;
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(1126, 554);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1,
             this.layoutControlGroup2,
@@ -300,120 +550,6 @@
             this.layoutControlGroup4,
             this.layoutControlGroup5,
             this.layoutControlGroup7});
-            // 
-            // sprread3
-            // 
-            this.sprread3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem4,
-            this.layoutControlItem5,
-            this.emptySpaceItem3,
-            this.layoutControlItem25});
-            this.sprread3.Location = new System.Drawing.Point(0, 0);
-            this.sprread3.Name = "sprread3";
-            this.sprread3.Size = new System.Drawing.Size(1102, 497);
-            this.sprread3.Text = "토적표";
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.simpleButton3;
-            this.layoutControlItem4.Location = new System.Drawing.Point(813, 0);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(289, 40);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.spread4;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 81);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1102, 416);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
-            // emptySpaceItem3
-            // 
-            this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 0);
-            this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(813, 40);
-            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem2,
-            this.emptySpaceItem1,
-            this.layoutControlItem22});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1102, 497);
-            this.layoutControlGroup1.Text = "Data1";
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.simpleButton1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(872, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(230, 40);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.spread1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 81);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1102, 416);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(872, 40);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // layoutControlGroup2
-            // 
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem3,
-            this.layoutControlItem6,
-            this.emptySpaceItem2,
-            this.layoutControlItem23});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1102, 497);
-            this.layoutControlGroup2.Text = "Data2";
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.simpleButton2;
-            this.layoutControlItem3.Location = new System.Drawing.Point(871, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(231, 40);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.spread2;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 81);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(1102, 416);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 0);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(871, 40);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup3
             // 
@@ -428,7 +564,7 @@
             this.layoutControlItem24});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(1102, 497);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(1102, 500);
             this.layoutControlGroup3.Text = "토적Data";
             // 
             // layoutControlItem7
@@ -445,7 +581,7 @@
             this.layoutControlItem8.Control = this.spread3;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(1102, 416);
+            this.layoutControlItem8.Size = new System.Drawing.Size(1102, 419);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
@@ -466,9 +602,182 @@
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
-            // splashScreenManager1
+            // layoutControlItem11
             // 
-            this.splashScreenManager1.ClosingDelay = 500;
+            this.layoutControlItem11.Control = this.simpleButton7;
+            this.layoutControlItem11.Location = new System.Drawing.Point(644, 0);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(181, 40);
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem11.TextVisible = false;
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.simpleButton8;
+            this.layoutControlItem13.Location = new System.Drawing.Point(825, 0);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(106, 40);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem13.TextVisible = false;
+            // 
+            // layoutControlItem20
+            // 
+            this.layoutControlItem20.Control = this.simpleButton11;
+            this.layoutControlItem20.Location = new System.Drawing.Point(931, 0);
+            this.layoutControlItem20.Name = "layoutControlItem20";
+            this.layoutControlItem20.Size = new System.Drawing.Size(171, 40);
+            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem20.TextVisible = false;
+            // 
+            // layoutControlItem24
+            // 
+            this.layoutControlItem24.Control = this.spreadsheetFormulaBar4;
+            this.layoutControlItem24.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem24.Name = "layoutControlItem24";
+            this.layoutControlItem24.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem24.TextVisible = false;
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.emptySpaceItem1,
+            this.layoutControlItem22});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1102, 500);
+            this.layoutControlGroup1.Text = "Data1";
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.simpleButton1;
+            this.layoutControlItem1.Location = new System.Drawing.Point(872, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(230, 40);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.spread1;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 81);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(1102, 419);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 0);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(872, 40);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem22
+            // 
+            this.layoutControlItem22.Control = this.spreadsheetFormulaBar2;
+            this.layoutControlItem22.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem22.Name = "layoutControlItem22";
+            this.layoutControlItem22.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem22.TextVisible = false;
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem3,
+            this.layoutControlItem6,
+            this.emptySpaceItem2,
+            this.layoutControlItem23});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1102, 500);
+            this.layoutControlGroup2.Text = "Data2";
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.simpleButton2;
+            this.layoutControlItem3.Location = new System.Drawing.Point(871, 0);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(231, 40);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.spread2;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 81);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(1102, 419);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 0);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(871, 40);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem23
+            // 
+            this.layoutControlItem23.Control = this.spreadsheetFormulaBar3;
+            this.layoutControlItem23.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem23.Name = "layoutControlItem23";
+            this.layoutControlItem23.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem23.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem23.TextVisible = false;
+            // 
+            // sprread3
+            // 
+            this.sprread3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem4,
+            this.layoutControlItem5,
+            this.emptySpaceItem3,
+            this.layoutControlItem25});
+            this.sprread3.Location = new System.Drawing.Point(0, 0);
+            this.sprread3.Name = "sprread3";
+            this.sprread3.Size = new System.Drawing.Size(1102, 500);
+            this.sprread3.Text = "토적표";
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.Control = this.simpleButton3;
+            this.layoutControlItem4.Location = new System.Drawing.Point(813, 0);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(289, 40);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.Control = this.spread4;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 81);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(1102, 419);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
+            // 
+            // emptySpaceItem3
+            // 
+            this.emptySpaceItem3.AllowHotTrack = false;
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 0);
+            this.emptySpaceItem3.Name = "emptySpaceItem3";
+            this.emptySpaceItem3.Size = new System.Drawing.Size(813, 40);
+            this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem25
+            // 
+            this.layoutControlItem25.Control = this.spreadsheetFormulaBar5;
+            this.layoutControlItem25.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem25.Name = "layoutControlItem25";
+            this.layoutControlItem25.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem25.TextVisible = false;
             // 
             // layoutControlGroup4
             // 
@@ -479,36 +788,17 @@
             this.layoutControlItem21});
             this.layoutControlGroup4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(1102, 497);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(1102, 500);
             this.layoutControlGroup4.Text = "간이흙막이연장조서";
-            // 
-            // spread5
-            // 
-            this.spread5.Location = new System.Drawing.Point(24, 137);
-            this.spread5.Name = "spread5";
-            this.spread5.Size = new System.Drawing.Size(1098, 412);
-            this.spread5.TabIndex = 13;
-            this.spread5.Text = "spreadsheetControl1";
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.spread5;
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(1102, 416);
+            this.layoutControlItem10.Size = new System.Drawing.Size(1102, 419);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
-            this.simpleButton6.Location = new System.Drawing.Point(890, 56);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(232, 36);
-            this.simpleButton6.StyleController = this.layoutControl1;
-            this.simpleButton6.TabIndex = 15;
-            this.simpleButton6.Text = "EXCEL 저장";
-            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // layoutControlItem12
             // 
@@ -527,45 +817,14 @@
             this.emptySpaceItem5.Size = new System.Drawing.Size(866, 40);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // simpleButton7
+            // layoutControlItem21
             // 
-            this.simpleButton7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.ImageOptions.Image")));
-            this.simpleButton7.Location = new System.Drawing.Point(668, 56);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(177, 36);
-            this.simpleButton7.StyleController = this.layoutControl1;
-            this.simpleButton7.TabIndex = 16;
-            this.simpleButton7.Text = "간이흙막이연장조서";
-            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.Control = this.simpleButton7;
-            this.layoutControlItem11.Location = new System.Drawing.Point(644, 0);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(181, 40);
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem11.TextVisible = false;
-            // 
-            // simpleButton8
-            // 
-            this.simpleButton8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.ImageOptions.Image")));
-            this.simpleButton8.Location = new System.Drawing.Point(849, 56);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(102, 36);
-            this.simpleButton8.StyleController = this.layoutControl1;
-            this.simpleButton8.TabIndex = 17;
-            this.simpleButton8.Text = "맨홀조서";
-            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
-            // 
-            // layoutControlItem13
-            // 
-            this.layoutControlItem13.Control = this.simpleButton8;
-            this.layoutControlItem13.Location = new System.Drawing.Point(825, 0);
-            this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(106, 40);
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem13.TextVisible = false;
+            this.layoutControlItem21.Control = this.spreadsheetFormulaBar1;
+            this.layoutControlItem21.Location = new System.Drawing.Point(0, 40);
+            this.layoutControlItem21.Name = "layoutControlItem21";
+            this.layoutControlItem21.Size = new System.Drawing.Size(1102, 41);
+            this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem21.TextVisible = false;
             // 
             // layoutControlGroup5
             // 
@@ -576,48 +835,17 @@
             this.layoutControlItem26});
             this.layoutControlGroup5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(1102, 497);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(1102, 500);
             this.layoutControlGroup5.Text = "맨홀조서";
-            // 
-            // layoutControl2
-            // 
-            this.layoutControl2.Controls.Add(this.spread6);
-            this.layoutControl2.Location = new System.Drawing.Point(24, 137);
-            this.layoutControl2.Name = "layoutControl2";
-            this.layoutControl2.Root = this.layoutControlGroup6;
-            this.layoutControl2.Size = new System.Drawing.Size(1098, 412);
-            this.layoutControl2.TabIndex = 5;
-            this.layoutControl2.Text = "layoutControl2";
-            // 
-            // layoutControlGroup6
-            // 
-            this.layoutControlGroup6.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup6.GroupBordersVisible = false;
-            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem16});
-            this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(1098, 412);
-            this.layoutControlGroup6.TextVisible = false;
             // 
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.layoutControl2;
             this.layoutControlItem14.Location = new System.Drawing.Point(0, 81);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(1102, 416);
+            this.layoutControlItem14.Size = new System.Drawing.Size(1102, 419);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextVisible = false;
-            // 
-            // simpleButton9
-            // 
-            this.simpleButton9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.ImageOptions.Image")));
-            this.simpleButton9.Location = new System.Drawing.Point(947, 56);
-            this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(175, 36);
-            this.simpleButton9.StyleController = this.layoutControl1;
-            this.simpleButton9.TabIndex = 18;
-            this.simpleButton9.Text = "EXCEL저장";
-            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
             // 
             // layoutControlItem15
             // 
@@ -636,236 +864,6 @@
             this.emptySpaceItem6.Size = new System.Drawing.Size(923, 40);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // spread6
-            // 
-            this.spread6.Location = new System.Drawing.Point(12, 12);
-            this.spread6.Name = "spread6";
-            this.spread6.Size = new System.Drawing.Size(1074, 388);
-            this.spread6.TabIndex = 4;
-            this.spread6.Text = "spreadsheetControl1";
-            // 
-            // layoutControlItem16
-            // 
-            this.layoutControlItem16.Control = this.spread6;
-            this.layoutControlItem16.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(1078, 392);
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem16.TextVisible = false;
-            // 
-            // layoutControlGroup7
-            // 
-            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem17});
-            this.layoutControlGroup7.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Size = new System.Drawing.Size(1102, 497);
-            this.layoutControlGroup7.Text = "구조물공 맨홀조서";
-            // 
-            // layoutControl3
-            // 
-            this.layoutControl3.Controls.Add(this.spreadsheetFormulaBar7);
-            this.layoutControl3.Controls.Add(this.spread7);
-            this.layoutControl3.Controls.Add(this.simpleButton10);
-            this.layoutControl3.Location = new System.Drawing.Point(24, 56);
-            this.layoutControl3.Name = "layoutControl3";
-            this.layoutControl3.Root = this.layoutControlGroup8;
-            this.layoutControl3.Size = new System.Drawing.Size(1098, 493);
-            this.layoutControl3.TabIndex = 5;
-            this.layoutControl3.Text = "layoutControl3";
-            // 
-            // layoutControlGroup8
-            // 
-            this.layoutControlGroup8.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup8.GroupBordersVisible = false;
-            this.layoutControlGroup8.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem18,
-            this.layoutControlItem19,
-            this.emptySpaceItem7,
-            this.layoutControlItem27});
-            this.layoutControlGroup8.Name = "layoutControlGroup8";
-            this.layoutControlGroup8.Size = new System.Drawing.Size(1098, 493);
-            this.layoutControlGroup8.TextVisible = false;
-            // 
-            // layoutControlItem17
-            // 
-            this.layoutControlItem17.Control = this.layoutControl3;
-            this.layoutControlItem17.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(1102, 497);
-            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem17.TextVisible = false;
-            // 
-            // simpleButton10
-            // 
-            this.simpleButton10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton10.ImageOptions.Image")));
-            this.simpleButton10.Location = new System.Drawing.Point(927, 12);
-            this.simpleButton10.Name = "simpleButton10";
-            this.simpleButton10.Size = new System.Drawing.Size(159, 36);
-            this.simpleButton10.StyleController = this.layoutControl3;
-            this.simpleButton10.TabIndex = 4;
-            this.simpleButton10.Text = "EXCEL 저장";
-            this.simpleButton10.Click += new System.EventHandler(this.simpleButton10_Click);
-            // 
-            // layoutControlItem18
-            // 
-            this.layoutControlItem18.Control = this.simpleButton10;
-            this.layoutControlItem18.Location = new System.Drawing.Point(915, 0);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(163, 40);
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem18.TextVisible = false;
-            // 
-            // spread7
-            // 
-            this.spread7.Location = new System.Drawing.Point(12, 93);
-            this.spread7.Name = "spread7";
-            this.spread7.Size = new System.Drawing.Size(1074, 388);
-            this.spread7.TabIndex = 5;
-            this.spread7.Text = "spreadsheetControl1";
-            // 
-            // layoutControlItem19
-            // 
-            this.layoutControlItem19.Control = this.spread7;
-            this.layoutControlItem19.Location = new System.Drawing.Point(0, 81);
-            this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(1078, 392);
-            this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem19.TextVisible = false;
-            // 
-            // emptySpaceItem7
-            // 
-            this.emptySpaceItem7.AllowHotTrack = false;
-            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 0);
-            this.emptySpaceItem7.Name = "emptySpaceItem7";
-            this.emptySpaceItem7.Size = new System.Drawing.Size(915, 40);
-            this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // simpleButton11
-            // 
-            this.simpleButton11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton11.ImageOptions.Image")));
-            this.simpleButton11.Location = new System.Drawing.Point(955, 56);
-            this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(167, 36);
-            this.simpleButton11.StyleController = this.layoutControl1;
-            this.simpleButton11.TabIndex = 19;
-            this.simpleButton11.Text = "구조물공 맨홀조서";
-            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
-            // 
-            // layoutControlItem20
-            // 
-            this.layoutControlItem20.Control = this.simpleButton11;
-            this.layoutControlItem20.Location = new System.Drawing.Point(931, 0);
-            this.layoutControlItem20.Name = "layoutControlItem20";
-            this.layoutControlItem20.Size = new System.Drawing.Size(171, 40);
-            this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem20.TextVisible = false;
-            // 
-            // spreadsheetFormulaBar1
-            // 
-            this.spreadsheetFormulaBar1.Location = new System.Drawing.Point(24, 96);
-            this.spreadsheetFormulaBar1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.spreadsheetFormulaBar1.MinimumSize = new System.Drawing.Size(0, 37);
-            this.spreadsheetFormulaBar1.Name = "spreadsheetFormulaBar1";
-            this.spreadsheetFormulaBar1.Size = new System.Drawing.Size(1098, 37);
-            this.spreadsheetFormulaBar1.SpreadsheetControl = this.spread5;
-            this.spreadsheetFormulaBar1.TabIndex = 20;
-            // 
-            // layoutControlItem21
-            // 
-            this.layoutControlItem21.Control = this.spreadsheetFormulaBar1;
-            this.layoutControlItem21.Location = new System.Drawing.Point(0, 40);
-            this.layoutControlItem21.Name = "layoutControlItem21";
-            this.layoutControlItem21.Size = new System.Drawing.Size(1102, 41);
-            this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem21.TextVisible = false;
-            // 
-            // spreadsheetFormulaBar2
-            // 
-            this.spreadsheetFormulaBar2.Location = new System.Drawing.Point(24, 96);
-            this.spreadsheetFormulaBar2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.spreadsheetFormulaBar2.MinimumSize = new System.Drawing.Size(0, 37);
-            this.spreadsheetFormulaBar2.Name = "spreadsheetFormulaBar2";
-            this.spreadsheetFormulaBar2.Size = new System.Drawing.Size(1098, 37);
-            this.spreadsheetFormulaBar2.SpreadsheetControl = this.spread1;
-            this.spreadsheetFormulaBar2.TabIndex = 21;
-            // 
-            // layoutControlItem22
-            // 
-            this.layoutControlItem22.Control = this.spreadsheetFormulaBar2;
-            this.layoutControlItem22.Location = new System.Drawing.Point(0, 40);
-            this.layoutControlItem22.Name = "layoutControlItem22";
-            this.layoutControlItem22.Size = new System.Drawing.Size(1102, 41);
-            this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem22.TextVisible = false;
-            // 
-            // spreadsheetFormulaBar3
-            // 
-            this.spreadsheetFormulaBar3.Location = new System.Drawing.Point(24, 96);
-            this.spreadsheetFormulaBar3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.spreadsheetFormulaBar3.MinimumSize = new System.Drawing.Size(0, 37);
-            this.spreadsheetFormulaBar3.Name = "spreadsheetFormulaBar3";
-            this.spreadsheetFormulaBar3.Size = new System.Drawing.Size(1098, 37);
-            this.spreadsheetFormulaBar3.SpreadsheetControl = this.spread2;
-            this.spreadsheetFormulaBar3.TabIndex = 22;
-            // 
-            // layoutControlItem23
-            // 
-            this.layoutControlItem23.Control = this.spreadsheetFormulaBar3;
-            this.layoutControlItem23.Location = new System.Drawing.Point(0, 40);
-            this.layoutControlItem23.Name = "layoutControlItem23";
-            this.layoutControlItem23.Size = new System.Drawing.Size(1102, 41);
-            this.layoutControlItem23.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem23.TextVisible = false;
-            // 
-            // spreadsheetFormulaBar4
-            // 
-            this.spreadsheetFormulaBar4.Location = new System.Drawing.Point(24, 96);
-            this.spreadsheetFormulaBar4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.spreadsheetFormulaBar4.MinimumSize = new System.Drawing.Size(0, 37);
-            this.spreadsheetFormulaBar4.Name = "spreadsheetFormulaBar4";
-            this.spreadsheetFormulaBar4.Size = new System.Drawing.Size(1098, 37);
-            this.spreadsheetFormulaBar4.SpreadsheetControl = this.spread3;
-            this.spreadsheetFormulaBar4.TabIndex = 23;
-            // 
-            // layoutControlItem24
-            // 
-            this.layoutControlItem24.Control = this.spreadsheetFormulaBar4;
-            this.layoutControlItem24.Location = new System.Drawing.Point(0, 40);
-            this.layoutControlItem24.Name = "layoutControlItem24";
-            this.layoutControlItem24.Size = new System.Drawing.Size(1102, 41);
-            this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem24.TextVisible = false;
-            // 
-            // spreadsheetFormulaBar5
-            // 
-            this.spreadsheetFormulaBar5.Location = new System.Drawing.Point(24, 96);
-            this.spreadsheetFormulaBar5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.spreadsheetFormulaBar5.MinimumSize = new System.Drawing.Size(0, 37);
-            this.spreadsheetFormulaBar5.Name = "spreadsheetFormulaBar5";
-            this.spreadsheetFormulaBar5.Size = new System.Drawing.Size(1098, 37);
-            this.spreadsheetFormulaBar5.SpreadsheetControl = this.spread4;
-            this.spreadsheetFormulaBar5.TabIndex = 24;
-            // 
-            // layoutControlItem25
-            // 
-            this.layoutControlItem25.Control = this.spreadsheetFormulaBar5;
-            this.layoutControlItem25.Location = new System.Drawing.Point(0, 40);
-            this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(1102, 41);
-            this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem25.TextVisible = false;
-            // 
-            // spreadsheetFormulaBar6
-            // 
-            this.spreadsheetFormulaBar6.Location = new System.Drawing.Point(24, 96);
-            this.spreadsheetFormulaBar6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.spreadsheetFormulaBar6.MinimumSize = new System.Drawing.Size(0, 37);
-            this.spreadsheetFormulaBar6.Name = "spreadsheetFormulaBar6";
-            this.spreadsheetFormulaBar6.Size = new System.Drawing.Size(1098, 37);
-            this.spreadsheetFormulaBar6.SpreadsheetControl = this.spread6;
-            this.spreadsheetFormulaBar6.TabIndex = 25;
-            // 
             // layoutControlItem26
             // 
             this.layoutControlItem26.Control = this.spreadsheetFormulaBar6;
@@ -875,24 +873,27 @@
             this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem26.TextVisible = false;
             // 
-            // spreadsheetFormulaBar7
+            // layoutControlGroup7
             // 
-            this.spreadsheetFormulaBar7.Location = new System.Drawing.Point(12, 52);
-            this.spreadsheetFormulaBar7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.spreadsheetFormulaBar7.MinimumSize = new System.Drawing.Size(0, 37);
-            this.spreadsheetFormulaBar7.Name = "spreadsheetFormulaBar7";
-            this.spreadsheetFormulaBar7.Size = new System.Drawing.Size(1074, 37);
-            this.spreadsheetFormulaBar7.SpreadsheetControl = this.spread7;
-            this.spreadsheetFormulaBar7.TabIndex = 6;
+            this.layoutControlGroup7.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem17});
+            this.layoutControlGroup7.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup7.Name = "layoutControlGroup7";
+            this.layoutControlGroup7.Size = new System.Drawing.Size(1102, 500);
+            this.layoutControlGroup7.Text = "구조물공 맨홀조서";
             // 
-            // layoutControlItem27
+            // layoutControlItem17
             // 
-            this.layoutControlItem27.Control = this.spreadsheetFormulaBar7;
-            this.layoutControlItem27.Location = new System.Drawing.Point(0, 40);
-            this.layoutControlItem27.Name = "layoutControlItem27";
-            this.layoutControlItem27.Size = new System.Drawing.Size(1078, 41);
-            this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem27.TextVisible = false;
+            this.layoutControlItem17.Control = this.layoutControl3;
+            this.layoutControlItem17.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem17.Name = "layoutControlItem17";
+            this.layoutControlItem17.Size = new System.Drawing.Size(1102, 500);
+            this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem17.TextVisible = false;
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // frmMass
             // 
@@ -905,55 +906,55 @@
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
+            this.layoutControl3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
+            this.layoutControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sprread3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sprread3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
-            this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
-            this.layoutControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

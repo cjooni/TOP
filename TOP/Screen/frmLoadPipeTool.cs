@@ -12,6 +12,7 @@ using DevExpress.XtraEditors;
 using DevExpress.DataAccess.Excel;
 using TOP.lib;
 using DevExpress.XtraWaitForm;
+using System.Linq;
 
 namespace TOP.Screen
 {
@@ -75,6 +76,12 @@ namespace TOP.Screen
         }
 
 
+        /// <summary>
+        /// Excel Sheet의 데이터를 DataTable로 변환한다.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="range"></param>
+        /// <returns></returns>
         private DataTable GetDataTable(Worksheet item, string range)
         {
             ExcelDataSource Eds = new ExcelDataSource();
@@ -127,6 +134,15 @@ namespace TOP.Screen
                     {
                         continue;
                     }
+
+                    if (item.Name.Contains("Sheet1") == true)
+                    {
+                        continue;
+                    }
+
+
+                    ///파이프 툴의 출력 Field를 관리하는 Range를 지정
+                    ///
                     CPipeData Data = new CPipeData();
                     Data.SheetName = item.Name;
                     Data.Data1Position = "B3:AN3";
@@ -136,7 +152,7 @@ namespace TOP.Screen
                     Data.Data3RowIndex = 2;
               
 
-                    //Data2의 시작 위치를 찾아볼까
+                    //Data2 Search 하기 위한 옵션 설정 
                     SearchOptions options = new SearchOptions();
                     options.SearchBy = SearchBy.Columns;
                     options.SearchIn = SearchIn.Values;
@@ -154,6 +170,7 @@ namespace TOP.Screen
                    // Data.Data3 = GetDataTable(item, Data.Data3Position);
 
                     IEnumerable<Cell> searchResult = item.Search("측점", options);
+                    //Sheet의 Data 중 "측점"의 위치를 찾아 Data 범위값을 설정한다.
                     foreach (Cell cell in searchResult)
                     {
                         if (cell.ColumnIndex != 1)
@@ -161,10 +178,12 @@ namespace TOP.Screen
                             continue;
                         }
                       
+                        ///기본 Pipe 정보는 B3:AN [측점이 관측된 RowIndex -1]
                         strPos1 = string.Format("{0}{1}:{2}{3}", "B", 3, "AN", cell.RowIndex - 1);
 
+                        //전체 Row와 측점이 관측된 위치가 같다면 측점 이후 데이터가 없어용 
                         if (nRow == cell.RowIndex + 1)
-                        {
+                        {                            
                             strPos2 = string.Format("{0}{1}:{2}{3}", "B", cell.RowIndex + 1, "H", nRow);
                         }
                         else
@@ -181,27 +200,28 @@ namespace TOP.Screen
                         Data.ManholeDt = GetManholeData1(Data.Data1);
                     }
 
-                    ////포장측점이 있는지 찾는다.
-                    //IEnumerable<Cell> searchResult2 = item.Search("포장측점", options);
-                    //foreach (Cell cell in searchResult2)
-                    //{
-                
-             
-                    //    strPos3 = string.Format("{0}{1}:{2}{3}", "AQ", 3, "AR", nRow - 1);                
-                    //    Data.Data3 = GetDataTable(item, strPos3);
-                
-                    //}
+                    //포장측점이 있는지 찾는다.
+                    IEnumerable<Cell> searchResult2 = item.Search("포장측점", options);
+                    foreach (Cell cell in searchResult2)
+                    {
+                        strPos3 = string.Format("{0}{1}:{2}{3}", "AQ", 3, "AR", nRow - 1);
+                        Data.Data3 = GetDataTable(item, strPos3);
+                    }
 
+                    //막서 데이터로 변환을 해봅시다.
+                    //Data 는 Sheet의 통합정보
                     MakeFLO(Data);
                     PipeMngr.Add(Data);
-
                 }
-
 
                 DataTable MaxerDt = PipeMngr.GetMaxerInputData();
 
                 adGridView1.PopulateColumns(MaxerDt);
                 gridControl1.DataSource = MaxerDt;
+
+               
+                ///TreeData를 만들어보자 
+               // MakeTreeData(MaxerDt);
 
             }
             catch (Exception ex)
@@ -215,6 +235,85 @@ namespace TOP.Screen
                 splashScreenManager1.CloseWaitForm();
             }
 
+            
+
+        }
+
+        /// <summary>
+        /// 생성된 Maxer 데이터로 Tree를 만들어보자 
+        /// </summary>
+        /// <returns></returns>
+        private DataTable MakeTreeData(DataTable maxer_dt)
+        {
+            try
+            {
+
+                DataTable tree_dt = new DataTable();
+                tree_dt.Columns.Add("PARENT", typeof(string));
+                tree_dt.Columns.Add("KEY", typeof(string));
+                tree_dt.Columns.Add("FROM_LINE", typeof(string));
+                tree_dt.Columns.Add("TO_LINE", typeof(string));
+
+
+                
+
+                //from line 쪽을 구한다. 
+                var qryFromLine = (from d in maxer_dt.AsEnumerable()
+                           select new
+                           {
+                               FROM_LINE = d.Field<string>("FROM_LINE")
+                           }).Distinct();
+
+                DataTable from_dt = CUtil.LinqQueryToDataTable(qryFromLine);
+
+                
+                //to line 쪽을 구한다.
+                var qryToLine = (from d in maxer_dt.AsEnumerable()
+                            select new
+                            {
+                                TO_LINE = d.Field<string>("TO_LINE")
+                            }).Distinct();
+
+                DataTable to_dt = CUtil.LinqQueryToDataTable(qryToLine);
+
+                //from_dt 쪽에 있고 To_dt쪽에도 있다면 root 누드에 기입할 필요가 없다.
+                foreach (DataRow item in to_dt.Rows)
+                {
+
+                    string expression = string.Format("FROM_LINE = '{0}'", item["TO_LINE"].ToString());
+                 
+                    DataRow[]  del_rows = from_dt.Select(expression);
+
+                    foreach (DataRow  del_item in del_rows)
+                    {
+                        from_dt.Rows.Remove(del_item);
+                    }
+                }
+                /// 요기까지 오면 from_dt에는 순수하게 root 노드에 연결되야 하는 line만 존재하게 됨 
+
+                foreach (DataRow item in maxer_dt.Rows)
+                {
+                    //string expression = string.Format("FROM_LINE = '{0}'", item["FROM_LINE"].ToString());
+
+                    //from_dt.Select(expression);
+
+                    tree_dt.Rows.Add(item["FROM_LINE"], item["TO_LINE"].ToString().Trim(), item["FROM_LINE"], item["TO_LINE"].ToString().Trim());
+                }
+
+                treeList1.ParentFieldName = "PARENT";
+                treeList1.KeyFieldName = "KEY";
+                treeList1.DataSource = tree_dt;
+
+                treeList1.PopulateColumns();
+
+
+                return tree_dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+           
         }
 
         private DataTable GetManholeData1(DataTable data)
@@ -274,8 +373,14 @@ namespace TOP.Screen
             return dt;
         }
 
+        /// <summary>
+        /// Pipe Tool  정보를 Maxer format으로 변환한다.
+        /// </summary>
+        /// <param name="PipeData"></param>
         private void MakeFLO(CPipeData PipeData)
         {
+
+            //막서 데이터포 변환하기 위한 Table 생성
             DataTable Dt = new DataTable();
             Dt.Columns.Add("FROM_LINE");
             Dt.Columns.Add("TO_LINE");
@@ -294,7 +399,7 @@ namespace TOP.Screen
             Dt.Columns.Add("지장물");
             DataTable data = PipeData.ManholeDt;
 
-
+            
             for (int i = 0; i < data.Rows.Count; i++)
             {
                if (data.Rows.Count -1  == i)
@@ -315,6 +420,7 @@ namespace TOP.Screen
                 dr["T관저고"] = data.Rows[i+1]["관저고"];
                 dr["지반고"] = data.Rows[i]["지반고"];
                 dr["하류지반고"] = data.Rows[i+1]["지반고"];
+
                 if (data.Rows[i]["관경"] == data.Rows[i+1]["관경"])
                 {
                     dr["관경"] = data.Rows[i]["관경"];
@@ -363,6 +469,12 @@ namespace TOP.Screen
             return xData;
         }
 
+        /// <summary>
+        /// 포장 정보를 찾는다.
+        /// </summary>
+        /// <param name="Data"></param>
+        /// <param name="Dr"></param>
+        /// <returns></returns>
         public string GetGData(CPipeData Data, DataRow Dr)
         {
             string gData = "";

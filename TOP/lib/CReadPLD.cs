@@ -10,6 +10,7 @@ namespace TOP.lib
 {
     public static class CReadPLD
     {
+        ///PLD의 LINE 데이터를 관리한다. 
         public static DataTable ReadPLD_Line(string strFileName)
         {
 
@@ -32,15 +33,21 @@ namespace TOP.lib
                         continue;
                     }
 
+                    ///파일을 읽다가 -99 가 나오는지 확인 
                     if (RLine.Substring(0, 3) == "-99")
                     {
                         chk99 = true;
                         continue;
                     }
 
+                    
+                    //99가 나오면 관로 정보 인식 
                     if (chk99)
                     {
                         tCnt = Convert.ToDecimal(RLine.Substring(0, 5).ToString());
+
+
+
 
                         if (tCnt > 0)
                         {

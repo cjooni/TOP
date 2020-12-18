@@ -17,11 +17,15 @@ using System.Windows.Forms;
 using System.IO;
 using DevExpress.XtraSplashScreen;
 using TOP.Screen;
+using System.Reflection;
 
 namespace TOP.lib
 {
     public static class ExcelDataSourceExtension
     {
+
+    
+
         /// <summary>
         /// ExcelDataSource 를 데이터 테이블로 변환한다.
         /// </summary>
@@ -233,7 +237,7 @@ namespace TOP.lib
 
                         ///EXCEL DATA를 Load 한다.
                         spreadsheet.LoadDocument(stream, DocumentFormat.Xlsx);
-                       
+                       // spreadsheet.LoadDocument()
                     }
 
                     
@@ -253,5 +257,54 @@ namespace TOP.lib
 
             return filename;
         }
+
+        /// <summary>
+        /// List 형태를 DataTable로 변환한다.
+        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        public static DataTable LinqQueryToDataTable(IEnumerable<dynamic> v)
+        {
+            var firstRecord = v.FirstOrDefault();
+            if (firstRecord == null)
+            {
+                return null;
+            }
+
+            PropertyInfo[] infos = firstRecord.GetType().GetProperties();
+
+            DataTable table = new DataTable();
+
+            foreach (var info in infos)
+            {
+                Type propType = info.PropertyType;
+
+                if (propType.IsGenericType && propType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                {
+                    table.Columns.Add(info.Name, Nullable.GetUnderlyingType(propType));
+                }
+                else
+                {
+                    table.Columns.Add(info.Name, info.PropertyType);
+                }
+            }
+
+            DataRow row;
+
+            foreach (var record in v)
+            {
+                row = table.NewRow();
+                for (int i = 0; i < table.Columns.Count; i++)
+                {
+                    row[i] = infos[i].GetValue(record) != null ? infos[i].GetValue(record) : DBNull.Value;
+                }
+                table.Rows.Add(row);
+            }
+
+            table.AcceptChanges();
+
+            return table;
+        }
+
     }
 }

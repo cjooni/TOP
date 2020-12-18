@@ -61,7 +61,7 @@ namespace TOP.Parent
             {
                 if (this.Parent.GetType() == typeof(XtraTabPage))
                 {
-                    LoadChkDataEvent(GridView);
+                   // LoadChkDataEvent(GridView);
                 }
             }
             catch (Exception ex)

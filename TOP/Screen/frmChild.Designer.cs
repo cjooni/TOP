@@ -211,28 +211,28 @@
             // 
             // edtProjectCd
             // 
-            this.edtProjectCd.Location = new System.Drawing.Point(109, 10);
-            this.edtProjectCd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.edtProjectCd.Location = new System.Drawing.Point(110, 12);
+            this.edtProjectCd.Margin = new System.Windows.Forms.Padding(4);
             this.edtProjectCd.Name = "edtProjectCd";
-            this.edtProjectCd.Size = new System.Drawing.Size(148, 26);
+            this.edtProjectCd.Size = new System.Drawing.Size(146, 26);
             this.edtProjectCd.StyleController = this.layoutControl2;
             this.edtProjectCd.TabIndex = 4;
             // 
             // edtProjectNm
             // 
-            this.edtProjectNm.Location = new System.Drawing.Point(109, 40);
-            this.edtProjectNm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.edtProjectNm.Location = new System.Drawing.Point(110, 42);
+            this.edtProjectNm.Margin = new System.Windows.Forms.Padding(4);
             this.edtProjectNm.Name = "edtProjectNm";
-            this.edtProjectNm.Size = new System.Drawing.Size(148, 26);
+            this.edtProjectNm.Size = new System.Drawing.Size(146, 26);
             this.edtProjectNm.StyleController = this.layoutControl2;
             this.edtProjectNm.TabIndex = 5;
             // 
             // edtUserNm
             // 
-            this.edtUserNm.Location = new System.Drawing.Point(109, 70);
-            this.edtUserNm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.edtUserNm.Location = new System.Drawing.Point(110, 72);
+            this.edtUserNm.Margin = new System.Windows.Forms.Padding(4);
             this.edtUserNm.Name = "edtUserNm";
-            this.edtUserNm.Size = new System.Drawing.Size(148, 26);
+            this.edtUserNm.Size = new System.Drawing.Size(146, 26);
             this.edtUserNm.StyleController = this.layoutControl2;
             this.edtUserNm.TabIndex = 6;
             // 
@@ -253,7 +253,7 @@
             this.layoutControlItem3.Control = this.edtProjectCd;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(250, 30);
+            this.layoutControlItem3.Size = new System.Drawing.Size(248, 30);
             this.layoutControlItem3.Text = "프로젝트 코드";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(95, 20);
             // 
@@ -262,7 +262,7 @@
             this.layoutControlItem4.Control = this.edtProjectNm;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 30);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(250, 30);
+            this.layoutControlItem4.Size = new System.Drawing.Size(248, 30);
             this.layoutControlItem4.Text = "프로젝트 명";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(95, 20);
             // 
@@ -271,7 +271,7 @@
             this.layoutControlItem5.Control = this.edtUserNm;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 60);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(250, 622);
+            this.layoutControlItem5.Size = new System.Drawing.Size(248, 618);
             this.layoutControlItem5.Text = "사용자 명";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(95, 20);
             // 
@@ -301,11 +301,11 @@
             this.gridScrn.DataMember = null;
             this.gridScrn.DataSource = this.sqlDSPrjScrn;
             this.gridScrn.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gridScrn.Location = new System.Drawing.Point(11, 10);
+            this.gridScrn.Location = new System.Drawing.Point(12, 12);
             this.gridScrn.MainView = this.viewScrn;
-            this.gridScrn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridScrn.Margin = new System.Windows.Forms.Padding(4);
             this.gridScrn.Name = "gridScrn";
-            this.gridScrn.Size = new System.Drawing.Size(249, 686);
+            this.gridScrn.Size = new System.Drawing.Size(247, 682);
             this.gridScrn.TabIndex = 5;
             this.gridScrn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewScrn});
@@ -408,7 +408,7 @@
             this.layoutControlItem6.Control = this.gridScrn;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(253, 690);
+            this.layoutControlItem6.Size = new System.Drawing.Size(251, 686);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
@@ -426,7 +426,7 @@
             this.layoutControl3.Controls.Add(this.gridChkList);
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl3.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.layoutControl3.Margin = new System.Windows.Forms.Padding(4);
             this.layoutControl3.Name = "layoutControl3";
             this.layoutControl3.Root = this.layoutControlGroup2;
             this.layoutControl3.Size = new System.Drawing.Size(268, 698);
@@ -436,13 +436,13 @@
             // gridChkList
             // 
             this.gridChkList.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.gridChkList.Location = new System.Drawing.Point(11, 10);
+            this.gridChkList.Location = new System.Drawing.Point(12, 12);
             this.gridChkList.MainView = this.gridView2;
-            this.gridChkList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridChkList.Margin = new System.Windows.Forms.Padding(4);
             this.gridChkList.Name = "gridChkList";
             this.gridChkList.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.gridChkList.Size = new System.Drawing.Size(246, 678);
+            this.gridChkList.Size = new System.Drawing.Size(244, 674);
             this.gridChkList.TabIndex = 1;
             this.gridChkList.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -514,7 +514,7 @@
             this.layoutControlItem2.Control = this.gridChkList;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(250, 682);
+            this.layoutControlItem2.Size = new System.Drawing.Size(248, 678);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -540,17 +540,17 @@
             this.xtraTabPage1.Controls.Add(this.simpleButton2);
             this.xtraTabPage1.Margin = new System.Windows.Forms.Padding(1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(941, 762);
+            this.xtraTabPage1.Size = new System.Drawing.Size(941, 764);
             this.xtraTabPage1.Text = "xtraTabPage1";
             // 
             // gridControl1
             // 
             this.gridControl1.DataMember = "USR01M00";
             this.gridControl1.DataSource = this.sqlDataSource1;
-            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl1.Location = new System.Drawing.Point(76, 251);
             this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gridControl1.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.Size = new System.Drawing.Size(705, 286);
             this.gridControl1.TabIndex = 1;
@@ -705,7 +705,7 @@
             // simpleButton2
             // 
             this.simpleButton2.Location = new System.Drawing.Point(17, 18);
-            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(257, 84);
             this.simpleButton2.TabIndex = 0;
@@ -716,7 +716,7 @@
             // 
             this.xtraTabPage2.Margin = new System.Windows.Forms.Padding(1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(941, 762);
+            this.xtraTabPage2.Size = new System.Drawing.Size(941, 764);
             this.xtraTabPage2.Text = "xtraTabPage2";
             // 
             // frmChild
