@@ -87,7 +87,6 @@ namespace TOP.lib
             dt.Columns.Add("관경", typeof(string));
             dt.Columns.Add("맨홀규격", typeof(string));
             dt.Columns.Add("굴착공법", typeof(string));
-            //dt.Columns.Add("Column3", typeof(string));
             dt.Columns.Add("굴착장비", typeof(string));
             dt.Columns.Add("포장종류", typeof(string));
 

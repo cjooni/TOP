@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace TOP.lib
 {
+    /// <summary>
+    /// 토적 Data를 Load하여 관리합니다.
+    /// Sheet 별로 Data Table화 하여 관리합니다.
+    /// </summary>
     public class CMassData
     {
         private string sheetName;

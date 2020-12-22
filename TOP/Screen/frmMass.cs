@@ -1,9 +1,11 @@
 ﻿using DevExpress.Spreadsheet;
+using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TOP.lib;
@@ -23,6 +25,7 @@ namespace TOP.Screen
 
         /// <summary>
         /// DATA1 버튼
+        /// Pipe 툴 데이터를 불러옵니다.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -35,6 +38,7 @@ namespace TOP.Screen
 
             string sheetname = "";
 
+            ///엑셀을 불러와 봅시다. 
             try
             {
                
@@ -43,12 +47,12 @@ namespace TOP.Screen
                 splashScreenManager1.ShowWaitForm();
                 IWorkbook workbook = spread1.Document;
 
-
+                //불러온 EXCEL을 Data화 해봅니다.
                 foreach (Worksheet item in workbook.Worksheets)
                 {
                     int nRow = item.GetUsedRange().RowCount;
                     sheetname = item.Name;
-
+                    
                     IEnumerable<Cell> searchResult = ExcelDataSourceExtension.FindCell(item, "측점");
 
                     string strPos2;
@@ -62,8 +66,12 @@ namespace TOP.Screen
                             continue;
                         }
 
+
+                        //PIPE Data를 구성합니다. 
+
                         CPipeData Data = new CPipeData();
                         Data.SheetName = item.Name;
+                        Data.Pipe_type = item.GetCellValue(8, 1).ToString(); //관종 설정
                         Data.Data1Position = "B3:AN3";
                         Data.Data1RowIndex = 2;
 
@@ -88,6 +96,7 @@ namespace TOP.Screen
                         Data.Data2Position = strPos2;
                         Data.Data2RowIndex = cell.RowIndex;
 
+                        
                         Data.Data1 = ExcelDataSourceExtension.ExcelToDataSource(filename, item, strPos1);
                         Data.Data2 = ExcelDataSourceExtension.ExcelToDataSource(filename, item, strPos2);
                         DataTable extend = ExcelDataSourceExtension.ExcelToDataSource(filename, item, strPos3);
@@ -102,6 +111,14 @@ namespace TOP.Screen
                 }
 
                 int nCnt = PipeMngr.Data.Count;
+                //요기서 PipeTool에서 나온 데이터로 맨홀별 구간 정보를 만들어 봅시다. 
+
+                ///PipeData를 모두 Load 하고 나면 이걸 가지고 맨홀 구간 정보를 만들어야 해요
+                ///맨홀 구간 정보는 여러모로 필요한데요 특히, 집계 정보에 사용되지만 중간 정보가 없어서 
+                ///아주 애를 먹어요 
+                DataTable 맨홀구간_dt = MakeManholeSection2();
+                PipeMngr.맨홀구간정보 = 맨홀구간_dt;
+                Print맨홀구간();
             }
             catch (Exception ex)
             {
@@ -114,7 +131,68 @@ namespace TOP.Screen
            
         }
 
-        private void SetExtend(DataTable orig, DataTable ext)
+        private void Print맨홀구간()
+        {
+            IWorkbook workbook = spread맨홀구간.Document;
+            Worksheet sheet = workbook.Worksheets[0];
+
+            DataTable dt = PipeMngr.맨홀구간정보;
+            
+
+
+            try
+            {
+                spread맨홀구간.BeginUpdate();
+
+                int colidx = 0;
+                foreach (DataColumn item in dt.Columns)
+                {
+                    sheet.Cells[0, colidx].SetValue(item.ColumnName);
+                    colidx++;
+
+                }
+
+                int row_idx = 1;
+                int col_idx = 0;
+
+                foreach (DataRow dr  in dt.Rows)
+                {
+                    sheet.Cells[row_idx, 0].SetValue(dr["INDEX"]);
+                    sheet.Cells[row_idx, 1].SetValue(dr["LINENAME"]);
+                    sheet.Cells[row_idx, 2].SetValue(dr["관종"]);
+                    sheet.Cells[row_idx, 3].SetValue(dr["맨홀"]);
+                    sheet.Cells[row_idx, 4].SetValue(dr["관경"]);
+                    sheet.Cells[row_idx, 5].SetValue(dr["맨홀규격"]);
+                    sheet.Cells[row_idx, 6].SetValue(dr["시작위치"]);
+                    sheet.Cells[row_idx, 7].SetValue(dr["종료위치"]);
+                    sheet.Cells[row_idx, 8].SetValue(dr["구간거리"]);
+
+                    row_idx++;
+                }
+
+
+                spread맨홀구간.EndUpdate();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                spread맨홀구간.EndUpdate();
+            }
+
+        }
+
+
+            /// <summary>
+            /// 포장 측점과, 포장명을 기존 파이툴 생성 데이터에 추가해요
+            /// </summary>
+            /// <param name="orig"></param>
+            /// <param name="ext"></param>
+            private void SetExtend(DataTable orig, DataTable ext)
         {
 
           
@@ -132,14 +210,10 @@ namespace TOP.Screen
             {
                 orig.Rows[i]["맨홀규격"] = ext.Rows[i]["맨홀규격"];
                 orig.Rows[i]["굴착공법"] = ext.Rows[i]["굴착공법"];
-                //orig.Rows[i]["Column3"] = ext.Rows[i]["Column3"];
                 orig.Rows[i]["굴착장비"] = ext.Rows[i]["굴착장비"];
                 orig.Rows[i]["포장종류"] = ext.Rows[i]["포장종류"];
             }
-
         }
-
-
 
 
         //DATA2 ADD
@@ -211,6 +285,8 @@ namespace TOP.Screen
                     }
 
                 }
+
+               
             }
             catch (Exception ex)
             {
@@ -220,10 +296,384 @@ namespace TOP.Screen
             {
                 splashScreenManager1.CloseWaitForm();
             }
-
-            
         }
 
+
+        /// <summary>
+        /// Pipe Tool 데이터로 맨홀 구간정보를 만들어요 
+        /// </summary>
+        /// <param name="Pipe_dt"></param>
+        /// <returns></returns>
+        private DataTable MakeManholeSection2()
+        {
+
+
+            ///맨홀 구간 정보를 관리할 Table layout을 만들어 봅시다. 
+            var qry_tmp = from a in PipeMngr.Data[0].Data1.AsEnumerable()
+                          select new
+                          {
+                              INDEX = 0
+                             ,
+                              LINENAME = "LINENAME"
+                             ,
+                              관종 = "관종"
+                             ,
+                              맨홀 = a.Field<string>("맨홀")
+                             ,
+                              관경 = a.Field<double>("관경")
+                             ,
+                              맨홀규격 = a.Field<string>("맨홀규격")
+                             ,
+                              시작위치 = 0.00
+                             ,
+                              종료위치 = 0.00
+                             ,
+                              구간거리 = 0.00
+                          };
+
+
+            DataTable qry_man = CUtil.LinqQueryToDataTable(qry_tmp).Clone();
+            DataColumn[] dtkey = new DataColumn[6];
+            dtkey[0] = qry_man.Columns["LINENAME"];
+            dtkey[1] = qry_man.Columns["관종"];
+            dtkey[2] = qry_man.Columns["맨홀"];
+            dtkey[3] = qry_man.Columns["관경"];
+            dtkey[4] = qry_man.Columns["맨홀규격"];
+            dtkey[5] = qry_man.Columns["시작위치"];
+
+            qry_man.PrimaryKey = dtkey;
+
+            int row_idx = 0;
+
+            foreach (CPipeData PipeData in PipeMngr.Data)
+            {
+
+                //pipe DATA 중 맨홀 정보만 뽑아내 보아요
+                //관경이 기준이에요 
+
+                var qry = from a in PipeData.Data1.AsEnumerable()
+                          select new
+                          {
+                              LINENAME = PipeData.SheetName
+                          ,
+                              관종 = PipeData.Pipe_type
+                          ,
+                              맨홀 = a.Field<string>("맨홀")
+                          ,
+                              관경 = a.Field<double>("관경")
+                          ,
+                              맨홀규격 = a.Field<string>("맨홀규격")
+                          ,
+                              누가거리 = a.Field<double>("누가거리")
+                          };
+
+
+                DataTable qry_dt = CUtil.LinqQueryToDataTable(qry);
+
+
+
+                DataRow dr_tmp = qry_man.NewRow();
+
+                ///마지막 열까지 돌면 안되요
+                ///마지막에서 하나 뺀거 까지만 돌기로 해용
+                for (int i = 0; i < qry_dt.Rows.Count - 1; i++)
+                {
+                    
+                    DataRow dr1 = qry_dt.Rows[i];
+                    DataRow dr2 = qry_dt.Rows[i +1];
+
+
+                    string sfilter = "";
+
+                    if (dr1["맨홀"].ToString() == "M2-A-019")
+                    {
+
+                    }
+
+
+                    if (dr1["맨홀규격"].ToString() == "")
+                    {
+
+                        /// 맨홀 규격이 없는데 관종도 앞구간과 관경이 다르면 빼버리자
+                        /// 
+                        if (Convert.ToDouble(dr1["관경"]) == 160 )
+                        {
+                        }
+
+                        sfilter = string.Format("LINENAME='{0}'  AND 관종 = '{1}'  AND 관경 = {2} ",
+                                            dr1["LINENAME"].ToString()
+                                          , dr1["관종"].ToString()
+                                          , Convert.ToDouble(dr1["관경"])
+                                            //, Convert.ToDouble(dr1["누가거리"])
+                                            );
+                    }
+                    else
+                    {
+                        sfilter = string.Format("LINENAME='{0}'  AND 관종 = '{1}'  AND 관경 = {2} AND 맨홀규격 = '{3}' AND 맨홀 = '{4}'",
+                                            dr1["LINENAME"].ToString()
+                                          , dr1["관종"].ToString()
+                                          , Convert.ToDouble(dr1["관경"])
+                                          , dr1["맨홀규격"].ToString()
+                                          , dr1["맨홀"].ToString()
+                                            );
+                    }
+                    //sfilter = string.Format("LINENAME='{0}'  AND 관종 = '{1}' AND 맨홀 = '{2}' AND 관경 = {3} AND 맨홀규격 = '{4}' AND  시작위치 = {5} ",
+
+
+                    DataRow[] result = qry_man.Select(sfilter,"INDEX ASC");
+
+                    if (Convert.ToDouble(dr1["누가거리"]) <= 0)
+                    {
+                        DataRow dr = qry_man.NewRow();
+                        dr["INDEX"] = row_idx;
+                        dr["LINENAME"] = dr1["LINENAME"];
+                        dr["관종"] = dr1["관종"];
+                        dr["맨홀"] = dr1["맨홀"];
+                        dr["관경"] = dr1["관경"];
+                        dr["맨홀규격"] = dr1["맨홀규격"];
+                        dr["시작위치"] = dr1["누가거리"];
+                        dr["종료위치"] = dr2["누가거리"];
+                        dr["구간거리"] = Convert.ToDouble(dr2["누가거리"]) - Convert.ToDouble(dr1["누가거리"]);
+                        
+                        qry_man.Rows.Add(dr);
+                        row_idx++;
+
+                        continue;
+                    }
+                    else if (result.Count() <= 0   )
+                    {
+                        DataRow dr0 = qry_dt.Rows[i - 1];
+                        //신규로 추가 할라 그랬는데 맨홀규격도 없고 앞관로와 관경도 다르면 패쑤
+                        if (dr1["맨홀규격"].ToString() == "" )
+                        {
+                            continue;
+                        }
+
+                        DataRow dr = qry_man.NewRow();
+                        dr["INDEX"] = row_idx;
+                        dr["LINENAME"] = dr1["LINENAME"];
+                        dr["관종"] = dr1["관종"];
+                        dr["맨홀"] = dr1["맨홀"];
+                        dr["관경"] = dr1["관경"];
+                        dr["맨홀규격"] = dr1["맨홀규격"];
+                        dr["시작위치"] = dr1["누가거리"];
+                        dr["종료위치"] = dr2["누가거리"];
+                        dr["구간거리"] = Convert.ToDouble(dr2["누가거리"]) - Convert.ToDouble(dr1["누가거리"]);
+
+
+                        qry_man.Rows.Add(dr);
+                        row_idx++;
+                    }
+                    else
+                    {
+                        int nCnt = 0;
+                        nCnt = result.Count() - 1;
+
+                        DataRow dr0 = qry_dt.Rows[i - 1];
+
+                        //Update 할라 그랬는데 맨홀규격도 없고 앞관로와 관경도 다르면 패쑤
+                        if (dr1["맨홀규격"].ToString() == "" && Convert.ToDouble(result[nCnt]["관경"]) != Convert.ToDouble(dr1["관경"]))
+                        {
+                            continue;
+                        }
+
+                        result[nCnt]["종료위치"] = Convert.ToDouble(dr2["누가거리"]);
+                        result[nCnt]["구간거리"] = Convert.ToDouble(result[nCnt]["구간거리"]) + (Convert.ToDouble(dr2["누가거리"]) - Convert.ToDouble(dr1["누가거리"]));
+
+                        continue;
+                    }
+                }
+            }
+            return qry_man;
+        }
+
+
+
+        /// <summary>
+        /// Pipe Tool 데이터로 맨홀 구간정보를 만들어요 
+        /// </summary>
+        /// <param name="Pipe_dt"></param>
+        /// <returns></returns>
+        private DataTable MakeManholeSection()
+        {
+
+
+            ///맨홀 구간 정보를 관리할 Table layout을 만들어 봅시다. 
+            var qry_tmp = from a in PipeMngr.Data[0].Data1.AsEnumerable()
+                          select new
+                          {
+                              INDEX = 0
+                             ,   
+                              LINENAME = "LINENAME"
+                             ,
+                              관종 = "관종"
+                             ,
+                              맨홀 = a.Field<string>("맨홀")
+                             ,
+                              관경 = a.Field<double>("관경")
+                             ,
+                              맨홀규격 = a.Field<string>("맨홀규격")
+                             ,
+                              시작위치 = 0.00
+                             ,
+                              종료위치 = 0.00
+                             ,
+                              구간거리 = 0.00
+                          };
+
+
+            DataTable qry_man = CUtil.LinqQueryToDataTable(qry_tmp).Clone();
+            DataColumn[] dtkey = new DataColumn[6];
+            dtkey[0] = qry_man.Columns["LINENAME"];
+            dtkey[1] = qry_man.Columns["관종"];
+            dtkey[2] = qry_man.Columns["맨홀"];
+            dtkey[3] = qry_man.Columns["관경"];
+            dtkey[4] = qry_man.Columns["맨홀규격"];
+            dtkey[5] = qry_man.Columns["시작위치"];
+
+            qry_man.PrimaryKey = dtkey;
+
+            int row_idx = 0;
+
+            foreach (CPipeData PipeData in PipeMngr.Data)
+            {
+
+                //pipe DATA 중 맨홀 정보만 뽑아내 보아요
+                //관경이 기준이에요 
+
+                var qry = from a in PipeData.Data1.AsEnumerable()
+                          select new
+                          {
+                              LINENAME = PipeData.SheetName
+                          ,
+                              관종 = PipeData.Pipe_type
+                          ,
+                              맨홀 = a.Field<string>("맨홀")
+                          ,
+                              관경 = a.Field<double>("관경")
+                          ,
+                              맨홀규격 = a.Field<string>("맨홀규격")
+                          ,
+                              누가거리 = a.Field<double>("누가거리")
+                          };
+
+
+                DataTable qry_dt = CUtil.LinqQueryToDataTable(qry);
+
+
+
+                DataRow dr_tmp = qry_man.NewRow();
+
+                ///마지막 열까지 돌면 안되요
+                ///마지막에서 하나 뺀거 까지만 돌기로 해용
+                for (int i = 0; i < qry_dt.Rows.Count - 1; i++)
+                {
+
+                    DataRow dr1 = qry_dt.Rows[i];
+
+
+                    string sfilter = "";
+
+
+                    if (dr1["맨홀규격"].ToString() == "")
+                    {
+                        sfilter = string.Format("LINENAME='{0}'  AND 관종 = '{1}'  AND 관경 = {2} ",
+                                            dr1["LINENAME"].ToString()
+                                          , dr1["관종"].ToString()
+                                          , Convert.ToDouble(dr1["관경"])
+                                            //, Convert.ToDouble(dr1["누가거리"])
+                                            );
+                    }
+                    else
+                    {
+                        sfilter = string.Format("LINENAME='{0}'  AND 관종 = '{1}'  AND 관경 = {2} AND 맨홀규격 = '{3}' ",
+                                            dr1["LINENAME"].ToString()
+                                          , dr1["관종"].ToString()
+                                          , Convert.ToDouble(dr1["관경"])
+                                          , dr1["맨홀규격"].ToString()
+                                            //, Convert.ToDouble(dr1["누가거리"])
+                                            );
+                    }
+                    //sfilter = string.Format("LINENAME='{0}'  AND 관종 = '{1}' AND 맨홀 = '{2}' AND 관경 = {3} AND 맨홀규격 = '{4}' AND  시작위치 = {5} ",
+                   
+
+                    DataRow[] result = qry_man.Select(sfilter);
+
+                    if (result.Count() <= 0)
+                    {
+                        
+                        if (dr1["맨홀규격"].ToString() == "")
+                        {
+                            Console.WriteLine("SKIP  " + sfilter);
+                            continue;
+                        }
+                        
+                        DataRow dr = qry_man.NewRow();
+                        dr["INDEX"] = row_idx;
+                        dr["LINENAME"] = dr1["LINENAME"];
+                        dr["관종"] = dr1["관종"];
+                        dr["맨홀"] = dr1["맨홀"];
+                        dr["관경"] = dr1["관경"];
+                        dr["맨홀규격"] = dr1["맨홀규격"];
+                        dr["시작위치"] = dr1["누가거리"];
+                        //dr["종료위치"] = dr1["누가거리"];
+                        //dr["구간거리"] = dr1["누가거리"];
+
+                        qry_man.Rows.Add(dr);
+                        row_idx++;
+                    }
+                    else 
+                    {
+                        int nCnt = 0;
+                        nCnt = result.Count() - 1;
+
+                        if ( (dr1["맨홀"] is null  && dr1["맨홀규격"] is null ) || 
+                             (result[nCnt]["LINENAME"].ToString() == dr1["LINENAME"].ToString() && 
+                              result[nCnt]["관종"].ToString() == dr1["관종"].ToString() && 
+                              Convert.ToDouble(result[nCnt]["관경"]) == Convert.ToDouble(dr1["관경"]) && 
+                              result[nCnt]["맨홀규격"].ToString() == dr1["맨홀규격"].ToString()
+                              ) ||
+                              (result[nCnt]["LINENAME"].ToString() == dr1["LINENAME"].ToString() &&
+                              result[nCnt]["관종"].ToString() == dr1["관종"].ToString() &&
+                              Convert.ToDouble(result[nCnt]["관경"]) == Convert.ToDouble(dr1["관경"]) 
+                              )
+
+                            )
+                        {
+                            //종료위치는 구간거리의 합 
+                            //따라서 구간거리는 앞 관로의 누가거리와 현재 관로의 누가거리의 차 
+                            
+                            result[nCnt]["종료위치"] = Convert.ToDouble(dr1["누가거리"]);
+                            result[nCnt]["구간거리"] = Convert.ToDouble(result[nCnt]["종료위치"]) - Convert.ToDouble(result[nCnt]["시작위치"]);
+                        }
+                        else
+                        {
+                            DataRow dr = qry_man.NewRow();
+                            dr["INDEX"] = row_idx;
+                            dr["LINENAME"] = dr1["LINENAME"];
+                            dr["관종"] = dr1["관종"];
+                            dr["맨홀"] = dr1["맨홀"];
+                            dr["관경"] = dr1["관경"];
+                            dr["맨홀규격"] = dr1["맨홀규격"];
+                            dr["시작위치"] = dr1["누가거리"];
+                            dr["종료위치"] = dr1["누가거리"];
+                            dr["구간거리"] = dr1["누가거리"];
+
+                            qry_man.Rows.Add(dr);
+                            row_idx++;
+                        }
+                    }
+                }
+            }
+            return qry_man;
+        }
+
+
+        /// <summary>
+        /// 토적표를 Load 해요
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void simpleButton4_Click(object sender, EventArgs e)
         {
 
@@ -258,6 +708,7 @@ namespace TOP.Screen
                             continue;
                         }
 
+                        ///토적Data는 Sheet별로 DataTable을 관리하는 구조야
                         CMassData Data = new CMassData();
                         Data.SheetName = item.Name;
 
@@ -279,7 +730,6 @@ namespace TOP.Screen
 
                         MassMngr.Add(Data);
                     }
-
                 }
 
                 int nCnt = MassMngr.Data.Count;
@@ -298,6 +748,13 @@ namespace TOP.Screen
             
         }
 
+        /// <summary>
+        /// 토적표가 정렬이 안되어 있는경우가 있어요
+        /// 그래서 전단면과 후단면을 기준으로 정렬해요 
+        /// 정열 기준은 누가거리 그리고 전단면 후단면 형식이에요
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         private  DataTable 토적정렬 (DataTable data)
         {
             data.Columns.Add("누가거리", typeof(decimal));
@@ -333,11 +790,72 @@ namespace TOP.Screen
         }
 
 
+        /// <summary>
+        /// PipeTool 생성 Sheet별 Data Count와 토적데이터 Sheet별 RowCount를 비교해요
+        /// </summary>
+        /// <returns></returns>
+        private Boolean ChkBaseData()
+        {
+            if (PipeMngr.Data.Count <= 0 )
+            {
+                XtraMessageBox.Show("PIPE TOOL 데이터 Load 여부를 확인하세요", "데이터 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (MassMngr.Data.Count <= 0)
+            {
+                XtraMessageBox.Show("토적 데이터 Load 여부를 확인하세요", "데이터 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            try
+            {
+                foreach (CPipeData item in PipeMngr.Data)
+                {
+                    Console.WriteLine("SheetName is " + item.SheetName);
+
+                    CMassData massData = MassMngr.Data.Find(x => x.SheetName == item.SheetName);
+
+                    if (item.Data1.Rows.Count != massData.Data.Rows.Count)
+                    {
+                        string strmsg;
+                        strmsg = string.Format("PipeToolData와 토적데이터 비교중 Sheet{0}의 데이터 Count 가 일치하지 않습니다. 처리는 가능하지만 데이터의 적합성을 보장할 수는 없습니다.  계속 하시겠습니까?", item.SheetName);
+
+                        if (XtraMessageBox.Show(strmsg, "데이터 확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("토적 데이터 처리중 오류가 발생했습니다.", "데이터 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+                
+            }
+
+            
+            return true;
+        }
+        /// <summary>
+        /// Load 된 두개의 데이터 (PIPE TOOL과 토적 데이터) 합쳐 한개의 DataTable로 만들어요
+        /// 그런데 하다 보니까. 엑셀 데이터의 개수가 맞지 않는 경우가 생겼어요
+        /// 아마도 작업자가 빠뜨리는 경우가 생기는 듯요
+        /// 그래서 점검하는 기능이 필요한거 같아요
+        /// </summary>
         private void MakeBaseData()
         {
+            if (ChkBaseData() == false)
+            {
+                return;
+            }
+
             BaseTable = CGetTableType.GtMassData();
 
             ///전체 pipe Data가 들어있음 
+            ///파이프 데이터를 Sheet별로 Loop하면서 토적 Data를 찾아 처리하죠
             foreach (CPipeData item in PipeMngr.Data)
             {
                 InsertManhole(item.Data1);
@@ -376,6 +894,10 @@ namespace TOP.Screen
                     DataRow dr = BaseTable.NewRow();
                     dr["LINE"] = item.SheetName;
 
+                    if(item.SheetName == "SA")
+                    {
+                        string sss = "aaa";
+                    }
                     string sfilter = pipeRow["맨홀"].ToString().Substring(0, 3);
 
                     if (sfilter == "M1-" || sfilter == "M2-" || sfilter == "M3-" || sfilter == "M4-" ||
@@ -472,10 +994,8 @@ namespace TOP.Screen
         /// <param name="dt"></param>
         private void PrintMass(DataTable dt)
         {
-            
 
             IWorkbook workbook = spread4.Document;
-            
             Worksheet sheet = workbook.Worksheets[0];
             
             spread4.BeginUpdate();
@@ -489,6 +1009,10 @@ namespace TOP.Screen
 
             string nLine = "";
 
+            //Header Font 설정
+            CellRange range = sheet.Range["A1:BS1"];
+            CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
+            
 
             //Header 출력
             sheet.Rows[0]["C"].SetValue("LINENAME");
@@ -506,6 +1030,11 @@ namespace TOP.Screen
             sheet.Rows[0]["AM"].SetValue("보조기층");
             sheet.Rows[0]["AR"].SetValue("CONC");
             sheet.Rows[0]["AT"].SetValue("보조기층");
+
+            sheet.Rows[0]["BH"].SetValue("보도블럭");
+            sheet.Rows[0]["BL"].SetValue("보조기층");
+            sheet.Rows[0]["BN"].SetValue("덧씌우기");
+            sheet.Rows[0]["BS"].SetValue("굴착장비");
 
             foreach (DataRow Row in dt.Rows)
             {
@@ -538,13 +1067,17 @@ namespace TOP.Screen
 
                 sheet.Rows[nIndex]["I"].SetValue(Convert.ToDecimal(Row["누가거리"])); //누가거리 I
                 
+                if (Convert.ToDecimal(sss[2]) < 0)
+                {
+                    string abab = "";
+                }
+
                 if (Convert.ToDecimal(Row["누가거리"]) == 0)
                 {
                     sheet.Rows[nIndex]["J"].SetValue(0); //거리
                 }
                 else
                 {
-                   
                     sheet.Rows[nIndex]["J"].Formula = String.Format("= I{0} - I{1}", nIndex+1 , nIndex);
                 }
                
@@ -594,10 +1127,7 @@ namespace TOP.Screen
                     }
                 }
 
-                sheet.Rows[0]["BH"].SetValue("보도블럭");
-                sheet.Rows[0]["BL"].SetValue("보조기층");
-                sheet.Rows[0]["BN"].SetValue("덧씌우기");
-                sheet.Rows[0]["BS"].SetValue("굴착장비");
+                
 
 
                 //보도블럭
@@ -650,19 +1180,28 @@ namespace TOP.Screen
 
               
             }
+
+            string sRange = string.Format("{0}{1}:{2}{3}", "A", 2, "BS", nIndex + 1);
+            CellRange body_range = sheet.Range[sRange];
+            CUtil.setSheetBodyFormat(body_range, "맑은 고딕", 9);
+
             spread4.EndUpdate();
+            
+
         }
 
         private string[] GetPoint(string data)
         {
-            string[] sss = data.Split('+');
-            int npos = data.IndexOf('(');
-
 
             string[] sRet = new string[4];
+
+            char[] sTocken = { '-', '+' };
+            string[] sss = data.Split(sTocken);
+
             sRet[0] = sss[0];
-            sRet[1] = "+";
-            
+            sRet[1] = sss[1];
+
+            int npos = data.IndexOf('(');
 
             if (npos < 0)
             {
@@ -674,7 +1213,8 @@ namespace TOP.Screen
                 sRet[2] = sss[1].Replace(data.Substring(npos, data.Length - npos), "");
                 sRet[3] = data.Substring(npos, data.Length - npos);
             }
-
+            
+        
 
             return sRet;
         }
@@ -753,6 +1293,18 @@ namespace TOP.Screen
 
             string nLine = "";
 
+
+            //Header Font 설정
+            CellRange range = sheet.Range["A1:P1"];
+            CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
+
+            sheet.Rows[0]["A"].SetValue("LINENAME");
+            sheet.Rows[0]["B"].SetValue("관경");
+            sheet.Rows[0]["G"].SetValue("누가거리");
+            sheet.Rows[0]["I"].SetValue("지반고");
+            sheet.Rows[0]["J"].SetValue("관저고");
+            sheet.Rows[0]["O"].SetValue("조절식간이흙막이");
+
             foreach (DataRow Row in dt.Rows)
             {
                 nCol = 0;
@@ -794,7 +1346,7 @@ namespace TOP.Screen
                 sheet.Rows[nIndex]["G"].SetValue(Convert.ToDecimal(Row["누가거리"])); //누가거리 I
 
                 ///후단면이면 구간거리를 0으로 처리
-                if (sss[3].ToString() == "(후)" )
+                if (sss[3].ToString() == "(후)")
                 {
                     sheet.Rows[nIndex]["H"].SetValue(0);
                 }
@@ -802,11 +1354,12 @@ namespace TOP.Screen
                 {
                     sheet.Rows[nIndex]["H"].Formula = String.Format("= G{0} - G{1}", nIndex + 1, nIndex); //구간거리
                 }
-                
+
+
 
                 sheet.Rows[nIndex]["I"].SetValue(Convert.ToDecimal(Row["지반고"])); //
                 sheet.Rows[nIndex]["J"].SetValue(Convert.ToDecimal(Row["관저고"])); //I
-                sheet.Rows[nIndex]["K"].Formula = String.Format("= I{0} - J{1}", nIndex + 1, nIndex+1); //H
+                sheet.Rows[nIndex]["K"].Formula = String.Format("= I{0} - J{1}", nIndex + 1, nIndex + 1); //H
                 sheet.Rows[nIndex]["L"].Formula = String.Format("= K{0} +0.1", nIndex + 1); //H
                 sheet.Rows[nIndex]["M"].Formula = String.Format("= H{0} *L{1}", nIndex + 1, nIndex + 1); //H
 
@@ -822,7 +1375,7 @@ namespace TOP.Screen
                 //=IF(AND(L21>4,S21="가시설"),"조절식간이흙막이",IF(S21="가시설","조립식간이흙막이",""))
                 //string as1 = sheet.Rows[nIndex]["L"].Value.ToString();
 
-                if ( LVal > 4)
+                if (LVal > 4)
                 {
                     sheet.Rows[nIndex]["O"].SetValue("조절식간이흙막이");
                 }
@@ -865,6 +1418,12 @@ namespace TOP.Screen
 
             }
             spread5.EndUpdate();
+
+            //Body Font 설정
+            string sRange;
+            sRange = string.Format("{0}{1}:{2}{3}", "A", "2", "O", nIndex +1);
+            CellRange body_range = sheet.Range[sRange];
+            CUtil.setSheetBodyFormat(body_range, "맑은 고딕", 9);
         }
 
         private void simpleButton6_Click(object sender, EventArgs e)
@@ -941,6 +1500,19 @@ namespace TOP.Screen
 
             string nLine = "";
 
+
+            //Header Font 설정
+            CellRange range = sheet.Range["A1:L1"];
+            CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
+
+            sheet.Rows[0]["B"].SetValue("LINENAME");
+            sheet.Rows[0]["C"].SetValue("지반고");
+            sheet.Rows[0]["D"].SetValue("관저고");
+            sheet.Rows[0]["I"].SetValue("맨홀규격");
+            sheet.Rows[0]["J"].SetValue("굴착공법");
+            sheet.Rows[0]["k"].SetValue("굴착장비");
+            sheet.Rows[0]["L"].SetValue("포장종류");
+
             foreach (DataRow Row in dt.Rows)
             {
                 nCol = 0;
@@ -961,12 +1533,14 @@ namespace TOP.Screen
                 sheet.Rows[nIndex]["K"].SetValue( Row["굴착장비"].ToString());  //굴착장비
                 sheet.Rows[nIndex]["L"].SetValue ( Row["포장종류"].ToString());
 
-
                 nIndex++;
-
-
             }
             spread6.EndUpdate();
+
+            string sRange;
+            sRange = string.Format("{0}{1}:{2}{3}", "B","2", "L", nIndex+1);
+            CellRange body_range = sheet.Range[sRange];
+            CUtil.setSheetBodyFormat(body_range, "맑은고딕", 9);
         }
 
         private void simpleButton9_Click(object sender, EventArgs e)
@@ -1148,6 +1722,408 @@ namespace TOP.Screen
         private void frmMass_Shown(object sender, EventArgs e)
         {
             tabbedControlGroup1.SelectedTabPageIndex = 0;
+        }
+
+
+        /// <summary>
+        /// 오수관 처리를 한다. 
+        /// 오수관조서, 오수관 실연장 조서
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void simpleButton12_Click(object sender, EventArgs e)
+        {
+            Proc오수관();
+            Proc오수관실연장조서();
+        }
+
+
+        private void Proc오수관()
+        {
+            double prv_관경 = 0;
+            double prv_시점 = 0;
+            double prv_종점 = 0;
+
+
+            double 관경 = 0;
+            double 시점 = 0;
+            double 종점 = 0;
+
+            DataTable dt_O = new DataTable();
+            dt_O.Columns.Add("노선명", typeof(string));
+            dt_O.Columns.Add("관종", typeof(string));
+            dt_O.Columns.Add("관경", typeof(double));
+            dt_O.Columns.Add("시점", typeof(double));
+            dt_O.Columns.Add("종점", typeof(double));
+
+            IWorkbook workbook = spreadO.Document;
+
+            Worksheet sheet = workbook.Worksheets[0];
+
+            spreadO.BeginUpdate();
+
+            int start_idx = 3;
+
+            int cur_idx = start_idx;
+
+            string LineName = "";
+            string 관종 = "";
+
+
+            //Header Font 설정
+            CellRange range = sheet.Range["A1:M3"];
+            CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
+
+            sheet.Rows[0]["A"].SetValue("오수관 조서");
+
+            sheet.Rows[1]["A"].SetValue("노선명");
+            sheet.Rows[1]["B"].SetValue("관종");
+            sheet.Rows[1]["C"].SetValue("관경");
+            sheet.Rows[2]["C"].SetValue("(mm)");
+            sheet.MergeCells(sheet.Range["D2:k2"]);
+            sheet.Rows[1]["D"].SetValue("측   점");
+
+            sheet.MergeCells(sheet.Range["D3:G3"]);
+            sheet.Rows[2]["D"].SetValue("시   점");
+
+            sheet.MergeCells(sheet.Range["H3:K3"]);
+            sheet.Rows[2]["H"].SetValue("시   점");
+
+            sheet.Rows[1]["L"].SetValue("연장");
+            sheet.Rows[2]["L"].SetValue("(m)");
+
+            sheet.MergeCells(sheet.Range["M2:M3"]);
+            sheet.Rows[1]["M"].SetValue("비고");
+
+
+            foreach (CPipeData item in PipeMngr.Data)
+            {
+                LineName = item.SheetName + " LINE";
+                관종 = item.Pipe_type;
+
+                if (item.SheetName == "A1")
+                {
+                    string arar = "";
+                }
+
+                foreach (DataRow row in item.Data1.Rows)
+                {
+                    if (start_idx == cur_idx)
+                    {
+                        //그럼 첫 데이터라는 뜻이니까... 그냥 작성
+                        sheet.Rows[cur_idx]["A"].SetValue(LineName);
+                        sheet.Rows[cur_idx]["B"].SetValue(관종);
+                        sheet.Rows[cur_idx]["C"].SetValue(row["관경"]);
+                        sheet.Rows[cur_idx]["D"].SetValue("No.");
+                        sheet.Rows[cur_idx]["E"].SetValue(0);
+                        sheet.Rows[cur_idx]["F"].SetValue("+");
+                        sheet.Rows[cur_idx]["G"].SetValue(Convert.ToDouble("0.0"));
+                        sheet.Rows[cur_idx]["H"].SetValue("No.");
+                        decimal q = 0;
+                        q = Math.Truncate(Convert.ToDecimal(row["누가거리"]) / 20);
+                        sheet.Rows[cur_idx]["I"].SetValue(q);
+                        sheet.Rows[cur_idx]["J"].SetValue("+");
+
+                        double qq = 0.0;
+                        qq = Convert.ToDouble(row["누가거리"]) % 20;
+                        sheet.Rows[cur_idx]["K"].SetValue(qq);
+
+                        //연장 
+                        double dLen = 0.0;
+                        dLen = (Convert.ToDouble(sheet.Rows[cur_idx]["I"].Value.ToString()) * 20 + Convert.ToDouble(sheet.Rows[cur_idx]["K"].Value.ToString())) -
+                              (Convert.ToDouble(sheet.Rows[cur_idx]["E"].Value.ToString()) * 20 + Convert.ToDouble(sheet.Rows[cur_idx]["G"].Value.ToString()));
+                        sheet.Rows[cur_idx]["L"].SetValue(dLen);
+
+
+                        start_idx = -999; //시작점이 달라졋다는 의미 
+
+                        continue;
+                    }
+                    else
+                    {
+                        /// 이전 라인과 라인이 같고 관경이 같으면 갱신 
+
+                        if (sheet.Rows[cur_idx][0].Value.ToString() == LineName &&
+                            sheet.Rows[cur_idx][2].Value.ToString() == row["관경"].ToString())
+                        {
+                            //sheet.Rows[cur_idx]["A"].SetValue(LineName);
+                            //sheet.Rows[cur_idx]["B"].SetValue(관종);
+                            //sheet.Rows[cur_idx]["C"].SetValue(row["관경"]);
+                            //sheet.Rows[cur_idx]["D"].SetValue("No.");
+                            //sheet.Rows[cur_idx]["E"].SetValue(sheet.Rows[cur_idx-1]["I"].Value.ToString());
+                            //sheet.Rows[cur_idx]["F"].SetValue("+");
+                            //sheet.Rows[cur_idx]["G"].SetValue(sheet.Rows[cur_idx-1]["K"].Value.ToString());
+
+                            sheet.Rows[cur_idx]["H"].SetValue("No.");
+                            decimal q = 0;
+                            q = Math.Truncate(Convert.ToDecimal(row["누가거리"]) / 20);
+                            sheet.Rows[cur_idx]["I"].SetValue(q);
+                            sheet.Rows[cur_idx]["J"].SetValue("+");
+
+                            double qq = 0.0;
+                            qq = Convert.ToDouble(row["누가거리"]) % 20;
+                            sheet.Rows[cur_idx]["K"].SetValue(qq);
+
+                            //연장 
+                            double dLen = 0.0;
+                            dLen = (Convert.ToDouble(sheet.Rows[cur_idx]["I"].Value.ToString()) * 20 + Convert.ToDouble(sheet.Rows[cur_idx]["K"].Value.ToString())) -
+                                   (Convert.ToDouble(sheet.Rows[cur_idx]["E"].Value.ToString()) * 20 + Convert.ToDouble(sheet.Rows[cur_idx]["G"].Value.ToString()));
+                            sheet.Rows[cur_idx]["L"].SetValue(dLen);
+
+                            //cur_idx++;
+                            continue;
+                        }
+                        else  //추가의 대상 
+                        {
+
+                            //라인이 같은데 관경이 다른 경우 
+                            if (sheet.Rows[cur_idx][0].Value.ToString() == LineName &&
+                                sheet.Rows[cur_idx][2].Value.ToString() != row["관경"].ToString())
+                            {
+                                cur_idx++;
+                                sheet.Rows[cur_idx]["A"].SetValue(LineName);
+                                sheet.Rows[cur_idx]["B"].SetValue(관종);
+                                sheet.Rows[cur_idx]["C"].SetValue(row["관경"]);
+                                sheet.Rows[cur_idx]["D"].SetValue("No.");
+                                sheet.Rows[cur_idx]["E"].SetValue(Convert.ToInt32(sheet.Rows[cur_idx - 1]["I"].Value.ToString()));
+                                sheet.Rows[cur_idx]["F"].SetValue("+");
+                                sheet.Rows[cur_idx]["G"].SetValue(Convert.ToDouble(sheet.Rows[cur_idx - 1]["K"].Value.ToString()));
+                                sheet.Rows[cur_idx]["I"].SetValue(0);
+                                sheet.Rows[cur_idx]["K"].SetValue(0.0);
+
+
+                                //연장 
+                                double dLen = 0.0;
+                                dLen = (Convert.ToDouble(sheet.Rows[cur_idx]["I"].Value.ToString()) * 20 + Convert.ToDouble(sheet.Rows[cur_idx]["K"].Value.ToString())) -
+                                       (Convert.ToDouble(sheet.Rows[cur_idx]["E"].Value.ToString()) * 20 + Convert.ToDouble(sheet.Rows[cur_idx]["G"].Value.ToString()));
+                                sheet.Rows[cur_idx]["L"].SetValue(dLen);
+
+                                continue;
+                            }
+                            else  //요기는 라인도 관경도 다른 경우 새로운 시트 
+                            {
+
+                                cur_idx++;
+                                sheet.Rows[cur_idx]["A"].SetValue(LineName);
+                                sheet.Rows[cur_idx]["B"].SetValue(관종);
+                                sheet.Rows[cur_idx]["C"].SetValue(row["관경"]);
+                                sheet.Rows[cur_idx]["D"].SetValue("No.");
+                                sheet.Rows[cur_idx]["E"].SetValue(0);
+                                sheet.Rows[cur_idx]["F"].SetValue("+");
+                                sheet.Rows[cur_idx]["G"].SetValue(Convert.ToDouble("0.0"));
+                                sheet.Rows[cur_idx]["H"].SetValue("No.");
+                                decimal q = 0;
+                                q = Math.Truncate(Convert.ToDecimal(row["누가거리"]) / 20);
+                                sheet.Rows[cur_idx]["I"].SetValue(q);
+                                sheet.Rows[cur_idx]["J"].SetValue("+");
+
+                                double qq = 0.0;
+                                qq = Convert.ToDouble(row["누가거리"]) % 20;
+                                sheet.Rows[cur_idx]["K"].SetValue(qq);
+
+                                //연장 
+                                double dLen = 0.0;
+                                dLen = (Convert.ToDouble(sheet.Rows[cur_idx]["I"].Value.ToString()) * 20 + Convert.ToDouble(sheet.Rows[cur_idx]["K"].Value.ToString())) -
+                                       (Convert.ToDouble(sheet.Rows[cur_idx]["E"].Value.ToString()) * 20 + Convert.ToDouble(sheet.Rows[cur_idx]["G"].Value.ToString()));
+                                sheet.Rows[cur_idx]["L"].SetValue(dLen);
+
+                                continue;
+                            }
+
+                            XtraMessageBox.Show("오수관 데이터중 일부가 누락되었습니다.");
+                            continue;
+                        }
+
+                    }
+
+                    cur_idx++;
+
+                }
+
+                //요기서는 당연히 노선(sheet)가 바뀌니까.. 증가
+                //cur_idx++;
+            }
+
+            string strRange;
+            strRange = string.Format("A4:M{0}", cur_idx);
+            sheet.Range[strRange].AutoFitColumns();
+
+
+
+            string sBodyRange = string.Format("{0}{1}:{2}{3}", "A", 4, "M", cur_idx);
+            CellRange body_range = sheet.Range[sBodyRange];
+            CUtil.setSheetBodyFormat(body_range, "맑은 고딕", 9);
+
+
+            spreadO.EndUpdate();
+
+
+        }
+
+       
+        private void Proc오수관실연장조서()
+        {
+            IWorkbook workbook = spreadO2.Document;
+
+            Worksheet sheet = workbook.Worksheets[0];
+
+            string LineName;
+
+            var qry = from a in PipeMngr.맨홀구간정보.AsEnumerable()
+                      group a by new
+                      {
+                          LINENAME = a.Field<string>("LINENAME")
+                                     ,
+                          관종 = a.Field<string>("관종")
+                                     ,
+                          맨홀규격 = a.Field<string>("맨홀규격")
+                                     ,
+                          관경 = a.Field<double>("관경")
+                          //, 연장 = a.Field<double>("구간거리")
+                      } into g
+                      select new
+                      {
+                          LINENAME = g.Key.LINENAME
+                          ,
+                          관종 = g.Key.관종
+                         ,
+                          관경 = g.Key.관경
+                         ,
+                          맨홀규격 = g.Key.맨홀규격
+                         ,
+                          개소 = g.Count()
+                         ,
+                          연장 = g.Sum(a => a.Field<double>("구간거리"))
+                      };
+
+
+            DataTable dt = CUtil.LinqQueryToDataTable(qry);
+
+            
+
+
+
+
+
+
+            spreadO2.BeginUpdate();
+
+            //Header Font 설정
+            CellRange range = sheet.Range["A1:K2"];
+            CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
+
+            sheet.Rows[0]["A"].SetValue("오수관 실제 연장 산정");
+
+            sheet.Rows[1]["A"].SetValue("관로명");
+            sheet.Rows[1]["B"].SetValue("관종");
+            sheet.Rows[1]["C"].SetValue("관경");
+            sheet.MergeCells(sheet.Range["D2:F2"]);
+            sheet.Rows[1]["D"].SetValue("맨홀(개소)");
+            sheet.Rows[1]["G"].SetValue("연장(m)");
+
+            sheet.Rows[1]["H"].SetValue("맨홀공제(m)");
+            sheet.Rows[1]["I"].SetValue("지수단관공제(m)");
+            sheet.Rows[1]["J"].SetValue("실연장(m)");
+            sheet.Rows[1]["K"].SetValue("비고");
+
+            //Range oRng = sheet.Columns[iColPos];
+            //oRng.AutoFitColumns();
+
+            
+
+            int cur_idx = 2;
+
+            foreach (DataRow item in dt.Rows)
+            {
+                //그럼 첫 데이터라는 뜻이니까... 그냥 작성
+                sheet.Rows[cur_idx]["A"].SetValue(item["LINENAME"]);
+                sheet.Rows[cur_idx]["B"].SetValue(item["관종"]);
+                sheet.Rows[cur_idx]["C"].SetValue(item["관경"]);
+                sheet.Rows[cur_idx]["D"].SetValue(item["맨홀규격"]);
+                sheet.Rows[cur_idx]["E"].SetValue("");
+                sheet.Rows[cur_idx]["F"].SetValue(item["개소"]);
+                sheet.Rows[cur_idx]["G"].SetValue(item["연장"]);
+
+                cur_idx++;
+            }
+            string strRange;
+            strRange = string.Format("A1:K{0}", cur_idx);
+            sheet.Range[strRange].AutoFitColumns();
+
+
+
+            string sBodyRange = string.Format("{0}{1}:{2}{3}", "A", 2, "K",cur_idx);
+            CellRange body_range = sheet.Range[sBodyRange];
+            CUtil.setSheetBodyFormat(body_range, "맑은 고딕", 9);
+
+
+            ///합계
+            var qry2 = from a in PipeMngr.맨홀구간정보.AsEnumerable()
+                      group a by new
+                      {
+                          관종 = a.Field<string>("관종")
+                                     ,
+                          맨홀규격 = a.Field<string>("맨홀규격")
+                                     ,
+                          관경 = a.Field<double>("관경")
+                          //, 연장 = a.Field<double>("구간거리")
+                      } into g
+                      select new
+                      {
+                          관종 = g.Key.관종
+                         ,
+                          관경 = g.Key.관경
+                         ,
+                          맨홀규격 = g.Key.맨홀규격
+                         ,
+                          개소 = g.Count()
+                         ,
+                          연장 = g.Sum(a => a.Field<double>("구간거리"))
+                      };
+
+
+            DataTable dt2 = CUtil.LinqQueryToDataTable(qry2);
+
+            int cur_idx2 = cur_idx + 4;
+            int start2 = cur_idx2;
+            //Header Font 설정
+            //CellRange range2 = sheet.Range["A1:K2"];
+            //CUtil.setSheetHeaderFormat(range2, "맑은 고딕", 10);
+
+            //sheet.Rows[0]["A"].SetValue("오수관 실제 연장 산정");
+
+            //sheet.Rows[1]["A"].SetValue("관로명");
+            //sheet.Rows[1]["B"].SetValue("관종");
+            //sheet.Rows[1]["C"].SetValue("관경");
+            //sheet.MergeCells(sheet.Range["D2:F2"]);
+            //sheet.Rows[1]["D"].SetValue("맨홀(개소)");
+            //sheet.Rows[1]["G"].SetValue("연장(m)");
+
+            //sheet.Rows[1]["H"].SetValue("맨홀공제(m)");
+            //sheet.Rows[1]["I"].SetValue("지수단관공제(m)");
+            //sheet.Rows[1]["J"].SetValue("실연장(m)");
+            //sheet.Rows[1]["K"].SetValue("비고");
+
+
+
+            foreach (DataRow item in dt2.Rows)
+            {
+                //그럼 첫 데이터라는 뜻이니까... 그냥 작성
+                sheet.Rows[cur_idx2]["B"].SetValue(item["관종"]);
+                sheet.Rows[cur_idx2]["C"].SetValue(item["관경"]);
+                sheet.Rows[cur_idx2]["D"].SetValue(item["맨홀규격"]);
+                sheet.Rows[cur_idx2]["E"].SetValue("");
+                sheet.Rows[cur_idx2]["F"].SetValue(item["개소"]);
+                sheet.Rows[cur_idx2]["G"].SetValue(item["연장"]);
+
+                cur_idx2++;
+            }
+
+            string tmp;
+            tmp = string.Format("A{0}:A{1}", start2+1, cur_idx2);
+            sheet.MergeCells(sheet.Range[tmp]);
+            sheet.Rows[start2]["A"].SetValue("계");
+            spreadO2.EndUpdate();
         }
     }
 }

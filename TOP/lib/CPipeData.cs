@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace TOP.lib
 {
+    /// <summary>
+    /// PIPE TOOL에서 만든 EXCEL Data는 3가지 구조로 되어 있습니다.
+    /// Data1 [B : AN] 
+    /// Data2 [AT: AW]
+    /// Data3 [AQ: AR] 포장 측점, 포장 구간은 별도 입력 데이터라서 파이프 툴 데이터와는 별개로 처리해요
+    ///                하지만 결국 Data1 데이터로 합치지요
+    /// </summary>
     public class CPipeData
     {
 
@@ -23,7 +30,8 @@ namespace TOP.lib
         private int data1RowIndex;
         private int data2RowIndex;
         private int data3RowIndex;
-        private string sheetName;
+        private string sheetName; //LINE NAME
+        private string pipe_type; // 관종
 
 
         public CPipeData()
@@ -45,6 +53,7 @@ namespace TOP.lib
         public DataTable FLODt { get => floDt; set => floDt = value; }
         public string Data3Position { get => data3Position; set => data3Position = value; }
         public int Data3RowIndex { get => data3RowIndex; set => data3RowIndex = value; }
+        public string Pipe_type { get => pipe_type; set => pipe_type = value; }
     }
 
     /// <summary>
@@ -58,9 +67,11 @@ namespace TOP.lib
             Data = new List<CPipeData>();
         }
 
+        private DataTable 맨홀구간정보1;
 
         public List<CPipeData> Data { get => data; set => data = value; }
 
+        public DataTable 맨홀구간정보 { get => 맨홀구간정보1; set => 맨홀구간정보1 = value; }
 
         public void Add(CPipeData data)
         {

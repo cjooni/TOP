@@ -18,6 +18,7 @@ using System.IO;
 using DevExpress.XtraSplashScreen;
 using TOP.Screen;
 using System.Reflection;
+using System.Drawing;
 
 namespace TOP.lib
 {
@@ -73,7 +74,7 @@ namespace TOP.lib
                 ExcelWorksheetSettings worksheetsetting = new ExcelWorksheetSettings(Eds.Name, range);
                 Eds.SourceOptions = new ExcelSourceOptions(worksheetsetting);
 
-                Eds.SourceOptions.SkipEmptyRows = false;
+                Eds.SourceOptions.SkipEmptyRows = true;
                 Eds.SourceOptions.UseFirstRowAsHeader = true;
                 Eds.Fill();
 
@@ -87,6 +88,14 @@ namespace TOP.lib
 
         }
 
+        /// <summary>
+        /// EXCEL 데이터를 DataTable로 전환합니다. 
+        /// 
+        /// </summary>
+        /// <param name="FileName">엑셀 파일명</param>
+        /// <param name="sheet"></param>
+        /// <param name="range"></param>
+        /// <returns></returns>
         public static DataTable ExcelToDataSource(string FileName, Worksheet sheet, string range)
         {
             try
@@ -306,5 +315,43 @@ namespace TOP.lib
             return table;
         }
 
+        
+        /// <summary>
+        /// EXCEL Header의 font를 설정한다.
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="font_name"></param>
+        /// <param name="font_size"></param>
+        public static void  setSheetHeaderFormat(CellRange range, string font_name, int font_size)
+        {
+            Formatting rangeFormatting = range.BeginUpdateFormatting();
+            rangeFormatting.Font.Name = font_name;
+            rangeFormatting.Font.Color = Color.White;
+            rangeFormatting.Font.Size = 10;
+            rangeFormatting.Font.FontStyle = SpreadsheetFontStyle.Bold;
+
+            rangeFormatting.Fill.BackgroundColor = Color.Green;
+
+            rangeFormatting.Alignment.Vertical = SpreadsheetVerticalAlignment.Center;
+            rangeFormatting.Alignment.Horizontal = SpreadsheetHorizontalAlignment.Center;
+
+            range.EndUpdateFormatting(rangeFormatting);
+        }
+
+
+        /// <summary>
+        /// EXCEL Body의 Font를 설정한다.
+        /// </summary>
+        /// <param name="range"></param>
+        /// <param name="font_name"></param>
+        /// <param name="font_size"></param>
+        public static void setSheetBodyFormat(CellRange range, string font_name, int font_size)
+        {
+            Formatting rangeFormatting = range.BeginUpdateFormatting();
+            rangeFormatting.Font.Name = font_name;
+            rangeFormatting.Font.Size = 9;
+
+            range.EndUpdateFormatting(rangeFormatting);
+        }
     }
 }
