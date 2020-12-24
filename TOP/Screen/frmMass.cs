@@ -216,87 +216,6 @@ namespace TOP.Screen
         }
 
 
-        //DATA2 ADD
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-
-            string filename = "";
-
-            splashScreenManager1.SplashFormStartPosition = DevExpress.XtraSplashScreen.SplashFormStartPosition.Default;
-            
-
-            try
-            {
-                filename = CUtil.LoadExcel(spread2);
-                splashScreenManager1.ShowWaitForm();
-                IWorkbook workbook = spread2.Document;
-
-
-                foreach (Worksheet item in workbook.Worksheets)
-                {
-                    int nRow = item.GetUsedRange().RowCount;
-
-
-                    IEnumerable<Cell> searchResult = ExcelDataSourceExtension.FindCell(item, "측점");
-
-                    string strPos2;
-                    string strPos1;
-                    string strPos3;
-
-                    foreach (Cell cell in searchResult)
-                    {
-                        if (cell.ColumnIndex != 1)
-                        {
-                            continue;
-                        }
-
-                        CPipeData Data = new CPipeData();
-                        Data.SheetName = item.Name;
-                        Data.Data1Position = "B3:AN3";
-                        Data.Data1RowIndex = 2;
-
-                        Data.Data3Position = "AQ3:AR3";
-                        Data.Data3RowIndex = 2;
-
-                        strPos1 = string.Format("{0}{1}:{2}{3}", "B", 3, "AN", cell.RowIndex - 1);
-                        strPos3 = string.Format("{0}{1}:{2}{3}", "AT", 3, "AW", cell.RowIndex - 1);
-
-                        if (nRow == cell.RowIndex + 1)
-                        {
-                            strPos2 = string.Format("{0}{1}:{2}{3}", "B", cell.RowIndex + 1, "H", nRow);
-                        }
-                        else
-                        {
-                            strPos2 = string.Format("{0}{1}:{2}{3}", "B", cell.RowIndex + 1, "H", nRow - 1);
-                        }
-                        // = string.Format("{0}{1}:{2}{3}", "AQ", 3, "AR", nRow - 1);
-                        Data.Data2Position = strPos2;
-                        Data.Data2RowIndex = cell.RowIndex;
-
-                        Data.Data1 = ExcelDataSourceExtension.ExcelToDataSource(filename, item, strPos1);
-                        Data.Data2 = ExcelDataSourceExtension.ExcelToDataSource(filename, item, strPos2);
-                        DataTable extend = ExcelDataSourceExtension.ExcelToDataSource(filename, item, strPos3);
-                        SetExtend(Data.Data1, extend);
-                        // Data.Data3 = GetDataTable(item, strPos3);
-                        //Data.ManholeDt = GetManholeData1(Data.Data1);
-
-
-                        PipeMngr.Add(Data);
-                    }
-
-                }
-
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                splashScreenManager1.CloseWaitForm();
-            }
-        }
 
 
         /// <summary>
@@ -1004,37 +923,182 @@ namespace TOP.Screen
             //관주위	ASP	CONC	덧씌우기	보도블럭	모래부설	보조기층	동상방지층
 
 
-            int nIndex = 1;
+            int nIndex = 3;
             int nCol = 0;
 
             string nLine = "";
 
             //Header Font 설정
-            CellRange range = sheet.Range["A1:BS1"];
+            CellRange range = sheet.Range["A1:BT3"];
             CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
             
 
             //Header 출력
-            sheet.Rows[0]["C"].SetValue("LINENAME");
-            sheet.Rows[0]["D"].SetValue("No.");
+            sheet.Rows[0]["C"].SetValue("관로번호");
+            sheet.MergeCells(sheet.Range["C1:C3"]);
+
+            sheet.Rows[0]["D"].SetValue("측점");
+            sheet.MergeCells(sheet.Range["D1:H3"]);
+
             sheet.Rows[0]["I"].SetValue("누가거리");
+            sheet.Rows[2]["I"].SetValue("m");
+            sheet.MergeCells(sheet.Range["I1:I2"]);
+
+
             sheet.Rows[0]["J"].SetValue("거리");
-            sheet.Rows[0]["K"].SetValue("육상(토사)");
-            sheet.Rows[0]["M"].SetValue("수중(토사)");
-            sheet.Rows[0]["W"].SetValue("관주위");
-            sheet.Rows[0]["Y"].SetValue("관상부");
-            sheet.Rows[0]["AA"].SetValue("모래부설");
+            sheet.Rows[2]["I"].SetValue("m");
+            sheet.MergeCells(sheet.Range["J1:J2"]);
 
-            sheet.Rows[0]["AJ"].SetValue("ASP절단");
-            sheet.Rows[0]["AK"].SetValue("ASP");
-            sheet.Rows[0]["AM"].SetValue("보조기층");
-            sheet.Rows[0]["AR"].SetValue("CONC");
-            sheet.Rows[0]["AT"].SetValue("보조기층");
+            //터파기
+            sheet.Rows[0]["K"].SetValue("터파기(토사)");
+            sheet.MergeCells(sheet.Range["k1:N1"]);
+            sheet.Rows[1]["K"].SetValue("육상");
+            sheet.MergeCells(sheet.Range["K2:L2"]);
+            sheet.Rows[2]["K"].SetValue("m2");
+            sheet.Rows[2]["L"].SetValue("m2");
 
-            sheet.Rows[0]["BH"].SetValue("보도블럭");
-            sheet.Rows[0]["BL"].SetValue("보조기층");
-            sheet.Rows[0]["BN"].SetValue("덧씌우기");
-            sheet.Rows[0]["BS"].SetValue("굴착장비");
+            sheet.Rows[1]["M"].SetValue("용수");
+            sheet.MergeCells(sheet.Range["M2:N2"]);
+            sheet.Rows[2]["M"].SetValue("m2");
+            sheet.Rows[2]["N"].SetValue("m2");
+
+            //되메우기
+            sheet.Rows[0]["W"].SetValue("되메우기");
+            sheet.MergeCells(sheet.Range["W1:Z1"]);
+            sheet.Rows[1]["W"].SetValue("관주위(토사)");
+            sheet.MergeCells(sheet.Range["W2:X2"]);
+            sheet.Rows[2]["W"].SetValue("m2");
+            sheet.Rows[2]["X"].SetValue("m2");
+
+            sheet.Rows[1]["Y"].SetValue("관상단(토사)");
+            sheet.MergeCells(sheet.Range["Y2:Z2"]);
+            sheet.Rows[2]["Y"].SetValue("m2");
+            sheet.Rows[2]["Z"].SetValue("m2");
+
+
+            //관기초
+            sheet.Rows[0]["AA"].SetValue("관기초");
+            sheet.MergeCells(sheet.Range["AA1:AB2"]);
+            sheet.Rows[2]["AA"].SetValue("m2");
+            sheet.Rows[2]["AB"].SetValue("m2");
+
+            //ASP포장(국도)
+            sheet.Rows[0]["AC"].SetValue("ASP 포장(국도)");
+            sheet.MergeCells(sheet.Range["AC1:AG1"]);
+            sheet.Rows[1]["AC"].SetValue("절단");
+            sheet.Rows[1]["AD"].SetValue("깨기 및 복구");
+            sheet.MergeCells(sheet.Range["AD2:AE2"]);
+            sheet.Rows[2]["AD"].SetValue("m2");
+            sheet.Rows[2]["AE"].SetValue("m2");
+
+            sheet.Rows[1]["AF"].SetValue("보조기층");
+            sheet.MergeCells(sheet.Range["AF2:AG2"]);
+            sheet.Rows[2]["AF"].SetValue("m2");
+            sheet.Rows[2]["AG"].SetValue("m2");
+
+            //ASP포장
+            sheet.Rows[0]["AJ"].SetValue("ASP 포장");
+            sheet.MergeCells(sheet.Range["AJ1:AN1"]);
+            sheet.Rows[1]["AJ"].SetValue("절단");
+            sheet.Rows[1]["AK"].SetValue("깨기 및 복구");
+            sheet.MergeCells(sheet.Range["AK2:AL2"]);
+            sheet.Rows[2]["AK"].SetValue("m2");
+            sheet.Rows[2]["AL"].SetValue("m2");
+
+            sheet.Rows[1]["AM"].SetValue("보조기층");
+            sheet.MergeCells(sheet.Range["AM2:AN2"]);
+            sheet.Rows[2]["AM"].SetValue("m2");
+            sheet.Rows[2]["AN"].SetValue("m2");
+
+
+            //CON'C 포장
+            sheet.Rows[0]["AQ"].SetValue("CON'C 포장");
+            sheet.MergeCells(sheet.Range["AQ1:AU1"]);
+            sheet.Rows[1]["AQ"].SetValue("절단");
+            sheet.Rows[1]["AR"].SetValue("깨기 및 복구");
+            sheet.MergeCells(sheet.Range["AR2:AS2"]);
+            sheet.Rows[2]["AR"].SetValue("m2");
+            sheet.Rows[2]["AS"].SetValue("m2");
+
+            sheet.Rows[1]["AT"].SetValue("보조기층");
+            sheet.MergeCells(sheet.Range["AT2:AU2"]);
+            sheet.Rows[2]["AT"].SetValue("m2");
+            sheet.Rows[2]["AU"].SetValue("m2");
+
+            //ASP + CON'C 포장
+            sheet.Rows[0]["AV"].SetValue("ASP+CON'C 포장");
+            sheet.MergeCells(sheet.Range["AV1:AZ1"]);
+            sheet.Rows[1]["AV"].SetValue("절단");
+            sheet.Rows[1]["AW"].SetValue("깨기 및 복구");
+            sheet.MergeCells(sheet.Range["AW2:AX2"]);
+            sheet.Rows[2]["AW"].SetValue("m2");
+            sheet.Rows[2]["AX"].SetValue("m2");
+
+            sheet.Rows[1]["AY"].SetValue("보조기층");
+            sheet.MergeCells(sheet.Range["AY2:AZ2"]);
+            sheet.Rows[2]["AY"].SetValue("m2");
+            sheet.Rows[2]["AZ"].SetValue("m2");
+
+            //투수콘 포장
+            sheet.Rows[0]["BA"].SetValue("투수콘 포장");
+            sheet.MergeCells(sheet.Range["BA1:BG1"]);
+            sheet.Rows[1]["BA"].SetValue("절단");
+            sheet.Rows[1]["BB"].SetValue("깨기 및 복구");
+            sheet.MergeCells(sheet.Range["BB2:BC2"]);
+            sheet.Rows[2]["BB"].SetValue("m2");
+            sheet.Rows[2]["BC"].SetValue("m2");
+
+            sheet.Rows[1]["BD"].SetValue("보조기층");
+            sheet.MergeCells(sheet.Range["BD2:BE2"]);
+            sheet.Rows[2]["BD"].SetValue("m2");
+            sheet.Rows[2]["BE"].SetValue("m2");
+
+            sheet.Rows[1]["BF"].SetValue("모래");
+            sheet.MergeCells(sheet.Range["BF2:BG2"]);
+            sheet.Rows[2]["BF"].SetValue("m2");
+            sheet.Rows[2]["BG"].SetValue("m2");
+
+
+            //보도블럭 포장
+            sheet.Rows[0]["BH"].SetValue("보도블럭 포장");
+            sheet.MergeCells(sheet.Range["BH1:BM1"]);
+            sheet.Rows[1]["BH"].SetValue("헐기 및 복구");
+            sheet.MergeCells(sheet.Range["BH2:BI2"]);
+            sheet.Rows[2]["BH"].SetValue("m2");
+            sheet.Rows[2]["BI"].SetValue("m2");
+
+            sheet.Rows[1]["BJ"].SetValue("석분");
+            sheet.MergeCells(sheet.Range["BJ2:BK2"]);
+            sheet.Rows[2]["BJ"].SetValue("m2");
+            sheet.Rows[2]["BK"].SetValue("m2");
+
+            sheet.Rows[1]["BL"].SetValue("보조기층");
+            sheet.MergeCells(sheet.Range["BL2:BM2"]);
+            sheet.Rows[2]["BL"].SetValue("m2");
+            sheet.Rows[2]["BM"].SetValue("m2");
+
+
+
+            //sheet.Rows[1]["Y"].SetValue("관상단(토사)");
+            //sheet.MergeCells(sheet.Range["Y2:Z2"]);
+            //sheet.Rows[2]["Y"].SetValue("m2");
+            //sheet.Rows[2]["Z"].SetValue("m2");
+
+            //sheet.Rows[0]["M"].SetValue("수중(토사)");
+            //sheet.Rows[0]["W"].SetValue("관주위");
+            //sheet.Rows[0]["Y"].SetValue("관상부");
+            //sheet.Rows[0]["AA"].SetValue("모래부설");
+
+            //sheet.Rows[0]["AJ"].SetValue("ASP절단");
+            //sheet.Rows[0]["AK"].SetValue("ASP");
+            //sheet.Rows[0]["AM"].SetValue("보조기층");
+            //sheet.Rows[0]["AR"].SetValue("CONC");
+            //sheet.Rows[0]["AT"].SetValue("보조기층");
+
+            //sheet.Rows[0]["BH"].SetValue("보도블럭");
+            //sheet.Rows[0]["BL"].SetValue("보조기층");
+            //sheet.Rows[0]["BN"].SetValue("덧씌우기");
+            //sheet.Rows[0]["BS"].SetValue("굴착장비");
 
             foreach (DataRow Row in dt.Rows)
             {
@@ -1127,7 +1191,17 @@ namespace TOP.Screen
                     }
                 }
 
-                
+                //덧씌우기가 asp+con 이란다
+                sheet.Rows[nIndex]["AV"].Formula = String.Format("= IF(AW{0} = 0, 0, $J{1} *2)", nIndex + 1, nIndex + 1); // = IF(AD5 = 0, 0,$J5 * 2)
+
+                if (Row["덧씌우기"].ToString().Trim() != "")
+                {
+                    sheet.Rows[nIndex]["AW"].SetValue(Convert.ToDecimal(Row["덧씌우기"])); // ROUND((K4+K5)/2*$J5,2)
+                    sheet.Rows[nIndex]["AX"].Formula = String.Format("= ROUND((AW{0}+AW{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
+
+                    sheet.Rows[nIndex]["AY"].SetValue(Convert.ToDecimal(Row["보조기층"])); // ROUND((K4+K5)/2*$J5,2)
+                    sheet.Rows[nIndex]["AZ"].Formula = String.Format("= ROUND((AY{0}+AY{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
+                }
 
 
                 //보도블럭
@@ -1146,12 +1220,7 @@ namespace TOP.Screen
                     }
                 }
 
-                //덧씌우기
-                if (Row["덧씌우기"].ToString().Trim() != "")
-                {
-                    sheet.Rows[nIndex]["BN"].SetValue(Convert.ToDecimal(Row["덧씌우기"])); // ROUND((K4+K5)/2*$J5,2)
-                    sheet.Rows[nIndex]["BO"].Formula = String.Format("= ROUND((BN{0}+BN{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
-                }
+              
                 //장비
                 //sheet.Rows[nIndex]["BS"].SetValue(Row["Column3"].ToString());
                 sheet.Rows[nIndex]["BS"].SetValue(Row["굴착장비"].ToString());
@@ -1735,6 +1804,7 @@ namespace TOP.Screen
         {
             Proc오수관();
             Proc오수관실연장조서();
+            Proc오수관접합및절단조서();
         }
 
 
@@ -2124,6 +2194,262 @@ namespace TOP.Screen
             sheet.MergeCells(sheet.Range[tmp]);
             sheet.Rows[start2]["A"].SetValue("계");
             spreadO2.EndUpdate();
+        }
+
+        private void Proc오수관접합및절단조서()
+        {
+            IWorkbook workbook = spreadO3.Document;
+
+            Worksheet sheet = workbook.Worksheets[0];
+
+            string LineName;
+
+            var qry = from a in PipeMngr.맨홀구간정보.AsEnumerable()
+                      group a by new
+                      {
+                          LINENAME = a.Field<string>("LINENAME")
+                          ,
+                          관경 = a.Field<double>("관경")
+                      } into g
+                      select new
+                      {
+                          LINENAME = g.Key.LINENAME
+                         ,
+                          관경 = g.Key.관경
+                      };
+
+            DataTable dt = CUtil.LinqQueryToDataTable(qry);
+
+            
+            //var qryOut = from a in dt.AsEnumerable()
+            //             select new
+            //             {
+            //                 LINENAME = " "
+            //                , 관경 = 0.00
+            //                , 1_ = 0.00
+            //                , 2 = 0.00
+            //                ,
+            //                 3 = 0.00
+            //                ,
+            //                 4 = 0.00
+            //                ,
+            //                 5 = 0.00
+            //                ,
+            //                 6 = 0.00
+            //                ,
+            //                 7 = 0.00
+            //                ,
+            //                 8 = 0.00
+            //                ,
+            //                 9 = 0.00
+            //                ,
+            //                 10 = 0.00
+            //                 ,
+            //                , 직관 = 0
+            //                , 소켓 = 0
+            //                , 절단 = 0
+            //                , 비고 = " "
+            //             };
+
+            //DataTable layout_tmp = CUtil.LinqQueryToDataTable(qryOut);
+            //DataTable layout_dt = layout_tmp.Clone();
+
+
+
+            spreadO3.BeginUpdate();
+
+            //Header Font 설정
+            CellRange range = sheet.Range["A1:P4"];
+            CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
+
+            sheet.Rows[0]["A"].SetValue("오수관 접합 및 절단 조서");
+
+            sheet.Rows[1]["A"].SetValue("노선명");
+            sheet.MergeCells(sheet.Range["A2:A4"]);
+            sheet.Rows[1]["B"].SetValue("관경");
+            sheet.Rows[2]["B"].SetValue("(mm)");
+            sheet.MergeCells(sheet.Range["B3:B4"]);
+
+            sheet.Rows[1]["C"].SetValue("전맨홀~후맨홀 구간 연장");
+            sheet.MergeCells(sheet.Range["C2:L2"]);
+            sheet.Rows[2]["C"].SetValue("1");
+            sheet.MergeCells(sheet.Range["C3:C4"]);
+            sheet.Rows[2]["D"].SetValue("2");
+            sheet.MergeCells(sheet.Range["D3:D4"]);
+            sheet.Rows[2]["E"].SetValue("3");
+            sheet.MergeCells(sheet.Range["E3:E4"]);
+            sheet.Rows[2]["F"].SetValue("4");
+            sheet.MergeCells(sheet.Range["F3:F4"]);
+            sheet.Rows[2]["G"].SetValue("5");
+            sheet.MergeCells(sheet.Range["G3:G4"]);
+            sheet.Rows[2]["H"].SetValue("6");
+            sheet.MergeCells(sheet.Range["H3:H4"]);
+            sheet.Rows[2]["I"].SetValue("7");
+            sheet.MergeCells(sheet.Range["I3:I4"]);
+            sheet.Rows[2]["J"].SetValue("8");
+            sheet.MergeCells(sheet.Range["J3:J4"]);
+            sheet.Rows[2]["K"].SetValue("9");
+            sheet.MergeCells(sheet.Range["K3:K4"]);
+            sheet.Rows[2]["L"].SetValue("10");
+            sheet.MergeCells(sheet.Range["L3:L4"]);
+
+            sheet.Rows[1]["M"].SetValue("직관\n접합\n(편수)");
+            sheet.MergeCells(sheet.Range["M2:M3"]);
+            sheet.Rows[3]["M"].SetValue("개소");
+
+            sheet.Rows[1]["N"].SetValue("소켓\n접합");
+            sheet.MergeCells(sheet.Range["N2:N3"]);
+            sheet.Rows[3]["N"].SetValue("개소");
+
+            sheet.Rows[1]["O"].SetValue("관");
+            sheet.Rows[2]["O"].SetValue("절단");
+            sheet.Rows[3]["O"].SetValue("(개소)");
+
+
+            sheet.Rows[1]["P"].SetValue("비고");
+            sheet.MergeCells(sheet.Range["P2:P4"]);
+
+
+            int row_idx = 4;
+
+            foreach (DataRow item in dt.Rows)
+            {
+                var qryTmp= from a in PipeMngr.맨홀구간정보.AsEnumerable()
+                           where a.Field<string>("LINENAME") == item["LINENAME"].ToString() &&
+                                 a.Field<double>("관경") == Convert.ToDouble(item["관경"])
+                           orderby a.Field<double>("종료위치")
+                            select new
+                           {
+                               LINENAME = a.Field<string>("LINENAME")
+                            ,
+                               관경 = a.Field<double>("관경")
+                               ,
+                               종료위치 = a.Field<double>("종료위치")
+                               ,
+                               구간거리 = a.Field<double>("구간거리")
+                            };
+
+                DataTable TmpDt = CUtil.LinqQueryToDataTable(qryTmp);
+
+                int nRecCnt = 0;
+                nRecCnt = TmpDt.Rows.Count;
+
+                int col_idx = 0;
+
+
+
+                foreach (DataRow dr2 in TmpDt.Rows )
+                {
+                    
+                    sheet.Cells[row_idx, 0].SetValue(dr2["LINENAME"].ToString() + " LINE") ;
+                    sheet.Cells[row_idx, 1].SetValue(dr2["관경"].ToString());
+                    sheet.Cells[row_idx, col_idx+2].SetValue(Convert.ToDouble(dr2["구간거리"]));
+                    sheet.Rows[row_idx]["O"].Formula = String.Format("=COUNT(C{0}:L{1})", row_idx+1, row_idx+1); //H
+                    sheet.Rows[row_idx]["N"].Formula = String.Format("=O{0}", row_idx+1); //H
+
+                    col_idx++;
+
+                    if (col_idx >= 10)
+                    {
+                        row_idx++;
+                        col_idx = 0;
+                    }
+                }
+
+                row_idx++;
+
+            }
+
+
+            string sAutoFit = string.Format("{0}{1}:{2}{3}", "A", 2, "P", row_idx);
+            sheet.Range[sAutoFit].AutoFitColumns();
+
+
+            string sBodyRange = string.Format("{0}{1}:{2}{3}", "A", 5, "P", row_idx);
+            CellRange body_range = sheet.Range[sBodyRange];
+            
+            CUtil.setSheetBodyFormat(body_range, "맑은 고딕", 9);
+
+            spreadO3.EndUpdate();
+        }
+
+        /// <summary>
+        /// 오수관 연장조서 Excel 저장
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void simpleButton13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog sDlg = new SaveFileDialog())
+                {
+                    sDlg.Filter = "EXCEL file|*.xlsx";
+                    sDlg.Title = "Save an 엑셀 File";
+
+                    if (sDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        spreadO.SaveDocument(sDlg.FileName);
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// ///오수관 실 연장조서
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void simpleButton14_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog sDlg = new SaveFileDialog())
+                {
+                    sDlg.Filter = "EXCEL file|*.xlsx";
+                    sDlg.Title = "Save an 엑셀 File";
+
+                    if (sDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        spreadO2.SaveDocument(sDlg.FileName);
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SaveFileDialog sDlg = new SaveFileDialog())
+                {
+                    sDlg.Filter = "EXCEL file|*.xlsx";
+                    sDlg.Title = "Save an 엑셀 File";
+
+                    if (sDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        spreadO3.SaveDocument(sDlg.FileName);
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
