@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TOP.lib
 {
     /// <summary>
     /// PIPE TOOL에서 만든 EXCEL Data는 3가지 구조로 되어 있습니다.
-    /// Data1 [B : AN] 
+    /// Data1 [B : AN]
     /// Data2 [AT: AW]
     /// Data3 [AQ: AR] 포장 측점, 포장 구간은 별도 입력 데이터라서 파이프 툴 데이터와는 별개로 처리해요
     ///                하지만 결국 Data1 데이터로 합치지요
     /// </summary>
     public class CPipeData
     {
-
+        private DataTable data0; //Pipe Tool의 원래데이터만 들고있음...  data1은 확장 데이터를 가지고 있음
         private DataTable data1;//누가거리	지반고	관저고	관경	맨홀	TEXT1	TEXT2	구간	구배	INV	SIZE	라인명	지하수위	맨홀INVERT
         private DataTable data2;//측점	INV	SIZE	TEXT	BoxT1	BoxT2	BoxT3
         private DataTable data3; //포장 측점, 포장구간
@@ -33,13 +29,11 @@ namespace TOP.lib
         private string sheetName; //LINE NAME
         private string pipe_type; // 관종
 
-
         public CPipeData()
         {
-
         }
 
-
+        public DataTable Data0 { get => data0; set => data0 = value; }
         public DataTable Data1 { get => data1; set => data1 = value; }
         public DataTable Data2 { get => data2; set => data2 = value; }
         public DataTable Data3 { get => data3; set => data3 = value; }
@@ -57,11 +51,12 @@ namespace TOP.lib
     }
 
     /// <summary>
-    /// PipeTool 출력 데이터를 관리하는 매니져 
+    /// PipeTool 출력 데이터를 관리하는 매니져
     /// </summary>
     public class CPipeDataMngr
     {
         private List<CPipeData> data;
+
         public CPipeDataMngr()
         {
             Data = new List<CPipeData>();
@@ -107,8 +102,5 @@ namespace TOP.lib
 
             return Dt;
         }
-        
-        
     }
-
 }

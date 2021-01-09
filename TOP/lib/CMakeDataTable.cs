@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TOP.lib
 {
-
-    class CMakeDataTable<T> where T : new()
+    internal class CMakeDataTable<T> where T : new()
     {
         private T TR;
         private DataTable m_DT;
+
         public CMakeDataTable()
         {
             TR = new T();
@@ -21,7 +17,6 @@ namespace TOP.lib
 
         public DataTable DATATABLE { get => m_DT; set => m_DT = value; }
 
-
         public void MakeDataTable()
         {
             m_DT = new DataTable();
@@ -29,7 +24,6 @@ namespace TOP.lib
 
             foreach (var item in info)
             {
-
                 //m_DT.TableName = TR.ToString();
                 m_DT.Columns.Add(item.Name, item.FieldType);
 
@@ -40,20 +34,16 @@ namespace TOP.lib
 
                 // Console.WriteLine("Value is " + item.GetValue(item).ToString());
             }
-
         }
 
         public void AddData(T obj)
         {
             FieldInfo[] info = obj.GetType().GetFields();
 
-
             DataRow DR = m_DT.NewRow();
-
 
             foreach (var item in info)
             {
-
                 object val = item.GetValue(obj);
 
                 DR[item.Name] = val.ToString().Trim();
@@ -67,8 +57,6 @@ namespace TOP.lib
                 //    DR[item.Name] = val;
                 //}
 
-
-
                 //Console.WriteLine("name is " + item.Name);
                 //Console.WriteLine("Type is " + item.PropertyType.ToString());
                 //  object obj = item.GetValue(TR, null);
@@ -79,8 +67,5 @@ namespace TOP.lib
 
             m_DT.Rows.Add(DR);
         }
-
-
-
     }
 }

@@ -1,27 +1,16 @@
 ﻿using DevExpress.DataAccess.Sql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TOP.Dialog;
 using TOP.lib;
-using TOP.Parent;
 using TOP.Screen;
 
 namespace TOP
-{    
-
+{
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-
-        
-
         private String m_UserId;
 
         private CUserInfo userInfo;
@@ -35,21 +24,16 @@ namespace TOP
             CUserInfo userInfo = new CUserInfo();
         }
 
-
-
         private void BarButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             string nameSpace = "TOP.Screen"; //네임스페이스 명
 
-
             Assembly cuasm = Assembly.GetExecutingAssembly();
-
 
             //string Format 의 따옴표와 마침표 주의!!
             Form frm = (Form)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frmChild"));
 
             frm.MdiParent = this;
-
 
             frm.Show();
         }
@@ -67,11 +51,8 @@ namespace TOP
 
         private void SetUserInfo()
         {
-            
             try
             {
-
-
                 foreach (QueryParameter item in sqlDataSource1.Queries["QRY_USER_INFO"].Parameters)
                 {
                     if (item.Name == "P_USER_ID")
@@ -83,32 +64,23 @@ namespace TOP
                 sqlDataSource1.Fill();
 
                 DataTable dt = CUtil.GetTable(sqlDataSource1.Result["QRY_USER_INFO"]);
-
-
-
             }
             catch (Exception ex)
             {
-
                 //InfoMsg.Caption = ex.Message;
             }
-
         }
 
         private void barStaticItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-         
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-     
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
-            
         }
 
         /// <summary>
@@ -123,13 +95,9 @@ namespace TOP
             frm.ShowDialog();
         }
 
-
-        
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
         }
-
 
         /// <summary>
         /// 화면관리
@@ -155,7 +123,6 @@ namespace TOP
             frm.StartPosition = FormStartPosition.CenterScreen;
 
             frm.Show();
-
         }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -170,9 +137,7 @@ namespace TOP
         {
             string nameSpace = "TOP.Screen"; //네임스페이스 명
 
-
             Assembly cuasm = Assembly.GetExecutingAssembly();
-
 
             //string Format 의 따옴표와 마침표 주의!!
             Form frm = (Form)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frmChild"));
@@ -194,14 +159,13 @@ namespace TOP
             frmProjectInfo frm = new frmProjectInfo();
             frm.StartPosition = FormStartPosition.CenterScreen;
 
-            ///프로젝트 조회창에서 프로젝트를 선택하면 
+            ///프로젝트 조회창에서 프로젝트를 선택하면
             ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 LoadMdiChildByProjectCd(frm.PrjInfo);
             }
         }
-
 
         private void LoadMdiChildByProjectCd(CPrjInfo PrjInfo)
         {
@@ -216,7 +180,6 @@ namespace TOP
             frm.Text = PrjInfo.ProjectNm;
             frm.Show();
         }
-
 
         /// <summary>
         /// Project 선택창에서 선택 내용을 전달 받는다.

@@ -18,7 +18,8 @@ namespace TOP.Screen
 {
     public partial class frmLoadPipeTool : TOP.Parent.PForm
     {
-        string FileName;
+        private string FileName;
+
         public frmLoadPipeTool()
         {
             InitializeComponent();
@@ -33,10 +34,8 @@ namespace TOP.Screen
 
                 Opendlg.Filter = "EXCEL 파일 (*.xlsx)|*.xlsx|모든파일(*.*)|*.*";
 
-
                 if (Opendlg.ShowDialog() == DialogResult.OK)
                 {
-                    
                     splashScreenManager1.ShowWaitForm();
                     //ProgressPanel panel = CUtil.GetProgress("Data Loading", "EXCEL 파일을 읽는 중 입니다.");
                     //panel.Parent = this;
@@ -48,8 +47,6 @@ namespace TOP.Screen
 
                     using (FileStream stream = new FileStream(filename, FileMode.Open))
                     {
-
-
                         //progressPanel1.Parent = this;
                         //this.Controls.Add(progressPanel1);
 
@@ -64,17 +61,13 @@ namespace TOP.Screen
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
-
             }
             finally
             {
                 splashScreenManager1.CloseWaitForm();
             }
-
         }
-
 
         /// <summary>
         /// Excel Sheet의 데이터를 DataTable로 변환한다.
@@ -100,10 +93,6 @@ namespace TOP.Screen
             return dt;
         }
 
-
-
-
-
         /// <summary>
         /// 막서 데이터로 변환한다.
         /// </summary>
@@ -116,13 +105,10 @@ namespace TOP.Screen
             String sheetName = "";
             try
             {
-
-            
                 IWorkbook workbook = spread1.Document;
 
-
                 CPipeDataMngr PipeMngr = new CPipeDataMngr();
-            
+
                 ///PipeTool을 처리하기 위한 필드값을 찾는다.
                 ///
                 int n = workbook.Worksheets.Count;
@@ -140,7 +126,6 @@ namespace TOP.Screen
                         continue;
                     }
 
-
                     ///파이프 툴의 출력 Field를 관리하는 Range를 지정
                     ///
                     CPipeData Data = new CPipeData();
@@ -150,9 +135,8 @@ namespace TOP.Screen
 
                     Data.Data3Position = "AQ3:AR3";
                     Data.Data3RowIndex = 2;
-              
 
-                    //Data2 Search 하기 위한 옵션 설정 
+                    //Data2 Search 하기 위한 옵션 설정
                     SearchOptions options = new SearchOptions();
                     options.SearchBy = SearchBy.Columns;
                     options.SearchIn = SearchIn.Values;
@@ -161,7 +145,6 @@ namespace TOP.Screen
                     //item.Search("측점", options);
                     //worksheet의 유효 데이터 Row를 구한다.
                     int nRow = item.GetUsedRange().RowCount;
-
 
                     string strPos2;
                     string strPos1;
@@ -177,13 +160,13 @@ namespace TOP.Screen
                         {
                             continue;
                         }
-                      
+
                         ///기본 Pipe 정보는 B3:AN [측점이 관측된 RowIndex -1]
                         strPos1 = string.Format("{0}{1}:{2}{3}", "B", 3, "AN", cell.RowIndex - 1);
 
-                        //전체 Row와 측점이 관측된 위치가 같다면 측점 이후 데이터가 없어용 
+                        //전체 Row와 측점이 관측된 위치가 같다면 측점 이후 데이터가 없어용
                         if (nRow == cell.RowIndex + 1)
-                        {                            
+                        {
                             strPos2 = string.Format("{0}{1}:{2}{3}", "B", cell.RowIndex + 1, "H", nRow);
                         }
                         else
@@ -219,45 +202,35 @@ namespace TOP.Screen
                 adGridView1.PopulateColumns(MaxerDt);
                 gridControl1.DataSource = MaxerDt;
 
-               
-                ///TreeData를 만들어보자 
+                ///TreeData를 만들어보자
                // MakeTreeData(MaxerDt);
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 MessageBox.Show(sheetName);
-                
             }
             finally
             {
                 splashScreenManager1.CloseWaitForm();
             }
-
-            
-
         }
 
         /// <summary>
-        /// 생성된 Maxer 데이터로 Tree를 만들어보자 
+        /// 생성된 Maxer 데이터로 Tree를 만들어보자
         /// </summary>
         /// <returns></returns>
         private DataTable MakeTreeData(DataTable maxer_dt)
         {
             try
             {
-
                 DataTable tree_dt = new DataTable();
                 tree_dt.Columns.Add("PARENT", typeof(string));
                 tree_dt.Columns.Add("KEY", typeof(string));
                 tree_dt.Columns.Add("FROM_LINE", typeof(string));
                 tree_dt.Columns.Add("TO_LINE", typeof(string));
 
-
-                
-
-                //from line 쪽을 구한다. 
+                //from line 쪽을 구한다.
                 var qryFromLine = (from d in maxer_dt.AsEnumerable()
                            select new
                            {
@@ -266,7 +239,6 @@ namespace TOP.Screen
 
                 DataTable from_dt = CUtil.LinqQueryToDataTable(qryFromLine);
 
-                
                 //to line 쪽을 구한다.
                 var qryToLine = (from d in maxer_dt.AsEnumerable()
                             select new
@@ -279,9 +251,8 @@ namespace TOP.Screen
                 //from_dt 쪽에 있고 To_dt쪽에도 있다면 root 누드에 기입할 필요가 없다.
                 foreach (DataRow item in to_dt.Rows)
                 {
-
                     string expression = string.Format("FROM_LINE = '{0}'", item["TO_LINE"].ToString());
-                 
+
                     DataRow[]  del_rows = from_dt.Select(expression);
 
                     foreach (DataRow  del_item in del_rows)
@@ -289,7 +260,7 @@ namespace TOP.Screen
                         from_dt.Rows.Remove(del_item);
                     }
                 }
-                /// 요기까지 오면 from_dt에는 순수하게 root 노드에 연결되야 하는 line만 존재하게 됨 
+                /// 요기까지 오면 from_dt에는 순수하게 root 노드에 연결되야 하는 line만 존재하게 됨
 
                 foreach (DataRow item in maxer_dt.Rows)
                 {
@@ -306,19 +277,16 @@ namespace TOP.Screen
 
                 treeList1.PopulateColumns();
 
-
                 return tree_dt;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-           
         }
 
         private DataTable GetManholeData1(DataTable data)
         {
-            
             DataTable dt = data.Clone();
             dt.Columns.Add("F관경");
             dt.Columns.Add("T관경");
@@ -326,7 +294,7 @@ namespace TOP.Screen
             DataColumn[] primarykey = new DataColumn[2];
             primarykey[0] = dt.Columns["누가거리"];
             primarykey[1] = dt.Columns["맨홀"];
-         
+
             dt.PrimaryKey = primarykey;
 
             foreach (DataRow item in data.Rows)
@@ -342,7 +310,7 @@ namespace TOP.Screen
                     dr.ItemArray = item.ItemArray;
 
                     //전단면과 후단면의 관경을 다를수도 있고 같을수도 있다
-                    //일단 처음 넣을때는 관경을 동일하게 처리하고 
+                    //일단 처음 넣을때는 관경을 동일하게 처리하고
                     //중복이 발생했을 경우 후단면의 관경을 갱신 처리한다.
                     dr["F관경"] = item["관경"];
                     dr["T관경"] = item["관경"];
@@ -361,13 +329,9 @@ namespace TOP.Screen
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show(ex.Message);
                     return null;
                 }
-                
-              
-                
             }
 
             return dt;
@@ -379,14 +343,13 @@ namespace TOP.Screen
         /// <param name="PipeData"></param>
         private void MakeFLO(CPipeData PipeData)
         {
-
             //막서 데이터포 변환하기 위한 Table 생성
             DataTable Dt = new DataTable();
             Dt.Columns.Add("FROM_LINE");
             Dt.Columns.Add("TO_LINE");
             Dt.Columns.Add("시작거리");
             Dt.Columns.Add("누가거리");
-            Dt.Columns.Add("누가거리_차이"); 
+            Dt.Columns.Add("누가거리_차이");
             Dt.Columns.Add("DATA1"); //0.0000
             Dt.Columns.Add("DATA2"); //0.0000
             Dt.Columns.Add("F관저고"); //from의 관저고
@@ -399,7 +362,6 @@ namespace TOP.Screen
             Dt.Columns.Add("지장물");
             DataTable data = PipeData.ManholeDt;
 
-            
             for (int i = 0; i < data.Rows.Count; i++)
             {
                if (data.Rows.Count -1  == i)
@@ -425,11 +387,11 @@ namespace TOP.Screen
                 {
                     dr["관경"] = data.Rows[i]["관경"];
                 }
-                else 
+                else
                 {
                     dr["관경"] = data.Rows[i]["T관경"];
                 }
-                
+
                 dr["지장물"] = GetXData(PipeData, dr);
                 dr["지장물"] = dr["지장물"] + GetGData(PipeData, dr);
                 Dt.Rows.Add(dr);
@@ -511,7 +473,6 @@ namespace TOP.Screen
             return gData;
         }
 
-
         /// <summary>
         /// 파일로 저장한다
         /// </summary>
@@ -530,22 +491,18 @@ namespace TOP.Screen
                     {
                         SaveFile(sDlg.FileName);
                     }
-
-
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
-               
+
             // gridControl1.ExportToText()
         }
 
         private void SaveFile(string FileName)
         {
-
             try
             {
                 DataTable dt = (DataTable)gridControl1.DataSource;
@@ -595,8 +552,6 @@ namespace TOP.Screen
                     strLine += item["지장물"].ToString();
 
                     strData.Add(strLine);
-
-
                 }
 
                 // Stream st = new Stream();
@@ -611,12 +566,8 @@ namespace TOP.Screen
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-
-            
-          
         }
     }
 }

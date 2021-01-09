@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TOP.lib
 {
     public static class CPipetoolSector
     {
-
         public static string GetSector(DataRow item)
         {
             string 가시설 = "0";
@@ -20,7 +15,7 @@ namespace TOP.lib
                 가시설 = "1";
             }
 
-            //가시설 [0]; 가시설 
+            //가시설 [0]; 가시설
             //sector [1]: 토사
             //[2]: asphalt
             //[3]: concA
@@ -34,18 +29,23 @@ namespace TOP.lib
                     case "1":
                         sector = "OP01";
                         break;
+
                     case "2":
                         sector = "OP02";
                         break;
+
                     case "3":
                         sector = "OP03";
                         break;
+
                     case "4":
                         sector = "OP04";
                         break;
+
                     case "5":
                         sector = "OP05";
                         break;
+
                     default:
                         break;
                 }
@@ -57,18 +57,23 @@ namespace TOP.lib
                     case "1":
                         sector = "GA01";
                         break;
+
                     case "2":
                         sector = "GA02";
                         break;
+
                     case "3":
                         sector = "GA03";
                         break;
+
                     case "4":
                         sector = "GA04";
                         break;
+
                     case "5":
                         sector = "GA05";
                         break;
+
                     default:
                         break;
                 }
@@ -80,18 +85,12 @@ namespace TOP.lib
         {
             Data.Columns.Add("sector", typeof(string));
 
-            //가시설 [0]; 가시설 
+            //가시설 [0]; 가시설
             //sector [1]: 토사
             //[2]: asphalt
             //[3]: concA
             //[4]: 보도
             //[5]: asp+con
-
-
-
-
-
-
 
             foreach (DataRow item in Data.Rows)
             {
@@ -144,10 +143,7 @@ namespace TOP.lib
                     item["sector"] = "5";
                     continue;
                 }
-
-             
             }
         }
-
     }
 }

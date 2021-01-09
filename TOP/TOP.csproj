@@ -27,7 +27,7 @@
     <ProductName>Tops</ProductName>
     <PublisherName>Tops</PublisherName>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>26</ApplicationRevision>
+    <ApplicationRevision>30</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -230,6 +230,7 @@
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -293,7 +294,9 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="lib\APipeData.cs" />
     <Compile Include="lib\CColumnProp.cs" />
+    <Compile Include="lib\CDataMngr.cs" />
     <Compile Include="lib\CGetTableType.cs" />
     <Compile Include="lib\CMakeDataTable.cs" />
     <Compile Include="lib\CMassData.cs" />
@@ -304,7 +307,9 @@
     <Compile Include="lib\CPLHMngr.cs" />
     <Compile Include="lib\CPrjInfo.cs" />
     <Compile Include="lib\CReadPLD.cs" />
+    <Compile Include="lib\CTopsData.cs" />
     <Compile Include="lib\CTrans.cs" />
+    <Compile Include="lib\CUserException.cs" />
     <Compile Include="lib\CUserInfo.cs" />
     <Compile Include="lib\CUtil.cs" />
     <Compile Include="Parent\PForm.cs">
@@ -332,6 +337,12 @@
     </Compile>
     <Compile Include="Screen\frmChild.Designer.cs">
       <DependentUpon>frmChild.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screen\frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
     </Compile>
     <Compile Include="Screen\frmLoadPipeTool.cs">
       <SubType>Form</SubType>
@@ -365,6 +376,7 @@
     </Compile>
     <EmbeddedResource Include="Dialog\frmClient.resx">
       <DependentUpon>frmClient.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\frmClient2.resx">
       <DependentUpon>frmClient2.cs</DependentUpon>
@@ -409,6 +421,9 @@
     </Compile>
     <EmbeddedResource Include="Screen\frmChild.resx">
       <DependentUpon>frmChild.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screen\frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screen\frmLoadPipeTool.resx">
       <DependentUpon>frmLoadPipeTool.cs</DependentUpon>

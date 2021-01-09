@@ -2,11 +2,7 @@
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.EditForm.Helpers.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using TOP.lib;
 
@@ -15,10 +11,10 @@ namespace TOP.Dialog
     public partial class frmClient : TOP.Parent.PForm
     {
         private bool b_Insert = false;
+
         public frmClient()
         {
             InitializeComponent();
-
         }
 
         /// <summary>
@@ -33,13 +29,10 @@ namespace TOP.Dialog
 
         private void QryClient()
         {
-
             try
             {
                 sqlDataSource1.Queries["QRY_CLIENT"].Parameters.Find(x => x.Name == "P_CLIENT_NM").Value = edtClientNm.Text;
                 sqlDataSource1.Queries["QRY_CLIENT"].Parameters.Find(x => x.Name == "P_ADDRESS").Value = edtAddress.Text;
-
-
 
                 sqlDataSource1.Fill("QRY_CLIENT");
 
@@ -49,10 +42,8 @@ namespace TOP.Dialog
             }
             catch (Exception ex)
             {
-
                 MsgCaption.Caption = ex.Message;
             }
-
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -97,7 +88,6 @@ namespace TOP.Dialog
 
             try
             {
-
                 if (b_Insert)
                 {
                     //insert 버튼으로 열었으면 신규 추가를 시도하고
@@ -105,7 +95,7 @@ namespace TOP.Dialog
                     sqlDataSource1.Queries["INSERT_CLIENT"].Parameters.Find(x => x.Name == "P_CLIENT_NM").Value = dr["CLIENT_NM"].ToString();
                     sqlDataSource1.Queries["INSERT_CLIENT"].Parameters.Find(x => x.Name == "P_OFFICE").Value = dr["OFFICE"].ToString();
                     sqlDataSource1.Queries["INSERT_CLIENT"].Parameters.Find(x => x.Name == "P_ADDRESS").Value = dr["ADDRESS"].ToString();
-                    
+
                     SqlDataSource.DisableCustomQueryValidation = true;
 
                     sqlDataSource1.Fill("INSERT_CLIENT");
@@ -118,24 +108,20 @@ namespace TOP.Dialog
                     sqlDataSource1.Queries["UPDATE_CLIENT"].Parameters.Find(x => x.Name == "P_OFFICE").Value = dr["OFFICE"].ToString();
                     sqlDataSource1.Queries["UPDATE_CLIENT"].Parameters.Find(x => x.Name == "P_ADDRESS").Value = dr["ADDRESS"].ToString();
                     sqlDataSource1.Queries["UPDATE_CLIENT"].Parameters.Find(x => x.Name == "P_CLIENT_CD").Value = dr["CLIENT_CD"].ToString();
-              
 
                     SqlDataSource.DisableCustomQueryValidation = true;
 
                     sqlDataSource1.Fill("UPDATE_CLIENT");
                 }
-
             }
             catch (Exception ex)
             {
-
                 MsgCaption.Caption = ex.InnerException.InnerException.InnerException.Message;
             }
             finally
             {
                 b_Insert = false;
             }
-
         }
     }
 }

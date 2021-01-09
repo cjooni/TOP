@@ -1,29 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.Reflection;
-using TOP.Parent;
-using DevExpress.XtraTab;
-using TOP.lib;
-using DevExpress.XtraTab.ViewInfo;
-using DevExpress.XtraGrid;
-using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.DataAccess.Sql;
 using DevExpress.XtraGrid.Columns;
-using DevExpress.DataAccess.Sql;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraTab;
+using DevExpress.XtraTab.ViewInfo;
+using System;
+using System.Data;
+using System.Reflection;
+using System.Windows.Forms;
+using TOP.lib;
+using TOP.Parent;
 
 namespace TOP.Screen
 {
     public delegate void LoadChkDataEventHandler(GridView gridview); //자식폼으로부터 그리드가 그려졌다는 수신 이벤트
-    public delegate void ChkColumnEventHandler(DataRow DR); //자식폼의 그리드 컬럼의 Visible 여부가 변경되었다는 이벤트
 
-        
+    public delegate void ChkColumnEventHandler(DataRow DR); //자식폼의 그리드 컬럼의 Visible 여부가 변경되었다는 이벤트
 
     public partial class frmChild : DevExpress.XtraEditors.XtraForm
     {
@@ -35,7 +26,7 @@ namespace TOP.Screen
         /// 보내는 Event를 선언
         /// </summary>
         public ChkColumnEventHandler ChkColumnEvent;
-      
+
         public CPageMngr PageMngr { get => pageMngr; set => pageMngr = value; }
         public CPrjInfo PrjInfo { get => prjInfo; set => prjInfo = value; }
         public CUserInfo UserInfo { get => userInfo; set => userInfo = value; }
@@ -48,31 +39,24 @@ namespace TOP.Screen
             UserInfo = new CUserInfo();
         }
 
-
-
         private void SimpleButton1_Click(object sender, EventArgs e)
         {
             LoadScreen("frmTest1");
         }
 
-
         private int LoadScreen(string strScrnNm)
         {
             string nameSpace = "TOP.Screen"; //네임스페이스 명
 
-            
             string frmName = string.Format("{0}.{1}", nameSpace, strScrnNm.Trim());
             PForm frm;
 
             try
             {
-              
                 if (PageMngr.GetPageByName(frmName) != null)
                 {
                     XtraTabPage page = PageMngr.GetPageByName(frmName).TabPag;
                     xtraTabControl1.SelectedTabPage = page;
-
-                   
 
                     return 0;
                 }
@@ -80,7 +64,6 @@ namespace TOP.Screen
                 {
                     Assembly assem = Assembly.GetExecutingAssembly();
                     frm = (PForm)assem.CreateInstance(frmName);
-                    
 
                     frm.TopLevel = false;
                     frm.FormBorderStyle = FormBorderStyle.None;
@@ -105,18 +88,12 @@ namespace TOP.Screen
                     this.ChkColumnEvent += new ChkColumnEventHandler(frm.ChkColumn);
                     frm.LoadChkDataEvent = new LoadChkDataEventHandler(this.LoadChkData);
                     PageMngr.AddPage(pagedata);
-
-                   
                 }
-
-                
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
-
 
             return 0;
         }
@@ -127,8 +104,6 @@ namespace TOP.Screen
         /// <param name="PrjInfo"></param>
         private void SelectProject(CPrjInfo PrjInfo)
         {
-
-
         }
 
         //그리드가 다 그려졌다는 내용을 전달받는 이벤트 처리 함수
@@ -136,7 +111,6 @@ namespace TOP.Screen
         {
             try
             {
-
                 gridView2.Columns.Clear();
 
                 DataTable dt = new DataTable();
@@ -157,16 +131,12 @@ namespace TOP.Screen
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message); ;
             }
         }
 
-
         private Boolean chkDupScreen(string strScrNm)
         {
-            
-
             return true;
         }
 
@@ -177,10 +147,8 @@ namespace TOP.Screen
 
         private void NavigationPane1_StateChanged(object sender, DevExpress.XtraBars.Navigation.StateChangedEventArgs e)
         {
-          
             splitContainer1.SplitterDistance = navigationPane1.Width + 1;
         }
-
 
         /// <summary>
         /// Page Header를 Close하면 Dictionary 를 지운다.
@@ -193,31 +161,25 @@ namespace TOP.Screen
             {
                 ClosePageButtonEventArgs arg = e as ClosePageButtonEventArgs;
 
-
                 XtraTabPage page = PageMngr.GetPageByCaptoin(arg.Page.Text).TabPag;
 
                 PageMngr.RemovePageByPage(page);
                 xtraTabControl1.TabPages.Remove(page);
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
-            
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-           // m_dic_Scr
-           // Assembly.GetAssembly()
-
+            // m_dic_Scr
+            // Assembly.GetAssembly()
         }
 
         private void pCtl1_Click(object sender, EventArgs e)
         {
-            
         }
 
         /// <summary>
@@ -234,7 +196,6 @@ namespace TOP.Screen
             edtProjectNm.Text = PrjInfo.ProjectNm;
 
             edtUserNm.Text = UserInfo.UserNM;
-
 
             if (PrjInfo.ProjectCd == null)
             {
@@ -257,16 +218,12 @@ namespace TOP.Screen
                 DataTable dt = CUtil.GetTable(sqlDSPrjScrn.Result["QRY_PRJ_SCRN"]);
 
                 gridScrn.DataSource = dt;
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
-
 
         private void tempScrnInfo()
         {
@@ -295,8 +252,6 @@ namespace TOP.Screen
 
             dt.Rows.Add(dr);
 
-
-
             dr = dt.NewRow();
             dr["PROJECT_CD"] = "TEST";
             dr["PROJECT_NM"] = "TEST";
@@ -304,73 +259,69 @@ namespace TOP.Screen
             dr["SCRN_TEXT"] = "토적표만들기";
 
             dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["PROJECT_CD"] = "TEST";
+            dr["PROJECT_NM"] = "TEST";
+            dr["SCRN_SRC"] = "frmInput";
+            dr["SCRN_TEXT"] = "사용자Input";
+
+            dt.Rows.Add(dr);
+
             gridScrn.DataSource = dt;
         }
 
-
         /// <summary>
-        /// Page가 바뀌면 해당 화면의 그리드 컬럼 리스트를 가져와 보자 
+        /// Page가 바뀌면 해당 화면의 그리드 컬럼 리스트를 가져와 보자
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void xtraTabControl1_SelectedPageChanged(object sender, TabPageChangedEventArgs e)
         {
-              
         }
 
         private void repositoryItemCheckEdit1_CheckedChanged(object sender, EventArgs e)
         {
-
         }
 
         private void repositoryItemCheckEdit1_CheckStateChanged(object sender, EventArgs e)
         {
-      
         }
 
         private void repositoryItemCheckEdit1_EditValueChanged(object sender, EventArgs e)
         {
-        
         }
 
         private void repositoryItemCheckEdit1_Click(object sender, EventArgs e)
         {
-     
         }
 
         private void repositoryItemCheckEdit2_CheckedChanged(object sender, EventArgs e)
         {
-           
         }
 
         private void gridView2_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-          
         }
 
         private void gridChkList_DataSourceChanged(object sender, EventArgs e)
         {
-
         }
 
         private void repositoryItemCheckEdit2_CheckStateChanged(object sender, EventArgs e)
         {
-   
         }
 
         private void repositoryItemCheckEdit2_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
-       
         }
 
         private void repositoryItemCheckEdit2_EditValueChanged(object sender, EventArgs e)
         {
-    
         }
 
         private void gridView2_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-
             if (e.Column.FieldName == "CHECK")
             {
                 gridView2.RefreshRow(e.RowHandle);
@@ -386,10 +337,9 @@ namespace TOP.Screen
                 dt.Columns.Add("CAPTION", typeof(string));
                 dt.Columns.Add("FIELD", typeof(string));
 
-
                 DataRow dr = dt.Rows.Add();
 
-                if(Convert.ToBoolean(origRow["CHECK"]) == true)
+                if (Convert.ToBoolean(origRow["CHECK"]) == true)
                 {
                     dr["CHECK"] = false;
                 }
@@ -398,29 +348,21 @@ namespace TOP.Screen
                     dr["CHECK"] = true;
                 }
 
-                
                 dr["CAPTION"] = origRow["CAPTION"];
                 dr["FIELD"] = origRow["FIELD"];
 
                 ChkColumnEvent(dr);
-
-               
             }
-
-
-
-
         }
 
         private void gridChkList_Click(object sender, EventArgs e)
         {
-
         }
 
         private void frmChild_Shown(object sender, EventArgs e)
         {
-           
-;        }
+            ;
+        }
 
         /// <summary>
         /// 공정을 더블클릭하면 해당 화면이 추가된다.
@@ -428,43 +370,36 @@ namespace TOP.Screen
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void viewScrn_DoubleClick(object sender, EventArgs e)
-        {            
+        {
             DataRow Dr;
             Dr = viewScrn.GetFocusedDataRow();
 
             try
-            {                
+            {
                 LoadScreen(Dr["SCRN_SRC"].ToString());
             }
             catch (Exception ex)
-            {                
+            {
                 string msg = string.Format("{0} Load중 오류, {1}", Dr["SCRN_TEXT"].ToString(), ex.Message);
 
                 MessageBox.Show(msg);
             }
-            
-
-
         }
 
         private void navigationPane1_ControlShown(object sender, DevExpress.XtraBars.Navigation.DeferredControlLoadEventArgs e)
         {
-           
         }
 
         private void splitContainer1_Panel1_SizeChanged(object sender, EventArgs e)
         {
-           
         }
 
         private void splitContainer1_Panel1_ClientSizeChanged(object sender, EventArgs e)
         {
-            
         }
 
         private void splitContainer1_Panel1_ParentChanged(object sender, EventArgs e)
         {
-            
         }
 
         private void splitContainer1_SizeChanged(object sender, EventArgs e)

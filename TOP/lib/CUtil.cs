@@ -1,6 +1,8 @@
 ﻿using DevExpress.DataAccess.Excel;
 using DevExpress.DataAccess.Sql.DataApi;
 using DevExpress.Spreadsheet;
+using DevExpress.XtraEditors;
+using DevExpress.XtraSpreadsheet;
 using DevExpress.XtraWaitForm;
 using System;
 using System.Collections;
@@ -8,31 +10,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.XtraSpreadsheet;
-using DevExpress.XtraEditors;
-using System.Windows.Forms;
-using System.IO;
-using DevExpress.XtraSplashScreen;
-using TOP.Screen;
-using System.Reflection;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace TOP.lib
 {
     public static class ExcelDataSourceExtension
     {
-
-    
-
         /// <summary>
         /// ExcelDataSource 를 데이터 테이블로 변환한다.
         /// </summary>
         /// <param name="excelDataSource"></param>
         /// <returns></returns>
-        public static DataTable ToDataTable( ExcelDataSource excelDataSource)
+        public static DataTable ToDataTable(ExcelDataSource excelDataSource)
         {
             IList list = ((IListSource)excelDataSource).GetList();
             DevExpress.DataAccess.Native.Excel.DataView dataView = (DevExpress.DataAccess.Native.Excel.DataView)list;
@@ -55,7 +48,6 @@ namespace TOP.lib
             }
             return table;
         }
-
 
         /// <summary>
         /// Excel 파일로부터 Excel Data를 추출한다.
@@ -84,13 +76,11 @@ namespace TOP.lib
             {
                 throw ex;
             }
-
-
         }
 
         /// <summary>
-        /// EXCEL 데이터를 DataTable로 전환합니다. 
-        /// 
+        /// EXCEL 데이터를 DataTable로 전환합니다.
+        ///
         /// </summary>
         /// <param name="FileName">엑셀 파일명</param>
         /// <param name="sheet"></param>
@@ -107,10 +97,8 @@ namespace TOP.lib
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-          
         }
 
         /// <summary>
@@ -135,19 +123,38 @@ namespace TOP.lib
         /// <returns></returns>
         public static IEnumerable<Cell> FindCell(Worksheet sheet, string keyword)
         {
-
             IEnumerable<Cell> searchResult = sheet.Search(keyword, GetSearchOption());
 
             return searchResult;
-
         }
     }
-     
-
 
     public static class CUtil
     {
-        
+        /// <summary>
+        /// Enum Data를 DataTable로 만든다.
+        /// DataTable dT = EnumToDataTable(typeof(ENUM_CURRENCY));
+        /// </summary>
+        /// <param name="enumType"></param>
+        /// <returns></returns>
+        public static DataTable EnumToDataTable(Type enumType)
+        {
+            DataTable table = new DataTable();
+
+            //Column that contains the Captions/Keys of Enum
+            table.Columns.Add("명칭", typeof(string));
+            //Get the type of ENUM for DataColumn
+            table.Columns.Add("Id", Enum.GetUnderlyingType(enumType));
+            //Add the items from the enum:
+            foreach (string name in Enum.GetNames(enumType))
+            {
+                //Replace underscores with space from caption/key and add item to collection:
+                table.Rows.Add(name.Replace('_', ' '), Enum.Parse(enumType, name));
+            }
+
+            return table;
+        }
+
         public static DataTable GetTable(ITable result)
         {
             try
@@ -163,13 +170,9 @@ namespace TOP.lib
             }
             catch (Exception e)
             {
-
                 throw e;
             }
-          
-
         }
-
 
         public static List<DataColumn> GetColumns(DataTable dt)
         {
@@ -177,7 +180,7 @@ namespace TOP.lib
 
             foreach (DataColumn item in dt.Columns)
             {
-                columns.Add(item);    
+                columns.Add(item);
             }
 
             return columns;
@@ -189,13 +192,13 @@ namespace TOP.lib
             progressPanel1.Caption = "Loading";
             progressPanel1.Description = "Please wait...";
             progressPanel1.WaitAnimationType = DevExpress.Utils.Animation.WaitingAnimatorType.Ring;
-            
+
             progressPanel1.Top = 100;
             progressPanel1.Left = 100;
 
             return progressPanel1;
 
-            //아래 항목은 호출하는 쪽에서 해줘야 함 
+            //아래 항목은 호출하는 쪽에서 해줘야 함
             //progressPanel1.Parent = this;
             //this.Controls.Add(progressPanel1);
 
@@ -208,9 +211,25 @@ namespace TOP.lib
             return ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
         }
 
+        /// <summary>
+        /// orig 데이터 Table 형태만 카피한 후 추가 Table의 컬럼을 추가한다.
+        /// </summary>
+        /// <param name="OrigDt"></param>
+        /// <returns></returns>
+        public static DataTable AddColumns(DataTable OrigDt, DataTable ExtDt)
+        {
+            DataTable OrigTmp = OrigDt.Clone();
+            DataTable ExtTmp = ExtDt.Clone();
 
+            foreach (DataColumn item in ExtDt.Columns)
+            {
+                OrigTmp.Columns.Add(item);
+            }
 
-        public static string  LoadExcel (SpreadsheetControl spreadsheet)
+            return OrigTmp;
+        }
+
+        public static string LoadExcel(SpreadsheetControl spreadsheet)
         {
             //SplashScreenManager ssManger = new SplashScreenManager();
 
@@ -221,11 +240,9 @@ namespace TOP.lib
 
                 Opendlg.Filter = "EXCEL 파일 (*.xlsx)|*.xlsx|모든파일(*.*)|*.*";
 
-
                 if (Opendlg.ShowDialog() == DialogResult.OK)
                 {
-
-                   // ssManger.ShowWaitForm();
+                    // ssManger.ShowWaitForm();
                     //ProgressPanel panel = CUtil.GetProgress("Data Loading", "EXCEL 파일을 읽는 중 입니다.");
                     //panel.Parent = this;
                     //this.Controls.Add(panel);
@@ -236,8 +253,6 @@ namespace TOP.lib
 
                     using (FileStream stream = new FileStream(filename, FileMode.Open))
                     {
-
-
                         //progressPanel1.Parent = this;
                         //this.Controls.Add(progressPanel1);
 
@@ -246,22 +261,17 @@ namespace TOP.lib
 
                         ///EXCEL DATA를 Load 한다.
                         spreadsheet.LoadDocument(stream, DocumentFormat.Xlsx);
-                       // spreadsheet.LoadDocument()
+                        // spreadsheet.LoadDocument()
                     }
-
-                    
                 }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
-
             }
             finally
             {
-               // ssManger.CloseWaitForm();
-               
+                // ssManger.CloseWaitForm();
             }
 
             return filename;
@@ -315,14 +325,13 @@ namespace TOP.lib
             return table;
         }
 
-        
         /// <summary>
         /// EXCEL Header의 font를 설정한다.
         /// </summary>
         /// <param name="range"></param>
         /// <param name="font_name"></param>
         /// <param name="font_size"></param>
-        public static void  setSheetHeaderFormat(CellRange range, string font_name, int font_size)
+        public static void setSheetHeaderFormat(CellRange range, string font_name, int font_size)
         {
             Formatting rangeFormatting = range.BeginUpdateFormatting();
             rangeFormatting.Font.Name = font_name;
@@ -337,7 +346,6 @@ namespace TOP.lib
 
             range.EndUpdateFormatting(rangeFormatting);
         }
-
 
         /// <summary>
         /// EXCEL Body의 Font를 설정한다.
