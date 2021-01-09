@@ -81,6 +81,8 @@ namespace TOP.Screen
             this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.spreadsheetFormulaBar1 = new DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
@@ -121,10 +123,12 @@ namespace TOP.Screen
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.spreadsheetFormulaBar1);
             this.layoutControl1.Controls.Add(this.treeList1);
             this.layoutControl1.Controls.Add(this.spread1);
             this.layoutControl1.Controls.Add(this.dropDownButton1);
@@ -137,20 +141,18 @@ namespace TOP.Screen
             this.layoutControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1477, 763);
+            this.layoutControl1.Size = new System.Drawing.Size(1641, 956);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // treeList1
             // 
-            this.treeList1.Location = new System.Drawing.Point(33, 90);
+            this.treeList1.Location = new System.Drawing.Point(36, 108);
             this.treeList1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.treeList1.MenuManager = this.barManager1;
-            this.treeList1.MinWidth = 18;
             this.treeList1.Name = "treeList1";
-            this.treeList1.Size = new System.Drawing.Size(1411, 643);
+            this.treeList1.Size = new System.Drawing.Size(1569, 812);
             this.treeList1.TabIndex = 13;
-            this.treeList1.TreeLevelWidth = 16;
             this.treeList1.DoubleClick += new System.EventHandler(this.treeList1_DoubleClick);
             // 
             // barManager1
@@ -176,16 +178,16 @@ namespace TOP.Screen
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager1;
             this.barDockControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControl1.Size = new System.Drawing.Size(1477, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1641, 0);
             // 
             // barDockControl2
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 793);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 991);
             this.barDockControl2.Manager = this.barManager1;
             this.barDockControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControl2.Size = new System.Drawing.Size(1477, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(1641, 0);
             // 
             // barDockControl3
             // 
@@ -194,16 +196,16 @@ namespace TOP.Screen
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
             this.barDockControl3.Manager = this.barManager1;
             this.barDockControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControl3.Size = new System.Drawing.Size(0, 793);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 991);
             // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1477, 0);
+            this.barDockControl4.Location = new System.Drawing.Point(1641, 0);
             this.barDockControl4.Manager = this.barManager1;
             this.barDockControl4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControl4.Size = new System.Drawing.Size(0, 793);
+            this.barDockControl4.Size = new System.Drawing.Size(0, 991);
             // 
             // btnPipeToolLoad
             // 
@@ -248,21 +250,21 @@ namespace TOP.Screen
             // 
             // spread1
             // 
-            this.spread1.Location = new System.Drawing.Point(33, 90);
+            this.spread1.Location = new System.Drawing.Point(36, 158);
             this.spread1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.spread1.MenuManager = this.barManager1;
             this.spread1.Name = "spread1";
-            this.spread1.Size = new System.Drawing.Size(1411, 643);
+            this.spread1.Size = new System.Drawing.Size(1569, 762);
             this.spread1.TabIndex = 9;
             this.spread1.Text = "spreadsheetControl1";
             // 
             // dropDownButton1
             // 
             this.dropDownButton1.DropDownControl = this.popupMenu1;
-            this.dropDownButton1.Location = new System.Drawing.Point(200, 50);
+            this.dropDownButton1.Location = new System.Drawing.Point(221, 60);
             this.dropDownButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dropDownButton1.Name = "dropDownButton1";
-            this.dropDownButton1.Size = new System.Drawing.Size(190, 27);
+            this.dropDownButton1.Size = new System.Drawing.Size(212, 32);
             this.dropDownButton1.StyleController = this.layoutControl1;
             this.dropDownButton1.TabIndex = 12;
             this.dropDownButton1.Text = "입력선택";
@@ -281,54 +283,51 @@ namespace TOP.Screen
             // grid토적표
             // 
             this.grid토적표.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.grid토적표.Location = new System.Drawing.Point(44, 130);
+            this.grid토적표.Location = new System.Drawing.Point(48, 156);
             this.grid토적표.MainView = this.gridView4;
             this.grid토적표.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grid토적표.Name = "grid토적표";
-            this.grid토적표.Size = new System.Drawing.Size(1389, 593);
+            this.grid토적표.Size = new System.Drawing.Size(1545, 752);
             this.grid토적표.TabIndex = 11;
             this.grid토적표.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView4});
             // 
             // gridView4
             // 
-            this.gridView4.DetailHeight = 280;
             this.gridView4.GridControl = this.grid토적표;
             this.gridView4.Name = "gridView4";
             // 
             // gridControl3
             // 
             this.gridControl3.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl3.Location = new System.Drawing.Point(211, 121);
+            this.gridControl3.Location = new System.Drawing.Point(233, 144);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(1233, 612);
+            this.gridControl3.Size = new System.Drawing.Size(1372, 776);
             this.gridControl3.TabIndex = 10;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
             // 
             // gridView3
             // 
-            this.gridView3.DetailHeight = 280;
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
             // 
             // gridControl2
             // 
             this.gridControl2.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl2.Location = new System.Drawing.Point(22, 50);
+            this.gridControl2.Location = new System.Drawing.Point(24, 60);
             this.gridControl2.MainView = this.gridView토적표;
             this.gridControl2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(174, 693);
+            this.gridControl2.Size = new System.Drawing.Size(193, 872);
             this.gridControl2.TabIndex = 7;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView토적표});
             // 
             // gridView토적표
             // 
-            this.gridView토적표.DetailHeight = 280;
             this.gridView토적표.GridControl = this.gridControl2;
             this.gridView토적표.Name = "gridView토적표";
             this.gridView토적표.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView2_RowClick);
@@ -336,18 +335,17 @@ namespace TOP.Screen
             // gridControl1
             // 
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl1.Location = new System.Drawing.Point(211, 121);
+            this.gridControl1.Location = new System.Drawing.Point(233, 144);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1233, 612);
+            this.gridControl1.Size = new System.Drawing.Size(1372, 776);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
-            this.gridView1.DetailHeight = 280;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
@@ -358,15 +356,15 @@ namespace TOP.Screen
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.tabbedControlGroup1});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1477, 763);
+            this.Root.Size = new System.Drawing.Size(1641, 956);
             this.Root.TextVisible = false;
             // 
             // tabbedControlGroup1
             // 
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
-            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup10;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(1459, 747);
+            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup9;
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(1621, 936);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup10,
             this.layoutControlGroup5,
@@ -378,7 +376,7 @@ namespace TOP.Screen
             this.tabbedControlGroup4});
             this.layoutControlGroup10.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup10.Name = "layoutControlGroup10";
-            this.layoutControlGroup10.Size = new System.Drawing.Size(1437, 697);
+            this.layoutControlGroup10.Size = new System.Drawing.Size(1597, 876);
             this.layoutControlGroup10.Text = "공통";
             // 
             // tabbedControlGroup4
@@ -386,7 +384,7 @@ namespace TOP.Screen
             this.tabbedControlGroup4.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup4.Name = "tabbedControlGroup4";
             this.tabbedControlGroup4.SelectedTabPage = this.layoutControlGroup11;
-            this.tabbedControlGroup4.Size = new System.Drawing.Size(1437, 697);
+            this.tabbedControlGroup4.Size = new System.Drawing.Size(1597, 876);
             this.tabbedControlGroup4.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup11});
             // 
@@ -396,7 +394,7 @@ namespace TOP.Screen
             this.layoutControlItem5});
             this.layoutControlGroup11.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup11.Name = "layoutControlGroup11";
-            this.layoutControlGroup11.Size = new System.Drawing.Size(1415, 647);
+            this.layoutControlGroup11.Size = new System.Drawing.Size(1573, 816);
             this.layoutControlGroup11.Text = "포장관리";
             // 
             // layoutControlItem5
@@ -404,7 +402,7 @@ namespace TOP.Screen
             this.layoutControlItem5.Control = this.treeList1;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1415, 647);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1573, 816);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
@@ -417,15 +415,15 @@ namespace TOP.Screen
             this.layoutControlItem8});
             this.layoutControlGroup5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup5.Name = "layoutControlGroup5";
-            this.layoutControlGroup5.Size = new System.Drawing.Size(1437, 697);
+            this.layoutControlGroup5.Size = new System.Drawing.Size(1597, 876);
             this.layoutControlGroup5.Text = "입력데이터";
             // 
             // tabbedControlGroup2
             // 
-            this.tabbedControlGroup2.Location = new System.Drawing.Point(178, 31);
+            this.tabbedControlGroup2.Location = new System.Drawing.Point(197, 36);
             this.tabbedControlGroup2.Name = "tabbedControlGroup2";
             this.tabbedControlGroup2.SelectedTabPage = this.layoutControlGroup2;
-            this.tabbedControlGroup2.Size = new System.Drawing.Size(1259, 666);
+            this.tabbedControlGroup2.Size = new System.Drawing.Size(1400, 840);
             this.tabbedControlGroup2.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2,
             this.layoutControlGroup7});
@@ -436,7 +434,7 @@ namespace TOP.Screen
             this.layoutControlItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1237, 616);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1376, 780);
             this.layoutControlGroup2.Text = "PIPE TOOL ";
             // 
             // layoutControlItem2
@@ -444,7 +442,7 @@ namespace TOP.Screen
             this.layoutControlItem2.Control = this.gridControl1;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1237, 616);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1376, 780);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -454,7 +452,7 @@ namespace TOP.Screen
             this.layoutControlItem7});
             this.layoutControlGroup7.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup7.Name = "layoutControlGroup7";
-            this.layoutControlGroup7.Size = new System.Drawing.Size(1237, 616);
+            this.layoutControlGroup7.Size = new System.Drawing.Size(1376, 780);
             this.layoutControlGroup7.Text = "토적 DATA";
             // 
             // layoutControlItem7
@@ -462,16 +460,16 @@ namespace TOP.Screen
             this.layoutControlItem7.Control = this.gridControl3;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(1237, 616);
+            this.layoutControlItem7.Size = new System.Drawing.Size(1376, 780);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(372, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(413, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1065, 31);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1184, 36);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
@@ -479,16 +477,16 @@ namespace TOP.Screen
             this.layoutControlItem4.Control = this.gridControl2;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(178, 697);
+            this.layoutControlItem4.Size = new System.Drawing.Size(197, 876);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.dropDownButton1;
-            this.layoutControlItem8.Location = new System.Drawing.Point(178, 0);
+            this.layoutControlItem8.Location = new System.Drawing.Point(197, 0);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(194, 31);
+            this.layoutControlItem8.Size = new System.Drawing.Size(216, 36);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
@@ -498,7 +496,7 @@ namespace TOP.Screen
             this.tabbedControlGroup5});
             this.layoutControlGroup9.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup9.Name = "layoutControlGroup9";
-            this.layoutControlGroup9.Size = new System.Drawing.Size(1437, 697);
+            this.layoutControlGroup9.Size = new System.Drawing.Size(1597, 876);
             this.layoutControlGroup9.Text = "출력데이터";
             // 
             // tabbedControlGroup5
@@ -506,7 +504,7 @@ namespace TOP.Screen
             this.tabbedControlGroup5.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup5.Name = "tabbedControlGroup5";
             this.tabbedControlGroup5.SelectedTabPage = this.layoutControlGroup1;
-            this.tabbedControlGroup5.Size = new System.Drawing.Size(1437, 697);
+            this.tabbedControlGroup5.Size = new System.Drawing.Size(1597, 876);
             this.tabbedControlGroup5.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup6,
             this.layoutControlGroup1});
@@ -514,18 +512,19 @@ namespace TOP.Screen
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem3});
+            this.layoutControlItem3,
+            this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1415, 647);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1573, 816);
             this.layoutControlGroup1.Text = "EXCEL 데이터";
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.spread1;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 50);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1415, 647);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1573, 766);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -535,7 +534,7 @@ namespace TOP.Screen
             this.tabbedControlGroup3});
             this.layoutControlGroup6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.Size = new System.Drawing.Size(1415, 647);
+            this.layoutControlGroup6.Size = new System.Drawing.Size(1573, 816);
             this.layoutControlGroup6.Text = "기초데이터";
             // 
             // tabbedControlGroup3
@@ -543,7 +542,7 @@ namespace TOP.Screen
             this.tabbedControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup3.Name = "tabbedControlGroup3";
             this.tabbedControlGroup3.SelectedTabPage = this.layoutControlGroup3;
-            this.tabbedControlGroup3.Size = new System.Drawing.Size(1415, 647);
+            this.tabbedControlGroup3.Size = new System.Drawing.Size(1573, 816);
             this.tabbedControlGroup3.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup3,
             this.layoutControlGroup8});
@@ -554,7 +553,7 @@ namespace TOP.Screen
             this.layoutControlItem1});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(1393, 597);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(1549, 756);
             this.layoutControlGroup3.Text = "토적표 기초데이터";
             // 
             // layoutControlItem1
@@ -562,7 +561,7 @@ namespace TOP.Screen
             this.layoutControlItem1.Control = this.grid토적표;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1393, 597);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1549, 756);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -570,7 +569,7 @@ namespace TOP.Screen
             // 
             this.layoutControlGroup8.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup8.Name = "layoutControlGroup8";
-            this.layoutControlGroup8.Size = new System.Drawing.Size(1393, 597);
+            this.layoutControlGroup8.Size = new System.Drawing.Size(1549, 756);
             this.layoutControlGroup8.Text = "오수관 기초데이터";
             // 
             // splitterItem1
@@ -593,10 +592,28 @@ namespace TOP.Screen
             this.popupMenu2.Manager = this.barManager1;
             this.popupMenu2.Name = "popupMenu2";
             // 
+            // spreadsheetFormulaBar1
+            // 
+            this.spreadsheetFormulaBar1.Location = new System.Drawing.Point(36, 108);
+            this.spreadsheetFormulaBar1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.spreadsheetFormulaBar1.MinimumSize = new System.Drawing.Size(0, 46);
+            this.spreadsheetFormulaBar1.Name = "spreadsheetFormulaBar1";
+            this.spreadsheetFormulaBar1.Size = new System.Drawing.Size(1569, 46);
+            this.spreadsheetFormulaBar1.TabIndex = 14;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.spreadsheetFormulaBar1;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(1573, 50);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem6.TextVisible = false;
+            // 
             // frmInput
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1477, 793);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.ClientSize = new System.Drawing.Size(1641, 991);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.barDockControl3);
             this.Controls.Add(this.barDockControl4);
@@ -650,6 +667,7 @@ namespace TOP.Screen
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -708,5 +726,7 @@ namespace TOP.Screen
         private DevExpress.XtraLayout.TabbedControlGroup tabbedControlGroup4;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup11;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraSpreadsheet.SpreadsheetFormulaBar spreadsheetFormulaBar1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }
