@@ -361,5 +361,6 @@ namespace TOP.lib
 
             range.EndUpdateFormatting(rangeFormatting);
         }
+
     }
 }

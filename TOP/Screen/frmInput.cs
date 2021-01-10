@@ -141,7 +141,7 @@ namespace TOP.Screen
         /// </summary>
         private void QrySheetInfo()
         {
-            var sql = from a in TopsData.MainData.Tables["SHEET_INFO"].AsEnumerable()
+            var sql = from a in TopsData.MainData.Tables[CGetTableType.tbl_SHEET_INFO].AsEnumerable()
                       select new
                       {
                           SheetName = a.Field<string>("SHEET_NAME").ToString()

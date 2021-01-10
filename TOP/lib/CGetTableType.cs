@@ -5,9 +5,86 @@ namespace TOP.lib
 {
     public static class CGetTableType
     {
-
+        public const string tbl_PIPE_TOOL_INPUT = "PIPETOOL_INPUT";
+        public const string tbl_토적표_INPUT = "토적표_INPUT";
         public const string tbl_토적표기초데이터 = "토적표기초데이터";
         public const string tbl_맨홀구간정보 = "맨홀구간정보";
+        
+        /// <summary>
+        /// EXCEL 에서 Load한 Sheet  정보를 관리하는 Table
+        /// </summary>
+        public const string tbl_SHEET_INFO = "SHEET_INFO";
+
+        /// <summary>
+        /// Sheet Name과 동일하다.
+        /// </summary>
+        public const string col_LINENAME = "LINENAME";   //SheetName 
+        public const string col_INDEX = "INDEX";
+        public const string col_누가거리 = "누가거리";
+        public const string col_거리     = "거리";
+        public const string col_지반고   = "지반고";
+        public const string col_관저고   = "관저고";
+        public const string col_관경     = "관경";
+        public const string col_맨홀     = "맨홀";
+        public const string col_TEXT1    = "TEXT1";
+        public const string col_TEXT2    = "TEXT2";
+        public const string col_구간     = "구간";
+        public const string col_구배     = "구배";
+        public const string col_INV      = "INV";
+        public const string col_SIZE     = "SIZE";
+        public const string col_라인명   = "라인명";
+        public const string col_지하수위 = "지하수위";
+        public const string col_맨홀_INVERT = "맨홀INVERT";
+        public const string col_맨홀규격 = "맨홀규격";
+        public const string col_굴착공법 = "굴착공법";
+        public const string col_굴착장비 = "굴착장비";
+        public const string col_포장종류 = "포장종류";
+
+        public const string col_NO = "NO";
+        public const string col_전후단면 = "전후단면";
+        public const string col_전후단면_IDX = "전후단면_IDX";  //전후단면 정렬시 사용하는 INDEX
+        public const string col_계획고 = "계획고";
+
+        public const string col_육상_토사 = "육상(토사)";
+        public const string col_육상_풍화암 = "육상(풍화암)";
+        public const string col_육상_연암 = "육상(연암)";
+        public const string col_수중_토사 = "수중(토사)";
+        public const string col_수중_풍화암 = "수중(풍화암)";
+        public const string col_수중_연암 = "수중(연암)";
+        public const string col_관상부 = "관상부";
+        public const string col_관주위 = "관주위";
+        public const string col_ASP= "ASP";
+        public const string col_CONC= "CONC";
+        public const string col_덧씌우기= "덧씌우기";
+        public const string col_보도블럭= "보도블럭";
+        public const string col_모래부설= "모래부설";
+        public const string col_보조기층= "보조기층";
+        public const string col_동상방지층= "동상방지층";
+
+
+        ///SHEET_INFO TABLE
+        public const string col_SHEET_NAME = "SHEET_NAME";
+        public const string col_PIPE_TYPE = "PIPE_TYPE";
+        public const string col_DATA1_RANGE = "DATA1_RANGE";
+        public const string col_DATA2_RANGE = "DATA2_RANGE";
+        public const string col_토적_RANGE = "토적_RANGE";
+
+
+
+        
+
+        ////
+        ///
+        //dt.Columns.Add("육상(토사)", typeof(string));
+        //    dt.Columns.Add("육상(풍화암)", typeof(string));
+        //    dt.Columns.Add("육상(연암)", typeof(string));
+        //    dt.Columns.Add("육상(연암)", typeof(string));
+        //    dt.Columns.Add("수중(풍화암)", typeof(string));
+        //    dt.Columns.Add("수중(연암)", typeof(string));
+        //    dt.Columns.Add("관상부", typeof(string));
+        //    dt.Columns.Add("관주위", typeof(string));
+
+
 
 
         /// <summary>
@@ -50,6 +127,82 @@ namespace TOP.lib
 
             return dt;
         }
+
+
+        public static DataTable GetPipeToolTable()
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = tbl_PIPE_TOOL_INPUT;
+
+            dt.Columns.Add(col_LINENAME, typeof(string));
+            dt.Columns.Add(col_INDEX, typeof(int));
+            dt.Columns.Add(col_누가거리, typeof(int));
+            dt.Columns.Add(col_지반고, typeof(decimal));
+            dt.Columns.Add(col_관저고, typeof(decimal));
+            dt.Columns.Add(col_관경, typeof(int));
+            dt.Columns.Add(col_맨홀, typeof(string));
+            dt.Columns.Add(col_TEXT1, typeof(string));
+            dt.Columns.Add(col_TEXT2, typeof(string));
+            dt.Columns.Add(col_구간, typeof(string));
+            dt.Columns.Add(col_구배, typeof(decimal));
+            dt.Columns.Add(col_INV, typeof(decimal));
+            dt.Columns.Add(col_SIZE, typeof(decimal));
+            dt.Columns.Add(col_라인명, typeof(string));
+            dt.Columns.Add(col_지하수위, typeof(decimal));
+            dt.Columns.Add(col_맨홀_INVERT, typeof(decimal));
+            DataColumn dc;
+            dc = dt.Columns.Add(col_맨홀규격, typeof(string));
+            dc.DefaultValue = "원형1호";
+
+            dt.Columns.Add(col_굴착공법, typeof(string));
+            dc = dt.Columns.Add(col_굴착장비, typeof(string));
+            dc.DefaultValue = "B/H 0.7";
+
+            dt.Columns.Add(col_포장종류, typeof(string));
+
+            return dt;
+        }
+
+
+        public static DataTable Get토적DataTable()
+        {
+            //NO	지반고	관저고	계획고	육상(토사)	육상(풍화암)	육상(연암)	수중(토사)	수중(풍화암)	수중(연암)	관상부
+            //관주위	ASP	CONC	덧씌우기	보도블럭	모래부설	보조기층	동상방지층 구간 , 관경 ,
+            //맨홀규격  굴착공법  Column3 (임시이름) 포장종류
+            DataTable dt = new DataTable();
+
+            dt.TableName = tbl_토적표_INPUT;
+            dt.Columns.Add(col_LINENAME, typeof(string));
+            dt.Columns.Add(col_INDEX, typeof(int));
+            dt.Columns.Add(col_NO   , typeof(string));
+            dt.Columns.Add(col_전후단면, typeof(string));
+            dt.Columns.Add(col_전후단면_IDX, typeof(int));
+            dt.Columns.Add(col_누가거리, typeof(int));
+            dt.Columns.Add(col_거리, typeof(int));
+            dt.Columns.Add(col_지반고, typeof(decimal));
+            dt.Columns.Add(col_관저고, typeof(decimal));
+            dt.Columns.Add(col_계획고, typeof(decimal));
+            dt.Columns.Add(col_육상_토사, typeof(decimal));
+            dt.Columns.Add(col_육상_풍화암, typeof(decimal));
+            dt.Columns.Add(col_육상_연암, typeof(decimal));
+            dt.Columns.Add(col_수중_토사, typeof(decimal));
+            dt.Columns.Add(col_수중_풍화암, typeof(decimal));
+            dt.Columns.Add(col_수중_연암, typeof(decimal));
+            dt.Columns.Add(col_관상부, typeof(decimal));
+            dt.Columns.Add(col_관주위, typeof(decimal));
+            dt.Columns.Add(col_ASP, typeof(decimal));
+            dt.Columns.Add(col_CONC, typeof(decimal));
+            dt.Columns.Add(col_덧씌우기, typeof(decimal));
+            dt.Columns.Add(col_보도블럭, typeof(decimal));
+            dt.Columns.Add(col_모래부설, typeof(decimal));
+            dt.Columns.Add(col_보조기층, typeof(decimal));
+            dt.Columns.Add(col_동상방지층, typeof(decimal));
+
+
+            return dt;
+        }
+
+
 
         /// <summary>
         /// 토적표를 만들때 쓸 기초 데이터를 생성해요
@@ -102,14 +255,14 @@ namespace TOP.lib
         public static DataTable GetSheetInfo()
         {
             DataTable dt = new DataTable();
-            dt.TableName = "SHEET_INFO";
+            dt.TableName = tbl_SHEET_INFO;
             try
             {
-                dt.Columns.Add("SHEET_NAME", typeof(string));
-                dt.Columns.Add("PIPE_TYPE", typeof(string));
-                dt.Columns.Add("DATA1_RANGE", typeof(string));
-                dt.Columns.Add("DATA2_RANGE", typeof(string));
-                dt.Columns.Add("토적_RANGE", typeof(string));
+                dt.Columns.Add(col_SHEET_NAME, typeof(string));
+                dt.Columns.Add(col_PIPE_TYPE, typeof(string));
+                dt.Columns.Add(col_DATA1_RANGE, typeof(string));
+                dt.Columns.Add(col_DATA2_RANGE, typeof(string));
+                dt.Columns.Add(col_토적_RANGE, typeof(string));
             }
             catch (Exception ex)
             {

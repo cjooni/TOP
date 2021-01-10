@@ -31,14 +31,14 @@ namespace TOP.lib
         /// </summary>
         public void LoadFrom토적Data()
         {
-            if (MainData.Tables["SHEET_INFO"].Rows.Count <= 0)
+            if (MainData.Tables[CGetTableType.tbl_SHEET_INFO].Rows.Count <= 0)
             {
                 MessageBox.Show("먼저 PIPE TOOL 데이터를 Load 하세요.");
 
                 return;
             }
 
-            DataTable sheet_info = MainData.Tables["SHEET_INFO"];
+            DataTable sheet_info = MainData.Tables[CGetTableType.tbl_SHEET_INFO];
 
             string filename = "";
             SpreadsheetControl MainSheet = new SpreadsheetControl();
@@ -54,9 +54,9 @@ namespace TOP.lib
 
                     IEnumerable<Cell> searchResult = ExcelDataSourceExtension.FindCell(item, "NO");
 
-                    string strPos2;
+                    
                     string strPos1;
-                    string strPos3;
+                    
 
                     foreach (Cell cell in searchResult)
                     {
@@ -66,14 +66,18 @@ namespace TOP.lib
                         }
 
                         ///토적Data는 Sheet별로 DataTable을 관리하는 구조야
-                        //CMassData Data = new CMassData();
+                        ///Sheet Info 에 토적 Data Sheet와 동일한게 없다면 잘못된 거야 
+                        int qry = (from a in MainData.Tables[CGetTableType.tbl_SHEET_INFO].AsEnumerable()
+                                   where a.Field<string>(CGetTableType.col_SHEET_NAME) == item.Name
+                                   select a).Count();
 
-                        if (MainData.Tables.Contains(item.Name) == false)
+
+                        if (qry <= 0)
                         {
                             MessageBox.Show("토적Data Sheet[" + item.Name + "]가 PipeTool 데이터에 없습니다.");
                         }
 
-                        string strPos;
+                        
 
                         strPos1 = string.Format("{0}{1}:{2}{3}", "B", 1, "T", nRow);
 
@@ -91,13 +95,30 @@ namespace TOP.lib
 
                         rows[0]["토적_RANGE"] = strPos1;
 
-                        DataTable sortTable = 토적정렬(dt1);
-                        sortTable.TableName = item.Name + "_토적";
+                        DataTable sortTable = CDataMngr.Make토적Data(item.Name, dt1);//토적정렬(dt1);
+                        //sortTable.TableName = item.Name + "_토적";
 
-                        MainData.Tables.Add(sortTable);
+
+                        ///Sheet 정보를 관리 Table 에 삽입한다.
+                        if (MainData.Tables.Contains(CGetTableType.tbl_토적표_INPUT) == false)
+                        {
+                            sortTable.TableName = CGetTableType.tbl_토적표_INPUT;
+                            MainData.Tables.Add(sortTable);
+                        }
+                        else
+                        {
+                            foreach (DataRow dr in sortTable.Rows)
+                            {
+                                MainData.Tables[CGetTableType.tbl_토적표_INPUT].ImportRow(dr);
+                            }
+                        }
+
+                        ///PipeTool과  토적 Data의 내용이 같은지 비교해 봅시다.
+                        CheckBaseData(item.Name);
+
                     }
                 }
-                Make토적Data();
+                //Make토적Data();
             }
             catch (Exception ex)
             {
@@ -107,6 +128,42 @@ namespace TOP.lib
             {
             }
         }
+
+
+        /// <summary>
+        /// PipeTool LoadData와 토적데이터 Load Data간 차이가 있는지 확인해보자 
+        /// </summary>
+        /// <returns></returns>
+        private Boolean CheckBaseData(string sheet_name)
+        {
+            
+
+            var qry3 = (from a in MainData.Tables[CGetTableType.tbl_토적표_INPUT].AsEnumerable()
+                        where a.Field<string>(CGetTableType.col_LINENAME) == sheet_name
+                        select a).Count();
+
+            var qry2 = (from a in MainData.Tables[CGetTableType.tbl_PIPE_TOOL_INPUT].AsEnumerable()
+                        join b in MainData.Tables[CGetTableType.tbl_토적표_INPUT].AsEnumerable()
+                        on new { LINENAME = a.Field<string>(CGetTableType.col_LINENAME), INDEX = a.Field<int>(CGetTableType.col_INDEX), 누가거리 = a.Field<int>(CGetTableType.col_누가거리) }
+                        equals new { LINENAME = b.Field<string>(CGetTableType.col_LINENAME), INDEX = b.Field<int>(CGetTableType.col_INDEX), 누가거리 = b.Field<int>(CGetTableType.col_누가거리) }
+                        where a.Field<string>(CGetTableType.col_LINENAME) == sheet_name &&
+                              b.Field<string>(CGetTableType.col_LINENAME) == sheet_name
+                        select a).Count();
+
+
+        
+
+
+            if (qry2 != qry3)
+            {
+                return false;
+            }
+
+
+            return true;
+        }
+
+
 
         private string[] GetPoint(string data)
         {
@@ -145,6 +202,9 @@ namespace TOP.lib
         {
             data.Columns.Add("누가거리", typeof(decimal));
             data.Columns.Add("전후", typeof(decimal));
+            data.Columns.Add("INDEX", typeof(decimal));
+
+            int nIdx = 0;
 
             foreach (DataRow Dr in data.Rows)
             {
@@ -152,7 +212,7 @@ namespace TOP.lib
 
                 decimal dist = (Convert.ToDecimal(sss[0]) * 20) + Convert.ToDecimal(sss[2]);
                 Dr["누가거리"] = dist;
-
+                Dr["INDEX"] = nIdx;
                 if (sss[3].ToString().Trim() == "")
                 {
                     Dr["전후"] = 1;
@@ -165,6 +225,8 @@ namespace TOP.lib
                 {
                     Dr["전후"] = 3;
                 }
+
+                nIdx++;
             }
             data.DefaultView.Sort = "누가거리 DESC, 전후 DESC";
             return data.DefaultView.ToTable();
@@ -185,7 +247,7 @@ namespace TOP.lib
 
             DataTable dt토적표기초데이터 = CGetTableType.GtMassData();
 
-            foreach (DataRow sheet_dr in MainData.Tables["SHEET_INFO"].Rows)
+            foreach (DataRow sheet_dr in MainData.Tables[CGetTableType.tbl_SHEET_INFO].Rows)
             {
                 string sheet_name = sheet_dr["SHEET_NAME"].ToString();
                 DataTable dtPipeTool = MainData.Tables[sheet_name].Copy();
@@ -295,7 +357,7 @@ namespace TOP.lib
                 int cnt1 = 0;
                 int cnt2 = 0;
 
-                foreach (DataRow dr in MainData.Tables["SHEET_INFO"].Rows)
+                foreach (DataRow dr in MainData.Tables[CGetTableType.tbl_SHEET_INFO].Rows)
                 {
                     sheet_name = dr["SHEET_NAME"].ToString();
                     sheet_name2 = dr["SHEET_NAME"].ToString() + "_토적";
@@ -384,14 +446,26 @@ namespace TOP.lib
                         DataTable dt1 = ExcelDataSourceExtension.ExcelToDataSource(filename, item, strPos1);
                         DataTable dt2 = ExcelDataSourceExtension.ExcelToDataSource(filename, item, strPos2);
 
-                        dt1.TableName = item.Name;
-                        CDataMngr.SetExtend(dt1);
+                        
 
-                        MainData.Tables.Add(dt1);
+
+                        
+                        DataTable dt = CDataMngr.MakePipeToolData(item.Name, dt1);
+
+                        if (MainData.Tables.Contains(CGetTableType.tbl_PIPE_TOOL_INPUT) == false)
+                        {
+                            dt.TableName = CGetTableType.tbl_PIPE_TOOL_INPUT;
+                            MainData.Tables.Add(dt);
+                        }
+                        else
+                        {
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                MainData.Tables[CGetTableType.tbl_PIPE_TOOL_INPUT].ImportRow(dr);
+                            }
+                        }                        
                     }
                 }
-
-             
             }
             catch (Exception ex)
             {
@@ -430,7 +504,7 @@ namespace TOP.lib
 
                 int row_idx = 0;
 
-                DataTable sheetinfo_dt = MainData.Tables["SHEET_INFO"];
+                DataTable sheetinfo_dt = MainData.Tables[CGetTableType.tbl_SHEET_INFO];
 
                 foreach (DataRow item_dr in sheetinfo_dt.Rows)
                 {
@@ -1411,7 +1485,7 @@ namespace TOP.lib
             sheet.MergeCells(sheet.Range["M2:M3"]);
             sheet.Rows[1]["M"].SetValue("비고");
 
-            foreach (DataRow item in MainData.Tables["SHEET_INFO"].Rows)
+            foreach (DataRow item in MainData.Tables[CGetTableType.tbl_SHEET_INFO].Rows)
             {
                 LineName = item["SHEET_NAME"].ToString() + " LINE";
                 관종 = item["PIPE_TYPE"].ToString();

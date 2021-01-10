@@ -363,7 +363,7 @@ namespace TOP.Screen
             // 
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
-            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup9;
+            this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup5;
             this.tabbedControlGroup1.Size = new System.Drawing.Size(1621, 936);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup10,
@@ -599,6 +599,7 @@ namespace TOP.Screen
             this.spreadsheetFormulaBar1.MinimumSize = new System.Drawing.Size(0, 46);
             this.spreadsheetFormulaBar1.Name = "spreadsheetFormulaBar1";
             this.spreadsheetFormulaBar1.Size = new System.Drawing.Size(1569, 46);
+            this.spreadsheetFormulaBar1.SpreadsheetControl = this.spread1;
             this.spreadsheetFormulaBar1.TabIndex = 14;
             // 
             // layoutControlItem6
