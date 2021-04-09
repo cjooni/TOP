@@ -87,22 +87,22 @@
             this.layoutControl1.Controls.Add(this.simpleButton2);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.layoutControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1171, 749);
+            this.layoutControl1.Size = new System.Drawing.Size(1301, 940);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // gridScrnInfo
             // 
             this.gridScrnInfo.DataSource = this.sqlDataSource1;
-            this.gridScrnInfo.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.gridScrnInfo.Location = new System.Drawing.Point(12, 129);
+            this.gridScrnInfo.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(7, 10, 7, 10);
+            this.gridScrnInfo.Location = new System.Drawing.Point(12, 159);
             this.gridScrnInfo.MainView = this.gridView1;
-            this.gridScrnInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.gridScrnInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gridScrnInfo.Name = "gridScrnInfo";
-            this.gridScrnInfo.Size = new System.Drawing.Size(1147, 608);
+            this.gridScrnInfo.Size = new System.Drawing.Size(1277, 769);
             this.gridScrnInfo.TabIndex = 4;
             this.gridScrnInfo.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -159,8 +159,8 @@
             this.colSCRN_SRC,
             this.colSCRN_TEXT,
             this.colSCRN_DESC});
-            this.gridView1.DetailHeight = 500;
-            this.gridView1.FixedLineWidth = 3;
+            this.gridView1.DetailHeight = 625;
+            this.gridView1.FixedLineWidth = 4;
             this.gridView1.GridControl = this.gridScrnInfo;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditForm;
@@ -174,11 +174,11 @@
             this.colSCRN_SRC.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSCRN_SRC.Caption = "소스코드";
             this.colSCRN_SRC.FieldName = "SCRN_SRC";
-            this.colSCRN_SRC.MinWidth = 26;
+            this.colSCRN_SRC.MinWidth = 29;
             this.colSCRN_SRC.Name = "colSCRN_SRC";
             this.colSCRN_SRC.Visible = true;
             this.colSCRN_SRC.VisibleIndex = 0;
-            this.colSCRN_SRC.Width = 96;
+            this.colSCRN_SRC.Width = 107;
             // 
             // colSCRN_TEXT
             // 
@@ -188,11 +188,11 @@
             this.colSCRN_TEXT.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSCRN_TEXT.Caption = "화면명";
             this.colSCRN_TEXT.FieldName = "SCRN_TEXT";
-            this.colSCRN_TEXT.MinWidth = 26;
+            this.colSCRN_TEXT.MinWidth = 29;
             this.colSCRN_TEXT.Name = "colSCRN_TEXT";
             this.colSCRN_TEXT.Visible = true;
             this.colSCRN_TEXT.VisibleIndex = 1;
-            this.colSCRN_TEXT.Width = 96;
+            this.colSCRN_TEXT.Width = 107;
             // 
             // colSCRN_DESC
             // 
@@ -202,37 +202,37 @@
             this.colSCRN_DESC.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colSCRN_DESC.Caption = "화면설명";
             this.colSCRN_DESC.FieldName = "SCRN_DESC";
-            this.colSCRN_DESC.MinWidth = 26;
+            this.colSCRN_DESC.MinWidth = 29;
             this.colSCRN_DESC.Name = "colSCRN_DESC";
             this.colSCRN_DESC.Visible = true;
             this.colSCRN_DESC.VisibleIndex = 2;
-            this.colSCRN_DESC.Width = 96;
+            this.colSCRN_DESC.Width = 107;
             // 
             // edtScrnSrc
             // 
-            this.edtScrnSrc.Location = new System.Drawing.Point(75, 12);
-            this.edtScrnSrc.Margin = new System.Windows.Forms.Padding(4);
+            this.edtScrnSrc.Location = new System.Drawing.Point(87, 12);
+            this.edtScrnSrc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.edtScrnSrc.Name = "edtScrnSrc";
-            this.edtScrnSrc.Size = new System.Drawing.Size(377, 26);
+            this.edtScrnSrc.Size = new System.Drawing.Size(415, 34);
             this.edtScrnSrc.StyleController = this.layoutControl1;
             this.edtScrnSrc.TabIndex = 5;
             // 
             // edtScrnText
             // 
-            this.edtScrnText.Location = new System.Drawing.Point(75, 42);
-            this.edtScrnText.Margin = new System.Windows.Forms.Padding(4);
+            this.edtScrnText.Location = new System.Drawing.Point(87, 50);
+            this.edtScrnText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.edtScrnText.Name = "edtScrnText";
-            this.edtScrnText.Size = new System.Drawing.Size(377, 26);
+            this.edtScrnText.Size = new System.Drawing.Size(415, 34);
             this.edtScrnText.StyleController = this.layoutControl1;
             this.edtScrnText.TabIndex = 6;
             // 
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(902, 72);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.simpleButton1.Location = new System.Drawing.Point(1003, 88);
+            this.simpleButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(122, 53);
+            this.simpleButton1.Size = new System.Drawing.Size(136, 67);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 7;
             this.simpleButton1.Text = "신규";
@@ -241,10 +241,10 @@
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(1028, 72);
-            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4);
+            this.simpleButton2.Location = new System.Drawing.Point(1143, 88);
+            this.simpleButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(131, 53);
+            this.simpleButton2.Size = new System.Drawing.Size(146, 67);
             this.simpleButton2.StyleController = this.layoutControl1;
             this.simpleButton2.TabIndex = 8;
             this.simpleButton2.Text = "조회";
@@ -264,15 +264,15 @@
             this.layoutControlItem5,
             this.emptySpaceItem3});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1171, 749);
+            this.Root.Size = new System.Drawing.Size(1301, 940);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridScrnInfo;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 117);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 147);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1151, 612);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1281, 773);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -281,42 +281,42 @@
             this.layoutControlItem2.Control = this.edtScrnSrc;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(444, 30);
+            this.layoutControlItem2.Size = new System.Drawing.Size(494, 38);
             this.layoutControlItem2.Text = "소스코드";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(60, 20);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(72, 25);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.edtScrnText;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 30);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 38);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(444, 30);
+            this.layoutControlItem3.Size = new System.Drawing.Size(494, 38);
             this.layoutControlItem3.Text = "소스명";
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(60, 20);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(72, 25);
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(444, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(494, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(707, 30);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(787, 38);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(444, 30);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(494, 38);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(707, 30);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(787, 38);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton1;
-            this.layoutControlItem4.Location = new System.Drawing.Point(890, 60);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(85, 57);
+            this.layoutControlItem4.Location = new System.Drawing.Point(991, 76);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(94, 71);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(126, 57);
+            this.layoutControlItem4.Size = new System.Drawing.Size(140, 71);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
@@ -324,11 +324,11 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.simpleButton2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(1016, 60);
-            this.layoutControlItem5.MaxSize = new System.Drawing.Size(135, 57);
-            this.layoutControlItem5.MinSize = new System.Drawing.Size(135, 57);
+            this.layoutControlItem5.Location = new System.Drawing.Point(1131, 76);
+            this.layoutControlItem5.MaxSize = new System.Drawing.Size(150, 71);
+            this.layoutControlItem5.MinSize = new System.Drawing.Size(150, 71);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(135, 57);
+            this.layoutControlItem5.Size = new System.Drawing.Size(150, 71);
             this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
@@ -336,17 +336,17 @@
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 60);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(0, 76);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(890, 57);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(991, 71);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // frmScrnInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1171, 780);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.ClientSize = new System.Drawing.Size(1301, 975);
             this.Controls.Add(this.layoutControl1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmScrnInfo";
             this.Text = "화면관리";
             this.Controls.SetChildIndex(this.layoutControl1, 0);

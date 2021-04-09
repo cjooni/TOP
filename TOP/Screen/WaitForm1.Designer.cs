@@ -44,10 +44,10 @@
             this.progressPanel1.BarAnimationElementThickness = 2;
             this.progressPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.progressPanel1.ImageHorzOffset = 20;
-            this.progressPanel1.Location = new System.Drawing.Point(0, 23);
-            this.progressPanel1.Margin = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.progressPanel1.Location = new System.Drawing.Point(0, 19);
+            this.progressPanel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.progressPanel1.Name = "progressPanel1";
-            this.progressPanel1.Size = new System.Drawing.Size(410, 55);
+            this.progressPanel1.Size = new System.Drawing.Size(328, 46);
             this.progressPanel1.TabIndex = 0;
             this.progressPanel1.Text = "progressPanel1";
             // 
@@ -61,24 +61,24 @@
             this.tableLayoutPanel1.Controls.Add(this.progressPanel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 19, 0, 19);
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 16, 0, 16);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(410, 101);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(328, 84);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // WaitForm1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(410, 101);
+            this.ClientSize = new System.Drawing.Size(328, 84);
             this.Controls.Add(this.tableLayoutPanel1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "WaitForm1";
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);

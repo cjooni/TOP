@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataBaseObjectModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="a723e8d1-d264-4bab-ab4e-7c7ca346ffd4" namespace="TOP.MngFrm.TOPS" dataBaseShemaInfo="H4sIAAAAAAAEANVYW2/bNhR+L9D/IOhpA0KL1I1UIbtIbLfwlrhBnAzdU8HLYaLNljxJdpL9+lG2fE3cXOrG2Ivs8/HcPvLo8EDxx7vR0JpCXiRZ2rRJA9sfW+/fxSe8gEGZ5fwaeqnOLKOVFh/uiqRp35Tl+IPj3N7eNm69RpZfOy7GxPl6djqQNzDiKEmLkqcS7KWVetrKNlEtK77kYghFFXImL5A1YAFZfT6Cpi0zhckIY3u5bBTO82TE8/vf4d7qFVdp8s/EaJb5BNa1jF47G05GabEBGrgo8yS9brVPe93+5bd2J3ZqZMPYeWgdO6vI6/BjceLOyRy25j+X92OT5GAWyK7JLTOwrUHyrwEItg0j472mY4T+ZDis9qNpaz4sDNQ5qVzVu3PD818I/tW2nNcG75+tguNN71Oe1wFeF+Gye/qt/2Xh3t3h3X2d80/HX3+e80530F653ul72/mjNdNLFdzBg+KYwXW484ve2fHFn/Z3q3lnPT+3oh/Pr0LrbDaYPEw7/pTlkFynpjyLNdqxM3tfV3I3nckVg9ipheViJykq4GqseAmtWUmb+BvgUvfzJFE91WJSRAyiEIVBJJHvY42E63OEXRJ4ISO+cI2PWnlpXDPd6Cw7YbNQncR8cX0b19AN7e9xfCnPda6RwKHkSiIswhD5GhhiHggEWmEq3YgGPnvAde1gf4Bu/+zt6WoSkYgRgpQrfeQTjyNBPYUYaAnS/BNi73TnXentuXIPex6RgLTwGfJD7KGIK4IC4WrCwNOewvvmOm+Sb8/VVREmklMUaGrKmPohilzzCBV1ecgoCE32zbXq2W/PlApCQ8AhUpxQ5IsII0YpRZRAQFWoQ+rpZzN9DK3b6wtGpnH+188amc4vvvzWbR90ZlqlcIihaRF9a2p6IuKPDlI75sRXsDz0hPJEAf1fR5SQu65yI4WE4AHypaCmtwuBPMJc4MrcbljsdURZ38e3bnnSlQH1PUCR72LkY/MQmkZISY0FC2QE4fNb3gv5HmJIAc2xzyRBwJiZPyWESGDBzWUWhoHyNad473wPOIKGJCCMa3OokTZ0PQ+bWqY+Yr5ikVBaQ+jt9Uar5ZVKXH2ZAHWeZ3IG1m9y/Mf8M0arA9Pu3TiHomh0eMkbUxI13COrXm5WUsNr4COrPRmWkxyaKUzKnA+PrPOJGCbSdIfL7G9Im4IxRcxIrSjG4Ec8dhYhZvHaQ14UUFQHcDFZ7m58rExqoJO7ZYepoMFEb0AXMMqmsK04R7d127yA1lVqWnZ6DcrsWSXPt+axHMxlno0hL5MD57YjjfgzpJCb8mpnoxGkZVHX6AN4Q7kDhWnckH9KTClsWWyuzcwWd98J3PBpkuWmKDQ3x23el+2V9+9iZ+t7V+s/bBcSHxgTAAA=" generateConnectionHelper="true" generateStoredProcedures="true" fieldNameCase="Unchanged" generateDefaultConstructors="false" generateClassesForViews="true" useNameOf="true" connectionStringName="localhostTOPS" createdInVersion="19.2.3.0" generateJsonSerializationContractResolver="false" generateServiceCollectionExtensions="false" lastModifiedInVersion="19.2.3.0" name="TOPS" xmlns="http://schemas.microsoft.com/dsltools/ORMDataModel">
+  <comments>
+    <dataBaseObjectModelHasComments Id="f59bd49c-c5fe-493a-9f00-a479cb8f0202">
+      <comment Id="b25aad98-ba11-4acb-8427-0c3e2c381069" text="The 'PRIMARY' index is ignored, because 'CLIENT_CD' is a key" name="cod01m00Comment">
+        <subjects>
+          <commentReferencesSubjects Id="130752c2-aff0-41bf-b96d-1b2edfb4e4ed">
+            <xpObjectMoniker Id="8cb98e96-659c-440f-b24a-021536814b2e" />
+          </commentReferencesSubjects>
+        </subjects>
+      </comment>
+    </dataBaseObjectModelHasComments>
+    <dataBaseObjectModelHasComments Id="a5b4846f-2d70-42d9-afc7-370d048e4ace">
+      <comment Id="28f7c525-516e-49de-bb14-f67ccc864f7d" text="The 'PRIMARY' index is ignored, because 'PROJECT_CD' is a key" name="prj01m00Comment">
+        <subjects>
+          <commentReferencesSubjects Id="4ab7e239-ee24-40d9-a068-81ac67ff0e32">
+            <xpObjectMoniker Id="6a22d29d-bba5-4cb7-9abb-3182eadd2c0b" />
+          </commentReferencesSubjects>
+        </subjects>
+      </comment>
+    </dataBaseObjectModelHasComments>
+  </comments>
+  <classes>
+    <dataBaseObjectModelHasClasses Id="dcc851c3-4e6c-4668-978b-7ad473b39381">
+      <xpObject Id="8cb98e96-659c-440f-b24a-021536814b2e" name="cod01m00" baseClass="XPLiteObject" userFileName="cod01m00" designerFileName="cod01m00.Designer" className="cod01m00" virtualBaseClass="XPLiteObject" persistent="cod01m00" virtualName="cod01m00">
+        <fields>
+          <generalXpObjectHasFields Id="ac7c89fc-ec49-4b9d-86e9-d8ad0f9e7c87">
+            <field Id="9b06cadc-0b66-4fe8-83eb-efd07c297548" name="CLIENT_CD" key="true" persistent="CLIENT_CD" virtualColumnType="String" delayedUpdateModifiedOnly="false" size="10" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="71c2ae83-bcf7-493a-b90f-3c4af8306f26">
+            <field Id="f1919811-d2c4-413a-b73d-8efcec73dbb8" name="CLIENT_NM" persistent="CLIENT_NM" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="4a591781-d615-4c3f-9683-5ce05d22bb5f">
+            <field Id="a30331ce-fb48-4603-9ad1-5b2f18e3f3d0" name="TEL_NO" persistent="TEL_NO" virtualColumnType="String" delayedUpdateModifiedOnly="false" size="20" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="30629be9-67fb-40a6-8700-2d1107c0aa66">
+            <field Id="2d901ca7-5f76-4746-9246-6d72a687ebf1" name="FAX_NO" persistent="FAX_NO" virtualColumnType="String" delayedUpdateModifiedOnly="false" size="20" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="bc7a7bc2-b901-422a-b995-82faf8213e27">
+            <field Id="7b176e06-da17-4b90-8777-71e57d6f673f" name="DESC" persistent="DESC" virtualColumnType="String" delayedUpdateModifiedOnly="false" size="200" />
+          </generalXpObjectHasFields>
+        </fields>
+      </xpObject>
+    </dataBaseObjectModelHasClasses>
+    <dataBaseObjectModelHasClasses Id="28fbef92-082b-48d9-9914-6e2edc34ffe0">
+      <xpObject Id="6a22d29d-bba5-4cb7-9abb-3182eadd2c0b" name="prj01m00" baseClass="XPLiteObject" userFileName="prj01m00" designerFileName="prj01m00.Designer" className="prj01m00" virtualBaseClass="XPLiteObject" persistent="prj01m00" virtualName="prj01m00">
+        <fields>
+          <generalXpObjectHasFields Id="2501dc79-8d8a-4a59-b8a8-d19f2e24ce5a">
+            <field Id="c2c5743e-9420-4020-bf79-dcf0b85c9e6f" name="PROJECT_CD" key="true" persistent="PROJECT_CD" virtualColumnType="String" delayedUpdateModifiedOnly="false" size="10" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="6a907454-fa9a-44de-99c6-c4c6088b570f">
+            <field Id="efa048c1-e88c-4ce6-b0ba-6d665d4fa70f" name="PROJECT_NM" persistent="PROJECT_NM" virtualColumnType="String" delayedUpdateModifiedOnly="false" />
+          </generalXpObjectHasFields>
+          <generalXpObjectHasFields Id="81897a7a-2a3c-4f58-a466-598d2dba5356">
+            <field Id="61518af0-b9fc-4330-9a74-84d89bdffe63" name="CLIENT_CD" persistent="CLIENT_CD" virtualColumnType="String" delayedUpdateModifiedOnly="false" size="10" />
+          </generalXpObjectHasFields>
+        </fields>
+      </xpObject>
+    </dataBaseObjectModelHasClasses>
+  </classes>
+</dataBaseObjectModel>

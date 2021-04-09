@@ -1,10 +1,12 @@
 ﻿using DevExpress.DataAccess.Sql;
+using DevExpress.XtraEditors;
 using System;
 using System.Data;
 using System.Reflection;
 using System.Windows.Forms;
 using TOP.Dialog;
 using TOP.lib;
+using TOP.MngFrm;
 using TOP.Screen;
 
 namespace TOP
@@ -16,6 +18,8 @@ namespace TOP
         private CUserInfo userInfo;
 
         public CUserInfo UserInfo { get => userInfo; set => userInfo = value; }
+
+
 
         public frmMain()
         {
@@ -40,6 +44,19 @@ namespace TOP
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+
+                return; ;
+            }
+            
+
+
             //메인이 뜨면 로그인을 진행해야 한다.
             //frmLogin login = new frmLogin();
             //if ( login.ShowDialog() != DialogResult.OK)
@@ -127,7 +144,7 @@ namespace TOP
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmProjectMngr frm = new frmProjectMngr();
+            mFrmProject frm = new mFrmProject();
             frm.StartPosition = FormStartPosition.CenterScreen;
 
             frm.Show();
@@ -150,38 +167,6 @@ namespace TOP
         }
 
         /// <summary>
-        /// 프로젝트를 선택한다.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            frmProjectInfo frm = new frmProjectInfo();
-            frm.StartPosition = FormStartPosition.CenterScreen;
-
-            ///프로젝트 조회창에서 프로젝트를 선택하면
-            ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                LoadMdiChildByProjectCd(frm.PrjInfo);
-            }
-        }
-
-        private void LoadMdiChildByProjectCd(CPrjInfo PrjInfo)
-        {
-            string nameSpace = "TOP.Screen"; //네임스페이스 명
-            Assembly cuasm = Assembly.GetExecutingAssembly();
-            //string Format 의 따옴표와 마침표 주의!!
-            frmChild frm = (frmChild)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frmChild"));
-            frm.MdiParent = this;
-            frm.PrjInfo = PrjInfo;
-            frm.UserInfo = UserInfo;
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Text = PrjInfo.ProjectNm;
-            frm.Show();
-        }
-
-        /// <summary>
         /// Project 선택창에서 선택 내용을 전달 받는다.
         /// </summary>
         /// <param name="PrjInfo"></param>
@@ -197,7 +182,7 @@ namespace TOP
         /// <param name="e"></param>
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmClient frm = new frmClient();
+            mFrmClient frm = new mFrmClient();
             frm.StartPosition = FormStartPosition.CenterScreen;
 
             frm.Show();
@@ -209,6 +194,215 @@ namespace TOP
             frm.StartPosition = FormStartPosition.CenterScreen;
 
             frm.Show();
+        }
+
+
+
+        /// <summary>
+        /// 데이터 Upload를 위해 프로젝트를 선택한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmSelectPrj frm = new frmSelectPrj();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            ///프로젝트 조회창에서 프로젝트를 선택하면
+            ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadMdiChildByProjectCd(frm.PrjInfo);
+            }
+        }
+
+        /// <summary>
+        /// 수정을 위해 프로젝트 정보창을 연다. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmModifyPrj frm = new frmModifyPrj();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            ///프로젝트 조회창에서 프로젝트를 선택하면
+            ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadMdiChildByModifyFrm(frm.PrjInfo);
+            }
+        }
+
+        private void LoadMdiChildByProjectCd(CPrjInfo PrjInfo)
+        {
+            string nameSpace = "TOP.Screen"; //네임스페이스 명
+            Assembly cuasm = Assembly.GetExecutingAssembly();
+            //string Format 의 따옴표와 마침표 주의!!
+            frmInput frm = (frmInput)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frmInput"));
+            frm.MdiParent = this;
+            frm.PrjInfo = PrjInfo;
+
+            frm.Text = PrjInfo.ProjectNm;
+            //frm.UserInfo = UserInfo;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Text = PrjInfo.ProjectNm;
+            frm.Show();
+        }
+
+        private void LoadMdiChildByModifyFrm(CPrjInfo PrjInfo)
+        {
+            string nameSpace = "TOP.Screen"; //네임스페이스 명
+            Assembly cuasm = Assembly.GetExecutingAssembly();
+            //string Format 의 따옴표와 마침표 주의!!
+            frmModify frm = (frmModify)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frmModify"));
+            frm.MdiParent = this;
+            frm.PrjInfo = PrjInfo;
+
+            frm.Text = PrjInfo.ProjectNm;
+            //frm.UserInfo = UserInfo;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Text = PrjInfo.ProjectNm;
+            frm.Show();
+        }
+
+        private void LoadMdiChildBy관로토공(CPrjInfo PrjInfo)
+        {
+            string nameSpace = "TOP.Screen"; //네임스페이스 명
+            Assembly cuasm = Assembly.GetExecutingAssembly();
+            //string Format 의 따옴표와 마침표 주의!!
+            frm관로토공 frm = (frm관로토공)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frm관로토공"));
+            frm.MdiParent = this;
+            frm.PrjInfo = PrjInfo;
+
+            frm.Text = PrjInfo.ProjectNm;
+            //frm.UserInfo = UserInfo;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Text = PrjInfo.ProjectNm;
+            frm.Show();
+        }
+
+        /// <summary>
+        /// 관로토공보고서 화면 호출
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmModifyPrj frm = new frmModifyPrj();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            ///프로젝트 조회창에서 프로젝트를 선택하면
+            ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadMdiChildBy관로토공(frm.PrjInfo);
+            }
+        }
+
+        /// <summary>
+        /// 맨홀토공보고서 화면 호출
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmModifyPrj frm = new frmModifyPrj();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            ///프로젝트 조회창에서 프로젝트를 선택하면
+            ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadMdiChildBy맨홀토공(frm.PrjInfo);
+            }
+        }
+
+        private void LoadMdiChildBy맨홀토공(CPrjInfo PrjInfo)
+        {
+            string nameSpace = "TOP.Screen"; //네임스페이스 명
+            Assembly cuasm = Assembly.GetExecutingAssembly();
+            //string Format 의 따옴표와 마침표 주의!!
+            frm맨홀토공 frm = (frm맨홀토공)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frm맨홀토공"));
+            frm.MdiParent = this;
+            frm.PrjInfo = PrjInfo;
+
+            frm.Text = PrjInfo.ProjectNm;
+            //frm.UserInfo = UserInfo;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Text = PrjInfo.ProjectNm;
+            frm.Show();
+        }
+
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmModifyPrj frm = new frmModifyPrj();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            ///프로젝트 조회창에서 프로젝트를 선택하면
+            ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadMdiChildBy관로공(frm.PrjInfo);
+            }
+        }
+
+        private void LoadMdiChildBy관로공(CPrjInfo PrjInfo)
+        {
+            string nameSpace = "TOP.Screen"; //네임스페이스 명
+            Assembly cuasm = Assembly.GetExecutingAssembly();
+            //string Format 의 따옴표와 마침표 주의!!
+            frm관로공 frm = (frm관로공)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frm관로공"));
+            frm.MdiParent = this;
+            frm.PrjInfo = PrjInfo;
+
+            frm.Text = PrjInfo.ProjectNm;
+            //frm.UserInfo = UserInfo;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Text = PrjInfo.ProjectNm;
+            frm.Show();
+        }
+
+        private void barButtonItem17_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmModifyPrj frm = new frmModifyPrj();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            ///프로젝트 조회창에서 프로젝트를 선택하면
+            ///해당 프로젝트를 기반으로 한 MDI Child를 생성한다.
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                LoadMdiChildBy가시설공(frm.PrjInfo);
+            }
+        }
+
+        private void LoadMdiChildBy가시설공(CPrjInfo PrjInfo)
+        {
+            string nameSpace = "TOP.Screen"; //네임스페이스 명
+            Assembly cuasm = Assembly.GetExecutingAssembly();
+            //string Format 의 따옴표와 마침표 주의!!
+            frm가시설공 frm = (frm가시설공)cuasm.CreateInstance(string.Format("{0}.{1}", nameSpace, "frm가시설공"));
+            frm.MdiParent = this;
+            frm.PrjInfo = PrjInfo;
+
+            frm.Text = PrjInfo.ProjectNm;
+            //frm.UserInfo = UserInfo;
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Text = PrjInfo.ProjectNm;
+            frm.Show();
+        }
+
+
+        /// <summary>
+        /// 포장별 공정 List 관리화면을 호출한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem18_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmMngr포장공정 frm = new frmMngr포장공정();
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
         }
     }
 }

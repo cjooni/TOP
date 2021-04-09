@@ -1,11 +1,15 @@
-﻿using DevExpress.Spreadsheet;
+﻿using DevExpress.DataAccess.Sql;
+using DevExpress.Spreadsheet;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Repository;
+using DevExpress.XtraGrid.EditForm.Helpers.Controls;
 using DevExpress.XtraTreeList.Columns;
 using DevExpress.XtraTreeList.Nodes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Linq;
+using System.Windows.Forms;
 using TOP.lib;
 
 namespace TOP.Screen
@@ -13,6 +17,7 @@ namespace TOP.Screen
     public partial class frmInput : TOP.Parent.PForm
     {
         private CTopsData TopsData;
+        public CPrjInfo PrjInfo;
 
         /// <summary>
         /// 굴착장비
@@ -28,6 +33,7 @@ namespace TOP.Screen
         {
             InitializeComponent();
 
+            PrjInfo = new CPrjInfo();
             InitControl();
         }
 
@@ -35,20 +41,21 @@ namespace TOP.Screen
         {
             ///굴착장비 Data Load
             repLookUp = new RepositoryItemGridLookUpEdit();
-            repLookUp.DisplayMember = "명칭";
-            repLookUp.ValueMember = "명칭";
+            repLookUp.DisplayMember = "cd_nm";
+            repLookUp.ValueMember = "cd_nm";
             repLookUp.NullText = "";
-            repLookUp.KeyMember = "명칭";
-            repLookUp.DataSource = CGetTableType.Get굴착장비();
+            repLookUp.KeyMember = "cd";
+            repLookUp.DataSource = Qry_굴착장비();
             gridControl1.RepositoryItems.Add(repLookUp);
 
             //
             repLookUp2 = new RepositoryItemGridLookUpEdit();
-            repLookUp2.DisplayMember = "명칭";
-            repLookUp2.ValueMember = "명칭";
+            repLookUp2.DisplayMember = "cd_nm";
+            repLookUp2.ValueMember = "cd";
             repLookUp2.NullText = "";
-            repLookUp2.KeyMember = "ID";
-            repLookUp2.DataSource = CGetTableType.Get맨홀규격();
+            repLookUp2.KeyMember = "cd";
+            repLookUp2.DataSource = Qry_맨홀();
+            //repLookUp2.DataSource = CGetTableType.Get맨홀규격();
             gridControl1.RepositoryItems.Add(repLookUp2);
         }
 
@@ -64,39 +71,63 @@ namespace TOP.Screen
 
         private void gridView2_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            DataRow dr = gridView토적표.GetFocusedDataRow();
+            try
+            {
+                DataRow dr = gridView토적표.GetFocusedDataRow();
 
-            DataTable dt = TopsData.MainData.Tables[dr["SheetName"].ToString()];
+                //DataTable dt = TopsData.MainData.Tables[dr[CGetTableType.col_SHEET_NAME].ToString()];
 
-            /////Sheet Name 만 추출하여 Table 화함
-            //APipeData data = (APipeData)(from a in PipeDataMngr.Data
-            //                             where a.SheetName == dr["SheetName"].ToString()
-            //                             select a).Single();
+                var qry = from a in TopsData.MainData.Tables[CGetTableType.tbl_PIPE_TOOL_INPUT].AsEnumerable()
+                          where a.Field<string>(CGetTableType.col_LINENAME) == dr[CGetTableType.col_SHEET_NAME].ToString()
+                          select a;
 
-            //APipeData pipedata = data;
-            //DataTable dt = pipedata.Data1;
+                DataTable dt = qry.CopyToDataTable();
+                //DataTable dt = CUtil.LinqQueryToDataTable(qry.ToList());
 
-            //DataTable tmp_dt = dt.Clone();
+                /////Sheet Name 만 추출하여 Table 화함
+                //APipeData data = (APipeData)(from a in PipeDataMngr.Data
+                //                             where a.SheetName == dr["SheetName"].ToString()
+                //                             select a).Single();
 
-            gridControl1.DataSource = dt;
+                //APipeData pipedata = data;
+                //DataTable dt = pipedata.Data1;
 
-            /////gridview의 Option 설정
-            /// 요걸풀면 repository가 동작 안함
-            //gridView1.OptionsBehavior.Editable = false;
+                //DataTable tmp_dt = dt.Clone();
 
-            gridView1.Columns["굴착장비"].OptionsColumn.AllowEdit = true;
-            gridView1.Columns["굴착장비"].ColumnEdit = repLookUp;
+                gridControl1.DataSource = dt;
 
-            /////gridview의 Option 설정
-            gridView1.Columns["맨홀규격"].OptionsColumn.AllowEdit = true;
-            gridView1.Columns["맨홀규격"].ColumnEdit = repLookUp2;
+                /////gridview의 Option 설정
+                /// 요걸풀면 repository가 동작 안함
+                //gridView1.OptionsBehavior.Editable = false;
 
-            ////////////////////////////////////////////////////
-            ///토적데이터
-            ///
+                gridView1.Columns["굴착장비"].OptionsColumn.AllowEdit = true;
+                gridView1.Columns["굴착장비"].ColumnEdit = repLookUp;
 
-            DataTable dt2 = TopsData.MainData.Tables[dr["SheetName"].ToString() + "_토적"];
-            gridControl3.DataSource = dt2;
+                /////gridview의 Option 설정
+                gridView1.Columns["맨홀규격"].OptionsColumn.AllowEdit = true;
+                gridView1.Columns["맨홀규격"].ColumnEdit = repLookUp2;
+
+                ////////////////////////////////////////////////////
+                ///토적데이터
+                ///
+
+                var qry2 = from a in TopsData.MainData.Tables[CGetTableType.tbl_토적표_INPUT].AsEnumerable()
+                           where a.Field<string>(CGetTableType.col_LINENAME) == dr[CGetTableType.col_SHEET_NAME].ToString()
+                           select a;
+
+                DataTable dt2 = qry2.CopyToDataTable();
+                gridControl3.DataSource = dt2;
+            }
+            catch (ArgumentNullException ex)
+            {
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+           
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -117,6 +148,8 @@ namespace TOP.Screen
         /// <param name="e"></param>
         private void btnPipeToolLoad_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            string filename = "";
+
             if (TopsData != null)
             {
                 TopsData = null;
@@ -124,8 +157,11 @@ namespace TOP.Screen
 
             try
             {
+                filename = CUtil.OpenExcel();
+                splashScreenManager1.ShowWaitForm();
+
                 TopsData = new CTopsData();
-                TopsData.LoadFromPipeTool();
+                TopsData.LoadFromPipeTool(filename);
 
                 QrySheetInfo();
             }
@@ -133,8 +169,44 @@ namespace TOP.Screen
             {
                 XtraMessageBox.Show(ex.Message);
             }
+            finally
+            {
+                splashScreenManager1.CloseWaitForm();
+
+            }
         }
 
+
+        /// <summary>
+        /// 토적 데이터를 로드한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnMassDataLoad_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string filename = "";
+            try
+            {
+
+                filename = CUtil.OpenExcel();
+
+                splashScreenManager1.ShowWaitForm();
+
+                TopsData.LoadFrom토적Data(filename);
+
+                Set토적Data();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                splashScreenManager1.CloseWaitForm();
+
+            }
+
+        }
 
         /// <summary>
         /// SHEET INFO 정보를 조회한다. 
@@ -144,7 +216,7 @@ namespace TOP.Screen
             var sql = from a in TopsData.MainData.Tables[CGetTableType.tbl_SHEET_INFO].AsEnumerable()
                       select new
                       {
-                          SheetName = a.Field<string>("SHEET_NAME").ToString()
+                          SHEET_NAME = a.Field<string>(CGetTableType.col_SHEET_NAME).ToString()
                       };
 
             DataTable dt = CUtil.LinqQueryToDataTable(sql);
@@ -153,25 +225,7 @@ namespace TOP.Screen
             gridControl2.DataSource = dt;
         }
 
-        /// <summary>
-        /// 토적 데이터를 로드한다.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnMassDataLoad_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            try
-            {
-                TopsData.LoadFrom토적Data();
-
-                Set토적Data();
-            }
-            catch (Exception ex)
-            {
-                XtraMessageBox.Show(ex.Message);
-            }
-            
-        }
+    
 
         private void Set토적Data()
         {
@@ -205,17 +259,17 @@ namespace TOP.Screen
         {
             try
             {
-                if (TopsData.MainData.Tables.Contains(CGetTableType.tbl_맨홀구간정보) == false)
-                {
-                    TopsData.MakeBidge();
-                }
+                
+
+                TopsData.MakeInterData();
+                
                 
                 TopsData.Print토적표(spread1.Document);
                 TopsData.Print맨홀조서(spread1.Document);
                 TopsData.Print간이흙막이연장조서(spread1.Document);
                 TopsData.Proc오수관(spread1.Document);
-                TopsData.Proc오수관실연장조서(spread1.Document);
-                TopsData.Proc오수관접합및절단조서(spread1.Document);
+                //TopsData.Proc오수관실연장조서(spread1.Document);
+                //TopsData.Proc오수관접합및절단조서(spread1.Document);
             }
             catch (Exception ex)
             {
@@ -385,6 +439,502 @@ namespace TOP.Screen
                 //node.Nodes
             }
 
+        }
+
+
+        /// <summary>
+        /// Procedure호출을 처리한다.
+        /// </summary>
+        private int CallProcedure()
+        {
+            MsgCaption.Caption = "";
+
+            CMySql mysql = new CMySql();
+            mysql.Connect();
+
+            using (MySqlCommand mycommand = mysql.Connection.CreateCommand() )
+            {
+
+                try
+                {
+                    mycommand.CommandText = "P_PROC_PIPE01T00";
+                    mycommand.CommandType = CommandType.StoredProcedure;
+
+                    mycommand.Parameters.AddWithValue("@I_PROJECT_CD", PrjInfo.ProjectCd);
+                    mycommand.Parameters["@I_PROJECT_CD"].Direction = ParameterDirection.Input;
+
+                    mycommand.Parameters.Add("@O_RESULT_CD", MySqlDbType.Int32);
+                    mycommand.Parameters["@O_RESULT_CD"].Direction = ParameterDirection.Output;
+
+                    mycommand.ExecuteNonQuery();
+
+                    int nCd = Convert.ToInt32(mycommand.Parameters["@O_RESULT_CD"].Value);
+
+                    if (nCd == -1)
+                    {
+                        MsgCaption.Caption = "P_PROC_PIPE01T00 처리중 오류발생";
+                        return -1;
+                    }
+
+
+                    ////////////P_PROC_PIPE01T10
+
+                    mycommand.CommandText = "P_PROC_PIPE01T10";
+                    mycommand.CommandType = CommandType.StoredProcedure;
+
+                    mycommand.Parameters.Clear();
+                    mycommand.Parameters.AddWithValue("@I_PROJECT_CD", PrjInfo.ProjectCd);
+                    mycommand.Parameters["@I_PROJECT_CD"].Direction = ParameterDirection.Input;
+
+                    mycommand.Parameters.Add("@O_RESULT_CD", MySqlDbType.Int32);
+                    mycommand.Parameters["@O_RESULT_CD"].Direction = ParameterDirection.Output;
+
+                    mycommand.ExecuteNonQuery();
+
+                    nCd = Convert.ToInt32(mycommand.Parameters["@O_RESULT_CD"].Value);
+
+                    if (nCd == -1)
+                    {
+                        MsgCaption.Caption = "P_PROC_PIPE01T10 처리중 오류발생";
+                        return -1;
+                    }
+
+
+
+
+                    MsgCaption.Caption = "처리되었습니다.";
+
+
+                    return 0;
+
+                }
+                catch (Exception ex)
+                {
+                    MsgCaption.Caption = ex.Message;
+                }
+                finally
+                {
+                    mysql.Connection.Close();
+                }
+
+
+                return 0;
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// EXCEL 내용을 DB에 저장해요
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                InsertBaseData();
+                CallProcedure();
+            }
+            catch (Exception ex)
+            {
+
+                MsgCaption.Caption = ex.Message;
+            }
+        }
+
+        private int InsertBaseData()
+        {
+            CMySql mysql = new CMySql();
+            mysql.Connect();
+
+            using (MySqlCommand mycommand = mysql.Connection.CreateCommand())
+            {
+
+                MySqlTransaction mytrans;
+
+                mytrans = mysql.Connection.BeginTransaction();
+                mycommand.Connection = mysql.Connection;
+                mycommand.Transaction = mytrans;
+
+
+                try
+                {
+                    //DELETE PIPE01M00
+                    CustomSqlQuery query = sqlDataSource1.Queries["DELETE_PIPE01M00"] as CustomSqlQuery;
+                    mycommand.CommandText = query.Sql;
+                    mycommand.Parameters.Clear();
+
+                    mycommand.Parameters.AddWithValue("@P_PROJECT_CD", PrjInfo.ProjectCd);
+                    mycommand.ExecuteNonQuery();
+
+                    ///DELETE PIPE02M00
+                    query = sqlDataSource1.Queries["DELETE_PIPE02M00"] as CustomSqlQuery;
+                    mycommand.CommandText = query.Sql;
+                    mycommand.Parameters.Clear();
+
+                    mycommand.Parameters.AddWithValue("@P_PROJECT_CD", PrjInfo.ProjectCd);
+                    mycommand.ExecuteNonQuery();
+
+                    ///DELETE PIPE03M00
+                    query = sqlDataSource1.Queries["DELETE_PIPE03M00"] as CustomSqlQuery;
+                    mycommand.CommandText = query.Sql;
+                    mycommand.Parameters.Clear();
+
+                    mycommand.Parameters.AddWithValue("@P_PROJECT_CD", PrjInfo.ProjectCd);
+                    mycommand.ExecuteNonQuery();
+
+
+
+
+                    DataTable dt = TopsData.MainData.Tables[CGetTableType.tbl_PIPE_TOOL_INPUT];
+
+                    foreach (DataRow item in dt.Rows)
+                    {
+
+                        query = sqlDataSource1.Queries["INSERT_PIPE01M00"] as CustomSqlQuery;
+                        string sss = query.Sql;
+
+                        mycommand.CommandText = query.Sql;
+                        mycommand.Parameters.Clear();
+
+                        mycommand.Parameters.AddWithValue("@P_PROJECT_CD", PrjInfo.ProjectCd);
+                        mycommand.Parameters.AddWithValue("@P_LINENAME", item["LINENAME"]);
+                        mycommand.Parameters.AddWithValue("@P_SEQ", item[CGetTableType.col_INDEX]);
+                        mycommand.Parameters.AddWithValue("@P_누가거리", item["누가거리"]);
+                        mycommand.Parameters.AddWithValue("@P_지반고", item["지반고"]);
+                        mycommand.Parameters.AddWithValue("@P_관저고", item["관저고"]);
+                        mycommand.Parameters.AddWithValue("@P_관경", item["관경"]);
+                        mycommand.Parameters.AddWithValue("@P_맨홀", item["맨홀"]);
+                        mycommand.Parameters.AddWithValue("@P_TEXT1", item["TEXT1"]);
+                        mycommand.Parameters.AddWithValue("@P_TEXT2", item["TEXT2"]);
+                        mycommand.Parameters.AddWithValue("@P_구간", item["구간"]);
+                        mycommand.Parameters.AddWithValue("@P_구배", item["구배"]);
+                        mycommand.Parameters.AddWithValue("@P_INV", item["INV"]);
+                        mycommand.Parameters.AddWithValue("@P_SIZE", item["SIZE"]);
+                        mycommand.Parameters.AddWithValue("@P_라인명", item["라인명"]);
+                        mycommand.Parameters.AddWithValue("@P_지하수위", item["지하수위"]);
+                        mycommand.Parameters.AddWithValue("@P_맨홀_INVERT", item["맨홀INVERT"]);
+                        //mycommand.Parameters.AddWithValue("@P_맨홀규격", "");
+                        //mycommand.Parameters.AddWithValue("@P_맨홀규격", item["맨홀규격"]);
+                        //mycommand.Parameters.AddWithValue("@P_굴착공법", item["굴착공법"]);
+                        //mycommand.Parameters.AddWithValue("@P_굴착장비", "");
+                        //mycommand.Parameters.AddWithValue("@P_굴착장비", item["굴착장비"]);
+                        //mycommand.Parameters.AddWithValue("@P_포장종류", "");
+                        //mycommand.Parameters.AddWithValue("@P_포장종류", item["포장종류"]);
+
+                        mycommand.ExecuteNonQuery();
+
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_PROJECT_CD").Value = PrjInfo.ProjectCd;
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_LINENAME").Value = item["LINENAME"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_SEQ").Value = item[CGetTableType.col_INDEX];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_누가거리").Value = item["누가거리"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_지반고").Value = item["지반고"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_관저고").Value = item["관저고"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_관경").Value = item["관경"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_맨홀").Value = item["맨홀"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_TEXT1").Value = item["TEXT1"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_TEXT2").Value = item["TEXT2"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_구간").Value = item["구간"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_구배").Value = item["구배"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_INV").Value = item["INV"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_SIZE").Value =  item["SIZE"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_라인명").Value =  item["라인명"];                 
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_지하수위").Value = item["지하수위"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_맨홀_INVERT").Value = item["맨홀INVERT"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_맨홀규격").Value = item["맨홀규격"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_굴착공법").Value = item["굴착공법"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_굴착장비").Value = item["굴착장비"];
+                        //sqlDataSource1.Queries["INSERT_PIPE01M00"].Parameters.Find(x => x.Name == "P_포장종류").Value = item["포장종류"];
+
+                        //SqlDataSource.DisableCustomQueryValidation = true;
+                        //sqlDataSource1.Fill("INSERT_PIPE01M00");
+
+                    }
+
+                    DataTable dt2 = TopsData.MainData.Tables[CGetTableType.tbl_토적표_INPUT];
+                    foreach (DataRow item in dt2.Rows)
+                    {
+
+                        query = sqlDataSource1.Queries["INSERT_PIPE02M00"] as CustomSqlQuery;
+                        string sss = query.Sql;
+
+                        mycommand.CommandText = query.Sql;
+                        mycommand.Parameters.Clear();
+
+                        mycommand.Parameters.AddWithValue("@P_PROJECT_CD", PrjInfo.ProjectCd);
+                        mycommand.Parameters.AddWithValue("@P_LINENAME", item["LINENAME"]);
+                        mycommand.Parameters.AddWithValue("@P_SEQ", item[CGetTableType.col_INDEX]);
+                        mycommand.Parameters.AddWithValue("@P_전후단면", item["전후단면"]);
+                        mycommand.Parameters.AddWithValue("@P_전후단면_IDX", item["전후단면_IDX"]);
+                        mycommand.Parameters.AddWithValue("@P_누가거리", item["누가거리"]);
+                        mycommand.Parameters.AddWithValue("@P_거리", item["거리"]);
+                        mycommand.Parameters.AddWithValue("@P_지반고", item["지반고"]);
+                        mycommand.Parameters.AddWithValue("@P_관저고", item["관저고"]);
+                        mycommand.Parameters.AddWithValue("@P_계획고", item["계획고"]);
+                        mycommand.Parameters.AddWithValue("@P_육상_토사", item["육상(토사)"]);
+                        mycommand.Parameters.AddWithValue("@P_육상_풍화암", item["육상(풍화암)"]);
+                        mycommand.Parameters.AddWithValue("@P_육상_연암", item["육상(연암)"]);
+                        mycommand.Parameters.AddWithValue("@P_수중_토사", item["수중(토사)"]);
+                        mycommand.Parameters.AddWithValue("@P_수중_풍화암", item["수중(풍화암)"]);
+                        mycommand.Parameters.AddWithValue("@P_수중_연암", item["수중(연암)"]);
+                        mycommand.Parameters.AddWithValue("@P_관상부", item["관상부"]);
+                        mycommand.Parameters.AddWithValue("@P_관주위", item["관주위"]);
+                        mycommand.Parameters.AddWithValue("@P_ASP", item["ASP"]);
+                        mycommand.Parameters.AddWithValue("@P_CONC", item["CONC"]);
+                        mycommand.Parameters.AddWithValue("@P_덧씌우기", item["덧씌우기"]);
+                        mycommand.Parameters.AddWithValue("@P_보도블럭", item["보도블럭"]);
+                        mycommand.Parameters.AddWithValue("@P_모래부설", item["모래부설"]);
+                        mycommand.Parameters.AddWithValue("@P_보조기층", item["보조기층"]);
+                        mycommand.Parameters.AddWithValue("@P_동상방지층", item["동상방지층"]);
+
+                        mycommand.ExecuteNonQuery();
+
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_PROJECT_CD").Value = PrjInfo.ProjectCd;
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_LINENAME").Value = item["LINENAME"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_SEQ").Value = item[CGetTableType.col_INDEX];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_전후단면").Value = item["전후단면"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_전후단면_IDX").Value = item["전후단면_IDX"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_누가거리").Value = item["누가거리"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_거리").Value = item["거리"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_지반고").Value = item["지반고"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_관저고").Value = item["관저고"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_계획고").Value = item["계획고"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_육상_토사").Value = item["육상(토사)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_육상_풍화암").Value = item["육상(풍화암)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_육상_연암").Value = item["육상(연암)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_수중_토사").Value = item["수중(토사)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_수중_풍화암").Value = item["수중(풍화암)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_수중_연암").Value = item["수중(연암)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_관상부").Value = item["관상부"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_관주위").Value = item["관주위"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_ASP").Value = item["ASP"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_CONC").Value = item["CONC"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_덧씌우기").Value = item["덧씌우기"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_보도블럭").Value = item["보도블럭"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_모래부설").Value = item["모래부설"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_보조기층").Value = item["보조기층"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_동상방지층").Value = item["동상방지층"];
+
+                        //SqlDataSource.DisableCustomQueryValidation = true;
+                        //sqlDataSource1.Fill("INSERT_PIPE02M00");
+                    }
+
+
+                    DataTable dt3 = TopsData.MainData.Tables[CGetTableType.tbl_SHEET_INFO];
+                    foreach (DataRow item in dt3.Rows)
+                    {
+
+                        query = sqlDataSource1.Queries["INSERT_PIPE03M00"] as CustomSqlQuery;
+                        string sss = query.Sql;
+
+                        mycommand.CommandText = query.Sql;
+                        mycommand.Parameters.Clear();
+
+                        mycommand.Parameters.AddWithValue("@P_PROJECT_CD", PrjInfo.ProjectCd);
+                        mycommand.Parameters.AddWithValue("@P_LINENAME", item["SHEET_NAME"]);
+                        mycommand.Parameters.AddWithValue("@P_PIPE_TYPE", item["PIPE_TYPE"]);
+
+                        mycommand.ExecuteNonQuery();
+
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_PROJECT_CD").Value = PrjInfo.ProjectCd;
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_LINENAME").Value = item["LINENAME"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_SEQ").Value = item[CGetTableType.col_INDEX];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_전후단면").Value = item["전후단면"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_전후단면_IDX").Value = item["전후단면_IDX"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_누가거리").Value = item["누가거리"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_거리").Value = item["거리"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_지반고").Value = item["지반고"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_관저고").Value = item["관저고"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_계획고").Value = item["계획고"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_육상_토사").Value = item["육상(토사)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_육상_풍화암").Value = item["육상(풍화암)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_육상_연암").Value = item["육상(연암)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_수중_토사").Value = item["수중(토사)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_수중_풍화암").Value = item["수중(풍화암)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_수중_연암").Value = item["수중(연암)"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_관상부").Value = item["관상부"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_관주위").Value = item["관주위"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_ASP").Value = item["ASP"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_CONC").Value = item["CONC"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_덧씌우기").Value = item["덧씌우기"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_보도블럭").Value = item["보도블럭"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_모래부설").Value = item["모래부설"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_보조기층").Value = item["보조기층"];
+                        //sqlDataSource1.Queries["INSERT_PIPE02M00"].Parameters.Find(x => x.Name == "P_동상방지층").Value = item["동상방지층"];
+
+                        //SqlDataSource.DisableCustomQueryValidation = true;
+                        //sqlDataSource1.Fill("INSERT_PIPE02M00");
+                    }
+
+                    MsgCaption.Caption = "등록 되었습니다.";
+
+                    mytrans.Commit();
+
+                   
+                }
+                catch (Exception ex)
+                {
+                    mytrans.Rollback();
+                    MsgCaption.Caption = ex.Message;
+                    throw ex;
+                }
+                finally
+                {
+                    mysql.Connection.Close();
+                }
+
+                return 0;
+            }
+        }
+
+        private void afterProc()
+        {
+
+        }
+
+        private void simpleButton1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridControl4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton2_Click_1(object sender, EventArgs e)
+        {
+            OutDataSource.Queries["QRY_토적표"].Parameters.Find(x => x.Name == "P_PROJECT_CD").Value = PrjInfo.ProjectCd;
+
+            OutDataSource.Fill("QRY_토적표");
+
+            DataTable dt = CUtil.GetTable(OutDataSource.Result["QRY_토적표"]);
+
+            gridControl4.DataSource = dt;
+        }
+
+       
+        /// <summary>
+        /// 맨홀 규격을 조회한다.
+        /// </summary>
+        /// <returns></returns>
+        private DataTable Qry_맨홀()
+        {
+            try
+            {
+                sqlDataQry.Fill("QRY_MANHOLE");
+
+                DataTable dt = CUtil.GetTable(sqlDataQry.Result["QRY_MANHOLE"]);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        /// <summary>
+        /// 굴착장비를 조회한다.
+        /// </summary>
+        /// <returns></returns>
+        private DataTable Qry_굴착장비()
+        {
+            try
+            {
+                sqlDataQry.Fill("QRY_굴착장비");
+
+                DataTable dt = CUtil.GetTable(sqlDataQry.Result["QRY_굴착장비"]);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+        private void editFormUpdateButton_Click(object sender, EventArgs e)
+        {
+            //DataRow dr = gridView1.GetFocusedDataRow();
+
+            //try
+            //{
+
+            //    if (dr.RowState == DataRowState.Added)
+            //    {
+            //        //insert 버튼으로 열었으면 신규 추가를 시도하고
+
+            //        sqlDataSource1.Queries["INSERT_COD01M00"].Parameters.Find(x => x.Name == "P_CLIENT_NM").Value = dr["CLIENT_NM"].ToString();
+            //        sqlDataSource3.Queries["INSERT_COD01M00"].Parameters.Find(x => x.Name == "P_TEL_NO").Value = dr["TEL_NO"].ToString();
+            //        sqlDataSource3.Queries["INSERT_COD01M00"].Parameters.Find(x => x.Name == "P_FAX_NO").Value = dr["FAX_NO"].ToString();
+            //        sqlDataSource3.Queries["INSERT_COD01M00"].Parameters.Find(x => x.Name == "P_DESCRIPT").Value = dr["DESCRIPT"].ToString();
+
+
+            //        SqlDataSource.DisableCustomQueryValidation = true;
+
+            //        sqlDataSource3.Fill("INSERT_COD01M00");
+            //    }
+            //    else
+            //    {
+            //        sqlDataSource3.Queries["UPDATE_COD01M00"].Parameters.Find(x => x.Name == "P_CLIENT_CD").Value = dr["CLIENT_CD"].ToString();
+
+            //        sqlDataSource3.Queries["UPDATE_COD01M00"].Parameters.Find(x => x.Name == "P_CLIENT_NM").Value = dr["CLIENT_NM"].ToString();
+            //        sqlDataSource3.Queries["UPDATE_COD01M00"].Parameters.Find(x => x.Name == "P_TEL_NO").Value = dr["TEL_NO"].ToString();
+            //        sqlDataSource3.Queries["UPDATE_COD01M00"].Parameters.Find(x => x.Name == "P_FAX_NO").Value = dr["FAX_NO"].ToString();
+            //        sqlDataSource3.Queries["UPDATE_COD01M00"].Parameters.Find(x => x.Name == "P_DESCRIPT").Value = dr["DESCRIPT"].ToString();
+
+
+            //        SqlDataSource.DisableCustomQueryValidation = true;
+
+            //        sqlDataSource3.Fill("UPDATE_COD01M00");
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    MsgCaption.Caption = ex.InnerException.InnerException.InnerException.Message;
+            //}
+            //finally
+            //{
+            //    //   b_Insert = false;
+            //}
+
+        }
+
+        private void gridView1_ShowingPopupEditForm(object sender, DevExpress.XtraGrid.Views.Grid.ShowingPopupEditFormEventArgs e)
+        {
+            foreach (Control control in e.EditForm.Controls)
+            {
+                if (!(control is EditFormContainer))
+                {
+                    continue;
+                }
+                foreach (Control nestedControl in control.Controls)
+                {
+                    if (!(nestedControl is PanelControl))
+                    {
+                        continue;
+                    }
+                    foreach (Control button in nestedControl.Controls)
+                    {
+                        if (!(button is SimpleButton))
+                        {
+                            continue;
+                        }
+                        var simpleButton = button as SimpleButton;
+                        simpleButton.Click -= editFormUpdateButton_Click;
+                        simpleButton.Click += editFormUpdateButton_Click;
+                    }
+                }
+            }
         }
     }
 }

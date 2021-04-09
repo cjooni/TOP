@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="sqlDataQry.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="customSqlQuery2.Sql" xml:space="preserve">
+    <value>select b.맨홀  관로번호
+       , concat( 'No.', lpad(floor(a.누가거리1/20), 4, ' '), ' + ', lpad(mod(a.누가거리1, 20), 5), ' ', C.전후단면) as 측점
+       , a.누가거리1 as 누가거리
+       , a.누가거리2 as 거리 
+       , E.PAVE_CD as 포장코드
+       , F.cd_nm as 포장
+       , c.육상_토사 as 육상면적 
+       , case a.seq
+       		when 0 then 0
+       		else round((d.육상_토사 + c.육상_토사)/2 * a.누가거리2 , 2)       		
+         end 육상부피
+       ,c.수중_토사 as 수중면적
+       ,case a.seq
+       		when 0 then 0
+       		else round((d.수중_토사 + c.수중_토사)/2 * a.누가거리2 , 2)
+         end 수중부피
+       ,c.관주위 as 관주위면적 
+       ,case a.seq
+       		when 0 then 0
+       		else round((d.관주위 + c.관주위)/2 * a.누가거리2 , 2)
+         end 관주위부피
+       ,c.관상부 
+       ,case a.seq
+       		when 0 then 0
+       		else round((d.관상부 + c.관상부)/2 * a.누가거리2 , 2)
+         end 관상부부피
+       ,c.모래부설 as 관기초면적
+       ,case a.seq
+       		when 0 then 0
+       		else round((d.모래부설 + c.모래부설)/2 * a.누가거리2 , 2)
+         end 관기초부피
+       ,case b.포장종류 
+       		when 'xASP' then a.누가거리2 *2 
+       		else a.누가거리2 *2 
+        end 절단
+       ,case E.PAVE_CD /*b.포장종류 */
+       		when '1' then C.보도블럭
+       		when '2' then c.CONC 
+       		when '3'then c.ASP 
+			when '3-1'then c.ASP 
+       		when '4' then c.덧씌우기 /*A+C */
+       		when '투수콘' then C.ASP 
+        end 깨기및복구면적
+       ,case E.PAVE_CD /*b.포장종류 */
+       		when '3' then round((d.ASP + c.ASP)/2 * a.누가거리2 , 2) /*ASP */
+			when '3-1' then round((d.ASP + c.ASP)/2 * a.누가거리2 , 2) /*ASP */
+       		when '2' then round((d.CONC + c.CONC)/2 * a.누가거리2 , 2) /*CON''C*/
+       		when '4' then round((d.덧씌우기 + c.덧씌우기)/2 * a.누가거리2 , 2) /*A+C*/
+       		when '1' then round((d.보도블럭 + c.보도블럭)/2 * a.누가거리2 , 2) /*보도*/
+       		when '투수콘' then round((d.ASP + c.ASP)/2 * a.누가거리2 , 2)
+        end 깨기및복구부피
+       ,c.보조기층 
+       ,round((d.보조기층 + c.보조기층)/2 * a.누가거리2 , 2) 보조기층부피
+       ,case b.포장종류 
+       		when '투수콘' then c.동상방지층 
+       		else 0
+        end 모래
+       ,case b.포장종류 
+       		when '투수콘' then round((d.동상방지층 + c.동상방지층)/2 * a.누가거리2 , 2)
+       		else 0
+        end 모래부피 
+ 	 ,case E.PAVE_CD /*b.포장종류 */
+       		when '1' then round(d.보도블럭 * 0.04, 3) /*보도*/
+       		else 0
+        end 석분면적
+       ,case E.PAVE_CD /*b.포장종류 */
+       		when '1' then round((round(d.보도블럭 *0.04, 3) + round(c.보도블럭* 0.04, 3) )/2 * a.누가거리2 , 2) /*보도*/
+       		else 0
+        end 석분부피   
+   from pipe01t00 a
+      , pipe01m00 b
+      , pipe02m00 c
+      , pipe02m00 d
+      , pipe01m10 e
+      , COD10M00 F
+  where a.project_cd = @P_PROJECT_CD
+    AND a.project_cd = b.PROJECT_CD 
+    and a.LINENAME  = b.LINENAME
+    and a.SEQ  = b.SEQ 
+    and a.project_cd = c.PROJECT_CD 
+    and a.LINENAME  = c.LINENAME 
+    and a.SEQ = c.SEQ 
+    and a.project_cd = d.PROJECT_CD 
+    and a.LINENAME  = d.LINENAME 
+    and a.N_SEQ = d.SEQ 
+    and a.PROJECT_CD  = e.PROJECT_CD 
+    and a.LINENAME  = e.LINENAME 
+    and a.SEQ  = e.SEQ 
+    and e.MNGR_PAVE_CD = 'PAVE_CD'
+    and F.MNGR_CD = E.MNGR_PAVE_CD 
+    and F.CD = E.PAVE_CD</value>
+  </data>
+  <data name="sqlDataQry.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVFyeSI+PFZpZXcgTmFtZT0iUVJZX+2GoOygge2RnCI+PEZpZWxkIE5hbWU9Iuq0gOuhnOuyiO2YuCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSLsuKHsoJAiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0i64iE6rCA6rGw66asIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqsbDrpqwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iu2PrOyepey9lOuTnCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSLtj6zsnqUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0i7Jyh7IOB66m07KCBIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsnKHsg4HrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuyImOykkeuptOyggSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i7IiY7KSR67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqtIDso7zsnITrqbTsoIEiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq0gOyjvOychOu2gO2UvCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rSA7IOB67aAIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqtIDsg4HrtoDrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq0gOq4sOy0iOuptOyggSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rSA6riw7LSI67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsoIjri6giIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq5qOq4sOuwj+uzteq1rOuptOyggSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rmo6riw67CP67O16rWs67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLrs7TsobDquLDsuLUiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuuztOyhsOq4sOy4teu2gO2UvCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i66qo656YIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLrqqjrnpjrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuyEneu2hOuptOyggSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i7ISd67aE67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
+  </data>
+  <assembly alias="DevExpress.Data.v19.2" name="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="simpleButton11.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi4z
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAFECAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
+        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KCS5Z
+        ZWxsb3d7ZmlsbDojRkZCMTE1O30KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJLkdyZWVue2ZpbGw6IzAz
+        OUMyMzt9CgkuUmVke2ZpbGw6I0QxMUMxQzt9Cgkuc3Qwe29wYWNpdHk6MC43NTt9Cgkuc3Qxe29wYWNp
+        dHk6MC41O30KPC9zdHlsZT4NCiAgPGcgaWQ9IlJlbW92ZUNpcmNsZWQiPg0KICAgIDxwYXRoIGQ9Ik0x
+        Niw0QzkuNCw0LDQsOS40LDQsMTZzNS40LDEyLDEyLDEyczEyLTUuNCwxMi0xMlMyMi42LDQsMTYsNHog
+        TTI0LDE4SDh2LTRoMTZWMTh6IiBjbGFzcz0iUmVkIiAvPg0KICA8L2c+DQo8L3N2Zz4L
+</value>
+  </data>
+  <data name="simpleButton2.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi4z
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAGICAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
+        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsdWV7ZmlsbDojMTE3N0Q3O30KCS5Z
+        ZWxsb3d7ZmlsbDojRkZCMTE1O30KCS5CbGFja3tmaWxsOiM3MjcyNzI7fQoJLkdyZWVue2ZpbGw6IzAz
+        OUMyMzt9CgkuUmVke2ZpbGw6I0QxMUMxQzt9Cgkuc3Qwe29wYWNpdHk6MC43NTt9Cgkuc3Qxe29wYWNp
+        dHk6MC41O30KPC9zdHlsZT4NCiAgPGcgaWQ9IkFkZENpcmNsZWQiPg0KICAgIDxwYXRoIGQ9Ik0xNiw0
+        QzkuNCw0LDQsOS40LDQsMTZzNS40LDEyLDEyLDEyczEyLTUuNCwxMi0xMlMyMi42LDQsMTYsNHogTTI0
+        LDE4aC02djZoLTR2LTZIOHYtNGg2VjhoNHY2aDZWMTh6IiBjbGFzcz0iR3JlZW4iIC8+DQogIDwvZz4N
+        Cjwvc3ZnPgs=
+</value>
+  </data>
+</root>

@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="queryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>347, 17</value>
-  </metadata>
-  <metadata name="sqlDataSource2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>182, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnModify.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -205,53 +199,6 @@
         Tfz9DfzjR7A1u/9MfD796sEW6kyw7WBf+CVgQaojX2BAPdQf/NLMjSVL/gMGC1sK0EICNQAAAABJRU5E
         rkJggg==
 </value>
-  </data>
-  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="customSqlQuery2.Sql" xml:space="preserve">
-    <value>INSERT INTO prj01m00 (
-    project_cd,
-    project_nm,
-    start_dt,
-    end_dt,
-    client_cd,
-    client_id,
-    end_yn,
-    work_dt,
-    work_tm,
-    user_id,
-    project_desc
-) VALUES (
-    :P_PROJECT_CD    
-   ,:P_PROJECT_NM
-   ,:P_START_DT
-   ,:P_END_DT
-   ,:P_CLIENT_CD
-   ,:P_CLIENT_ID
-   ,'N'
-   ,TO_CHAR(SYSDATE, 'YYYYMMDD')
-   ,TO_CHAR(SYSDATE, 'HH24:MI:SS')
-   ,:P_USER_ID
-   ,:P_PROJECT_DESC    
-)</value>
-  </data>
-  <data name="customSqlQuery4.Sql" xml:space="preserve">
-    <value>UPDATE PRJ01M00
-   SET PROJECT_NM = :P_PROJECT_NM
-      ,START_DT = :P_START_DT
-      ,END_DT   = :P_END_DT
-      ,CLIENT_CD = :P_CLIENT_CD
-      ,CLIENT_ID = :P_CLIENT_ID
-      ,WORK_DT = TO_CHAR(SYSDATE, 'YYYYMMDD')
-      ,WORK_TM = TO_CHAR(SYSDATE, 'HH24:MI:SS')
-      ,USER_ID  = :P_USER_ID
-      ,PROJECT_DESC = :P_PROJECT_DESC
-      ,END_YN = :P_END_YN
- WHERE PROJECT_CD = :P_PROJECT_CD</value>
-  </data>
-  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IklOU0VSVF9QUk9KRUNUIiAvPjxWaWV3IE5hbWU9IlFSWV9QUk9KRUNUX0NEIj48RmllbGQgTmFtZT0iUFJPSkVDVF9DRCIgVHlwZT0iVW5rbm93biIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iVVBEQVRFX1BST0pFQ1QiIC8+PC9EYXRhU2V0Pg==</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>94</value>

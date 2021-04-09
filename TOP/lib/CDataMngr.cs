@@ -49,6 +49,9 @@ namespace TOP.lib
 
         /// <summary>
         /// 토적 Data를 Load해서 필요한 정보를 만들어내요
+        /// 토적 Data는 거꾸로 들어있어요
+        /// 전/후 단면은 그 내용이나 순서가 틀릴수도 있어요
+        /// 피곤해요
         /// </summary>
         /// <returns></returns>
         public static DataTable Make토적Data(string sheet_name, DataTable orig)
@@ -231,7 +234,7 @@ namespace TOP.lib
                     CData포장 data포장 = CDataMngr.Get포장정보(item["구간"].ToString());
                     dr[CGetTableType.col_LINENAME] = sheet_name;
                     dr[CGetTableType.col_INDEX] = nIdx;
-                    dr[CGetTableType.col_누가거리] = Convert.ToInt32((item[CGetTableType.col_누가거리] == DBNull.Value) ? 0 : item[CGetTableType.col_누가거리]);    
+                    dr[CGetTableType.col_누가거리] = Convert.ToDecimal((item[CGetTableType.col_누가거리] == DBNull.Value) ? 0 : item[CGetTableType.col_누가거리]);    
                     dr[CGetTableType.col_지반고] = Convert.ToDecimal((item[CGetTableType.col_지반고] == DBNull.Value) ? 0 : item[CGetTableType.col_지반고]);   
                     dr[CGetTableType.col_관저고] = Convert.ToDecimal((item[CGetTableType.col_관저고] == DBNull.Value) ? 0 : item[CGetTableType.col_관저고]); 
                     dr[CGetTableType.col_관경] = Convert.ToInt32((item[CGetTableType.col_관경] == DBNull.Value) ? 0 : item[CGetTableType.col_관경]);   

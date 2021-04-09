@@ -229,11 +229,70 @@ namespace TOP.lib
             return OrigTmp;
         }
 
+        public static string LoadExcel(string filename, SpreadsheetControl spreadsheet)
+        {
+            //SplashScreenManager ssManger = new SplashScreenManager();
+
+            try
+            {
+                XtraOpenFileDialog Opendlg = new XtraOpenFileDialog();
+
+                using (FileStream stream = new FileStream(filename, FileMode.Open))
+                {
+                    ///EXCEL DATA를 Load 한다.
+                    spreadsheet.LoadDocument(stream, DocumentFormat.Xlsx);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // ssManger.CloseWaitForm();
+            }
+
+            return filename;
+        }
+
+        public static string OpenExcel()
+        {
+            string filename = "";
+            try
+            {
+                XtraOpenFileDialog Opendlg = new XtraOpenFileDialog();
+
+                Opendlg.Filter = "EXCEL 파일 (*.xlsx)|*.xlsx|모든파일(*.*)|*.*";
+
+                if (Opendlg.ShowDialog() == DialogResult.OK)
+                {
+                    // ssManger.ShowWaitForm();
+                    //ProgressPanel panel = CUtil.GetProgress("Data Loading", "EXCEL 파일을 읽는 중 입니다.");
+                    //panel.Parent = this;
+                    //this.Controls.Add(panel);
+                    //panel.Show();
+                    //panel.BringToFront();
+
+                    filename = Opendlg.FileName;
+                }
+
+                return filename;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
         public static string LoadExcel(SpreadsheetControl spreadsheet)
         {
             //SplashScreenManager ssManger = new SplashScreenManager();
 
             string filename = "";
+
+
             try
             {
                 XtraOpenFileDialog Opendlg = new XtraOpenFileDialog();

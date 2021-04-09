@@ -7,6 +7,18 @@ namespace TOP.lib
     {
         public const string tbl_PIPE_TOOL_INPUT = "PIPETOOL_INPUT";
         public const string tbl_토적표_INPUT = "토적표_INPUT";
+        public const string tbl_토적표_BASE = "토적표_BASE";
+
+        /// <summary>
+        /// 토적생성용 기초 데이터
+        /// PIPETOOL_INPUT 과 토적표 INPUT을 JOIN 해서 만들어요
+        /// </summary>
+        public const string tbl_토적_BASE = "토적_BASE";
+
+        /// <summary>
+        /// 토적생성용 기초 데이터인데요
+        /// 기존 frmMass에서 사용하던 형식이에요 이후 근절된 내용이죠
+        /// </summary>
         public const string tbl_토적표기초데이터 = "토적표기초데이터";
         public const string tbl_맨홀구간정보 = "맨홀구간정보";
         
@@ -136,7 +148,7 @@ namespace TOP.lib
 
             dt.Columns.Add(col_LINENAME, typeof(string));
             dt.Columns.Add(col_INDEX, typeof(int));
-            dt.Columns.Add(col_누가거리, typeof(int));
+            dt.Columns.Add(col_누가거리, typeof(decimal));
             dt.Columns.Add(col_지반고, typeof(decimal));
             dt.Columns.Add(col_관저고, typeof(decimal));
             dt.Columns.Add(col_관경, typeof(int));
@@ -163,6 +175,19 @@ namespace TOP.lib
             return dt;
         }
 
+        /// <summary>
+        /// 관경별 연장길이를 관리한다.
+        /// 동일 라인에서도 관경이 변경할 수 있는데
+        /// 300 ->400->500->300 관경이 바뀔때마다 해당 관경별 연장을 관리합니다.
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable Get관경별PIPE연장()
+        {
+            DataTable dt = new DataTable();
+
+
+            return dt;
+        }
 
         public static DataTable Get토적DataTable()
         {
@@ -175,6 +200,51 @@ namespace TOP.lib
             dt.Columns.Add(col_LINENAME, typeof(string));
             dt.Columns.Add(col_INDEX, typeof(int));
             dt.Columns.Add(col_NO   , typeof(string));
+            dt.Columns.Add(col_전후단면, typeof(string));
+            dt.Columns.Add(col_전후단면_IDX, typeof(int));
+            dt.Columns.Add(col_누가거리, typeof(decimal));
+            dt.Columns.Add(col_거리, typeof(decimal));
+            dt.Columns.Add(col_지반고, typeof(decimal));
+            dt.Columns.Add(col_관저고, typeof(decimal));
+            dt.Columns.Add(col_계획고, typeof(decimal));
+            dt.Columns.Add(col_육상_토사, typeof(decimal));
+            dt.Columns.Add(col_육상_풍화암, typeof(decimal));
+            dt.Columns.Add(col_육상_연암, typeof(decimal));
+            dt.Columns.Add(col_수중_토사, typeof(decimal));
+            dt.Columns.Add(col_수중_풍화암, typeof(decimal));
+            dt.Columns.Add(col_수중_연암, typeof(decimal));
+            dt.Columns.Add(col_관상부, typeof(decimal));
+            dt.Columns.Add(col_관주위, typeof(decimal));
+            dt.Columns.Add(col_ASP, typeof(decimal));
+            dt.Columns.Add(col_CONC, typeof(decimal));
+            dt.Columns.Add(col_덧씌우기, typeof(decimal));
+            dt.Columns.Add(col_보도블럭, typeof(decimal));
+            dt.Columns.Add(col_모래부설, typeof(decimal));
+            dt.Columns.Add(col_보조기층, typeof(decimal));
+            dt.Columns.Add(col_동상방지층, typeof(decimal));
+
+
+            return dt;
+        }
+
+
+        /// <summary>
+        /// PIPETOOL INPUT과 토적 Data를 JOIN 해서 만들 토적 기초 데이터 Table을 만든다. 
+        /// tbl_토적_BASE 
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable Get토적BaseTable()
+        {
+            //NO	지반고	관저고	계획고	육상(토사)	육상(풍화암)	육상(연암)	수중(토사)	수중(풍화암)	수중(연암)	관상부
+            //관주위	ASP	CONC	덧씌우기	보도블럭	모래부설	보조기층	동상방지층 구간 , 관경 ,
+            //맨홀규격  굴착공법  Column3 (임시이름) 포장종류
+            DataTable dt = new DataTable();
+
+            dt.TableName = tbl_토적_BASE;
+            dt.Columns.Add(col_INDEX, typeof(int));
+            dt.Columns.Add(col_LINENAME, typeof(string));
+            dt.Columns.Add(col_맨홀, typeof(string));
+            dt.Columns.Add(col_NO, typeof(string));
             dt.Columns.Add(col_전후단면, typeof(string));
             dt.Columns.Add(col_전후단면_IDX, typeof(int));
             dt.Columns.Add(col_누가거리, typeof(int));
@@ -218,32 +288,32 @@ namespace TOP.lib
 
             dt.Columns.Add("LINE", typeof(string));
             dt.Columns.Add("LINENAME", typeof(string));
-            dt.Columns.Add("누가거리", typeof(string));
-            dt.Columns.Add("NO", typeof(string));
-            dt.Columns.Add("지반고", typeof(string));
-            dt.Columns.Add("관저고", typeof(string));
-            dt.Columns.Add("계획고", typeof(string));
-            dt.Columns.Add("육상(토사)", typeof(string));
-            dt.Columns.Add("육상(풍화암)", typeof(string));
-            dt.Columns.Add("육상(연암)", typeof(string));
-            dt.Columns.Add("수중(토사)", typeof(string));
-            dt.Columns.Add("수중(풍화암)", typeof(string));
-            dt.Columns.Add("수중(연암)", typeof(string));
-            dt.Columns.Add("관상부", typeof(string));
-            dt.Columns.Add("관주위", typeof(string));
-            dt.Columns.Add("ASP", typeof(string));
-            dt.Columns.Add("CONC", typeof(string));
-            dt.Columns.Add("덧씌우기", typeof(string));
-            dt.Columns.Add("보도블럭", typeof(string));
-            dt.Columns.Add("모래부설", typeof(string));
-            dt.Columns.Add("보조기층", typeof(string));
-            dt.Columns.Add("동상방지층", typeof(string));
-            dt.Columns.Add("구간", typeof(string));
-            dt.Columns.Add("관경", typeof(string));
-            dt.Columns.Add("맨홀규격", typeof(string));
-            dt.Columns.Add("굴착공법", typeof(string));
-            dt.Columns.Add("굴착장비", typeof(string));
-            dt.Columns.Add("포장종류", typeof(string));
+            dt.Columns.Add(col_누가거리, typeof(string));
+            dt.Columns.Add(col_NO, typeof(string));
+            dt.Columns.Add(col_지반고, typeof(string));
+            dt.Columns.Add(col_관저고, typeof(string));
+            dt.Columns.Add(col_계획고, typeof(string));
+            dt.Columns.Add(col_육상_토사, typeof(string));
+            dt.Columns.Add(col_육상_풍화암, typeof(string));
+            dt.Columns.Add(col_육상_연암, typeof(string));
+            dt.Columns.Add(col_수중_토사, typeof(string));
+            dt.Columns.Add(col_수중_풍화암, typeof(string));
+            dt.Columns.Add(col_수중_연암, typeof(string));
+            dt.Columns.Add(col_관상부, typeof(string));
+            dt.Columns.Add(col_관주위, typeof(string));
+            dt.Columns.Add(col_ASP, typeof(string));
+            dt.Columns.Add(col_CONC, typeof(string));
+            dt.Columns.Add(col_덧씌우기, typeof(string));
+            dt.Columns.Add(col_모래부설, typeof(string));
+            dt.Columns.Add(col_보도블럭, typeof(string));
+            dt.Columns.Add(col_보조기층, typeof(string));
+            dt.Columns.Add(col_동상방지층, typeof(string));
+            dt.Columns.Add(col_구간, typeof(string));
+            dt.Columns.Add(col_관경, typeof(string));
+            dt.Columns.Add(col_맨홀규격, typeof(string));
+            dt.Columns.Add(col_굴착공법, typeof(string));
+            dt.Columns.Add(col_굴착장비, typeof(string));
+            dt.Columns.Add(col_포장종류, typeof(string));
 
             return dt;
         }

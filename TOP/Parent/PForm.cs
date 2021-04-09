@@ -13,6 +13,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using TOP.Screen;
 using DevExpress.XtraTab;
+using TOP.lib;
 
 namespace TOP.Parent
 {
@@ -20,6 +21,8 @@ namespace TOP.Parent
     {
         private GridView gridView;
         private GridControl gridControl;
+
+       
 
         public LoadChkDataEventHandler LoadChkDataEvent;
              
@@ -57,17 +60,17 @@ namespace TOP.Parent
 
         private void PForm_Shown(object sender, EventArgs e)
         {
-            try
-            {
-                if (this.Parent.GetType() == typeof(XtraTabPage))
-                {
-                   // LoadChkDataEvent(GridView);
-                }
-            }
-            catch (Exception ex)
-            {
+            //try
+            //{
+            //    if (this.Parent.GetType() == typeof(XtraTabPage))
+            //    {
+            //       // LoadChkDataEvent(GridView);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
         }
 
 

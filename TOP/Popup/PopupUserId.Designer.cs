@@ -66,7 +66,7 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(551, 534);
+            this.layoutControl1.Size = new System.Drawing.Size(551, 535);
             this.layoutControl1.TabIndex = 4;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -75,7 +75,7 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 52);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(527, 470);
+            this.gridControl1.Size = new System.Drawing.Size(527, 471);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -143,7 +143,7 @@
             this.layoutControlItem1,
             this.layoutControlItem4});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(551, 534);
+            this.Root.Size = new System.Drawing.Size(551, 535);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem3
@@ -151,7 +151,7 @@
             this.layoutControlItem3.Control = this.gridControl1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 40);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(531, 474);
+            this.layoutControlItem3.Size = new System.Drawing.Size(531, 475);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 

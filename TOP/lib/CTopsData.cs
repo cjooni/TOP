@@ -1,5 +1,8 @@
 ﻿using DevExpress.Spreadsheet;
+using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using DevExpress.XtraSpreadsheet;
+using DevExpress.XtraWaitForm;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,10 +14,12 @@ namespace TOP.lib
     public class CTopsData
     {
         public DataSet MainData;
+        public DataSet SubData;
 
         public CTopsData()
         {
             MainData = new DataSet();
+            SubData = new DataSet();
         }
 
         public void LoadFromXml()
@@ -29,8 +34,14 @@ namespace TOP.lib
         /// 토적 Data를 Load 한다.
         /// 토적 Data는 PipeTool데이터 이후에 Load해야 한다.
         /// </summary>
-        public void LoadFrom토적Data()
+        public void LoadFrom토적Data(string filename)
         {
+            
+            //SplashScreenManager.ShowForm(this, typeof(WaitForm), true, true, false);
+            //SplashScreenManager splashManager = new SplashScreenManager(;
+            //splashManager.ActiveSplashFormTypeInfo = typeof(WaitForm);
+
+
             if (MainData.Tables[CGetTableType.tbl_SHEET_INFO].Rows.Count <= 0)
             {
                 MessageBox.Show("먼저 PIPE TOOL 데이터를 Load 하세요.");
@@ -40,11 +51,11 @@ namespace TOP.lib
 
             DataTable sheet_info = MainData.Tables[CGetTableType.tbl_SHEET_INFO];
 
-            string filename = "";
             SpreadsheetControl MainSheet = new SpreadsheetControl();
+
             try
             {
-                filename = CUtil.LoadExcel(MainSheet);
+                filename = CUtil.LoadExcel(filename, MainSheet);
 
                 IWorkbook workbook = MainSheet.Document;
 
@@ -100,6 +111,7 @@ namespace TOP.lib
 
 
                         ///Sheet 정보를 관리 Table 에 삽입한다.
+                        ///모든 쉬트를 하나로 관리한다.
                         if (MainData.Tables.Contains(CGetTableType.tbl_토적표_INPUT) == false)
                         {
                             sortTable.TableName = CGetTableType.tbl_토적표_INPUT;
@@ -114,11 +126,22 @@ namespace TOP.lib
                         }
 
                         ///PipeTool과  토적 Data의 내용이 같은지 비교해 봅시다.
-                        CheckBaseData(item.Name);
+                        ///PipeTool
+                        if (CheckBaseData(item.Name) == false)
+                        {
+                            XtraMessageBoxArgs args = new XtraMessageBoxArgs();
+                            args.AutoCloseOptions.Delay = 3000;
+                            args.Caption = "Data 오류";
+                            string text = "";
+                            text = string.Format("PipeTool 과 토적 Data간 내용이 다릅니다. Sheet Name ({0}) ", item.Name);
+                            args.Text = text;
+                            args.Buttons = new DialogResult[] { DialogResult.OK };
+
+                            XtraMessageBox.Show(args).ToString();
+                        }
 
                     }
-                }
-                //Make토적Data();
+                }                
             }
             catch (Exception ex)
             {
@@ -132,6 +155,7 @@ namespace TOP.lib
 
         /// <summary>
         /// PipeTool LoadData와 토적데이터 Load Data간 차이가 있는지 확인해보자 
+        /// PipeTools의 Sheet 정보와 토적데이터의 Sheet 정보를 비교합니다. 
         /// </summary>
         /// <returns></returns>
         private Boolean CheckBaseData(string sheet_name)
@@ -144,15 +168,11 @@ namespace TOP.lib
 
             var qry2 = (from a in MainData.Tables[CGetTableType.tbl_PIPE_TOOL_INPUT].AsEnumerable()
                         join b in MainData.Tables[CGetTableType.tbl_토적표_INPUT].AsEnumerable()
-                        on new { LINENAME = a.Field<string>(CGetTableType.col_LINENAME), INDEX = a.Field<int>(CGetTableType.col_INDEX), 누가거리 = a.Field<int>(CGetTableType.col_누가거리) }
-                        equals new { LINENAME = b.Field<string>(CGetTableType.col_LINENAME), INDEX = b.Field<int>(CGetTableType.col_INDEX), 누가거리 = b.Field<int>(CGetTableType.col_누가거리) }
+                        on new { LINENAME = a.Field<string>(CGetTableType.col_LINENAME), INDEX = a.Field<int>(CGetTableType.col_INDEX), 누가거리 = a.Field<decimal>(CGetTableType.col_누가거리) }
+                        equals new { LINENAME = b.Field<string>(CGetTableType.col_LINENAME), INDEX = b.Field<int>(CGetTableType.col_INDEX), 누가거리 = b.Field<decimal>(CGetTableType.col_누가거리) }
                         where a.Field<string>(CGetTableType.col_LINENAME) == sheet_name &&
                               b.Field<string>(CGetTableType.col_LINENAME) == sheet_name
                         select a).Count();
-
-
-        
-
 
             if (qry2 != qry3)
             {
@@ -191,46 +211,7 @@ namespace TOP.lib
             return sRet;
         }
 
-        /// <summary>
-        /// 토적표가 정렬이 안되어 있는경우가 있어요
-        /// 그래서 전단면과 후단면을 기준으로 정렬해요
-        /// 정열 기준은 누가거리 그리고 전단면 후단면 형식이에요
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        private DataTable 토적정렬(DataTable data)
-        {
-            data.Columns.Add("누가거리", typeof(decimal));
-            data.Columns.Add("전후", typeof(decimal));
-            data.Columns.Add("INDEX", typeof(decimal));
-
-            int nIdx = 0;
-
-            foreach (DataRow Dr in data.Rows)
-            {
-                string[] sss = GetPoint(Dr["NO"].ToString());
-
-                decimal dist = (Convert.ToDecimal(sss[0]) * 20) + Convert.ToDecimal(sss[2]);
-                Dr["누가거리"] = dist;
-                Dr["INDEX"] = nIdx;
-                if (sss[3].ToString().Trim() == "")
-                {
-                    Dr["전후"] = 1;
-                }
-                else if (sss[3].ToString().Trim() == "(전)")
-                {
-                    Dr["전후"] = 2;
-                }
-                else if (sss[3].ToString().Trim() == "(후)")
-                {
-                    Dr["전후"] = 3;
-                }
-
-                nIdx++;
-            }
-            data.DefaultView.Sort = "누가거리 DESC, 전후 DESC";
-            return data.DefaultView.ToTable();
-        }
+  
 
         /// <summary>
         /// Load 된 두개의 데이터 (PIPE TOOL과 토적 데이터) 합쳐 한개의 DataTable로 만들어요
@@ -238,161 +219,176 @@ namespace TOP.lib
         /// 아마도 작업자가 빠뜨리는 경우가 생기는 듯요
         /// 그래서 점검하는 기능이 필요한거 같아요
         /// </summary>
-        private void Make토적Data()
+        private void Make토적Base()
         {
-            if (Chk토적Data() == false)
+            try
             {
-                return;
-            }
+                var qry = from a in MainData.Tables[CGetTableType.tbl_PIPE_TOOL_INPUT].AsEnumerable()
+                          join b in MainData.Tables[CGetTableType.tbl_토적표_INPUT].AsEnumerable()
+                          on new { LINENAME = a.Field<string>(CGetTableType.col_LINENAME), INDEX = a.Field<int>(CGetTableType.col_INDEX), 누가거리 = a.Field<decimal>(CGetTableType.col_누가거리) }
+                          equals new { LINENAME = b.Field<string>(CGetTableType.col_LINENAME), INDEX = b.Field<int>(CGetTableType.col_INDEX), 누가거리 = b.Field<decimal>(CGetTableType.col_누가거리) }
+                          select new
+                          {
 
-            DataTable dt토적표기초데이터 = CGetTableType.GtMassData();
-
-            foreach (DataRow sheet_dr in MainData.Tables[CGetTableType.tbl_SHEET_INFO].Rows)
-            {
-                string sheet_name = sheet_dr["SHEET_NAME"].ToString();
-                DataTable dtPipeTool = MainData.Tables[sheet_name].Copy();
-                DataTable dt토적 = MainData.Tables[sheet_name + "_토적"].Copy();
-
-                //pipe tool data
-                var qry = (from a in dtPipeTool.AsEnumerable()
-                           select new
-                           {
-                               누가거리 = a.Field<double>("누가거리")
-                           }).Distinct();
+                              LINENAME = a.Field<string>(CGetTableType.col_LINENAME),
+                              NO = b.Field<string>(CGetTableType.col_NO),
+                              맨홀 = a.Field<string>(CGetTableType.col_맨홀),
+                              누가거리 = a.Field<decimal>(CGetTableType.col_누가거리),
+                              지반고 = a.Field<decimal>(CGetTableType.col_지반고),
+                              관저고 = a.Field<decimal>(CGetTableType.col_관저고),
+                              계획고 = b.Field<decimal>(CGetTableType.col_계획고),
+                              육상_토사 = b.Field<decimal>(CGetTableType.col_육상_토사),
+                              육상_풍화암 = b.Field<decimal>(CGetTableType.col_육상_풍화암),
+                              육상_연암 = b.Field<decimal>(CGetTableType.col_육상_연암),
+                              수중_토사 = b.Field<decimal>(CGetTableType.col_수중_토사),
+                              수중_풍화암 = b.Field<decimal>(CGetTableType.col_수중_풍화암),
+                              수중_연암 = b.Field<decimal>(CGetTableType.col_수중_연암),
+                              관상부 = b.Field<decimal>(CGetTableType.col_관상부),
+                              관주위 = b.Field<decimal>(CGetTableType.col_관주위),
+                              ASP = b.Field<decimal>(CGetTableType.col_ASP),
+                              CONC = b.Field<decimal>(CGetTableType.col_CONC),
+                              덧씌우기 = b.Field<decimal>(CGetTableType.col_덧씌우기),
+                              보도블럭 = b.Field<decimal>(CGetTableType.col_보도블럭),
+                              모래부설 = b.Field<decimal>(CGetTableType.col_모래부설),
+                              보조기층 = b.Field<decimal>(CGetTableType.col_보조기층),
+                              동상방지층 = b.Field<decimal>(CGetTableType.col_동상방지층),
+                              구간 = a.Field<string>(CGetTableType.col_구간),
+                              관경 = a.Field<int>(CGetTableType.col_관경)
+                              //맨홀규격 = a.Field<string>(CGetTableType.col_맨홀규격),
+                              //굴착공법 = a.Field<string>(CGetTableType.col_굴착공법),
+                              //굴착장비 = a.Field<string>(CGetTableType.col_굴착장비),
+                              //포장종류 = a.Field<string>(CGetTableType.col_포장종류)
+                          };
 
                 DataTable dt = CUtil.LinqQueryToDataTable(qry);
 
+                dt.Columns["육상_토사"].ColumnName = CGetTableType.col_육상_토사;
+                dt.Columns["육상_풍화암"].ColumnName = CGetTableType.col_육상_풍화암;
+                dt.Columns["육상_연암"].ColumnName = CGetTableType.col_육상_연암;
 
-
-                foreach (DataRow 누가거리_dr in dt.Rows)
+                dt.Columns["수중_토사"].ColumnName = CGetTableType.col_수중_토사;
+                dt.Columns["수중_풍화암"].ColumnName = CGetTableType.col_수중_풍화암;
+                dt.Columns["수중_연암"].ColumnName = CGetTableType.col_수중_연암;
+                string strData = "";
+                foreach (DataRow item in dt.Rows)
                 {
-                    //먼저  Pipe Tool 기반으로 토적 데이터를 찾아보자
-                    string sFillter = string.Format("누가거리 = {0}", Convert.ToDouble(누가거리_dr["누가거리"]));
-                    DataRow[] result = dt토적.Select(sFillter, "전후 ASC");
+                    // 맨홀명 앞에 이상한 내용이 들어있어요 M1 -, E1 - D1 - 이렇게... 그래서(하이픈) - 이 2개 이면 1개 앞쪽은 다 날려버리자구
+                    strData = item[CGetTableType.col_맨홀].ToString();
 
-                    //if (result.Count() > 1)
-                    //{
-                    //만약 같은게 2개 이상 나왔다면 그건 전후단면이라는 말이지
-                    DataRow[] p_result = dtPipeTool.Select(sFillter);
 
-                    for (int i = 0; i < p_result.Count(); i++)
+                    System.Text.RegularExpressions.Regex cntStr = new System.Text.RegularExpressions.Regex("-");
+                    int nCnt = int.Parse(cntStr.Matches(strData, 0).Count.ToString());
+
+                    if (nCnt > 1)
                     {
-                        DataRow dr = dt토적표기초데이터.NewRow();
-
-                        ///맨홀명 앞에 이상한 내용이 들어있어요 M1-, E1- D1- 이렇게 ... 그래서 (하이픈)- 이 2개 이면 1개 앞쪽은 다 날려버리자구
-                        ///
-                        string strData = p_result[i]["맨홀"].ToString();
-
-                        System.Text.RegularExpressions.Regex cntStr = new System.Text.RegularExpressions.Regex("-");
-                        int nCnt = int.Parse(cntStr.Matches(strData, 0).Count.ToString());
-
-                        if (nCnt > 1)
-                        {
-                            dr["LINENAME"] = strData.Substring(strData.IndexOf("-") + 1);
-                        }
-                        else
-                        {
-                            dr["LINENAME"] = p_result[i]["맨홀"];
-                        }
-
-                        dr["LINE"] = sheet_name;
-                        dr["누가거리"] = p_result[i]["누가거리"];
-                        dr["NO"] = result[i]["NO"];
-                        dr["지반고"] = result[i]["지반고"];
-                        dr["관저고"] = result[i]["관저고"];
-                        dr["계획고"] = result[i]["계획고"];
-                        dr["육상(토사)"] = result[i]["육상(토사)"];
-                        dr["육상(풍화암)"] = result[i]["육상(풍화암)"];
-                        dr["육상(연암)"] = result[i]["육상(연암)"];
-                        dr["수중(토사)"] = result[i]["수중(토사)"];
-                        dr["수중(풍화암)"] = result[i]["수중(풍화암)"];
-                        dr["수중(연암)"] = result[i]["수중(연암)"];
-                        dr["관상부"] = result[i]["관상부"];
-                        dr["관주위"] = result[i]["관주위"];
-                        dr["ASP"] = result[i]["ASP"];
-                        dr["CONC"] = result[i]["CONC"];
-                        dr["덧씌우기"] = result[i]["덧씌우기"];
-                        dr["보도블럭"] = result[i]["보도블럭"];
-                        dr["모래부설"] = result[i]["모래부설"];
-                        dr["보조기층"] = result[i]["보조기층"];
-                        dr["동상방지층"] = result[i]["동상방지층"];
-                        dr["구간"] = p_result[i]["구간"];
-                        dr["관경"] = p_result[i]["관경"];
-                        dr["맨홀규격"] = p_result[i]["맨홀규격"];
-                        dr["굴착공법"] = p_result[i]["굴착공법"];
-                        dr["굴착장비"] = p_result[i]["굴착장비"];
-                        dr["포장종류"] = p_result[i]["포장종류"];
-
-                        dt토적표기초데이터.Rows.Add(dr);
-                    }
-
-                }
-            }
-
-            MainData.Tables.Add(dt토적표기초데이터);
-        }
-
-        /// <summary>
-        /// PipeTool 생성 Sheet별 Data Count와 토적데이터 Sheet별 RowCount를 비교해요
-        /// </summary>
-        /// <returns></returns>
-        private Boolean Chk토적Data()
-        {
-            //if (PipeMngr.Data.Count <= 0)
-            //{
-            //    MessageBox.Show("PIPE TOOL 데이터 Load 여부를 확인하세요", "데이터 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return false;
-            //}
-
-            //if (MassMngr.Data.Count <= 0)
-            //{
-            //    MessageBox.Show("토적 데이터 Load 여부를 확인하세요", "데이터 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return false;
-            //}
-
-            try
-            {
-                string sheet_name = "";
-                string sheet_name2 = "";
-                int cnt1 = 0;
-                int cnt2 = 0;
-
-                foreach (DataRow dr in MainData.Tables[CGetTableType.tbl_SHEET_INFO].Rows)
-                {
-                    sheet_name = dr["SHEET_NAME"].ToString();
-                    sheet_name2 = dr["SHEET_NAME"].ToString() + "_토적";
-
-                    cnt1 = MainData.Tables[sheet_name].Rows.Count;
-                    cnt2 = MainData.Tables[sheet_name2].Rows.Count;
-
-                    if (cnt1 != cnt2)
-                    {
-                        string strmsg;
-                        strmsg = string.Format("PipeToolData와 토적데이터 비교중 Sheet{0}의 데이터 Count 가 일치하지 않습니다. 처리는 가능하지만 데이터의 적합성을 보장할 수는 없습니다.  계속 하시겠습니까?", cnt1);
-
-                        if (MessageBox.Show(strmsg, "데이터 확인", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.Cancel)
-                        {
-                            return false;
-                        }
+                        item[CGetTableType.col_맨홀] = strData.Substring(strData.IndexOf("-") + 1);
                     }
                 }
+
+                dt.TableName = CGetTableType.tbl_토적표기초데이터;
+                SubData.Tables.Add(dt);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("토적 데이터 처리중 오류가 발생했습니다.", "데이터 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+
+                throw ex;
             }
 
-            return true;
+            
+            //DataTable dt토적표기초데이터 = CGetTableType.GtMassData();
+
+            //foreach (DataRow sheet_dr in MainData.Tables[CGetTableType.tbl_SHEET_INFO].Rows)
+            //{
+            //    string sheet_name = sheet_dr["SHEET_NAME"].ToString();
+            //    DataTable dtPipeTool = MainData.Tables[sheet_name].Copy();
+            //    DataTable dt토적 = MainData.Tables[sheet_name + "_토적"].Copy();
+
+            //    //pipe tool data
+            //    var qry = (from a in dtPipeTool.AsEnumerable()
+            //               select new
+            //               {
+            //                   누가거리 = a.Field<double>("누가거리")
+            //               }).Distinct();
+
+            //    DataTable dt = CUtil.LinqQueryToDataTable(qry);
+
+
+
+            //    foreach (DataRow 누가거리_dr in dt.Rows)
+            //    {
+            //        //먼저  Pipe Tool 기반으로 토적 데이터를 찾아보자
+            //        string sFillter = string.Format("누가거리 = {0}", Convert.ToDouble(누가거리_dr["누가거리"]));
+            //        DataRow[] result = dt토적.Select(sFillter, "전후 ASC");
+
+            //        //if (result.Count() > 1)
+            //        //{
+            //        //만약 같은게 2개 이상 나왔다면 그건 전후단면이라는 말이지
+            //        DataRow[] p_result = dtPipeTool.Select(sFillter);
+
+            //        for (int i = 0; i < p_result.Count(); i++)
+            //        {
+            //            DataRow dr = dt토적표기초데이터.NewRow();
+
+            //            ///맨홀명 앞에 이상한 내용이 들어있어요 M1-, E1- D1- 이렇게 ... 그래서 (하이픈)- 이 2개 이면 1개 앞쪽은 다 날려버리자구
+            //            ///
+            //            string strData = p_result[i]["맨홀"].ToString();
+
+            //            System.Text.RegularExpressions.Regex cntStr = new System.Text.RegularExpressions.Regex("-");
+            //            int nCnt = int.Parse(cntStr.Matches(strData, 0).Count.ToString());
+
+            //            if (nCnt > 1)
+            //            {
+            //                dr["LINENAME"] = strData.Substring(strData.IndexOf("-") + 1);
+            //            }
+            //            else
+            //            {
+            //                dr["LINENAME"] = p_result[i]["맨홀"];
+            //            }
+
+            //            dr["LINE"] = sheet_name;
+            //            dr["누가거리"] = p_result[i]["누가거리"];
+            //            dr["NO"] = result[i]["NO"];
+            //            dr["지반고"] = result[i]["지반고"];
+            //            dr["관저고"] = result[i]["관저고"];
+            //            dr["계획고"] = result[i]["계획고"];
+            //            dr["육상(토사)"] = result[i]["육상(토사)"];
+            //            dr["육상(풍화암)"] = result[i]["육상(풍화암)"];
+            //            dr["육상(연암)"] = result[i]["육상(연암)"];
+            //            dr["수중(토사)"] = result[i]["수중(토사)"];
+            //            dr["수중(풍화암)"] = result[i]["수중(풍화암)"];
+            //            dr["수중(연암)"] = result[i]["수중(연암)"];
+            //            dr["관상부"] = result[i]["관상부"];
+            //            dr["관주위"] = result[i]["관주위"];
+            //            dr["ASP"] = result[i]["ASP"];
+            //            dr["CONC"] = result[i]["CONC"];
+            //            dr["덧씌우기"] = result[i]["덧씌우기"];
+            //            dr["보도블럭"] = result[i]["보도블럭"];
+            //            dr["모래부설"] = result[i]["모래부설"];
+            //            dr["보조기층"] = result[i]["보조기층"];
+            //            dr["동상방지층"] = result[i]["동상방지층"];
+            //            dr["구간"] = p_result[i]["구간"];
+            //            dr["관경"] = p_result[i]["관경"];
+            //            dr["맨홀규격"] = p_result[i]["맨홀규격"];
+            //            dr["굴착공법"] = p_result[i]["굴착공법"];
+            //            dr["굴착장비"] = p_result[i]["굴착장비"];
+            //            dr["포장종류"] = p_result[i]["포장종류"];
+
+            //            dt토적표기초데이터.Rows.Add(dr);
+            //        }
+
+            //    }
+            //}
+
+            //MainData.Tables.Add(dt토적표기초데이터);
         }
 
-        public void LoadFromPipeTool()
+
+        public void LoadFromPipeTool(string filename)
         {
-            string filename = "";
             SpreadsheetControl MainSheet = new SpreadsheetControl();
 
             ///기본데이터를 생성한다.
-            ///
+            ///SHEET INFO 데이터를 생성한다.
             DataTable SheetInfo = CGetTableType.GetSheetInfo();
 
             ///데이터셋에 추가한다.
@@ -401,10 +397,11 @@ namespace TOP.lib
             ///엑셀을 불러와 봅시다.
             try
             {
-                filename = CUtil.LoadExcel(MainSheet);
+                filename = CUtil.LoadExcel(filename, MainSheet);
                 //splashScreenManager1.ShowWaitForm();
                 IWorkbook workbook = MainSheet.Document;
 
+                workbook.BeginUpdate();
                 //불러온 EXCEL을 Data화 해봅니다.
                 foreach (Worksheet item in workbook.Worksheets)
                 {
@@ -466,11 +463,12 @@ namespace TOP.lib
                         }                        
                     }
                 }
+                workbook.EndUpdate();
             }
             catch (Exception ex)
             {
                 throw ex;
-                //MessageBox.Show(sheetname + "::" + ex.Message);
+                //MessageBox.Show(shame + "::" + ex.Message);
             }
             finally
             {
@@ -484,10 +482,16 @@ namespace TOP.lib
         /// 사전에 입력할 수 없는 경우가 있다 
         /// 출력하기전에 입력값에서 완전한 값을 넣어야 한다. 
         /// </summary>
-        public void MakeBidge()
+        public void MakeInterData()
         {
+            SubData.Reset();
+
+            //토적표 기본데이터를 생성한다. 
+            Make토적Base();
             //구간정보를 생성한다.
-            MainData.Tables.Add(MakeManholeSection());
+            MakeManholeSection();
+
+            Make관경별연장();
         }
 
 
@@ -496,7 +500,7 @@ namespace TOP.lib
         /// </summary>
         /// <param name="Pipe_dt"></param>
         /// <returns></returns>
-        private DataTable MakeManholeSection()
+        private void MakeManholeSection()
         {
             try
             {
@@ -513,7 +517,9 @@ namespace TOP.lib
                     DataTable qry_tmp = MainData.Tables[sheet_name];
 
 
-                    var qry = from a in qry_tmp.AsEnumerable()
+                    var qry = from a in MainData.Tables[CGetTableType.tbl_PIPE_TOOL_INPUT].AsEnumerable()
+                              where a.Field<string>(CGetTableType.col_LINENAME) == sheet_name                            
+                              orderby a.Field<int>(CGetTableType.col_INDEX)
                               select new
                               {
                                   LINENAME = item_dr["SHEET_NAME"].ToString()
@@ -522,11 +528,11 @@ namespace TOP.lib
                               ,
                                   맨홀 = a.Field<string>("맨홀")
                               ,
-                                  관경 = a.Field<double>("관경")
+                                  관경 = a.Field<int>("관경")
                               ,
                                   맨홀규격 = a.Field<string>("맨홀규격")
                               ,
-                                  누가거리 = a.Field<double>("누가거리")
+                                  누가거리 = a.Field<decimal>("누가거리")
                               };
 
                     DataTable qry_dt = CUtil.LinqQueryToDataTable(qry);
@@ -637,7 +643,8 @@ namespace TOP.lib
                     }
                 }
 
-                return 구간정보_dt;
+                SubData.Tables.Add(구간정보_dt);
+                //return 구간정보_dt;
             }
             catch (Exception ex)
             {
@@ -645,6 +652,15 @@ namespace TOP.lib
             }
         }
 
+
+        public void Make관경별연장()
+        {
+            DataTable dt = MainData.Tables[CGetTableType.tbl_PIPE_TOOL_INPUT];
+
+            
+
+
+        }
 
         /// <summary>
         /// 토적표를 출력한다.
@@ -657,7 +673,7 @@ namespace TOP.lib
                 workbook.Worksheets.Remove(workbook.Worksheets["토적표"]);
             }
 
-            DataTable dt = MainData.Tables[CGetTableType.tbl_토적표기초데이터];
+            DataTable dt = SubData.Tables[CGetTableType.tbl_토적표기초데이터];
 
             Worksheet sheet = workbook.Worksheets.Add();
             sheet.Name = "토적표";
@@ -841,20 +857,11 @@ namespace TOP.lib
             {
                 nCol = 0;
 
-                if (nLine != Row["LINE"].ToString())
-                {
-                    nLine = Row["LINE"].ToString();
 
-                    sheet.Rows[nIndex]["C"].SetValue(Row["LINE"].ToString() + " LINE");
-                    nIndex++;
-                }
+                sheet.Rows[nIndex]["B"].SetValue(Row[CGetTableType.col_LINENAME].ToString());
+                sheet.Rows[nIndex]["C"].SetValue(Row[CGetTableType.col_맨홀].ToString());
 
-                nLine = Row["LINE"].ToString();
-                //sheet.Cells[nIndex, nCol].SetValue(Row["LINE"].ToString());
-
-                sheet.Rows[nIndex]["C"].SetValue(Row["LINENAME"].ToString());
-
-                string[] sss = GetPoint(Row["NO"].ToString());
+                string[] sss = GetPoint(Row[CGetTableType.col_NO].ToString());
 
                 //측점 출력
                 sheet.Rows[nIndex]["D"].SetValue("No.");
@@ -865,14 +872,14 @@ namespace TOP.lib
                 sheet.Rows[nIndex]["G"].SetValue(Convert.ToDecimal(sss[2]));
                 sheet.Rows[nIndex]["H"].SetValue(sss[3]);
 
-                sheet.Rows[nIndex]["I"].SetValue(Convert.ToDecimal(Row["누가거리"])); //누가거리 I
+                sheet.Rows[nIndex]["I"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_누가거리])); //누가거리 I
 
                 if (Convert.ToDecimal(sss[2]) < 0)
                 {
                     string abab = "";
                 }
 
-                if (Convert.ToDecimal(Row["누가거리"]) == 0)
+                if (Convert.ToDecimal(Row[CGetTableType.col_누가거리]) == 0)
                 {
                     sheet.Rows[nIndex]["J"].SetValue(0); //거리
                 }
@@ -881,16 +888,16 @@ namespace TOP.lib
                     sheet.Rows[nIndex]["J"].Formula = String.Format("= I{0} - I{1}", nIndex + 1, nIndex);
                 }
 
-                sheet.Rows[nIndex]["K"].SetValue(Convert.ToDecimal(Row["육상(토사)"]));
+                sheet.Rows[nIndex]["K"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_육상_토사]));
                 sheet.Rows[nIndex]["L"].Formula = String.Format("= ROUND((K{0}+K{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);  //ROUND((K4+K5)/2*$J5,2)
 
-                sheet.Rows[nIndex]["M"].SetValue(Convert.ToDecimal(Row["수중(토사)"]));
+                sheet.Rows[nIndex]["M"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_수중_토사]));
                 sheet.Rows[nIndex]["N"].Formula = String.Format("= ROUND((M{0}+M{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);  //ROUND((K4+K5)/2*$J5,2)
-                sheet.Rows[nIndex]["W"].SetValue(Convert.ToDecimal(Row["관주위"]));
+                sheet.Rows[nIndex]["W"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_관주위]));
                 sheet.Rows[nIndex]["X"].Formula = String.Format("= ROUND((W{0}+W{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);  //ROUND((K4+K5)/2*$J5,2)
-                sheet.Rows[nIndex]["Y"].SetValue(Convert.ToDecimal(Row["관상부"]));
+                sheet.Rows[nIndex]["Y"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_관상부]));
                 sheet.Rows[nIndex]["Z"].Formula = String.Format("= ROUND((Y{0}+Y{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);  //ROUND((K4+K5)/2*$J5,2)
-                sheet.Rows[nIndex]["AA"].SetValue(Convert.ToDecimal(Row["모래부설"]));
+                sheet.Rows[nIndex]["AA"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_모래부설]));
                 sheet.Rows[nIndex]["AB"].Formula = String.Format("= ROUND((AA{0}+AA{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);  //ROUND((K4+K5)/2*$J5,2)
 
                 //ASP절단
@@ -899,12 +906,12 @@ namespace TOP.lib
                 if (Row["ASP"].ToString().Trim() != "")
                 {
                     //ASP 깨기 및 복구
-                    if (Convert.ToDecimal(Row["ASP"]) > 0)
+                    if (Convert.ToDecimal(Row[CGetTableType.col_ASP]) > 0)
                     {
-                        sheet.Rows[nIndex]["AK"].SetValue(Convert.ToDecimal(Row["ASP"])); // ROUND((K4+K5)/2*$J5,2)
+                        sheet.Rows[nIndex]["AK"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_ASP])); // ROUND((K4+K5)/2*$J5,2)
                         sheet.Rows[nIndex]["AL"].Formula = String.Format("= ROUND((AK{0}+AK{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
 
-                        sheet.Rows[nIndex]["AM"].SetValue(Convert.ToDecimal(Row["보조기층"]));
+                        sheet.Rows[nIndex]["AM"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_보조기층]));
                         sheet.Rows[nIndex]["AN"].Formula = String.Format("= ROUND((AM{0}+AM{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
                     }
                 }
@@ -915,10 +922,10 @@ namespace TOP.lib
                 {
                     if (Convert.ToDecimal(Row["CONC"]) > 0)
                     {
-                        sheet.Rows[nIndex]["AR"].SetValue(Convert.ToDecimal(Row["CONC"])); // ROUND((K4+K5)/2*$J5,2)
+                        sheet.Rows[nIndex]["AR"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_CONC])); // ROUND((K4+K5)/2*$J5,2)
                         sheet.Rows[nIndex]["AS"].Formula = String.Format("= ROUND((AR{0}+AR{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
 
-                        sheet.Rows[nIndex]["AT"].SetValue(Convert.ToDecimal(Row["보조기층"]));
+                        sheet.Rows[nIndex]["AT"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_보조기층]));
                         sheet.Rows[nIndex]["AU"].Formula = String.Format("= ROUND((AT{0}+AT{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
                     }
                 }
@@ -928,10 +935,10 @@ namespace TOP.lib
 
                 if (Row["덧씌우기"].ToString().Trim() != "")
                 {
-                    sheet.Rows[nIndex]["AW"].SetValue(Convert.ToDecimal(Row["덧씌우기"])); // ROUND((K4+K5)/2*$J5,2)
+                    sheet.Rows[nIndex]["AW"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_덧씌우기])); // ROUND((K4+K5)/2*$J5,2)
                     sheet.Rows[nIndex]["AX"].Formula = String.Format("= ROUND((AW{0}+AW{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
 
-                    sheet.Rows[nIndex]["AY"].SetValue(Convert.ToDecimal(Row["보조기층"])); // ROUND((K4+K5)/2*$J5,2)
+                    sheet.Rows[nIndex]["AY"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_보조기층])); // ROUND((K4+K5)/2*$J5,2)
                     sheet.Rows[nIndex]["AZ"].Formula = String.Format("= ROUND((AY{0}+AY{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
                 }
 
@@ -940,19 +947,19 @@ namespace TOP.lib
                 {
                     if (Convert.ToDecimal(Row["보도블럭"]) > 0)
                     {
-                        sheet.Rows[nIndex]["BH"].SetValue(Convert.ToDecimal(Row["보도블럭"])); // ROUND((K4+K5)/2*$J5,2)
+                        sheet.Rows[nIndex]["BH"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_보도블럭])); // ROUND((K4+K5)/2*$J5,2)
                         sheet.Rows[nIndex]["BI"].Formula = String.Format("= ROUND((BH{0}+BH{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
                         sheet.Rows[nIndex]["BJ"].Formula = String.Format("= BH{0}*0.04", nIndex);
                         sheet.Rows[nIndex]["BK"].Formula = String.Format("= ROUND((BJ{0}+BJ{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
 
-                        sheet.Rows[nIndex]["BL"].SetValue(Convert.ToDecimal(Row["보조기층"]));
+                        sheet.Rows[nIndex]["BL"].SetValue(Convert.ToDecimal(Row[CGetTableType.col_보조기층]));
                         sheet.Rows[nIndex]["BM"].Formula = String.Format("= ROUND((BL{0}+BL{1})/2*$J{2}, 2)", nIndex, nIndex + 1, nIndex + 1);
                     }
                 }
 
                 //장비
                 //sheet.Rows[nIndex]["BS"].SetValue(Row["Column3"].ToString());
-                sheet.Rows[nIndex]["BS"].SetValue(Row["굴착장비"].ToString());
+                sheet.Rows[nIndex]["BS"].SetValue(Row[CGetTableType.col_굴착장비].ToString());
 
                 //sheet.Cells[nIndex, nCol++].SetValue(Row["지반고"].ToString());
                 //sheet.Cells[nIndex, nCol++].SetValue(Row["관저고"].ToString());
@@ -997,14 +1004,21 @@ namespace TOP.lib
         public void Print간이흙막이연장조서(IWorkbook workbook)
         {
             //간이흙막이연장조서는 말그대로 가시설에만 해당 되므로 그에 대한 데이터만 찾자.
-            DataTable dt = MainData.Tables[CGetTableType.tbl_토적표기초데이터].Copy();
+            DataTable dt;
 
-            DataRow[] drs = dt.Select("SUBSTRING(구간, 1, 3) = 'GA' ");
+            var qry = from a in SubData.Tables[CGetTableType.tbl_토적표기초데이터].AsEnumerable()
+                      where a.Field<string>("구간").Substring(0, 2) == "GA"
+                      select a;
 
-            foreach (DataRow item in drs)
-            {
-                dt.Rows.Remove(item);
-            }
+            
+            dt = qry.CopyToDataTable();
+
+            //DataRow[] drs = SubData.Tables[CGetTableType.tbl_토적표기초데이터].Select("SUBSTRING(구간, 1, 2) = 'GA' ");
+
+            //foreach (DataRow item in drs)
+            //{
+            //    dt.ImportRow(item);
+            //}
 
 
             //var qry = from a in dt.AsEnumerable()
@@ -1030,41 +1044,41 @@ namespace TOP.lib
             int nIndex = 1;
             int nCol = 0;
 
-            string nLine = "";
+            string s맨홀 = "";
 
             //Header Font 설정
-            CellRange range = sheet.Range["A1:Q1"];
+            CellRange range = sheet.Range["A1:R1"];
             CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
 
-            sheet.Rows[0]["A"].SetValue("LINENAME");
-            sheet.Rows[0]["B"].SetValue("관경");
-            sheet.Rows[0]["C"].SetValue("측점");
-            sheet.MergeCells(sheet.Range["C1:F1"]);
-            sheet.Rows[0]["G"].SetValue("누가거리");
-            sheet.Rows[0]["H"].SetValue("구간거리");
-            sheet.Rows[0]["I"].SetValue("지반고");
-            sheet.Rows[0]["J"].SetValue("관저고");
-            sheet.Rows[0]["K"].SetValue("H");
-            sheet.Rows[0]["L"].SetValue("굴착고(H + 0.1)");
-            sheet.Rows[0]["M"].SetValue("L X H");
-            sheet.Rows[0]["N"].SetValue("굴착폭");
-            sheet.Rows[0]["O"].SetValue("가시설");
-            sheet.Rows[0]["P"].SetValue("규격");
-            sheet.Rows[0]["Q"].SetValue("비고");
+            sheet.Rows[0]["A"].SetValue("LINE");
+            sheet.Rows[0]["B"].SetValue("맨홀");
+            sheet.Rows[0]["C"].SetValue("관경");
+            sheet.Rows[0]["D"].SetValue("측점");
+            sheet.MergeCells(sheet.Range["D1:G1"]);
+            sheet.Rows[0]["H"].SetValue("누가거리");
+            sheet.Rows[0]["I"].SetValue("구간거리");
+            sheet.Rows[0]["J"].SetValue("지반고");
+            sheet.Rows[0]["K"].SetValue("관저고");
+            sheet.Rows[0]["L"].SetValue("H");
+            sheet.Rows[0]["M"].SetValue("굴착고(H + 0.1)");
+            sheet.Rows[0]["N"].SetValue("L X H");
+            sheet.Rows[0]["O"].SetValue("굴착폭");
+            sheet.Rows[0]["P"].SetValue("가시설");
+            sheet.Rows[0]["Q"].SetValue("규격");
+            sheet.Rows[0]["R"].SetValue("비고");
 
             foreach (DataRow Row in dt.Rows)
             {
                 nCol = 0;
+                sheet.Rows[nIndex]["A"].SetValue(Row[CGetTableType.col_LINENAME].ToString() + " LINE");
 
-                if (nLine != Row["LINE"].ToString())
+
+                if (s맨홀 != Row[CGetTableType.col_맨홀].ToString()   && Row[CGetTableType.col_맨홀].ToString().Trim() != "")
                 {
-                    nLine = Row["LINE"].ToString();
-
-                    sheet.Rows[nIndex]["A"].SetValue(Row["LINE"].ToString() + " LINE");
-                    nIndex++;
+                    s맨홀 = Row[CGetTableType.col_맨홀].ToString();
                 }
 
-                nLine = Row["LINE"].ToString();
+                
                 //sheet.Cells[nIndex, nCol].SetValue(Row["LINE"].ToString());
 
                 if (Row["구간"].ToString().Substring(0, 2).ToUpper() != "GA")
@@ -1072,45 +1086,45 @@ namespace TOP.lib
                     continue;
                 }
 
-                sheet.Rows[nIndex]["A"].SetValue(Row["LINENAME"].ToString());
+                sheet.Rows[nIndex]["B"].SetValue(s맨홀);
 
                 string[] sss = GetPoint(Row["NO"].ToString());
 
                 //측점 출력
-                sheet.Rows[nIndex]["B"].SetValue(Convert.ToDecimal(Row["관경"]));
+                sheet.Rows[nIndex]["C"].SetValue(Convert.ToDecimal(Row["관경"]));
 
-                sheet.Rows[nIndex]["C"].SetValue(Convert.ToDecimal(sss[0]));
+                sheet.Rows[nIndex]["D"].SetValue(Convert.ToDecimal(sss[0]));
 
                 //sheet.Rows[nIndex]["D"].SetValue(sss[1]);
-                sheet.Rows[nIndex]["D"].SetValue("+");
+                sheet.Rows[nIndex]["E"].SetValue("+");
 
-                sheet.Rows[nIndex]["E"].SetValue(Convert.ToDecimal(sss[2]));
-                sheet.Rows[nIndex]["F"].SetValue(sss[3]);
+                sheet.Rows[nIndex]["F"].SetValue(Convert.ToDecimal(sss[2]));
+                sheet.Rows[nIndex]["G"].SetValue(sss[3]);
 
-                sheet.Rows[nIndex]["G"].SetValue(Convert.ToDecimal(Row["누가거리"])); //누가거리 I
+                sheet.Rows[nIndex]["H"].SetValue(Convert.ToDecimal(Row["누가거리"])); //누가거리 I
 
                 ///후단면이면 구간거리를 0으로 처리
                 if (sss[3].ToString() == "(후)")
                 {
-                    sheet.Rows[nIndex]["H"].SetValue(0);
+                    sheet.Rows[nIndex]["I"].SetValue(0);
                 }
                 else
                 {
-                    sheet.Rows[nIndex]["H"].Formula = String.Format("= G{0} - G{1}", nIndex + 1, nIndex); //구간거리
+                    sheet.Rows[nIndex]["I"].Formula = String.Format("= H{0} - H{1}", nIndex + 1, nIndex); //구간거리
                 }
 
-                sheet.Rows[nIndex]["I"].SetValue(Convert.ToDecimal(Row["지반고"])); //
-                sheet.Rows[nIndex]["J"].SetValue(Convert.ToDecimal(Row["관저고"])); //I
-                sheet.Rows[nIndex]["K"].Formula = String.Format("= I{0} - J{1}", nIndex + 1, nIndex + 1); //H
-                sheet.Rows[nIndex]["L"].Formula = String.Format("= K{0} +0.1", nIndex + 1); //H
-                sheet.Rows[nIndex]["M"].Formula = String.Format("= H{0} *L{1}", nIndex + 1, nIndex + 1); //H
+                sheet.Rows[nIndex]["J"].SetValue(Convert.ToDecimal(Row["지반고"])); //
+                sheet.Rows[nIndex]["K"].SetValue(Convert.ToDecimal(Row["관저고"])); //I
+                sheet.Rows[nIndex]["L"].Formula = String.Format("= J{0} - K{1}", nIndex + 1, nIndex + 1); //H
+                sheet.Rows[nIndex]["M"].Formula = String.Format("= L{0} +0.1", nIndex + 1); //H
+                sheet.Rows[nIndex]["N"].Formula = String.Format("= I{0} *M{1}", nIndex + 1, nIndex + 1); //H
 
                 //= IF(AND(B21 >= 150, B21 <= 200), 1.2, B21 / 1000 + 1)
-                sheet.Rows[nIndex]["N"].Formula = String.Format("= IF(AND(B{0} >= 150, B{1} <= 200), 1.2, B{2} / 1000 + 1)", nIndex + 1, nIndex + 1, nIndex + 1);
+                sheet.Rows[nIndex]["O"].Formula = String.Format("= IF(AND(C{0} >= 150, C{1} <= 200), 1.2, C{2} / 1000 + 1)", nIndex + 1, nIndex + 1, nIndex + 1);
 
                 //갑자기 수식에 의한 계산이 참조 되지 않음 (동일 행 처리시)
-                decimal iVal = Convert.ToDecimal(sheet.Rows[nIndex]["I"].Value.ToString());
-                decimal jVal = Convert.ToDecimal(sheet.Rows[nIndex]["J"].Value.ToString());
+                decimal iVal = Convert.ToDecimal(sheet.Rows[nIndex]["J"].Value.ToString());
+                decimal jVal = Convert.ToDecimal(sheet.Rows[nIndex]["K"].Value.ToString());
                 decimal LVal = iVal - jVal + Convert.ToDecimal(0.1);
 
                 //=IF(AND(L21>4,S21="가시설"),"조절식간이흙막이",IF(S21="가시설","조립식간이흙막이",""))
@@ -1118,11 +1132,11 @@ namespace TOP.lib
 
                 if (LVal > 4)
                 {
-                    sheet.Rows[nIndex]["O"].SetValue("조절식간이흙막이");
+                    sheet.Rows[nIndex]["P"].SetValue("조절식간이흙막이");
                 }
                 else
                 {
-                    sheet.Rows[nIndex]["O"].SetValue("조립식간이흙막이");
+                    sheet.Rows[nIndex]["P"].SetValue("조립식간이흙막이");
                 }
 
                 //=IFERROR(IF(FIND("흙막이",O21)>=1,IF(L21<=3,"300형",IF(AND(L21>3,L21<=4),"400형",IF(AND(L21>4,L21<=5),"500형",IF(AND(L21>5,L21<=6),"600형",IF(AND(L21>6,L21<=7),"700형")))))),"")
@@ -1132,35 +1146,35 @@ namespace TOP.lib
 
                 if (LVal <= 3)
                 {
-                    sheet.Rows[nIndex]["P"].SetValue("300형");
+                    sheet.Rows[nIndex]["Q"].SetValue("300형");
                 }
                 else if (LVal > 3 && LVal <= 4)
                 {
-                    sheet.Rows[nIndex]["P"].SetValue("400형");
+                    sheet.Rows[nIndex]["Q"].SetValue("400형");
                 }
                 else if (LVal > 4 && LVal <= 5)
                 {
-                    sheet.Rows[nIndex]["P"].SetValue("500형");
+                    sheet.Rows[nIndex]["Q"].SetValue("500형");
                 }
                 else if (LVal > 5 && LVal <= 6)
                 {
-                    sheet.Rows[nIndex]["P"].SetValue("600형");
+                    sheet.Rows[nIndex]["Q"].SetValue("600형");
                 }
                 else if (LVal > 6 && LVal <= 7)
                 {
-                    sheet.Rows[nIndex]["P"].SetValue("700형");
+                    sheet.Rows[nIndex]["Q"].SetValue("700형");
                 }
 
                 nIndex++;
             }
 
             string strRange;
-            strRange = string.Format("A1:Q{0}", nIndex + 1);
+            strRange = string.Format("A1:R{0}", nIndex + 1);
             sheet.Range[strRange].AutoFitColumns();
 
             //Body Font 설정
             string sRange;
-            sRange = string.Format("{0}{1}:{2}{3}", "A", "2", "Q", nIndex + 1);
+            sRange = string.Format("{0}{1}:{2}{3}", "A", "2", "R", nIndex + 1);
             CellRange body_range = sheet.Range[sRange];
             CUtil.setSheetBodyFormat(body_range, "맑은 고딕", 9);
 
@@ -1176,20 +1190,18 @@ namespace TOP.lib
         public void Print맨홀조서(IWorkbook workbook)
         {
 
-            DataTable dt = MainData.Tables[CGetTableType.tbl_토적표기초데이터].Copy();
+            DataTable dt;// = SubData.Tables[CGetTableType.tbl_토적표기초데이터].Copy();
             ///맨홀조서니까 맨홀만 필요해요
             ///맨홀규격이 있는 애들만 찾아요
 
-            //where(parentCategoryId != null ? c.ParenCategoryId == parentCategoryId : c.ParenCategoryId == null)
-            //(c.ResourcesName == null ? "" : c.ResourcesName).Contains(this.txtSearchString.Text)
+            var qry = from a in SubData.Tables[CGetTableType.tbl_토적표기초데이터].AsEnumerable()
+                      where a.Field<string>(CGetTableType.col_맨홀).Trim() != ""
+                      select a;
 
-            DataRow[] drs = dt.Select("맨홀규격 is null ");
+            dt = qry.CopyToDataTable();
 
 
-            foreach (DataRow item in drs)
-            {
-                dt.Rows.Remove(item);
-            }
+            
 
             //var qry = from a in tmp_dt.AsEnumerable()
             //          where a.Field<string>("맨홀규격").ToString()  == null ? "" : a.Field<string>("맨홀규격").ToString() 
@@ -1225,7 +1237,8 @@ namespace TOP.lib
             CellRange range = sheet.Range["A1:L1"];
             CUtil.setSheetHeaderFormat(range, "맑은 고딕", 10);
 
-            sheet.Rows[0]["B"].SetValue("LINENAME");
+            sheet.Rows[0]["A"].SetValue("LINENAME");
+            sheet.Rows[0]["B"].SetValue("맨홀");
             sheet.Rows[0]["C"].SetValue("지반고");
             sheet.Rows[0]["D"].SetValue("관저고");
             sheet.Rows[0]["E"].SetValue("L.W.L(c)");
@@ -1241,7 +1254,8 @@ namespace TOP.lib
             {
                 nCol = 0;
 
-                sheet.Rows[nIndex]["B"].SetValue(Row["LINENAME"].ToString());
+                sheet.Rows[nIndex]["A"].SetValue(Row[CGetTableType.col_LINENAME].ToString());
+                sheet.Rows[nIndex]["B"].SetValue(Row[CGetTableType.col_맨홀].ToString());
 
                 sheet.Rows[nIndex]["C"].SetValue(Convert.ToDecimal(Row["지반고"])); //
                 sheet.Rows[nIndex]["D"].SetValue(Convert.ToDecimal(Row["관저고"])); //I

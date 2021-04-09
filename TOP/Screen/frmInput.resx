@@ -118,15 +118,190 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>192, 17</value>
+    <value>385, 17</value>
   </metadata>
   <metadata name="popupMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>192, 17</value>
+    <value>234, 17</value>
   </metadata>
   <metadata name="popupMenu2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>366, 17</value>
+    <value>535, 17</value>
   </metadata>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>686, 17</value>
+  </metadata>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>INSERT INTO PIPE01M00 (PROJECT_CD
+                     , LINENAME
+                     , SEQ
+                     , 누가거리
+                     , 지반고
+                     , 관저고
+                     , 관경
+                     , 맨홀
+                     , TEXT1
+                     , TEXT2
+                     , 구간
+                     , 구배
+                     , INV
+                     , SIZE
+                     , 라인명
+                     , 지하수위
+                     , 맨홀_INVERT
+                      )        
+SELECT @P_PROJECT_CD
+      ,@P_LINENAME
+	,@P_SEQ
+	,@P_누가거리
+	,@P_지반고
+	,@P_관저고
+	,@P_관경
+	,@P_맨홀
+	,@P_TEXT1
+	,@P_TEXT2
+	,@P_구간
+	,@P_구배	
+	,@P_INV
+	,@P_SIZE
+	,@P_라인명
+	,@P_지하수위
+	,@P_맨홀_INVERT;</value>
+  </data>
+  <data name="customSqlQuery2.Sql" xml:space="preserve">
+    <value>INSERT INTO PIPE02M00 (  PROJECT_CD	
+						,LINENAME
+						,SEQ
+						,전후단면
+						,전후단면_IDX
+						,누가거리
+						,거리
+						,지반고
+						,관저고
+						,계획고
+						,육상_토사
+						,육상_풍화암
+						,육상_연암
+						,수중_토사
+						,수중_풍화암
+						,수중_연암
+						,관상부
+						,관주위
+						,ASP
+						,CONC
+						,덧씌우기
+						,보도블럭
+						,모래부설
+						,보조기층
+						,동상방지층 )
+SELECT @P_PROJECT_CD	
+	,@P_LINENAME
+	,@P_SEQ
+	,@P_전후단면
+	,@P_전후단면_IDX
+	,@P_누가거리
+	,@P_거리
+	,@P_지반고
+	,@P_관저고
+	,@P_계획고
+	,@P_육상_토사
+	,@P_육상_풍화암
+	,@P_육상_연암
+	,@P_수중_토사
+	,@P_수중_풍화암
+	,@P_수중_연암
+	,@P_관상부
+	,@P_관주위
+	,@P_ASP
+	,@P_CONC
+	,@P_덧씌우기
+	,@P_보도블럭
+	,@P_모래부설
+	,@P_보조기층
+	,@P_동상방지층</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IklOU0VSVF9QSVBFMDFNMDAiIC8+PFZpZXcgTmFtZT0iSU5TRVJUX1BJUEUwMk0wMCIgLz48VmlldyBOYW1lPSJJTlNFUlRfUElQRTAzTTAwIiAvPjxWaWV3IE5hbWU9IlVQREFURV9QSVBFMDFNMDAiIC8+PFZpZXcgTmFtZT0iREVMRVRFX1BJUEUwMU0wMCIgLz48VmlldyBOYW1lPSJERUxFVEVfUElQRTAyTTAwIiAvPjxWaWV3IE5hbWU9IkRFTEVURV9QSVBFMDNNMDAiIC8+PC9EYXRhU2V0Pg==</value>
+  </data>
+  <metadata name="OutDataSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>851, 17</value>
+  </metadata>
+  <data name="customSqlQuery8.Sql" xml:space="preserve">
+    <value>select b.맨홀  관로번호
+       ,'No.'
+       , concat('No.', lpad(floor(a.누가거리1/20), 5, ' '), ' +', lpad(mod(a.누가거리1, 20), 6, ' '), c.전후단면) 측점       , a.누가거리1
+       , a.누가거리2 
+       , b.포장종류 
+       , c.육상_토사 
+       , case a.seq
+       		when 0 then 0
+       		else round((d.육상_토사 + c.육상_토사)/2 * a.누가거리2 , 2)       		
+         end 육상_부피
+       ,c.수중_토사
+       ,case a.seq
+       		when 0 then 0
+       		else round((d.수중_토사 + c.수중_토사)/2 * a.누가거리2 , 2)
+         end 수중_부피
+       ,c.관주위 
+       ,case a.seq
+       		when 0 then 0
+       		else round((d.관주위 + c.관주위)/2 * a.누가거리2 , 2)
+         end 관주위부피
+       ,c.관상부 
+       ,case a.seq
+       		when 0 then 0
+       		else round((d.관상부 + c.관상부)/2 * a.누가거리2 , 2)
+         end 관상부부피
+       ,c.모래부설 as 관기초
+       ,case a.seq
+       		when 0 then 0
+       		else round((d.모래부설 + c.모래부설)/2 * a.누가거리2 , 2)
+         end 관기초부피
+       ,case b.포장종류 
+       		when 'xASP' then a.누가거리2 *2 
+       		else a.누가거리2 *2 
+        end 절단
+       ,case b.포장종류 
+       		when 'ASP' then c.ASP 
+       		when 'CON''C' then c.CONC 
+       		when 'A+C' then c.덧씌우기 
+       		when '보도' then C.보도블럭 
+       		when '투수콘' then C.ASP 
+        end 깨기
+       ,case b.포장종류 
+       		when 'ASP' then round((d.ASP + c.ASP)/2 * a.누가거리2 , 2)
+       		when 'CON''C' then round((d.CONC + c.CONC)/2 * a.누가거리2 , 2)
+       		when 'A+C' then round((d.덧씌우기 + c.덧씌우기)/2 * a.누가거리2 , 2)
+       		when '보도' then round((d.보도블럭 + c.보도블럭)/2 * a.누가거리2 , 2)
+       		when '투수콘' then round((d.ASP + c.ASP)/2 * a.누가거리2 , 2)
+        end 복구
+       ,c.보조기층 
+       ,round((d.보조기층 + c.보조기층)/2 * a.누가거리2 , 2) 보조기층부피
+       ,case b.포장종류 
+       		when '투수콘' then c.동상방지층 
+       		else 0
+        end 모래
+       ,case b.포장종류 
+       		when '투수콘' then round((d.동상방지층 + c.동상방지층)/2 * a.누가거리2 , 2)
+       		else 0
+        end 모래부피 
+   from pipe01t00 a, pipe01m00 b, pipe02m00 c, pipe02m00 d
+  where a.PROJECT_CD = @P_PROJECT_CD
+    and a.project_cd = b.PROJECT_CD 
+    and a.LINENAME  = b.LINENAME
+    and a.SEQ  = b.SEQ 
+    and a.project_cd = c.PROJECT_CD 
+    and a.LINENAME  = c.LINENAME 
+    and a.SEQ = c.SEQ 
+    and a.project_cd = d.PROJECT_CD 
+    and a.LINENAME  = d.LINENAME 
+    and a.N_SEQ = d.SEQ</value>
+  </data>
+  <data name="OutDataSource.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0iT3V0RGF0YVNvdXJjZSI+PFZpZXcgTmFtZT0iUVJZX+2GoOygge2RnCI+PEZpZWxkIE5hbWU9Iuq0gOuhnOuyiO2YuCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJOby4iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0i7Lih7KCQIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IuuIhOqwgOqxsOumrDEiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuuIhOqwgOqxsOumrDIiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iu2PrOyepeyiheulmCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSLsnKHsg4Ff7Yag7IKsIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsnKHsg4Ff67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsiJjspJFf7Yag7IKsIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsiJjspJFf67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqtIDso7zsnIQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq0gOyjvOychOu2gO2UvCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rSA7IOB67aAIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqtIDsg4HrtoDrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq0gOq4sOy0iCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rSA6riw7LSI67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsoIjri6giIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq5qOq4sCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i67O16rWsIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLrs7TsobDquLDsuLUiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuuztOyhsOq4sOy4teu2gO2UvCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i66qo656YIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLrqqjrnpjrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
+  </data>
+  <metadata name="sqlDataQry.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1014, 17</value>
+  </metadata>
+  <data name="sqlDataQry.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVFyeSI+PFZpZXcgTmFtZT0iUVJZX01BTkhPTEUiPjxGaWVsZCBOYW1lPSJjZCIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iY2Rfbm0iIFR5cGU9IlVua25vd24iIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlFSWV/qtbTssKnsnqXruYQiPjxGaWVsZCBOYW1lPSJjZCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJjZF9ubSIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
+  </data>
 </root>
