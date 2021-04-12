@@ -135,10 +135,10 @@ namespace TOP.Screen
             // 
             // gridControl2
             // 
-            this.gridControl2.Location = new System.Drawing.Point(24, 54);
+            this.gridControl2.Location = new System.Drawing.Point(22, 50);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1420, 530);
+            this.gridControl2.Size = new System.Drawing.Size(1424, 538);
             this.gridControl2.TabIndex = 8;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -161,10 +161,10 @@ namespace TOP.Screen
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(24, 54);
+            this.gridControl1.Location = new System.Drawing.Point(22, 50);
             this.gridControl1.MainView = this.GridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1420, 530);
+            this.gridControl1.Size = new System.Drawing.Size(1424, 538);
             this.gridControl1.TabIndex = 7;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.GridView1});
@@ -433,7 +433,7 @@ namespace TOP.Screen
             // simpleButton11
             // 
             this.simpleButton11.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton11.ImageOptions.SvgImage")));
-            this.simpleButton11.Location = new System.Drawing.Point(1128, 600);
+            this.simpleButton11.Location = new System.Drawing.Point(1128, 602);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(160, 44);
             this.simpleButton11.StyleController = this.layoutControl1;
@@ -443,9 +443,9 @@ namespace TOP.Screen
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.simpleButton2.Location = new System.Drawing.Point(1292, 600);
+            this.simpleButton2.Location = new System.Drawing.Point(1292, 602);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(164, 44);
+            this.simpleButton2.Size = new System.Drawing.Size(165, 44);
             this.simpleButton2.StyleController = this.layoutControl1;
             this.simpleButton2.TabIndex = 6;
             this.simpleButton2.Text = "조회";
@@ -469,7 +469,7 @@ namespace TOP.Screen
             this.tabbedControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.tabbedControlGroup1.Name = "tabbedControlGroup1";
             this.tabbedControlGroup1.SelectedTabPage = this.layoutControlGroup1;
-            this.tabbedControlGroup1.Size = new System.Drawing.Size(1448, 588);
+            this.tabbedControlGroup1.Size = new System.Drawing.Size(1450, 592);
             this.tabbedControlGroup1.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup1,
             this.layoutControlGroup2});
@@ -480,14 +480,14 @@ namespace TOP.Screen
             this.layoutControlItem1});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1424, 534);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1428, 542);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1424, 534);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1428, 542);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -497,14 +497,14 @@ namespace TOP.Screen
             this.layoutControlItem4});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1424, 534);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1428, 542);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.gridControl2;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(1424, 534);
+            this.layoutControlItem4.Size = new System.Drawing.Size(1428, 542);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -513,7 +513,7 @@ namespace TOP.Screen
             this.layoutControlItem2.Control = this.simpleButton11;
             this.layoutControlItem2.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem2.Location = new System.Drawing.Point(1116, 588);
+            this.layoutControlItem2.Location = new System.Drawing.Point(1117, 592);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(164, 48);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -524,9 +524,9 @@ namespace TOP.Screen
             this.layoutControlItem3.Control = this.simpleButton2;
             this.layoutControlItem3.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem3.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem3.Location = new System.Drawing.Point(1280, 588);
+            this.layoutControlItem3.Location = new System.Drawing.Point(1281, 592);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(168, 48);
+            this.layoutControlItem3.Size = new System.Drawing.Size(169, 48);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -534,9 +534,9 @@ namespace TOP.Screen
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 588);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 592);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1116, 48);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1117, 48);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // sqlDataQry
@@ -677,6 +677,7 @@ namespace TOP.Screen
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.ClientSize = new System.Drawing.Size(1468, 686);
             this.Controls.Add(this.layoutControl1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmModify";
             this.Load += new System.EventHandler(this.frmModify_Load);
             this.Controls.SetChildIndex(this.layoutControl1, 0);

@@ -1,7 +1,7 @@
 ﻿
 namespace TOP.Dialog
 {
-    partial class frmMngr포장공정
+    partial class frmMngr맨홀구조물
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -30,7 +30,7 @@ namespace TOP.Dialog
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMngr포장공정));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMngr맨홀구조물));
             DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
             DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery3 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
@@ -46,6 +46,7 @@ namespace TOP.Dialog
             DevExpress.DataAccess.Sql.QueryParameter queryParameter8 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter9 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter10 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter11 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.label포장 = new DevExpress.XtraEditors.LabelControl();
@@ -66,6 +67,8 @@ namespace TOP.Dialog
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colcd = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -93,6 +96,7 @@ namespace TOP.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -132,7 +136,7 @@ namespace TOP.Dialog
             // btnSave
             // 
             this.btnSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSave.ImageOptions.SvgImage")));
-            this.btnSave.Location = new System.Drawing.Point(1057, 713);
+            this.btnSave.Location = new System.Drawing.Point(1057, 711);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(121, 44);
             this.btnSave.StyleController = this.layoutControl1;
@@ -142,7 +146,7 @@ namespace TOP.Dialog
             // 
             // label포장
             // 
-            this.label포장.Location = new System.Drawing.Point(587, 10);
+            this.label포장.Location = new System.Drawing.Point(587, 12);
             this.label포장.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.label포장.Name = "label포장";
             this.label포장.Size = new System.Drawing.Size(92, 20);
@@ -154,7 +158,7 @@ namespace TOP.Dialog
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("맑은 고딕", 15F);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(432, 10);
+            this.labelControl1.Location = new System.Drawing.Point(432, 12);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(151, 35);
             this.labelControl1.StyleController = this.layoutControl1;
@@ -163,12 +167,12 @@ namespace TOP.Dialog
             // 
             // gridControl3
             // 
-            this.gridControl3.DataMember = "QRY_포장공정_LIST";
+            this.gridControl3.DataMember = "QRY_맨홀구조물_LIST";
             this.gridControl3.DataSource = this.sqlDataQry;
-            this.gridControl3.Location = new System.Drawing.Point(1012, 33);
+            this.gridControl3.Location = new System.Drawing.Point(1011, 35);
             this.gridControl3.MainView = this.gridView3;
             this.gridControl3.Name = "gridControl3";
-            this.gridControl3.Size = new System.Drawing.Size(404, 676);
+            this.gridControl3.Size = new System.Drawing.Size(404, 672);
             this.gridControl3.TabIndex = 6;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -177,16 +181,16 @@ namespace TOP.Dialog
             // 
             this.sqlDataQry.ConnectionName = "localhost_TOPS_Connection";
             this.sqlDataQry.Name = "sqlDataQry";
-            customSqlQuery1.Name = "QRY_포장_LIST";
-            customSqlQuery1.Sql = "select cd\r\n      ,cd_nm\r\n\t,descr\r\n  from cod10m00\r\n where mngr_cd = \'PAVE_CD\'\r\n O" +
-    "RDER BY ORD_SEQ";
-            customSqlQuery2.Name = "QRY_포장공정_LIST";
+            customSqlQuery1.Name = "QRY_맨홀_LIST";
+            customSqlQuery1.Sql = "select cd\r\n      ,cd_nm\r\n\t,descr\r\n  from cod10m00\r\n where mngr_cd = \'MH_CD\'\r\n ORD" +
+    "ER BY ORD_SEQ";
+            customSqlQuery2.Name = "QRY_맨홀구조물_LIST";
             customSqlQuery2.Sql = "select MNGR_CD\r\n      ,CD\r\n      ,CD_NM\r\n      ,DESCR\r\n  from cod10m00\r\n where mn" +
-    "gr_cd = \'PAVE_PR_CD\'";
-            customSqlQuery3.Name = "QRY_포장별_공정_LIST";
+    "gr_cd = \'MH_ST\'";
+            customSqlQuery3.Name = "QRY_맨홀별_구조물_LIST";
             queryParameter1.Name = "P_P_CD";
             queryParameter1.Type = typeof(string);
-            queryParameter1.ValueInfo = "\"  \"";
+            queryParameter1.ValueInfo = "\'001\'";
             customSqlQuery3.Parameters.Add(queryParameter1);
             customSqlQuery3.Sql = resources.GetString("customSqlQuery3.Sql");
             this.sqlDataQry.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
@@ -240,12 +244,14 @@ namespace TOP.Dialog
             // 
             // gridControl2
             // 
-            this.gridControl2.DataMember = "QRY_포장별_공정_LIST";
+            this.gridControl2.DataMember = "QRY_맨홀별_구조물_LIST";
             this.gridControl2.DataSource = this.sqlDataQry;
-            this.gridControl2.Location = new System.Drawing.Point(432, 72);
+            this.gridControl2.Location = new System.Drawing.Point(432, 74);
             this.gridControl2.MainView = this.gridView2;
             this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(564, 637);
+            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemSpinEdit1});
+            this.gridControl2.Size = new System.Drawing.Size(563, 633);
             this.gridControl2.TabIndex = 5;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -259,38 +265,41 @@ namespace TOP.Dialog
             this.gridColumn3,
             this.gridColumn9,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.DoubleClick += new System.EventHandler(this.gridView2_DoubleClick);
             // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "포장관리코드";
+            this.gridColumn1.Caption = "맨홀관리코드";
             this.gridColumn1.FieldName = "p_mngr_cd";
             this.gridColumn1.MinWidth = 27;
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 2;
             this.gridColumn1.Width = 112;
             // 
             // gridColumn8
             // 
-            this.gridColumn8.Caption = "포장코드";
+            this.gridColumn8.Caption = "맨홀코드";
             this.gridColumn8.FieldName = "p_cd";
             this.gridColumn8.MinWidth = 27;
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 0;
             this.gridColumn8.Width = 112;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "포장명";
+            this.gridColumn2.Caption = "맨홀명";
             this.gridColumn2.FieldName = "p_cd_nm";
             this.gridColumn2.MinWidth = 27;
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             this.gridColumn2.Width = 112;
@@ -301,26 +310,29 @@ namespace TOP.Dialog
             this.gridColumn3.FieldName = "mngr_cd";
             this.gridColumn3.MinWidth = 27;
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 3;
             this.gridColumn3.Width = 112;
             // 
             // gridColumn9
             // 
-            this.gridColumn9.Caption = "공정코드";
+            this.gridColumn9.Caption = "구조물코드";
             this.gridColumn9.FieldName = "cd";
             this.gridColumn9.MinWidth = 27;
             this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 4;
             this.gridColumn9.Width = 112;
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "공정";
+            this.gridColumn4.Caption = "구조물";
             this.gridColumn4.FieldName = "cd_nm";
             this.gridColumn4.MinWidth = 27;
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
             this.gridColumn4.Width = 112;
@@ -331,18 +343,48 @@ namespace TOP.Dialog
             this.gridColumn5.FieldName = "ord_seq";
             this.gridColumn5.MinWidth = 27;
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 6;
             this.gridColumn5.Width = 112;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "값";
+            this.gridColumn6.ColumnEdit = this.repositoryItemSpinEdit1;
+            this.gridColumn6.FieldName = "cd_val";
+            this.gridColumn6.MinWidth = 25;
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 7;
+            this.gridColumn6.Width = 94;
+            // 
+            // repositoryItemSpinEdit1
+            // 
+            this.repositoryItemSpinEdit1.AutoHeight = false;
+            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemSpinEdit1.DisplayFormat.FormatString = "#,##0.00";
+            this.repositoryItemSpinEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemSpinEdit1.EditFormat.FormatString = "Numeric \"#,##0.00\"";
+            this.repositoryItemSpinEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.repositoryItemSpinEdit1.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.repositoryItemSpinEdit1.Mask.EditMask = "#,##0.00";
+            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            this.repositoryItemSpinEdit1.NullValuePrompt = "0.00";
+            // 
             // gridControl1
             // 
-            this.gridControl1.DataMember = "QRY_포장_LIST";
+            this.gridControl1.DataMember = "QRY_맨홀_LIST";
             this.gridControl1.DataSource = this.sqlDataQry;
-            this.gridControl1.Location = new System.Drawing.Point(11, 33);
+            this.gridControl1.Location = new System.Drawing.Point(12, 35);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(405, 676);
+            this.gridControl1.Size = new System.Drawing.Size(404, 672);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -388,7 +430,7 @@ namespace TOP.Dialog
             // simpleButton11
             // 
             this.simpleButton11.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton11.ImageOptions.SvgImage")));
-            this.simpleButton11.Location = new System.Drawing.Point(1182, 713);
+            this.simpleButton11.Location = new System.Drawing.Point(1182, 711);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(112, 44);
             this.simpleButton11.StyleController = this.layoutControl1;
@@ -398,9 +440,9 @@ namespace TOP.Dialog
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.simpleButton2.Location = new System.Drawing.Point(1298, 713);
+            this.simpleButton2.Location = new System.Drawing.Point(1298, 711);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(118, 44);
+            this.simpleButton2.Size = new System.Drawing.Size(117, 44);
             this.simpleButton2.StyleController = this.layoutControl1;
             this.simpleButton2.TabIndex = 6;
             this.simpleButton2.Text = "조회";
@@ -430,53 +472,53 @@ namespace TOP.Dialog
             // splitterItem1
             // 
             this.splitterItem1.AllowHotTrack = true;
-            this.splitterItem1.Location = new System.Drawing.Point(409, 0);
+            this.splitterItem1.Location = new System.Drawing.Point(408, 0);
             this.splitterItem1.Name = "splitterItem1";
-            this.splitterItem1.Size = new System.Drawing.Size(12, 703);
+            this.splitterItem1.Size = new System.Drawing.Size(12, 699);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(409, 703);
-            this.layoutControlItem1.Text = "포장 LIST";
+            this.layoutControlItem1.Size = new System.Drawing.Size(408, 699);
+            this.layoutControlItem1.Text = "맨홀";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(112, 20);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(113, 20);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.gridControl2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(421, 39);
+            this.layoutControlItem2.Location = new System.Drawing.Point(420, 39);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(568, 664);
-            this.layoutControlItem2.Text = "포장별 공정 LIST";
+            this.layoutControlItem2.Size = new System.Drawing.Size(567, 660);
+            this.layoutControlItem2.Text = "맨홀별_구조 LIST";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(112, 20);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(113, 20);
             // 
             // splitterItem2
             // 
             this.splitterItem2.AllowHotTrack = true;
-            this.splitterItem2.Location = new System.Drawing.Point(989, 0);
+            this.splitterItem2.Location = new System.Drawing.Point(987, 0);
             this.splitterItem2.Name = "splitterItem2";
-            this.splitterItem2.Size = new System.Drawing.Size(12, 703);
+            this.splitterItem2.Size = new System.Drawing.Size(12, 699);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.gridControl3;
-            this.layoutControlItem3.Location = new System.Drawing.Point(1001, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(999, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(408, 703);
-            this.layoutControlItem3.Text = "포장 공정 LIST";
+            this.layoutControlItem3.Size = new System.Drawing.Size(408, 699);
+            this.layoutControlItem3.Text = "맨홀구조물 LIST";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(112, 20);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(113, 20);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton11;
             this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem4.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem4.Location = new System.Drawing.Point(1171, 703);
+            this.layoutControlItem4.Location = new System.Drawing.Point(1170, 699);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(116, 48);
             this.layoutControlItem4.Text = "layoutControlItem2";
@@ -488,9 +530,9 @@ namespace TOP.Dialog
             this.layoutControlItem5.Control = this.simpleButton2;
             this.layoutControlItem5.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem5.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem5.Location = new System.Drawing.Point(1287, 703);
+            this.layoutControlItem5.Location = new System.Drawing.Point(1286, 699);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(122, 48);
+            this.layoutControlItem5.Size = new System.Drawing.Size(121, 48);
             this.layoutControlItem5.Text = "layoutControlItem3";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
@@ -499,15 +541,15 @@ namespace TOP.Dialog
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 703);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 699);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1046, 48);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1045, 48);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.labelControl1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(421, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(420, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(155, 39);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
@@ -516,15 +558,15 @@ namespace TOP.Dialog
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(672, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(671, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(317, 39);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(316, 39);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.label포장;
-            this.layoutControlItem7.Location = new System.Drawing.Point(576, 0);
+            this.layoutControlItem7.Location = new System.Drawing.Point(575, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(96, 39);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
@@ -533,7 +575,7 @@ namespace TOP.Dialog
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.btnSave;
-            this.layoutControlItem8.Location = new System.Drawing.Point(1046, 703);
+            this.layoutControlItem8.Location = new System.Drawing.Point(1045, 699);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(125, 48);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
@@ -543,7 +585,7 @@ namespace TOP.Dialog
             // 
             this.sqlData.ConnectionName = "localhost_TOPS_Connection";
             this.sqlData.Name = "sqlData";
-            customSqlQuery4.Name = "포장별공정_DELETE";
+            customSqlQuery4.Name = "맨홀별구조_DELETE";
             queryParameter2.Name = "P_PROJECT_CD";
             queryParameter2.Type = typeof(string);
             queryParameter2.ValueInfo = "\'999999999x\'";
@@ -556,12 +598,12 @@ namespace TOP.Dialog
             customSqlQuery4.Parameters.Add(queryParameter2);
             customSqlQuery4.Parameters.Add(queryParameter3);
             customSqlQuery4.Parameters.Add(queryParameter4);
-            customSqlQuery4.Sql = "DELETE FROM COD10T00 \r\nWHERE PROJECT_CD = @P_PROJECT_CD\r\n  AND P_MNGR_CD = @P_P_M" +
+            customSqlQuery4.Sql = "DELETE FROM COD11T00 \r\nWHERE PROJECT_CD = @P_PROJECT_CD\r\n  AND P_MNGR_CD = @P_P_M" +
     "NGR_CD\r\n  AND P_CD      = @P_P_CD";
-            customSqlQuery5.Name = "포장별공정_INSERT";
+            customSqlQuery5.Name = "맨홀별구조_INSERT";
             queryParameter5.Name = "P_PROJECT_CD";
             queryParameter5.Type = typeof(string);
-            queryParameter5.ValueInfo = "\'AAA\'";
+            queryParameter5.ValueInfo = "\'bbb\'";
             queryParameter6.Name = "P_P_MNGR_CD";
             queryParameter6.Type = typeof(string);
             queryParameter6.ValueInfo = "\'AAA\'";
@@ -577,28 +619,32 @@ namespace TOP.Dialog
             queryParameter10.Name = "P_ORD_SEQ";
             queryParameter10.Type = typeof(int);
             queryParameter10.ValueInfo = "0";
+            queryParameter11.Name = "P_CD_VAL";
+            queryParameter11.Type = typeof(double);
+            queryParameter11.ValueInfo = "0.05";
             customSqlQuery5.Parameters.Add(queryParameter5);
             customSqlQuery5.Parameters.Add(queryParameter6);
             customSqlQuery5.Parameters.Add(queryParameter7);
             customSqlQuery5.Parameters.Add(queryParameter8);
             customSqlQuery5.Parameters.Add(queryParameter9);
             customSqlQuery5.Parameters.Add(queryParameter10);
-            customSqlQuery5.Sql = "INSERT INTO COD10T00 (project_cd, p_mngr_cd, p_cd, mngr_cd, cd, ord_seq)\r\nSELECT " +
-    "@P_PROJECT_CD\r\n      ,@P_P_MNGR_CD\r\n \t,@P_P_CD\r\n\t,@P_MNGR_CD\r\n\t,@P_CD\r\n\t,@P_ORD_" +
-    "SEQ";
+            customSqlQuery5.Parameters.Add(queryParameter11);
+            customSqlQuery5.Sql = "INSERT INTO COD11T00 (project_cd, p_mngr_cd, p_cd, mngr_cd, cd, ord_seq, cd_val)\r" +
+    "\nSELECT @P_PROJECT_CD\r\n      ,@P_P_MNGR_CD\r\n \t,@P_P_CD\r\n\t,@P_MNGR_CD\r\n\t,@P_CD\r\n\t" +
+    ",@P_ORD_SEQ\r\n\t,@P_CD_VAL";
             this.sqlData.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             customSqlQuery4,
             customSqlQuery5});
-            this.sqlData.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YSI+PFZpZXcgTmFtZT0i7Y+s7J6l67OE6rO17KCVX0RFTEVURSIgL" +
-    "z48VmlldyBOYW1lPSLtj6zsnqXrs4Tqs7XsoJVfSU5TRVJUIiAvPjwvRGF0YVNldD4=";
+            this.sqlData.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YSI+PFZpZXcgTmFtZT0i66eo7ZmA67OE6rWs7KGwX0RFTEVURSIgL" +
+    "z48VmlldyBOYW1lPSLrp6jtmYDrs4TqtazsobBfSU5TRVJUIiAvPjwvRGF0YVNldD4=";
             // 
-            // frmMngr포장공정
+            // frmMngr맨홀구조물
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.ClientSize = new System.Drawing.Size(1427, 797);
             this.Controls.Add(this.layoutControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.Name = "frmMngr포장공정";
+            this.Name = "frmMngr맨홀구조물";
             this.Controls.SetChildIndex(this.layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
@@ -606,6 +652,7 @@ namespace TOP.Dialog
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -669,5 +716,7 @@ namespace TOP.Dialog
         private DevExpress.XtraEditors.SimpleButton btnSave;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlData;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
     }
 }

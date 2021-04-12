@@ -30,42 +30,42 @@ namespace TOP.MngFrm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.SelectQuery selectQuery5 = new DevExpress.DataAccess.Sql.SelectQuery();
-            DevExpress.DataAccess.Sql.Column column21 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression21 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table5 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column22 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression22 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column23 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression23 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column24 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression24 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column25 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression25 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.SelectQuery selectQuery1 = new DevExpress.DataAccess.Sql.SelectQuery();
+            DevExpress.DataAccess.Sql.Column column1 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression1 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Table table1 = new DevExpress.DataAccess.Sql.Table();
+            DevExpress.DataAccess.Sql.Column column2 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression2 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column3 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression3 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column4 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression4 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column5 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression5 = new DevExpress.DataAccess.Sql.ColumnExpression();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mFrmClient));
-            DevExpress.DataAccess.Sql.SelectQuery selectQuery6 = new DevExpress.DataAccess.Sql.SelectQuery();
-            DevExpress.DataAccess.Sql.Column column26 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression26 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table6 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column27 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression27 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column28 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression28 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column29 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression29 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Column column30 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression30 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery5 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter19 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter20 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter21 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter22 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery6 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter23 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter24 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter25 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter26 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter27 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.SelectQuery selectQuery2 = new DevExpress.DataAccess.Sql.SelectQuery();
+            DevExpress.DataAccess.Sql.Column column6 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression6 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Table table2 = new DevExpress.DataAccess.Sql.Table();
+            DevExpress.DataAccess.Sql.Column column7 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression7 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column8 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression8 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column9 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression9 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column10 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression10 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter4 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery2 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter5 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter6 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter7 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter8 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter9 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
@@ -111,11 +111,11 @@ namespace TOP.MngFrm
             // 
             this.gridControl1.DataSource = this.sqlDataSource2;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl1.Location = new System.Drawing.Point(12, 12);
+            this.gridControl1.Location = new System.Drawing.Point(11, 10);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1186, 668);
+            this.gridControl1.Size = new System.Drawing.Size(1188, 672);
             this.gridControl1.TabIndex = 6;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -124,32 +124,32 @@ namespace TOP.MngFrm
             // 
             this.sqlDataSource2.ConnectionName = "localhost_TOPS_Connection";
             this.sqlDataSource2.Name = "sqlDataSource2";
-            columnExpression21.ColumnName = "CLIENT_CD";
-            table5.MetaSerializable = "<Meta X=\"30\" Y=\"30\" Width=\"125\" Height=\"276\" />";
-            table5.Name = "cod01m00";
-            columnExpression21.Table = table5;
-            column21.Expression = columnExpression21;
-            columnExpression22.ColumnName = "CLIENT_NM";
-            columnExpression22.Table = table5;
-            column22.Expression = columnExpression22;
-            columnExpression23.ColumnName = "TEL_NO";
-            columnExpression23.Table = table5;
-            column23.Expression = columnExpression23;
-            columnExpression24.ColumnName = "FAX_NO";
-            columnExpression24.Table = table5;
-            column24.Expression = columnExpression24;
-            columnExpression25.ColumnName = "DESCRIPT";
-            columnExpression25.Table = table5;
-            column25.Expression = columnExpression25;
-            selectQuery5.Columns.Add(column21);
-            selectQuery5.Columns.Add(column22);
-            selectQuery5.Columns.Add(column23);
-            selectQuery5.Columns.Add(column24);
-            selectQuery5.Columns.Add(column25);
-            selectQuery5.Name = "QRY_COD01M00";
-            selectQuery5.Tables.Add(table5);
+            columnExpression1.ColumnName = "CLIENT_CD";
+            table1.MetaSerializable = "<Meta X=\"30\" Y=\"30\" Width=\"125\" Height=\"276\" />";
+            table1.Name = "cod01m00";
+            columnExpression1.Table = table1;
+            column1.Expression = columnExpression1;
+            columnExpression2.ColumnName = "CLIENT_NM";
+            columnExpression2.Table = table1;
+            column2.Expression = columnExpression2;
+            columnExpression3.ColumnName = "TEL_NO";
+            columnExpression3.Table = table1;
+            column3.Expression = columnExpression3;
+            columnExpression4.ColumnName = "FAX_NO";
+            columnExpression4.Table = table1;
+            column4.Expression = columnExpression4;
+            columnExpression5.ColumnName = "DESCRIPT";
+            columnExpression5.Table = table1;
+            column5.Expression = columnExpression5;
+            selectQuery1.Columns.Add(column1);
+            selectQuery1.Columns.Add(column2);
+            selectQuery1.Columns.Add(column3);
+            selectQuery1.Columns.Add(column4);
+            selectQuery1.Columns.Add(column5);
+            selectQuery1.Name = "QRY_COD01M00";
+            selectQuery1.Tables.Add(table1);
             this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            selectQuery5});
+            selectQuery1});
             this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
             // 
             // gridView1
@@ -230,10 +230,10 @@ namespace TOP.MngFrm
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(12, 684);
+            this.simpleButton1.Location = new System.Drawing.Point(11, 686);
             this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(1186, 27);
+            this.simpleButton1.Size = new System.Drawing.Size(1188, 27);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 7;
             this.simpleButton1.Text = "simpleButton1";
@@ -241,10 +241,10 @@ namespace TOP.MngFrm
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(12, 715);
+            this.simpleButton2.Location = new System.Drawing.Point(11, 717);
             this.simpleButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(1186, 27);
+            this.simpleButton2.Size = new System.Drawing.Size(1188, 27);
             this.simpleButton2.StyleController = this.layoutControl1;
             this.simpleButton2.TabIndex = 8;
             this.simpleButton2.Text = "simpleButton2";
@@ -267,25 +267,25 @@ namespace TOP.MngFrm
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1190, 672);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1192, 676);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.simpleButton1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 672);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 676);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1190, 31);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1192, 31);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.simpleButton2;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 703);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 707);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1190, 31);
+            this.layoutControlItem3.Size = new System.Drawing.Size(1192, 31);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -293,83 +293,83 @@ namespace TOP.MngFrm
             // 
             this.sqlDataSource1.ConnectionName = "localhost_TOPS_Connection";
             this.sqlDataSource1.Name = "sqlDataSource1";
-            columnExpression26.ColumnName = "CLIENT_CD";
-            table6.MetaSerializable = "<Meta X=\"30\" Y=\"30\" Width=\"125\" Height=\"245\" />";
-            table6.Name = "cod01m00";
-            columnExpression26.Table = table6;
-            column26.Expression = columnExpression26;
-            columnExpression27.ColumnName = "CLIENT_NM";
-            columnExpression27.Table = table6;
-            column27.Expression = columnExpression27;
-            columnExpression28.ColumnName = "TEL_NO";
-            columnExpression28.Table = table6;
-            column28.Expression = columnExpression28;
-            columnExpression29.ColumnName = "FAX_NO";
-            columnExpression29.Table = table6;
-            column29.Expression = columnExpression29;
-            columnExpression30.ColumnName = "DESCRIPT";
-            columnExpression30.Table = table6;
-            column30.Expression = columnExpression30;
-            selectQuery6.Columns.Add(column26);
-            selectQuery6.Columns.Add(column27);
-            selectQuery6.Columns.Add(column28);
-            selectQuery6.Columns.Add(column29);
-            selectQuery6.Columns.Add(column30);
-            selectQuery6.Name = "cod01m00";
-            selectQuery6.Tables.Add(table6);
+            columnExpression6.ColumnName = "CLIENT_CD";
+            table2.MetaSerializable = "<Meta X=\"30\" Y=\"30\" Width=\"125\" Height=\"245\" />";
+            table2.Name = "cod01m00";
+            columnExpression6.Table = table2;
+            column6.Expression = columnExpression6;
+            columnExpression7.ColumnName = "CLIENT_NM";
+            columnExpression7.Table = table2;
+            column7.Expression = columnExpression7;
+            columnExpression8.ColumnName = "TEL_NO";
+            columnExpression8.Table = table2;
+            column8.Expression = columnExpression8;
+            columnExpression9.ColumnName = "FAX_NO";
+            columnExpression9.Table = table2;
+            column9.Expression = columnExpression9;
+            columnExpression10.ColumnName = "DESCRIPT";
+            columnExpression10.Table = table2;
+            column10.Expression = columnExpression10;
+            selectQuery2.Columns.Add(column6);
+            selectQuery2.Columns.Add(column7);
+            selectQuery2.Columns.Add(column8);
+            selectQuery2.Columns.Add(column9);
+            selectQuery2.Columns.Add(column10);
+            selectQuery2.Name = "cod01m00";
+            selectQuery2.Tables.Add(table2);
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            selectQuery6});
+            selectQuery2});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // sqlDataSource3
             // 
             this.sqlDataSource3.ConnectionName = "localhost_TOPS_Connection";
             this.sqlDataSource3.Name = "sqlDataSource3";
-            customSqlQuery5.Name = "INSERT_COD01M00";
-            queryParameter19.Name = "P_CLIENT_NM";
-            queryParameter19.Type = typeof(string);
-            queryParameter19.ValueInfo = "\'test1\'";
-            queryParameter20.Name = "P_TEL_NO";
-            queryParameter20.Type = typeof(string);
-            queryParameter20.ValueInfo = "0";
-            queryParameter21.Name = "P_FAX_NO";
-            queryParameter21.Type = typeof(string);
-            queryParameter21.ValueInfo = "0";
-            queryParameter22.Name = "P_DESCRIPT";
-            queryParameter22.Type = typeof(string);
-            queryParameter22.ValueInfo = "0";
-            customSqlQuery5.Parameters.Add(queryParameter19);
-            customSqlQuery5.Parameters.Add(queryParameter20);
-            customSqlQuery5.Parameters.Add(queryParameter21);
-            customSqlQuery5.Parameters.Add(queryParameter22);
-            customSqlQuery5.Sql = resources.GetString("customSqlQuery5.Sql");
-            customSqlQuery6.Name = "UPDATE_COD01M00";
-            queryParameter23.Name = "P_CLIENT_CD";
-            queryParameter23.Type = typeof(string);
-            queryParameter23.ValueInfo = "1";
-            queryParameter24.Name = "P_CLIENT_NM";
-            queryParameter24.Type = typeof(string);
-            queryParameter24.ValueInfo = "1";
-            queryParameter25.Name = "P_FAX_NO";
-            queryParameter25.Type = typeof(string);
-            queryParameter25.ValueInfo = "1";
-            queryParameter26.Name = "P_TEL_NO";
-            queryParameter26.Type = typeof(string);
-            queryParameter26.ValueInfo = "1";
-            queryParameter27.Name = "P_DESCRIPT";
-            queryParameter27.Type = typeof(string);
-            queryParameter27.ValueInfo = "1";
-            customSqlQuery6.Parameters.Add(queryParameter23);
-            customSqlQuery6.Parameters.Add(queryParameter24);
-            customSqlQuery6.Parameters.Add(queryParameter25);
-            customSqlQuery6.Parameters.Add(queryParameter26);
-            customSqlQuery6.Parameters.Add(queryParameter27);
-            customSqlQuery6.Sql = "UPDATE COD01M00\r\n   SET CLIENT_NM = @P_CLIENT_NM\r\n     , TEL_NO = @P_TEL_NO\r\n    " +
+            customSqlQuery1.Name = "INSERT_COD01M00";
+            queryParameter1.Name = "P_CLIENT_NM";
+            queryParameter1.Type = typeof(string);
+            queryParameter1.ValueInfo = "\'test1\'";
+            queryParameter2.Name = "P_TEL_NO";
+            queryParameter2.Type = typeof(string);
+            queryParameter2.ValueInfo = "0";
+            queryParameter3.Name = "P_FAX_NO";
+            queryParameter3.Type = typeof(string);
+            queryParameter3.ValueInfo = "0";
+            queryParameter4.Name = "P_DESCRIPT";
+            queryParameter4.Type = typeof(string);
+            queryParameter4.ValueInfo = "0";
+            customSqlQuery1.Parameters.Add(queryParameter1);
+            customSqlQuery1.Parameters.Add(queryParameter2);
+            customSqlQuery1.Parameters.Add(queryParameter3);
+            customSqlQuery1.Parameters.Add(queryParameter4);
+            customSqlQuery1.Sql = resources.GetString("customSqlQuery1.Sql");
+            customSqlQuery2.Name = "UPDATE_COD01M00";
+            queryParameter5.Name = "P_CLIENT_CD";
+            queryParameter5.Type = typeof(string);
+            queryParameter5.ValueInfo = "1";
+            queryParameter6.Name = "P_CLIENT_NM";
+            queryParameter6.Type = typeof(string);
+            queryParameter6.ValueInfo = "1";
+            queryParameter7.Name = "P_FAX_NO";
+            queryParameter7.Type = typeof(string);
+            queryParameter7.ValueInfo = "1";
+            queryParameter8.Name = "P_TEL_NO";
+            queryParameter8.Type = typeof(string);
+            queryParameter8.ValueInfo = "1";
+            queryParameter9.Name = "P_DESCRIPT";
+            queryParameter9.Type = typeof(string);
+            queryParameter9.ValueInfo = "1";
+            customSqlQuery2.Parameters.Add(queryParameter5);
+            customSqlQuery2.Parameters.Add(queryParameter6);
+            customSqlQuery2.Parameters.Add(queryParameter7);
+            customSqlQuery2.Parameters.Add(queryParameter8);
+            customSqlQuery2.Parameters.Add(queryParameter9);
+            customSqlQuery2.Sql = "UPDATE COD01M00\r\n   SET CLIENT_NM = @P_CLIENT_NM\r\n     , TEL_NO = @P_TEL_NO\r\n    " +
     " , FAX_NO = @P_FAX_NO\r\n     , DESCRIPT = @P_DESCRIPT\r\n WHERE CLIENT_CD = @P_CLIE" +
     "NT_CD";
             this.sqlDataSource3.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            customSqlQuery5,
-            customSqlQuery6});
+            customSqlQuery1,
+            customSqlQuery2});
             this.sqlDataSource3.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTMiPjxWaWV3IE5hbWU9IklOU0VSVF9DT0QwMU0wMCIgL" +
     "z48VmlldyBOYW1lPSJVUERBVEVfQ09EMDFNMDAiIC8+PC9EYXRhU2V0Pg==";
             // 

@@ -12,26 +12,26 @@ using TOP.lib;
 
 namespace TOP.Dialog
 {
-    public partial class frmMngr포장공정 : TOP.Parent.PForm
+    public partial class frmMngr맨홀구조물: TOP.Parent.PForm
     {
-        public frmMngr포장공정()
+        public frmMngr맨홀구조물()
         {
             InitializeComponent();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            Qry포장_LIST();
-            Qry포장공정_LIST();
+            Qry_맨홀_LIST();
+            QRY_맨홀구조물_LIST();
         }
-
-        private void Qry포장_LIST()
+        
+        private void Qry_맨홀_LIST()
         {
             try
             {
-                sqlDataQry.Fill("QRY_포장_LIST");
+                sqlDataQry.Fill("QRY_맨홀_LIST");
 
-                DataTable dt = CUtil.GetTable(sqlDataQry.Result["QRY_포장_LIST"]);
+                DataTable dt = CUtil.GetTable(sqlDataQry.Result["QRY_맨홀_LIST"]);
 
                 gridControl1.DataSource = dt;
             }
@@ -41,13 +41,13 @@ namespace TOP.Dialog
             }
         }
 
-        private void Qry포장공정_LIST()
+        private void QRY_맨홀구조물_LIST()
         {
             try
             {
-                sqlDataQry.Fill("QRY_포장공정_LIST");
+                sqlDataQry.Fill("QRY_맨홀구조물_LIST");
 
-                DataTable dt = CUtil.GetTable(sqlDataQry.Result["QRY_포장공정_LIST"]);
+                DataTable dt = CUtil.GetTable(sqlDataQry.Result["QRY_맨홀구조물_LIST"]);
 
                 gridControl3.DataSource = dt;
             }
@@ -74,9 +74,9 @@ namespace TOP.Dialog
             {
                 labelControl1.Text = dr["descr"].ToString();
                 label포장.Text = dr["cd"].ToString();
-                sqlDataQry.Queries["QRY_포장별_공정_LIST"].Parameters.Find(x => x.Name == "P_P_CD").Value = label포장.Text;
-                sqlDataQry.Fill("QRY_포장별_공정_LIST");
-                DataTable dt = CUtil.GetTable(sqlDataQry.Result["QRY_포장별_공정_LIST"]);
+                sqlDataQry.Queries["QRY_맨홀별_구조물_LIST"].Parameters.Find(x => x.Name == "P_P_CD").Value = label포장.Text;
+                sqlDataQry.Fill("QRY_맨홀별_구조물_LIST");
+                DataTable dt = CUtil.GetTable(sqlDataQry.Result["QRY_맨홀별_구조물_LIST"]);
 
                 gridControl2.DataSource = dt;
             }
@@ -87,7 +87,7 @@ namespace TOP.Dialog
         }
 
         /// <summary>
-        ///
+        /// 구조물을 맨홀 규격에 추가한다.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -105,14 +105,14 @@ namespace TOP.Dialog
                 nCnt = dt.Rows.Count;
                 DataRow dr = dt.NewRow();
 
-                dr["p_mngr_cd"] = "PAVE_CD";
+                dr["p_mngr_cd"] = "MH_CD";
                 dr["p_cd"] = label포장.Text;
                 dr["p_cd_nm"] = labelControl1.Text;
                 dr["mngr_cd"] = 포장Row["mngr_cd"];
                 dr["cd"] = 포장Row["cd"];
                 dr["cd_nm"] = 포장Row["cd_nm"];
                 dr["ord_seq"] = nCnt;
-
+                dr["cd_val"] = 0;
                 dt.Rows.Add(dr);
 
                 gridControl2.DataSource = dt;
@@ -130,10 +130,10 @@ namespace TOP.Dialog
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Set포장공정();
+            Set맨홀별구조물();
         }
 
-        private void Set포장공정()
+        private void Set맨홀별구조물()
         {
             try
             {
@@ -151,7 +151,7 @@ namespace TOP.Dialog
                     try
                     {
                         //DELETE COD10T00
-                        CustomSqlQuery query = sqlData.Queries["포장별공정_DELETE"] as CustomSqlQuery;
+                        CustomSqlQuery query = sqlData.Queries["맨홀별구조_DELETE"] as CustomSqlQuery;
                         mycommand.CommandText = query.Sql;
                         mycommand.Parameters.Clear();
 
@@ -168,7 +168,7 @@ namespace TOP.Dialog
 
                         foreach (DataRow item in dt.Rows)
                         {
-                            query = sqlData.Queries["포장별공정_INSERT"] as CustomSqlQuery;
+                            query = sqlData.Queries["맨홀별구조_INSERT"] as CustomSqlQuery;
                             mycommand.CommandText = query.Sql;
                             mycommand.Parameters.Clear();
 
@@ -179,6 +179,7 @@ namespace TOP.Dialog
                             mycommand.Parameters.AddWithValue("@P_MNGR_CD", item["mngr_cd"]);
                             mycommand.Parameters.AddWithValue("@P_CD", item["cd"]);
                             mycommand.Parameters.AddWithValue("@P_ORD_SEQ", item["ord_seq"] );
+                            mycommand.Parameters.AddWithValue("@P_CD_VAL", item["cd_val"]);
                             mycommand.ExecuteNonQuery();
                         }
 

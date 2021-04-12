@@ -132,7 +132,7 @@
   <metadata name="sqlDataSource3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>401, 17</value>
   </metadata>
-  <data name="customSqlQuery5.Sql" xml:space="preserve">
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
     <value>INSERT INTO COD01M00 (CLIENT_CD, CLIENT_NM, TEL_NO, FAX_NO, DESCRIPT)
 select A.CNT 
       ,@P_CLIENT_NM

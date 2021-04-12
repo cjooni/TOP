@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>385, 17</value>
+    <value>17, 103</value>
   </metadata>
   <metadata name="popupMenu1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>234, 17</value>
+    <value>17, 60</value>
   </metadata>
   <metadata name="popupMenu2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>535, 17</value>
+    <value>17, 146</value>
   </metadata>
   <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>686, 17</value>
+    <value>17, 189</value>
   </metadata>
   <data name="customSqlQuery1.Sql" xml:space="preserve">
     <value>INSERT INTO PIPE01M00 (PROJECT_CD
@@ -222,7 +222,7 @@ SELECT @P_PROJECT_CD
     <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IklOU0VSVF9QSVBFMDFNMDAiIC8+PFZpZXcgTmFtZT0iSU5TRVJUX1BJUEUwMk0wMCIgLz48VmlldyBOYW1lPSJJTlNFUlRfUElQRTAzTTAwIiAvPjxWaWV3IE5hbWU9IlVQREFURV9QSVBFMDFNMDAiIC8+PFZpZXcgTmFtZT0iREVMRVRFX1BJUEUwMU0wMCIgLz48VmlldyBOYW1lPSJERUxFVEVfUElQRTAyTTAwIiAvPjxWaWV3IE5hbWU9IkRFTEVURV9QSVBFMDNNMDAiIC8+PC9EYXRhU2V0Pg==</value>
   </data>
   <metadata name="OutDataSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>851, 17</value>
+    <value>17, 232</value>
   </metadata>
   <data name="customSqlQuery8.Sql" xml:space="preserve">
     <value>select b.맨홀  관로번호
@@ -299,7 +299,7 @@ SELECT @P_PROJECT_CD
     <value>PERhdGFTZXQgTmFtZT0iT3V0RGF0YVNvdXJjZSI+PFZpZXcgTmFtZT0iUVJZX+2GoOygge2RnCI+PEZpZWxkIE5hbWU9Iuq0gOuhnOuyiO2YuCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJOby4iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0i7Lih7KCQIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IuuIhOqwgOqxsOumrDEiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuuIhOqwgOqxsOumrDIiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iu2PrOyepeyiheulmCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSLsnKHsg4Ff7Yag7IKsIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsnKHsg4Ff67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsiJjspJFf7Yag7IKsIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsiJjspJFf67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqtIDso7zsnIQiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq0gOyjvOychOu2gO2UvCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rSA7IOB67aAIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqtIDsg4HrtoDrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq0gOq4sOy0iCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rSA6riw7LSI67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsoIjri6giIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq5qOq4sCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i67O16rWsIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLrs7TsobDquLDsuLUiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuuztOyhsOq4sOy4teu2gO2UvCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i66qo656YIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLrqqjrnpjrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
   </data>
   <metadata name="sqlDataQry.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1014, 17</value>
+    <value>17, 275</value>
   </metadata>
   <data name="sqlDataQry.ResultSchemaSerializable" xml:space="preserve">
     <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVFyeSI+PFZpZXcgTmFtZT0iUVJZX01BTkhPTEUiPjxGaWVsZCBOYW1lPSJjZCIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iY2Rfbm0iIFR5cGU9IlVua25vd24iIC8+PC9WaWV3PjxWaWV3IE5hbWU9IlFSWV/qtbTssKnsnqXruYQiPjxGaWVsZCBOYW1lPSJjZCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJjZF9ubSIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>

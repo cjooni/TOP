@@ -131,7 +131,7 @@ namespace TOP.MngFrm
             // 
             // lookUpClient
             // 
-            this.lookUpClient.Location = new System.Drawing.Point(122, 80);
+            this.lookUpClient.Location = new System.Drawing.Point(120, 76);
             this.lookUpClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lookUpClient.Name = "lookUpClient";
             this.lookUpClient.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -145,10 +145,10 @@ namespace TOP.MngFrm
             // simpleButton1
             // 
             this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
-            this.simpleButton1.Location = new System.Drawing.Point(1519, 758);
+            this.simpleButton1.Location = new System.Drawing.Point(1519, 760);
             this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(117, 44);
+            this.simpleButton1.Size = new System.Drawing.Size(118, 44);
             this.simpleButton1.StyleController = this.layoutControl1;
             this.simpleButton1.TabIndex = 12;
             this.simpleButton1.Text = "조회";
@@ -156,21 +156,21 @@ namespace TOP.MngFrm
             // 
             // memoDesc
             // 
-            this.memoDesc.Location = new System.Drawing.Point(122, 140);
+            this.memoDesc.Location = new System.Drawing.Point(120, 136);
             this.memoDesc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.memoDesc.Name = "memoDesc";
-            this.memoDesc.Size = new System.Drawing.Size(1502, 42);
+            this.memoDesc.Size = new System.Drawing.Size(1506, 47);
             this.memoDesc.StyleController = this.layoutControl1;
             this.memoDesc.TabIndex = 11;
             // 
             // gridControl1
             // 
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gridControl1.Location = new System.Drawing.Point(12, 198);
+            this.gridControl1.Location = new System.Drawing.Point(11, 197);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1624, 556);
+            this.gridControl1.Size = new System.Drawing.Size(1626, 559);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -279,7 +279,7 @@ namespace TOP.MngFrm
             // 
             this.edtProjectCd.Enabled = false;
             this.edtProjectCd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.edtProjectCd.Location = new System.Drawing.Point(122, 50);
+            this.edtProjectCd.Location = new System.Drawing.Point(120, 46);
             this.edtProjectCd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.edtProjectCd.Name = "edtProjectCd";
             this.edtProjectCd.Size = new System.Drawing.Size(224, 26);
@@ -288,17 +288,17 @@ namespace TOP.MngFrm
             // 
             // edtProjectNm
             // 
-            this.edtProjectNm.Location = new System.Drawing.Point(448, 50);
+            this.edtProjectNm.Location = new System.Drawing.Point(446, 46);
             this.edtProjectNm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.edtProjectNm.Name = "edtProjectNm";
-            this.edtProjectNm.Size = new System.Drawing.Size(630, 26);
+            this.edtProjectNm.Size = new System.Drawing.Size(632, 26);
             this.edtProjectNm.StyleController = this.layoutControl1;
             this.edtProjectNm.TabIndex = 6;
             // 
             // dateFromDt
             // 
             this.dateFromDt.EditValue = null;
-            this.dateFromDt.Location = new System.Drawing.Point(122, 110);
+            this.dateFromDt.Location = new System.Drawing.Point(120, 106);
             this.dateFromDt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateFromDt.Name = "dateFromDt";
             this.dateFromDt.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -312,21 +312,21 @@ namespace TOP.MngFrm
             // dateToDt
             // 
             this.dateToDt.EditValue = null;
-            this.dateToDt.Location = new System.Drawing.Point(448, 110);
+            this.dateToDt.Location = new System.Drawing.Point(446, 106);
             this.dateToDt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dateToDt.Name = "dateToDt";
             this.dateToDt.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.dateToDt.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateToDt.Size = new System.Drawing.Size(216, 26);
+            this.dateToDt.Size = new System.Drawing.Size(217, 26);
             this.dateToDt.StyleController = this.layoutControl1;
             this.dateToDt.TabIndex = 10;
             // 
             // simpleButton11
             // 
             this.simpleButton11.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton11.ImageOptions.SvgImage")));
-            this.simpleButton11.Location = new System.Drawing.Point(1266, 758);
+            this.simpleButton11.Location = new System.Drawing.Point(1266, 760);
             this.simpleButton11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(119, 44);
@@ -337,7 +337,7 @@ namespace TOP.MngFrm
             // simpleButton2
             // 
             this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
-            this.simpleButton2.Location = new System.Drawing.Point(1389, 758);
+            this.simpleButton2.Location = new System.Drawing.Point(1389, 760);
             this.simpleButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(126, 44);
@@ -364,9 +364,9 @@ namespace TOP.MngFrm
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gridControl1;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 186);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 187);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1628, 560);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1630, 563);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -384,7 +384,7 @@ namespace TOP.MngFrm
             this.layoutControlItem11});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1628, 186);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1630, 187);
             this.layoutControlGroup1.Text = "입력정보";
             // 
             // layoutControlItem2
@@ -410,7 +410,7 @@ namespace TOP.MngFrm
             this.layoutControlItem3.Control = this.edtProjectNm;
             this.layoutControlItem3.Location = new System.Drawing.Point(326, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(732, 30);
+            this.layoutControlItem3.Size = new System.Drawing.Size(734, 30);
             this.layoutControlItem3.Text = "프로젝트명";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(95, 20);
             // 
@@ -419,7 +419,7 @@ namespace TOP.MngFrm
             this.layoutControlItem5.Control = this.memoDesc;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 90);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(1604, 46);
+            this.layoutControlItem5.Size = new System.Drawing.Size(1608, 51);
             this.layoutControlItem5.Text = "프로젝트 설명";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(95, 20);
             // 
@@ -428,7 +428,7 @@ namespace TOP.MngFrm
             this.layoutControlItem7.Control = this.dateToDt;
             this.layoutControlItem7.Location = new System.Drawing.Point(326, 60);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(318, 30);
+            this.layoutControlItem7.Size = new System.Drawing.Size(319, 30);
             this.layoutControlItem7.Text = "종료일자";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(95, 20);
             // 
@@ -437,23 +437,23 @@ namespace TOP.MngFrm
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(326, 30);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1278, 30);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1282, 30);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(644, 60);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(645, 60);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(960, 30);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(963, 30);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem3
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
-            this.emptySpaceItem3.Location = new System.Drawing.Point(1058, 0);
+            this.emptySpaceItem3.Location = new System.Drawing.Point(1060, 0);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(546, 30);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(548, 30);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem11
@@ -470,7 +470,7 @@ namespace TOP.MngFrm
             this.layoutControlItem8.Control = this.simpleButton11;
             this.layoutControlItem8.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem8.CustomizationFormText = "layoutControlItem2";
-            this.layoutControlItem8.Location = new System.Drawing.Point(1254, 746);
+            this.layoutControlItem8.Location = new System.Drawing.Point(1255, 750);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(123, 48);
             this.layoutControlItem8.Text = "layoutControlItem2";
@@ -482,7 +482,7 @@ namespace TOP.MngFrm
             this.layoutControlItem9.Control = this.simpleButton2;
             this.layoutControlItem9.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem9.CustomizationFormText = "layoutControlItem3";
-            this.layoutControlItem9.Location = new System.Drawing.Point(1377, 746);
+            this.layoutControlItem9.Location = new System.Drawing.Point(1378, 750);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(130, 48);
             this.layoutControlItem9.Text = "layoutControlItem3";
@@ -493,18 +493,18 @@ namespace TOP.MngFrm
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
             this.emptySpaceItem4.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 746);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(0, 750);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(1254, 48);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(1255, 48);
             this.emptySpaceItem4.Text = "emptySpaceItem1";
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem10
             // 
             this.layoutControlItem10.Control = this.simpleButton1;
-            this.layoutControlItem10.Location = new System.Drawing.Point(1507, 746);
+            this.layoutControlItem10.Location = new System.Drawing.Point(1508, 750);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(121, 48);
+            this.layoutControlItem10.Size = new System.Drawing.Size(122, 48);
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 

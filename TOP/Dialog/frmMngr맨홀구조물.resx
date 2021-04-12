@@ -117,106 +117,48 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="DevExpress.Data.v19.2" name="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="btnSave.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi4z
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAO4BAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iU2F2ZSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzIg
+        MzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsYWNre2ZpbGw6IzcyNzI3Mjt9Cjwvc3R5
+        bGU+DQogIDxwYXRoIGQ9Ik0yNyw0aC0zdjEwSDhWNEg1QzQuNCw0LDQsNC40LDQsNXYyMmMwLDAuNiww
+        LjQsMSwxLDFoMjJjMC42LDAsMS0wLjQsMS0xVjVDMjgsNC40LDI3LjYsNCwyNyw0eiBNMjQsMjRIOHYt
+        NiAgaDE2VjI0eiBNMTAsNHY4aDEwVjRIMTB6IE0xNCwxMGgtMlY2aDJWMTB6IiBjbGFzcz0iQmxhY2si
+        IC8+DQo8L3N2Zz4L
+</value>
+  </data>
   <metadata name="sqlDataQry.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>14, 13</value>
   </metadata>
-  <data name="customSqlQuery1.Sql" xml:space="preserve">
-    <value>select b.맨홀  관로번호
-       , concat( 'No.', lpad(floor(a.누가거리1/20), 4, ' '), ' + ', lpad(mod(a.누가거리1, 20), 5), ' ', C.전후단면) as 측점
-       , a.누가거리1 as 누가거리
-       , a.누가거리2 as 거리 
-       , E.PAVE_CD as 포장코드
-       , F.cd_nm as 포장
-       , c.육상_토사 as 육상면적 
-       , case a.seq
-       		when 0 then 0
-       		else round((d.육상_토사 + c.육상_토사)/2 * a.누가거리2 , 2)       		
-         end 육상부피
-       ,c.수중_토사 as 수중면적
-       ,case a.seq
-       		when 0 then 0
-       		else round((d.수중_토사 + c.수중_토사)/2 * a.누가거리2 , 2)
-         end 수중부피
-       ,c.관주위 as 관주위면적 
-       ,case a.seq
-       		when 0 then 0
-       		else round((d.관주위 + c.관주위)/2 * a.누가거리2 , 2)
-         end 관주위부피
-       ,c.관상부 
-       ,case a.seq
-       		when 0 then 0
-       		else round((d.관상부 + c.관상부)/2 * a.누가거리2 , 2)
-         end 관상부부피
-       ,c.모래부설 as 관기초면적
-       ,case a.seq
-       		when 0 then 0
-       		else round((d.모래부설 + c.모래부설)/2 * a.누가거리2 , 2)
-         end 관기초부피
-       ,case b.포장종류 
-       		when 'xASP' then a.누가거리2 *2 
-       		else a.누가거리2 *2 
-        end 절단
-       ,case E.PAVE_CD /*b.포장종류 */
-       		when '1' then C.보도블럭
-       		when '2' then c.CONC 
-       		when '3'then c.ASP 
-			when '3-1'then c.ASP 
-       		when '4' then c.덧씌우기 /*A+C */
-       		when '투수콘' then C.ASP 
-        end 깨기및복구면적
-       ,case E.PAVE_CD /*b.포장종류 */
-       		when '3' then round((d.ASP + c.ASP)/2 * a.누가거리2 , 2) /*ASP */
-			when '3-1' then round((d.ASP + c.ASP)/2 * a.누가거리2 , 2) /*ASP */
-       		when '2' then round((d.CONC + c.CONC)/2 * a.누가거리2 , 2) /*CON''C*/
-       		when '4' then round((d.덧씌우기 + c.덧씌우기)/2 * a.누가거리2 , 2) /*A+C*/
-       		when '1' then round((d.보도블럭 + c.보도블럭)/2 * a.누가거리2 , 2) /*보도*/
-       		when '투수콘' then round((d.ASP + c.ASP)/2 * a.누가거리2 , 2)
-        end 깨기및복구부피
-       ,c.보조기층 
-       ,round((d.보조기층 + c.보조기층)/2 * a.누가거리2 , 2) 보조기층부피
-       ,case b.포장종류 
-       		when '투수콘' then c.동상방지층 
-       		else 0
-        end 모래
-       ,case b.포장종류 
-       		when '투수콘' then round((d.동상방지층 + c.동상방지층)/2 * a.누가거리2 , 2)
-       		else 0
-        end 모래부피 
- 	 ,case E.PAVE_CD /*b.포장종류 */
-       		when '1' then round(d.보도블럭 * 0.04, 3) /*보도*/
-       		else 0
-        end 석분면적
-       ,case E.PAVE_CD /*b.포장종류 */
-       		when '1' then round((round(d.보도블럭 *0.04, 3) + round(c.보도블럭* 0.04, 3) )/2 * a.누가거리2 , 2) /*보도*/
-       		else 0
-        end 석분부피   
-   from pipe01t00 a
-      , pipe01m00 b
-      , pipe02m00 c
-      , pipe02m00 d
-      , pipe01m10 e
-      , COD10M00 F
-  where a.project_cd = @P_PROJECT_CD
-    AND a.project_cd = b.PROJECT_CD 
-    and a.LINENAME  = b.LINENAME
-    and a.SEQ  = b.SEQ 
-    and a.project_cd = c.PROJECT_CD 
-    and a.LINENAME  = c.LINENAME 
-    and a.SEQ = c.SEQ 
-    and a.project_cd = d.PROJECT_CD 
-    and a.LINENAME  = d.LINENAME 
-    and a.N_SEQ = d.SEQ 
-    and a.PROJECT_CD  = e.PROJECT_CD 
-    and a.LINENAME  = e.LINENAME 
-    and a.SEQ  = e.SEQ 
-    and e.MNGR_PAVE_CD = 'PAVE_CD'
-    and F.MNGR_CD = E.MNGR_PAVE_CD 
-    and F.CD = E.PAVE_CD</value>
+  <data name="customSqlQuery3.Sql" xml:space="preserve">
+    <value>SELECT A.P_MNGR_CD  p_mngr_cd
+      ,A.P_CD       p_cd
+      ,B.CD_NM      p_cd_nm
+      ,A.MNGR_CD    mngr_cd
+      ,A.CD		  cd
+      ,C.CD_NM	  cd_nm
+      ,A.ORD_SEQ    ord_seq
+      ,A.CD_VAL	  cd_val
+  FROM COD11T00 A, COD10M00 B, COD10M00 C
+ WHERE A.P_MNGR_CD = B.MNGR_CD
+   AND B.MNGR_CD = 'MH_CD'
+   AND A.P_CD = B.CD
+   AND A.MNGR_CD = C.MNGR_CD
+   AND C.MNGR_CD = 'MH_ST'
+   AND A.CD = C.CD
+   AND A.P_CD = @P_P_CD
+ order by A.ORD_SEQ</value>
   </data>
   <data name="sqlDataQry.ResultSchemaSerializable" xml:space="preserve">
-    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVFyeSI+PFZpZXcgTmFtZT0iUVJZX+2GoOygge2RnCI+PEZpZWxkIE5hbWU9Iuq0gOuhnOuyiO2YuCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSLsuKHsoJAiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0i64iE6rCA6rGw66asIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqsbDrpqwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iu2PrOyepey9lOuTnCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSLtj6zsnqUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0i7Jyh7IOB66m07KCBIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsnKHsg4HrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuyImOykkeuptOyggSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i7IiY7KSR67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqtIDso7zsnITrqbTsoIEiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq0gOyjvOychOu2gO2UvCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rSA7IOB67aAIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLqtIDsg4HrtoDrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq0gOq4sOy0iOuptOyggSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rSA6riw7LSI67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLsoIjri6giIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9Iuq5qOq4sOuwj+uzteq1rOuptOyggSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i6rmo6riw67CP67O16rWs67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLrs7TsobDquLDsuLUiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuuztOyhsOq4sOy4teu2gO2UvCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i66qo656YIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSLrqqjrnpjrtoDtlLwiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IuyEneu2hOuptOyggSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0i7ISd67aE67aA7ZS8IiBUeXBlPSJEZWNpbWFsIiAvPjwvVmlldz48L0RhdGFTZXQ+</value>
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVFyeSI+PFZpZXcgTmFtZT0iUVJZX+unqO2ZgF9MSVNUIj48RmllbGQgTmFtZT0iY2QiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9ImNkX25tIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJkZXNjciIgVHlwZT0iVW5rbm93biIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iUVJZX+unqO2ZgOq1rOyhsOusvF9MSVNUIj48RmllbGQgTmFtZT0iTU5HUl9DRCIgVHlwZT0iVW5rbm93biIgLz48RmllbGQgTmFtZT0iQ0QiIFR5cGU9IlVua25vd24iIC8+PEZpZWxkIE5hbWU9IkNEX05NIiBUeXBlPSJVbmtub3duIiAvPjxGaWVsZCBOYW1lPSJERVNDUiIgVHlwZT0iVW5rbm93biIgLz48L1ZpZXc+PFZpZXcgTmFtZT0iUVJZX+unqO2ZgOuzhF/qtazsobDrrLxfTElTVCI+PEZpZWxkIE5hbWU9InBfbW5ncl9jZCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJwX2NkIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9InBfY2Rfbm0iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0ibW5ncl9jZCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJjZCIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJjZF9ubSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJvcmRfc2VxIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iY2RfdmFsIiBUeXBlPSJEb3VibGUiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
   </data>
-  <assembly alias="DevExpress.Data.v19.2" name="DevExpress.Data.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="simpleButton11.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v19.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE5LjIsIFZlcnNpb249MTkuMi4z
@@ -252,4 +194,7 @@
         Cjwvc3ZnPgs=
 </value>
   </data>
+  <metadata name="sqlData.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>148, 13</value>
+  </metadata>
 </root>
