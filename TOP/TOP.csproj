@@ -297,6 +297,18 @@
     <Compile Include="Dialog\frmClient2.Designer.cs">
       <DependentUpon>frmClient2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\frmMngr포장구조.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmMngr포장구조.Designer.cs">
+      <DependentUpon>frmMngr포장구조.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\frmMngr관로구조.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\frmMngr관로구조.Designer.cs">
+      <DependentUpon>frmMngr관로구조.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\frmMngr맨홀구조물.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,6 +504,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\frmClient2.resx">
       <DependentUpon>frmClient2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmMngr포장구조.resx">
+      <DependentUpon>frmMngr포장구조.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\frmMngr관로구조.resx">
+      <DependentUpon>frmMngr관로구조.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\frmMngr맨홀구조물.resx">
       <DependentUpon>frmMngr맨홀구조물.cs</DependentUpon>
